@@ -1,0 +1,19 @@
+\section{Preliminaries}
+Let $\Nat=\{1,2,\ldots\}$ and $\Natz=\{0\} \cup \Nat$.
+For a set $A$, let $\scrP(A)$ be the power set of $A$,
+$A^*$ and $A^\omega$ be the sets of finite and infinite words over $A$,
+and we denote $A^\infty = A^* \cup A^\omega$.
+For a word $\alpha\in A^\infty$ over a set $A$,
+let $\alpha(i)\in A$ be the $i$-th element of $\alpha$ ($i\geq 0$).
+Let $\<u, w\> = u(0)w(0)u(1)w(1)\cdots \in A^\infty$ for words $u,w\in A^\infty$ and $\<B, C\> = \{\<u, w\>\mid u\in B, w\in C\}$ for sets $B, C\subseteq A^\infty$.
+
+In this paper, disjoint sets $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma$ denote
+a finite input alphabet, output alphabet and stack alphabet, respectively,
+and $\Sigma = \Sigma_\dblI \cup \Sigma_\dblO$.
+For a set $\Gamma$, let $\Com(\Gamma) = \{\pop,\skip\}\cup\{\push(z)\mid z\in \Gamma\}$ be the set of stack commands over $\Gamma$.
+Let $Z:\Com(\Gamma)\times \Gamma \to \Gamma^*$ be a function defined as $Z(\pop,z)=\varepsilon$, $Z(\skip,z)=z$ and $Z(\push(z'),z)=z'z$.
+By $|\beta|$, we mean the cardinality of $\beta$ if $\beta$ is a set
+and the length of $\beta$ if $\beta$ is a finite sequence.
+
+% For two words $u,w\in A^\infty$, let $\<u,w\> = u(0)w(0)u(1)w(1)\cdots$ and
+% $\<A,B\> = \{\<u,w\>\mid u\in A, w\in B\}$.

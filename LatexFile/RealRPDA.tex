@@ -1,0 +1,227 @@
+\section{Realizability problems for Register Automata}
+\subsection{Finite actions}
+For $k\in\Natz$,
+we define the set of visible finite input actions $A_k^\dblI = \Sigma_\dblI\times\{\skip\}\times \Tst_k$
+and output actions $A_k^\dblO = \{(\sigma_o, v(\com), \asgn, j, \com)\in \Sigma_\dblO\times\Com_v\times \Asgn_k\times [k]\times \Com([k])\}$ for $k$-RPDT.
+A sequence $w = ((a^\dblI_1, \skip),d^\dblI_1) ((a^\dblO_1,v(\com_1)),d^\dblO_1)\cdots \in \DW(\Sigma_\dblI,\Sigma_\dblO,D)$ is compatible with a sequence
+$\overa = (a^\dblI_1, \skip,\tst_1)(a^\dblO_1,v(\com_1),\asgn_1,j_1, \com_1)\cdots \in (A_k^\dblI A_k^\dblO)^\omega$
+if there exists a run $(\rho, w)$ of $k$-RPDT satisfying follows:
+For all $i\geq 1$, let $\rho(i-1)=(q,\theta,eu)$ and $\rho(i)=(q',\theta',u'u)$
+for some $e\in D, u\in D^*$ and $u'\in D^*$.
+Then $\theta, d^\dblI_i, e\models \tst_i, \theta'=\theta[\asgn_i\leftarrow d^\dblI_i], \theta'(j_1) = d^\dblO_i$ and $u'=Z_D(\com,\theta',e)$ hold.
+Let $\Comp(\overa) = \{w\in \DW(\Sigma_\dblI,\Sigma_\dblO,D)\mid$ $w$ is compatible with $\overa$ $\}$.
+For specification $S \subseteq \DW(\Sigma_\dblI,\Sigma_\dblO,D)$, we define $W_{S,k}=\{\overa\mid \Comp(\overa)\subseteq S\}$.
+
+\begin{theorem}\label{the: finite_actions}
+For a specification $S\subseteq \DW(\Sigma_\dblI,\Sigma_\dblO,D)$, the following statements are equivalent.
+\begin{itemize}
+\item There exists a $k$-RPDT $\calT$ such that $L(\calT)\subseteq S$.
+\item There exists a PDT $\calT'$ such that $L(\calT')\subseteq W_{S,k}$.
+\end{itemize}
+\end{theorem}
+
+% As $A_k^\dblI$ and $A_k^\dblO$,
+% we define the set of finite input actions
+% $\dblA_k^\dblI = \Sigma_\dblI\times \Tst_k\times\Asgn_k\times \Com([k])$
+% and finite output actions
+% $\dblA_k^\dblO = \Sigma_\dblO\times \Tst_k\times\Asgn_k\times \Com([k])$ for $k$-RPDA.
+% A sequence $w = (a^\dblI_1,d^\dblI_1) (a^\dblO_1,d^\dblO_1) \cdots \in \DW(\Sigma_\dblI,\Sigma_\dblO,D)$ is compatible with a sequence
+% $\overa = (a^\dblI_1,\tst_1,\asgn_1,\com_1)(a^\dblO_1,\tst'_1,\asgn'_1,\com'_1)\cdots \in (\dblA_k^\dblI \dblA_k^\dblO)^\omega$
+% if there exists a run $(\rho, w)$ of $k$-RPDA along with conditions appearing in $\overa$.
+% Let $\Comp'(\overa) = \{w\in \DW(\Sigma_\dblI,\Sigma_\dblO,D)\mid$ $w$ is compatible with $\overa$ $\}$.
+
+\subsection{Decidability and undecidability of realizability problems}
+\begin{lemma}\label{lem: Lk}
+$L_k = \{w\otimes\overa \mid w\in\Comp(\overa)\}$ is definable as a language of $(k+2)$-DRPDA.
+\end{lemma}
+{\bf Proof.}\quad
+Let $(k+2)$-DRPDA $\calA_k = (\{p, q\}\cup(\Asgn_k\times[k]\times\Com([k]))\cup[k], \{p\}, \{q\}\cup(\Asgn_k\times[k]\times\Com([k]))\cup[k], p, \delta_k, c_k)$ over $A_k^\dblI, A_k^\dblO$ and $D$ where
+$c_k(s)=2$ for all state $s$ and $\delta_k$ consists of rules of the form
+\begin{eqnarray}
+(p, (a_\dblI, \skip, \tst), \tst) &\to& (q, \{k+1\}, \skip)\label{eq: Lk1}\\
+(q, (a_\dblO, v(\com), \asgn, j, \com), \tst')&\to& ((\asgn,j,\com), \{k+2\},\skip)\label{eq: Lk2}\\
+((\asgn,j,\com), \varepsilon, \{k+1\}\cup\tst')&\to& (j, \asgn, \com)\label{eq: Lk3}\\
+(j, \varepsilon, \{j, k+2\}\cup\tst')&\to& (p, \emptyset, \skip)\label{eq: Lk4}
+\end{eqnarray}
+for all $(a_\dblI, \tst)\in A_k^\dblI$, $(a_\dblO, \asgn, j, \com)\in A_k^\dblO$ and $\tst'\in\Tst_{k+2}$.
+Then, $L(\calA_k) = L_k$ holds.
+
+\begin{lemma}\label{lem: LkS}
+For specification $\calS$ definable by some visible $\varepsilon$-free $k'$-DRPDA.
+$L_{k, \overS} = \{w\otimes\overa \mid w\in\Comp(\overa)\cap \overS\}$
+is definable as a language of visible $(k+k'+4)$-DRPDA.
+\end{lemma}
+{\bf Proof.}\quad
+Let $L_{\overS} = \{w\otimes\overa\mid w\in\overS\}$,
+$\calA_{\overS}$ be a visible $\varepsilon$-free $k'$-DRPDA such that $L(\calA_{\overS})= L_{\overS}$ and $\calA_k$ be a $(k+2)$-DRPDA defined in Lemma \ref{lem: Lk}.
+Because $L_{k, \overS} = L_k \cap L_{\overS}$ and both $L_k$ and $L_{\overS}$ are
+visible DRPDA, it is enough to show we can construct visible $(k+k'+4)$-DRPDA $\calA$ such that $L(\calA)=L(\calA_{\overS})\cap L(\calA_k)$.
+
+For simplicity, we rewrite $\calA_k$ as $k_1$-DRPDA $\calA_1=(Q_1, Q^\dblI_1, Q^\dblO_1, q^0_1, \delta_1, c_1)$ and $\calA_{\overS}$ as $k_2$-DRPDA $\calA_2=(Q_2, Q^\dblI_2, Q^\dblO_2, q^0_2, \delta_2, c_2)$, but they satisfy that $c_1(q)$ is even for all $q\in Q_1$ and
+every rules in $\delta_1$ forms triple sequencial rules
+\begin{align}
+(q_1, (a,v(\com_1)), \tst_1) &\to (q_2,\asgn_1, \skip)& \tag{\ref{eq: Lk2}'}\\
+(q_2, \varepsilon, \tst_2) &\to (q_3,\asgn_2, \com_1)& \tag{\ref{eq: Lk3}'}\\
+(q_3, \varepsilon, \tst_3) &\to (q_4,\asgn_3, \skip)& \tag{\ref{eq: Lk4}'}.
+\end{align}
+Note that $(\ref{eq: Lk2}'), (\ref{eq: Lk3}')$ and $(\ref{eq: Lk4}')$ correspond to $(\ref{eq: Lk2}), (\ref{eq: Lk3})$ and $(\ref{eq: Lk4})$, respectively, and $(\ref{eq: Lk1})$ can be devided in three rules of the form $(\ref{eq: Lk2}'), (\ref{eq: Lk3}')$ and $(\ref{eq: Lk4}')$.
+
+We construct $(k_1+k_2+2)$-DRPDA
+$\calA=(Q_1\times Q_2\times[5], Q^\dblI_1\times Q^\dblI_2\times[5], Q^\dblO_1\times Q^\dblO_2\times[5], (q^1_0, q^2_0, 1), \delta, c)$
+where $c((q_1,q_2,i))=c_2(q_2)$ for all $(q_1,q_2,i)\in Q$.
+For all rules
+\begin{itemize}
+\item $(q_1, (a,v(\com_1)), \tst_1)\to(q_2,\asgn_1, \skip)$,
+\item $(q_2, \varepsilon, \tst_2)\to(q_3,\asgn_2, \com_1)$,
+\item $(q_3, \varepsilon, \tst_3)\to(q_4,\asgn_3, \skip)\in\delta_1$ and
+\item $(q, (a,v(\com)), \tst)\to(q',\asgn, \com)\in\delta_2$
+\end{itemize}
+$(v(\com_1)=v(\com))$ for $a\in\Sigma$,
+let $\tst^{+ k_1}=\{i+k_1\mid i\in\tst\}\cup\{\top\mid\top\in\tst\setminus[k_1]\}, \asgn^{+ k_1}=\{i+k_1\mid i\in\asgn\}$ and $\com^{+ k_1} = \push(j+k_1)$ if $\com=\push(j)$ and $\com^{+ k_1} = \com$ otherwise, then $\delta$ consists of the rules
+\begin{itemize}
+\item $((q_1, q, 1), \varepsilon, \tst'\cup\{\top\})\to((q_1, q, 2), \{k_1+k_2+1\}, \pop)$
+\item $((q_1, q, 2), \varepsilon, \tst'\cup\{\top\})\to((q_1, q, 3), \{k_1+k_2+2\}, \push(k_1+k_2+1))$
+\item $((q_1, q, 3), (a,v(\com_1)), (\tst_1\cup\tst^{+ k_1})\setminus\top\cup\{k_1+k_2+t\mid$ $t=1$ if $\top\in\tst_1$ and $t=2$ if $\top\in\tst$ $\})\to((q_2, q', 4), \asgn_1\cup\asgn^{+ k_1}, \com^{+ k_1})$
+\item $((q_2, q', 4), \varepsilon, \tst_2\cup\tst')\to((q_3, q', 5), \asgn_2, \com_1)$
+\item $((q_3, q', 5), \varepsilon, \tst_3\cup\tst')\to((q_4, q', 0), \asgn_3, \skip)$
+\end{itemize}
+for all $\tst'\in\Tst_{k_1+k_2+2}$.
+Then, $L(\calA)=L(\calA_1)\cap L(\calA_2)$.
+
+\begin{lemma}  \label{lem: W=lab}
+$W_{S,k} = \overline{\lab(L_{\overS,k})}$.
+\end{lemma}
+{\bf Proof.}\quad
+For every $\overa\in(A_k^\dblI A_k^\dblO)^\omega$,
+$\overa\notin W_{S,k} \Leftrightarrow \Comp(\overa)\not\subseteq S
+\Leftrightarrow \exists w. w\in \Comp(\overa)\cap \overS
+\Leftrightarrow \exists w. w\otimes\overa\in L_{\overS,k}
+\Leftrightarrow \overa\in\lab(L_{\overS,k})$.
+Thus, $W_{S,k} = \overline{\lab(L_{\overS,k})}$ holds.
+
+\begin{theorem}
+For all $k\geq 0$, \Real $($\DRPDAv, \RPDTk$)$ is decidable.
+\end{theorem}
+{\bf Proof.}\quad
+By Lemma \ref{lem: LkS}, $L_{\overS,k}$ is definable by some visible DRPDA.
+Because every language recognized by some visible DRPDA can be converted to
+the language of visible DPDA by taking a projection on its label,
+$W_{S,k}$ is definable by some visible DPDA by Lemma \ref{lem: W=lab}.
+By Theorem \ref{the: finite_actions}, we can check \Real $($\DPDA, \PDT$)$ for $W_{S,k}$, which is shown to be decidable in Theorem \ref{the: DPDA}, instead of checking \Real $($\DRPDAv, \RPDTk$)$.
+% By Theorem \ref{the: finite_actions}, we can check \Real $($\UPDA, \PDT$)$ for $W_{S,k}$ instead of checking \Real $($\URPDA, \RPDTk$)$.
+
+\begin{theorem}
+For all $k\geq 0$, \Real $($\NRPDA, \RPDTk$)$ is undecidable.
+\end{theorem}
+{\bf Proof.}\quad
+We can easily reduce the problem from \Real $($\NPDA, \PDT$)$,
+whose undecidability is proved in Theorem \ref{th: NPDA-PDT}.
+
+% TODO
+% prove of lemma cap
+% redefine finite actions with visiblility
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \section{Realizability problems for Register Automata}
+% \subsection{Finite actions}
+% For $k\in\Natz$,
+% we define the set of finite input actions $A_k^\dblI = \Sigma_\dblI\times \Tst_k$
+% and finite output actions $A_k^\dblO = \Sigma_\dblO\times \Asgn_k\times [k]\times \Com([k])$ for $k$-RPDT.
+% A sequence $w = (a^\dblI_1,d^\dblI_1) (a^\dblO_1,d^\dblO_1) \cdots \in \DW(\Sigma_\dblI,\Sigma_\dblO,D)$ is compatible with a sequence
+% $\overa = (a^\dblI_1,\tst_1)(a^\dblO_1,\asgn_1,j_1, \com_1)\cdots \in (A_k^\dblI A_k^\dblO)^\omega$
+% if there exists a run $(\rho, w)$ of $k$-RPDT satisfying follows:
+% For all $i\geq 1$, let $\rho(i-1)=(q,\theta,eu)$ and $\rho(i)=(q',\theta',u'u)$
+% for some $e\in D, u\in D^*$ and $u'\in D^*$.
+% Then $\theta, d^\dblI_i, e\models \tst_i, \theta'=\theta[\asgn_i\leftarrow d^\dblI_i], \theta'(j_1) = d^\dblO_i$ and $u'=Z_D(\com,\theta',e)$ hold.
+% Let $\Comp(\overa) = \{w\in \DW(\Sigma_\dblI,\Sigma_\dblO,D)\mid$ $w$ is compatible with $\overa$ $\}$.
+% For specification $S \subseteq \DW(\Sigma_\dblI,\Sigma_\dblO,D)$, we define $W_{S,k}=\{\overa\mid \Comp(\overa)\subseteq S\}$.
+%
+% \begin{theorem}\label{the: finite_actions}
+% For a specification $S\subseteq \DW(\Sigma_\dblI,\Sigma_\dblO,D)$, the following statements are equivalent.
+% \begin{itemize}
+% \item There exists a $k$-RPDT $\calT$ such that $L(\calT)\subseteq S$.
+% \item There exists a PDT $\calT'$ such that $L(\calT')\subseteq W_{S,k}$.
+% \end{itemize}
+% \end{theorem}
+%
+% % As $A_k^\dblI$ and $A_k^\dblO$,
+% % we define the set of finite input actions
+% % $\dblA_k^\dblI = \Sigma_\dblI\times \Tst_k\times\Asgn_k\times \Com([k])$
+% % and finite output actions
+% % $\dblA_k^\dblO = \Sigma_\dblO\times \Tst_k\times\Asgn_k\times \Com([k])$ for $k$-RPDA.
+% % A sequence $w = (a^\dblI_1,d^\dblI_1) (a^\dblO_1,d^\dblO_1) \cdots \in \DW(\Sigma_\dblI,\Sigma_\dblO,D)$ is compatible with a sequence
+% % $\overa = (a^\dblI_1,\tst_1,\asgn_1,\com_1)(a^\dblO_1,\tst'_1,\asgn'_1,\com'_1)\cdots \in (\dblA_k^\dblI \dblA_k^\dblO)^\omega$
+% % if there exists a run $(\rho, w)$ of $k$-RPDA along with conditions appearing in $\overa$.
+% % Let $\Comp'(\overa) = \{w\in \DW(\Sigma_\dblI,\Sigma_\dblO,D)\mid$ $w$ is compatible with $\overa$ $\}$.
+%
+% \subsection{Decidability and undecidability of realizability problems}
+% \begin{lemma}
+% $L_k = \{w\otimes\overa \mid w\in\Comp(\overa)\}$ is definable as a language of
+% $\varepsilon$-equipped $(k+1)$-DRPDA.
+% \end{lemma}
+% {\bf Proof.}\quad
+% Let $\varepsilon$-equipped $(k+1)$-DRPDA $\calA_k = (\{p, q\}\cup(\Asgn_k\times\Com([k])), \{p\}, \{q\}\cup(\Asgn_k\times\Com([k])), p, \delta_k, c_k)$ over $A_k^\dblI, A_k^\dblO$ and $D$ where
+% $c_k(s)=2$ for all state $s$ and $\delta_k$ consists of rules of the form
+% $(p, (a_\dblI, \tst), \tst) \to (q, \{k+1\}, \skip)$,
+% $(q, (a_\dblO, \asgn, j, \com), \tst'\cup\{j\})\to ((\asgn,\com), \emptyset,\skip)$ and
+% $((\asgn,\com), \varepsilon, \tst''\cup\{k+1\})\to (p, \asgn, \com)$
+% for all $(a_\dblI, \tst)\in A_k^\dblI$, $(a_\dblO, \asgn, j, \com)\in A_k^\dblO$ and $\tst',\tst''\in\Tst_k$.
+% Then, $L(\calA_k) = L_k$ holds.
+%
+% % {\bf Proof.}\quad
+% % Let $k$-DRPDA $\calA_k = (\{p\}\cup\Asgn_k, \{p\}, \Asgn_k, p, \delta_k, c_k)$ over $A_k^\dblI, A_k^\dblO$ and $D$ where
+% % $c_k(p) = c_k(p') = 2$ and $\delta_k$ consists of rules of the form
+% % $(p, (a_\dblI, \tst), \tst) \to (\asgn, \asgn, \skip)$ and
+% % $(\asgn, (a_\dblO, \asgn, j, \com), \{j\})\to (p, \emptyset, \com)$ for all $(a_\dblI, \tst)\in A_k^\dblI$ and $(a_\dblO, \asgn, j, \com)\in A_k^\dblO$.
+% % Then, $L(\calA_k) = L_k$ holds.
+%
+% % \begin{lemma}\label{lab: LkS}
+% % For specification $\calS$ definable by some $k'$-DRPDA.
+% % $L_{k, \overS} = \{w\otimes\overa \mid w\in\Comp(\overa)\cap \overS\}$
+% % is definable as a language of $\max(k,k')$-DRPDA.
+% % \end{lemma}
+% % {\bf Proof.}\quad
+% % Assume $\calA = (Q, Q_\dblI, Q_\dblO, q_0, \delta, c)$ be a $k'$-NRPDA over $\Sigma_\dblI, \Sigma_\dblO$ and $D$ whose language equals to $\overS$.
+% % Let $K = \max(k,k')$ and $\calA_{\overS,k} = (Q_\dblI\cup(Q\dblO\times\Asgn_k), Q_\dblI, Q_\dblO\times\Asgn_k, q_0, \delta', c')$ be an $K$-DRPDA over $A_K^\dblI, A_K^\dblO$ and $D$ where $c'(q)=c(q)$ for $q\in Q_\dblI$, $c'((q,\asgn))=c(q)$ for $q\in Q_\dblO$ and
+% % $\delta' = \{(q, (a_\dblI, \tst), \tst) \to ((q',\asgn), \asgn, \skip)\mid (q, a_\dblI, \tst) \to (q', \asgn, \skip)\in \delta\} \cup
+% % \{((q',\asgn), (a_\dblO, \asgn, j, \com), \{j\})\to (q, \emptyset, \com)\mid (q', a_\dblO, \{j\})\to (q, \emptyset, \com)\in \delta\}$.
+%
+% \begin{lemma}\label{lab: LkS}
+% For specification $\calS$ definable by some $k'$-DRPDA.
+% $L_{k, \overS} = \{w\otimes\overa \mid w\in\Comp(\overa)\cap \overS\}$
+% is definable as a language of $\max(k,k')$-DRPDA.
+% \end{lemma}
+%
+% We prove $L(\calA_{\overS,k}) = L_{\overS,k}$.
+%
+% \begin{lemma}  \label{lem: W=lab}
+% $W_{S,k} = \overline{\lab(L_{\overS,k})}$.
+% \end{lemma}
+% {\bf Proof.}\quad
+% For every $\overa\in(A_k^\dblI A_k^\dblO)^\omega$,
+% $\overa\notin W_{S,k} \Leftrightarrow \Comp(\overa)\not\subseteq S
+% \Leftrightarrow \exists w. w\in \Comp(\overa)\cap \overS
+% \Leftrightarrow \exists w. w\otimes\overa\in L_{\overS,k}
+% \Leftrightarrow \overa\in\lab(L_{\overS,k})$.
+% Thus, $W_{S,k} = \overline{\lab(L_{\overS,k})}$ holds.
+%
+% \begin{theorem}
+% For all $k\geq 0$, \Real $($\DRPDA, \RPDTk$)$ is decidable.
+% \end{theorem}
+% {\bf Proof.}\quad
+% By Lemma \ref{lab: LkS}, $L_{\overS,k}$ is definable by some DRPDA.
+% Because every language recognized by some NRPDA can be converted to
+% the language of NPDA by taking a projection on its label,
+% $W_{S,k}$ is definable by some UPDA by Lemma \ref{lem: W=lab}.
+% By Theorem \ref{the: finite_actions}, we can check \Real $($\DPDA, \PDT$)$ for $W_{S,k}$, which is shown to be decidable in Theorem \ref{the: DPDA}, instead of checking \Real $($\DRPDA, \RPDTk$)$.

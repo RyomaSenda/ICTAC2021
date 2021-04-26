@@ -1,0 +1,109 @@
+\section{Register Pushdown Transducer and Register Pushdown Automata}
+\subsection{Data words and registers}
+We assume a countable set $D$ of \emph{data values}.
+For finite alphabets $\Sigma_\dblI,\Sigma_\dblO$ and a countable set $D$,
+an infinite sequence $(a^\dblI_1,d_1)(a^\dblO,d'_1)\cdots \in ((\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D))^\omega$ is called a \emph{data word}.
+We write $\DW(\Sigma_\dblI,\Sigma_\dblO,D)=((\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D))^\omega$.
+
+For $k\in\Natz$, a mapping $\theta: [k] \to D$ is called an \emph{assignment}
+(of data values to $k$ registers) where $[k]=\{1,2,\ldots,k\}$.
+For $j_1\cdots j_n\in [k]^*$, we define $\theta(j_1\cdots j_n)=\theta(j_1)\cdots\theta(j_n)$ and $\theta(\varepsilon) = \varepsilon$.
+Let $\Theta_k$ denote the collection of assignments to $k$ registers.
+We denote $\Tst_k = \scrP([k]\cup\{\top\})$ and $\Asgn_k = \scrP([k])$
+where $\top\notin\Nat$ is the unique symbol that represents stack top value.
+$\Tst_k$ is the set of guard conditions.
+For $\tst\in\Tst_k$, $\theta\in\Theta_k$ and $d,e\in D$,
+we denote $\theta,d,e\models\tst$ if $\theta(i) = d \Leftrightarrow i\in\tst$
+and $e = d \Leftrightarrow \top\in\tst$ hold.
+(In definitions of register pushdown transducer (automaton) in the next section,
+the data values $d$ and $e$ represent input data value and stack top data value, respectively.)
+$\Asgn_k$ is the set of assignment conditions.
+For $\asgn\in\Asgn_k$, $\theta,\theta'\in\Theta_k$ and $d\in D$,
+we write $\theta' = \theta[\asgn\leftarrow d]$ if
+$\theta'(i) = d$ for $i\in\asgn$ and $\theta'(i)=\theta(i)$ for $i\notin\asgn$.
+Let $Z_D: \Com([k])\times \Theta_k\times D \to D^*$ be a function defined as
+$Z_D(\pop,\theta,d)=\varepsilon$, $Z_D(\skip,\theta,d)=d$ and $Z_D(\push(j),\theta,d)=\theta(j)d$.
+
+\subsection{Definitions}
+\begin{definition}
+A $k$-{register pushdown transducer} ($k$-RPDT) over finite alphabets $\Sigma_\dblI,\Sigma_\dblO$ and an infinite set $D$ of data values is
+$\calT=(P, p_0, \Delta)$ where
+$P$ is a finite set of states,
+$p_0\in P$ is the initial state,
+$\Delta: P\times\Sigma_\dblI\times\Tst_k \to P\times\Sigma_\dblO\times \Asgn_k \times [k]\times \Com([k])$ is a finite set of deterministic transition rules.
+\end{definition}
+$D$ is used as a stack alphabet.
+For a state $q\in Q$, an assignment $\theta\in\Theta_k$ and a stack $u\in D^*$,
+$(q,\theta,u)$ is called
+a {\em configuration} or {\em instantaneous description (abbreviated as ID)} of $k$-RPDT $\calT$.
+For two IDs $(p, \theta, u), (q, \theta', u')\in \ID_\calT$ and $(a,d^\dblI)\in\Sigma_\dblI\times D, (b,d^\dblO)\in \Sigma_\dblO\times D$,
+we say that $(p, \theta, u)$ can transit to $(q, \theta', u')$ with an input $(a,d^\dblI)$ and an output $(b,d^\dblO)$, written as $(p, \theta, u) \done_{\calT}^{(a,d^\dblI), (b,d^\dblO)}(q, \theta', u')$, if there exist a rule $(p, a, \tst) \to (q, b, \asgn, j, \com) \in \Delta$
+a data value $e\in D$, and a sequence of data values $w\in D^*$ where $u=ew$
+that satisfy the follows:
+$d^\dblI, e, \theta\models\tst$, $\theta' = \theta[\asgn\leftarrow d^\dblI]$, $\theta'(j) = d^\dblO$ and $u'= Z_D(\com,\theta',e)w$.
+
+If $\calT$ is clear from the context,
+we abbreviate
+$\done_{\calT}^{(a,d^\dblI), (b,d^\dblO)}$ as $\done^{(a,d^\dblI), (b,d^\dblO)}$.
+% If a sequence of IDs $(q_0, \theta_0, w_0), \cdots, (q_n, \theta_n, w_n)\in \ID_\mathcal{T}$
+% and data values $d^\dblI_1, \cdots, d^\dblI_n, d^\dblO_1, \cdots, d^\dblO_n\in D$ satisfy $(q_{i-1}, \theta_{i-1}, w_{i-1})\done^{d^\dblI_i, d^\dblO_i}(q_i, \theta_i, w_i)$ for all $i\in[n]$, we write $(q_0, \theta_0, w_0)\done^{w^\dblI, w^\dblO}(q_n, \theta_n, w_n)$
+% where $w^\dblI = d^\dblI_1 \cdots d^\dblI_n$ and $w^\dblO = d^\dblO_1 \cdots d^\dblO_n$.
+
+% If we emphasize the rule $r$ and the data value $d$,
+% we write $\done_d^r$.
+A {\em run} of $k$-RPDT $\calT$ is a pair $(\rho, u)$ of an infinite sequence of IDs $\rho\in (\ID_\calT)^\omega$ and data word $u = (a^\dblI_1,d^\dblI_1) (a^\dblO_1,d^\dblO_1) \cdots \in \DW(\Sigma_\dblI,\Sigma_\dblO,D)$ that satisfy
+$\rho(i-1)\done_\calT^{(a^\dblI_i,d^\dblI_i), (a^\dblO_i,d^\dblO_i)}\rho(i)$ for $i\geq 1$.
+We define $L(\calT) = \{u\in \DW(\Sigma_\dblI,\Sigma_\dblO,D) \mid
+\text{there exists a run $(\rho, u)$ for some $\rho\in(\ID_\calT)^\omega$ which begins with the initial state $p_0$}\}$.
+Let \RPDTk\ be the class of $k$-RPDT and \RPDT = $\bigcup_{k\in\Natz}$\RPDTk.
+Note that \RPDT$[0]$ = \PDT.
+
+\subsection{Register automata}\label{sec:RA}
+\begin{definition}
+A $k$-register pushdown automaton ($k$-RPDA) over $\Sigma_\dblI,\Sigma_\dblO$ and $D$ is $\calA=(Q, Q_\dblI, Q_\dblO, q_0, \delta, c)$, where
+\begin{itemize}
+\item $Q$ is a finite set of states,
+\item $Q_\dblI\cup Q_\dblO = Q, Q_\dblI\cap Q_\dblO = \emptyset$,
+\item $q_0\in Q$ is the initial state,
+\item $\delta: Q \times (\Sigma\cup\{\varepsilon\})\times \Tst_k \to \scrP(Q \times\Asgn_k\times \Com([k]))$ is a transition function having one of the forms:
+\begin{itemize}
+\item $(q_\dblI,a_\dblI,\tst)\to(q_\dblO,\asgn,\com)$ (input rule)
+\item $(q_\dblO,a_\dblO,\tst)\to(q_\dblI,\asgn,\com)$ (output rule)
+\item $(q,\varepsilon,\tst)\to(q',\asgn,\com)$ ($\varepsilon$ rule)
+\end{itemize}
+where $q_\dblI\in Q_\dblI$, $q_\dblO\in Q_\dblO$, $q,q'\in Q$, $a_\dblI\in\Sigma_\dblI$, $a_\dblO\in\Sigma_\dblO$, $\tst\in\Tst_k$, $j\in[k]$ and $\com\in\Com([k])$.
+\item $c: Q \to [n]$ where $n\in \Nat$ is the number of priorities.
+\end{itemize}
+\end{definition}
+\noindent
+We define the set of IDs of $\calA$ as
+that of $\calT$, i.e.,
+$\ID_{\!\calA}=\ID_{\calT}$.
+By a rule $(q,a,\tst)\to(q',\asgn,\com)\in\delta$ and $(a,d)\in (\Sigma\cup\{\varepsilon\})\times D$,
+an ID $(q,\theta,ew)\in\ID_\calA$ (where $e\in D, w\in D^*$)
+can transit to $(q',\theta[\asgn\leftarrow d], \theta'(J)w)$,
+written as $(q,\theta,ew)\vdash^{(a,d)}_\calA(q',\theta[\asgn\leftarrow d], Z_D(\com,\theta',e)w)$ where $\vdash$ is the transition relation of $\calA$.
+We write $\vdash^{(a,d)}_\calA$ as $\vdash^{(a,d)}$ if $\calA$ is clear from comtext.
+We also define a run $(\rho, u)\in (\ID_\calT)^\omega\times ((\Sigma\cup\{\varepsilon\})\times D)^\omega$ of $\calA$ as satisfying $\rho(i-1)\vdash_\calA^{(a_i,d_i)}\rho(i)$ for $i\geq 1$ where $u= (a_1,d_1)(a_2,d_2)\cdots\in ((\Sigma\cup\{\varepsilon\})\times D)^\omega$.
+For $\rho \in (\ID_\calT)^\omega$, let $c(\rho)=\max\{j\mid
+\text{there exists $q\in Q$ which appears in $\rho$}\allowbreak \text{ infinitely and satiefies $c(q)=j$}\}$.
+For $w\in ((\Sigma\cup\{\varepsilon\})\times D)^\omega$, let
+$\ef(w)\in (\Sigma\times D)^\omega$ be an epsilon free sequence of $w$.
+That is, $\ef(w)(i) = w(i)$ if $w(i)\in \Sigma\times D$ and $\ef(w)(i)=\varepsilon$ if $w(i)\in \{\varepsilon\times D$ for $i\geq 0$.
+
+We define $L_N(\calA)=\{\ef(w)\in \DW(\Sigma_\dblI,\Sigma_\dblO,D) \mid \text{there exists a run }\allowbreak (\rho, w')\in\RUN_\calA\text{ where }\rho(0)=(p_0, z_0)\text{ and }\min_{q\in Q}\{c(q)\mid q\in\state(\rho)\}\text{ is even}\}$ and
+$L_U(\calA)=\{\ef(w)\in (\Sigma_\dblI \cdot \Sigma_\dblO)^\omega \mid \text{every run }\allowbreak (\rho, w)\in\RUN_\calA\text{ where }\rho(0)=(p_0, z_0)\text{ satisfies that }\min_{q\in Q}\{c(q)\mid q\in\state(\rho)\}\text{ is even}\}$.
+
+\subsection{Classes of RPDA}
+$k$-RPDA $\calA=(Q, q_0, \delta, c)$ is said to be deterministic if
+$|\delta(q,a,\tst)\ \cup\ \delta(q,\varepsilon,\tst)| \leq 1$ for all $q\in Q, a\in\Sigma, \tst\in\Tst_k$,
+nondeterministic if the language of $\calA$ is defined as $L_N(\calA)$ and
+universal if the language of $\calA$ is defined as $L_U(\calA)$.
+For those cases, we denote $\calA$ as $k$-DRPDA, $k$-NRPDA and $k$-URPDA, respectively.
+An $\varepsilon$-free $k$-RPDA is an RPDA not having any $\varepsilon$ rules.
+Let \DRPDA, \NRPDA\ and \URPDA\ be the class of $\varepsilon$-free $k$-DRPDA, $k$-NRPDA and $k$-URPDA for all $k\in\Natz$, respectively.
+
+Let $\Com_v=\{\pop,\skip,\push\}$ and $v:\Com([k])\to\Com$ be a function such that $v(\push(j))=\push$ for $j\in[k]$ and $v(\com)=\com$ otherwise.
+An visible $k$-RPDA is input and output alphabets are $\Sigma_\dblI\times\Com_v$ and $\Sigma_\dblO\times\Com_v$, respectively,
+and every rule has one of the form $(q,(a,v(\com)))\to(q',\asgn,\com)$.
+Let \DRPDAv\ be the class of visible $\varepsilon$-free $k$-DRPDA for all $k\in\Natz$, respectively.

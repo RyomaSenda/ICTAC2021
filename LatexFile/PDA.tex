@@ -1,0 +1,306 @@
+\section{Pushdown Transducer and Pushdown Automata}
+\subsection{Definitions}
+\begin{definition}
+A {pushdown transducer} (PDT)
+over finite alphabets $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$
+is $\calT=(P, p_0, z_0, \Delta)$ where
+$P$ is a finite set of states,
+$p_0\in P$ is the initial state,
+$z_0\in \Gamma$ is the initial stack symbol and
+$\Delta: P\times \Sigma_\dblI \times \Gamma \to P\times \Sigma_\dblO \times \Com(\Gamma)$ is a finite set of deterministic transition rules having one of the following forms:
+\begin{itemize}
+\item $(p, a, z) \rightarrow (q, b, \pop)$ \quad (pop rule)
+\item $(p, a, z) \rightarrow (q, b, \skip)$ \quad (skip rule)
+\item $(p, a, z) \rightarrow (q, b, \push(z))$ \quad (push rule)
+% \item $(p, a, z) \rightarrow (q, \varepsilon, Z)$ \quad (non-$\varepsilon$ rule)
+% \item $(p, \varepsilon, z) \rightarrow (q, b, Z)$ \quad ($\varepsilon$ rule)
+\end{itemize}
+where $p, q\in P$, $a\in\Sigma_\dblI$, $b\in\Sigma_\dblO$ and $z\in\Gamma$.
+\end{definition}
+\noindent
+For a state $p\in P$ and
+a stack $w \in \Gamma^*$,
+$(p, w)$ is called
+a {\em configuration} or {\em instantaneous description (abbreviated as ID)} of PDT $\calT$. Let $\ID_\calT$ denote the set of all IDs of $\calT$.
+For two IDs $(p, w), (q, w')\in \ID_\mathcal{T}$, $(a,b)\in\Sigma_\dblI \times \Sigma_\dblO$,
+we say that $(p, w)$ can transit to $(q, w')$ with an input $a$ and an output $b$, written as $(p, w) \done_{\calT}^{a, b} (q, w')$, if there exist a rule $r=(p, a, z) \rightarrow (q, b, \com) \in \Delta$ and a sequence $u\in \Gamma^*$ such that $w=zu$ and $w'=Z(\com,z)u$.
+If $\calT$ is clear from the context,
+we abbreviate
+$\done_{\calT}^{a, b}$ as $\done^{a, b}$.
+If a sequence of IDs $(q_0, w_0), \cdots, (q_n, w_n)\in \ID_\calT$
+and $a_1, \cdots, a_n\in\Sigma_\dblI, b_1, \cdots, b_n\in \Sigma_\dblO$ satisfy $(q_{i-1}, w_{i-1})\done^{a_i, b_i}(q_i, w_i)$ for all $i\in[n]$, we write $(q_0, w_0)\done^{w^\dblI, w^\dblO}(q_n, w_n)$
+where $w^\dblI = a_1 \cdots a_n$ and $w^\dblO = b_1 \cdots b_n$.
+
+% If we emphasize the rule $r$ and the data value $d$,
+% we write $\done_d^r$.
+By definition, any ID $(p, \varepsilon)\in\ID_{\calT}$ has
+no successor.
+That is, there is no transition from an ID with empty stack.
+A {\em run} of PDT $\calT$ is a pair $(\rho, w)$ of an infinite sequence of IDs $\rho\in (\ID_\calT)^\omega$ and $w = a_1 b_1 \cdots \in (\Sigma_\dblI\cdot\Sigma_\dblO)^\omega$ that satisfy $\rho(i-1)\done_\calT^{a_i, b_i}\rho(i)$ for $i\geq 1$.
+Let $\RUN_\calT$ denote the set of all runs of $\calT$.
+We define $L(\calT) = \{w\in (\Sigma_\dblI\cdot\Sigma_\dblO)^\omega\mid
+\text{there exists a run}\allowbreak \text{ $(\rho, w)$ for some $\rho\in(\ID_\calT)^\omega$ where $\rho(0)=(p_0, z_0)$}\}$.
+Let \PDT be the class of complete PDT.
+% We call a PDT $\calT=(P, p_0, z_0, \Delta)$ deterministic when $|\Delta(p,a,z)|\leq 1$ and complete when $|\Delta(p,a,z)|\geq 1$ for all $q\in Q, a\in\Sigma_\dblI$ and $z\in\Gamma$.
+% Let $\PDT$ be the class of deterministic complete PDT.
+
+% \begin{definition}
+% A {pushdown automata} (PDA) over finite alphabets $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$ is
+% $\calA=(\calT, c)$ where
+% $\calT=(P, p_0, z_0, \Delta)$ is a PDT and
+% $c: Q \to [n]$ is a coloring function where $n\in \Nat$ is the number of priorities.
+% \end{definition}
+
+\begin{definition}
+A {pushdown automata} (PDA) over finite alphabets $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$ is $\calA = (Q, Q_\dblI, Q_\dblO, q_0, z_0, c, \delta)$
+$Q$, $Q_\dblI, Q_\dblO$ are finite sets of states that satisfy $Q=Q_\dblI\cup Q_\dblO$ and $Q_\dblI \cap Q_\dblO = \emptyset$,
+$q_0\in Q_\dblI$ is the initial state,
+$z_0\in \Gamma$ is the initial stack symbol,
+$c: Q \to [n]$ is a coloring function where $n\in \Nat$ is the number of priorities and
+$\delta: Q \times \Sigma \times \Gamma \to \scrP(Q \times \Com(\Gamma))$ is a finite set of transition rules, having one of the following forms:
+\begin{itemize}
+\item $(q_\dblI, a_\dblI, z) \rightarrow (q_\dblO, \com)$
+\item $(q_\dblO, a_\dblO, z) \rightarrow (q_\dblI, \com)$
+\end{itemize}
+where $q_\dblI\in Q_\dblI, q_\dblO\in Q_\dblO, a_\dblI\in \Sigma_\dblI, a_\dblO\in \Sigma_\dblO, z\in \Gamma$ and $\com\in \Com(\Gamma)$.
+\end{definition}
+
+% In the rest of the paper,
+% we denote a PDA $\calA = (\calT, c)$ as $\calA = (Q, q_0, z_0, \delta, c)$
+% for $\calT = (Q, q_0, z_0, \Delta)$ and
+% $\delta: P\times (\Sigma_\dblI \times \Sigma_\dblO) \times \Gamma \to \scrP (P \times \Com(\Gamma))$ satisfies
+% $(p,a,z)\to (q,b,Z)\in\Delta$ iff $(p,(a,b),z)\to (q,Z)\in\Delta$
+% for $p,q\in Q, a\in\Sigma_\dblI, b\in\Sigma_\dblO, z\in\Gamma$ and $Z\in \Com(\Gamma)$.
+
+We define an ID, transition relation and
+a run of $\calA$ in a similar way to those of $\calT$.
+More concretely, we assume $\ID_\calA=\ID_\calT$,
+$(q,u)\vdash^a_\calA(q',u')$ iff there exist a rule $(p, a, z) \rightarrow (q, \com) \in \delta$ and a sequence $u\in \Gamma^*$ such that $w=zu$ and $w'=Z(\com,z)u$.
+
+A {\em run} of PDA $\calT$ is a pair $(\rho, w)$ of an infinite sequence of IDs $\rho\in (\ID_\calA)^\omega$ and $w = a_1 a_2 \cdots \in (\Sigma_\dblI\cdot\Sigma_\dblO)^\omega$ that satisfy $\rho(i-1)\done_\calT^{a_i}\rho(i)$ for $i\geq 1$.
+Let $\RUN_\calA$ denote the set of all runs of $\calA$.
+For $\rho \in (\ID_\calA)^\omega$,
+let $\state(\rho)\subseteq Q$ be the set of states that occur infinitely in $\rho$.
+
+We define $L_N(\calA)=\{w\in (\Sigma_\dblI \cdot \Sigma_\dblO)^\omega \mid \text{there exists a run }\allowbreak (\rho, w)\in\RUN_\calA\text{ where }\rho(0)=(p_0, z_0)\text{ and }\min_{q\in Q}\{c(q)\mid q\in\state(\rho)\}\text{ is even}\}$ and
+$L_U(\calA)=\{w\in (\Sigma_\dblI \cdot \Sigma_\dblO)^\omega \mid \text{every run }\allowbreak (\rho, w)\in\RUN_\calA\text{ where }\rho(0)=(p_0, z_0)\text{ satisfies that }\min_{q\in Q}\{c(q)\mid q\in\state(\rho)\}\text{ is even}\}$.
+
+We call a PDA $\calA=(P, p_0, z_0, \delta, c)$ deterministic if $|\delta(p,a,z)|\leq 1$ for all $p\in Q, a\in\Sigma$ and $z\in\Gamma$,
+nondeterministic if the language of $\calA$ is defined as $L_N(\calA)$ and universal if the language of $\calA$ is defined as $L_U(\calA)$.
+For those cases, we denote $\calA$ as DPDA, NPDA and UPDA, respectively.
+Let $\DPDA, \NPDA$ and $\UPDA$ be the class of DPDA, NPDA and UPDA, respectively.
+
+\begin{definition}
+A {Pushdown Game} (PDG) of PDA $\calA = (Q, Q_\dblI, Q_\dblO, q_0, z_0, \delta, c)$ is $\calG_\calA = (V, V_\dblI, V_\dblO, E, C)$ where
+$V = Q\times\Gamma^*, V_\dblI = Q_\dblI\times\Gamma^*, V_\dblO = Q_\dblO\times\Gamma^*$ is the set of vertices, $E\subseteq V\times V$ is the set of edges defined as $E = \{(v,v') \mid v \vdash^a v' \text{for some $a\in \Sigma$}\}$
+and $C: V \to [n]$ is the coloring function such that
+$C((q,u)) = c(q)$ for all $(q,u)\in V$.
+\end{definition}
+
+The game starts with some $(q_0,z_0)\in V_\dblI$.
+When the current vertice is $v\in V_\dblI$,
+Player I choose a successor $v'\in V_\dblO$ of $v$ as the next vertice.
+When the current vertice is $v\in V_\dblO$,
+Player II choose a successor $v'\in V_\dblI$ of $v$.
+A finite or infinite sequence $\rho\in V^\infty$ is valid if
+$\rho(0)=(q_0,z_0)$ and satisfy
+$(\rho(i-1), \rho(i))\in E$ for every $i\geq 1$.
+A play of $\calG_\calA$ is an infinite and valid sequence $\rho\in V^\omega$.
+A play $\rho$ is winning for Player I iff $\state(\rho)$ is even.
+
+As the definition of $\calG_\calA$,
+every choice of a successor by players can be also expressed as
+a choice of a pair $(q,\com)\in Q\times \Com(\Gamma)$ and also $a\in\Sigma$ if $\calA$ is deterministic.
+Thus, every valid sequence $\rho \in V^\infty$
+corresponds one-to-one with a sequence $\tau\in (Q\times \Com(\Gamma))^\infty$.
+In detail, for every $i\geq 0$, $\rho(i) = (q, zu), \tau(i) = (q', \com)$ and $\rho(i+1) = (q', Z(\com,z)u)$ hold for some $q, q'\in Q, z\in\Gamma, u\in\Gamma^*$ and $\com\in \Com(\Gamma)$.
+We call $\tau$ valid if the corresponding $\rho$ is valid.
+
+\begin{theorem}{[Walukiewucz, 2001]}
+\label{the: wal}
+If player I has a winning strategy of $\calG_\calA$,
+we can construct a PDT $\calT$ over $Q_\dblI\times\Com(\Gamma), Q_\dblO\times\Com(\Gamma)$ and $\Gamma$ that gives a winning strategy of $\calG_\calA$.
+That is, for every $\tau\in L(\calT)$, the corresponding play $\rho\in V^\infty$ is winning for Player I.
+\end{theorem}
+
+When $\calA$ is deterministic,
+there is also an one-to-one correspondence between
+a valid sequence $\rho\in V^\infty$ and a sequence of input and output alphabets $u\in\Sigma^\infty$.
+In detail, for every $i\geq 0$, $\rho(i) = (q, zu), \rho(i+1) = (q', Z(\com,z)u)$ and $(q, u(i), z) \to (q', \com)\in\delta$ hold for some $q, q'\in Q, z\in\Gamma, u\in\Gamma^*$ and $\com\in \Com(\Gamma)$.
+
+By the correspondence, the following lemma holds.
+\begin{lemma}
+\label{lem: 1}
+A play $\rho$ is winning for Player I iff
+the corresponding sequence $w\in \Sigma^\omega$ of $\rho$
+satisfies $w\in L(\calA)$.
+\end{lemma}
+
+In a similar way to Theorem \ref{the: wal},
+we can obtain the following lemma.
+\begin{lemma}
+\label{lem: 2}
+If $\calA$ is deterministic and player I has a winning strategy of $\calG_\calA$,
+we can construct a PDT $\calT$ over $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma$
+such that every play corresponded to some $w\in L(\calT)$ is winning for Player I.
+\end{lemma}
+
+% \begin{definition}
+% A {Pushdown Game} (PDG) of PDA $\calA = (Q, Q_\dblI, Q_\dblO, q_0, z_0, \delta, c)$ is $\calG_\calA = (V, V_\dblI, V_\dblO, E, C)$ where
+% $V = Q\times\Gamma^*, V_\dblI = Q_\dblI\times\Gamma^*, V_\dblO = Q_\dblO\times\Gamma^*$ is the set of vertices, $E\subseteq V\times V$ is the set of edges defined as $E = \{(v,v') \mid v \vdash^a v' \text{for some $a\in \Sigma$}\}$
+% and $C: V \to [n]$ is the coloring function such that
+% $C((q,u)) = c(q)$ for all $(q,u)\in V$.
+% \end{definition}
+
+% The game starts with some $(q_0,z_0)\in V_\dblI$.
+% When the current vertice is $v\in V_\dblI$,
+% Player I choose a successor $v'\in V_\dblO$ of $v$ as the next vertice.
+% When the current vertice is $v\in V_\dblO$,
+% Player II choose a successor $v'\in V_\dblI$ of $v$.
+% A play of $\calG_\calA$ is a pair $(\rho, u)$ of infinite sequences $\rho\in V^\omega$ and $u\in \Sigma^\omega$ that
+% begin with $(q_0,z_0)$ and satisfy
+% $(\rho(i-1), u(i-1),\rho(i))$ for $i\geq 1$.
+% A play $(\rho,u)$ is winning for Player I if
+% $\min_{q\in Q}\{c(q)\mid q\in\state(\rho)\}$ is even.
+% By the definition of $\calG_\calA$, the following lemma holds.
+% \begin{lemma}
+% A play $(\rho,u)$ is winning for Player I iff
+% $u\in L(\calA)$.
+% \end{lemma}
+%
+% \begin{theorem}
+% If player I has a winning strategy of $\calG_\calA$,
+% we can construct a PDT $\calT$ over $\Sigma$ such that
+% $w\in L(\calT) \Rightarrow w\in L(\calA)$ for all $w\in \ID_\calT^\omega$.
+% \end{theorem}
+% The algorithm of constructing $\calT$ is given in [Walukiewucz, 2001].
+
+% \begin{definition}
+% A {pushdown tree automata} (PDTA) over finite alphabets $\Sigma$ and $\Gamma$ is
+% $\calB=(Q, q_0, z_0, F, \delta)$ where
+% $Q$ is a finite set of states,
+% $q_0\in Q$ is the initial state,
+% $z_0\in \Gamma$ is the initial stack symbol,
+% $F\subseteq Q$ is a set of final states and
+% $\Delta \subseteq Q \times \Sigma \times \Gamma \to (Q \times (\{\varepsilon\} \cup \Gamma \cup (\Gamma)^2))^2$ is a finite set of transition rules.
+% \end{definition}
+%
+% For PDTA $\calB=(Q, q_0, z_0, F, \delta)$,
+% we define a pair $(q,u)\in Q\times \Gamma^*$ as an ID of $\calB$
+% and $\ID_\calB=Q\times \Gamma^*$.
+% For three IDs $(q,u), (q_1,u_1), (q_2,u_2)\in\ID_\calB$ and $a\in \Sigma$,
+% we write $(q,u)\vdash^a_\calB(q_1,u_1)(q_2,u_2)$
+% if there exists a rule $(q,a,z) \to (q_1,Z_1),(q_2,Z_2)\in\delta$ that satisfies
+% $u=zw, u_1=Z_1w$ and $u_2=Z_2w$ for some $w \in \Gamma^*$.
+% If $\calB$ is clear from the context,
+% we abbreviate
+% $\vdash_{\calB}^{a}$ as $\vdash^{a}$.
+% A run of PDA is a pair $(\rho,\sigma)$ of total function where $\rho: \{0,1\}^\infty\to \ID_\calB, \sigma: \{0,1\}^\infty\to \Sigma$ and
+% $\rho(w)\vdash_\calA^{u(w)}\rho(w0), \rho(w1)$ for all $w\in\{0,1\}^\infty$.
+% For a run $(\rho,\sigma)$ and $w\in\{0,1\}^\omega$,
+% we define a path $(\rho_w,\sigma_w)$ of the run over $w$ as
+% $\rho_w=\rho(\varepsilon)\rho(w(0))\rho(w(0)w(1))\cdots$ and $\sigma_w=\sigma(\varepsilon)\sigma(w(0))\sigma(w(0)w(1))\cdots$.
+% We define $L(\calA)=\{\sigma:\{0,1\}^\infty\to\Sigma \mid \text{there exists a run }
+% (\rho, \sigma)\text{ for some $\rho$ where }\rho(\varepsilon)=(q_0, z_0)\text{ and for all }w\in \{0,1\}^\omega,\text{ some $q\in F$ occurs infinitely in } \rho_w\}$.
+
+\medskip\par
+For a specification $S$ and an implementation $I$,
+we write $I \models S$ if $L(I) \subseteq L(S)$.
+
+\begin{definition}
+Realizability problem \Real ($\calS$, $\calI$) for a class of specifications $\calS$ and of implementations $\calI$: For a specification $S\in\calS$, is there an implementation $I\in\calI$ such that $I \models S$ ?
+\end{definition}
+
+\begin{theorem}\label{the: DPDA}
+\Real $($\DPDA, \PDT$)$ is decidable.
+\end{theorem}
+{\bf Proof.}\quad
+Let $\calA$ be a given DPDA.
+By Lemmas \ref{lem: 1} and \ref{lem: 2},
+we can construct PDT $\calT$ such that $\calT\models\calA$ if player I has a winning strategy for the game $\calG_\calA$.
+Because the algorithm for constructing $\calT$ is finite steps
+as shown in [Walukiewucz, 2001], \Real $($\DPDA, \PDT$)$ is decidable.
+
+% \begin{theorem}
+% \Real $($\UPDA, \PDT$)$ is decidable.
+% \end{theorem}
+% {\bf Proof.}\quad
+% For UPDA, we reduce the problem to the realizability problem for DPDA.
+% W. l. o. g. assume a given UPDA $\calA = (Q, q_0, z_0, \delta, c)$ over $\Sigma_\dblI$ and $\Sigma_\dblO$ satisfies $|\delta(q,(a,b),z)|=n$ for a fixed $n\geq 2$ and
+% every rule is uniquely numbered in the range of $[n]$.
+% From $\calA$, we construct an DPDA $\calA' = (Q, q_0, z_0, \delta', c)$ over $\Sigma_\dblI \times [n]$ and $\Sigma_\dblO$ as the one that satisfies:
+% $r = (q,(a,b),z)\to(q',Z)\in\delta$ and $r$ is numbered as $i$ iff
+% $(q,((a,i),b),z)\to(q',Z)\in\delta'$.
+% By the construction of $\calA'$, the following condition holds:
+% \begin{eqnarray}
+% (a_1,b_1)(a_2,b_2)\cdots \in L(\calA) \Leftrightarrow \nonumber\\ ((a_1,i_1),b_1)((a_2,i_2),b_2)\cdots \in L(\calA')\text{ for all }i_1,i_2,\cdots\in [n] \label{eq: upda1}
+% \end{eqnarray}
+%
+% For a PDT $\calT=(P, p_0, z_0, \Delta)$ over $\Sigma_\dblI$ and $\Sigma_\dblO$,
+% we can construct a PDT $\calT'=(P, p_0, z_0, \Delta')$ over $\Sigma_\dblI\times[n]$ and $\Sigma_\dblO$ as the one that satisfies:
+% $(q,a,z)\to(q',b,Z)\in\Delta$ iff
+% $(q,(a,i),z)\to(q',b,Z)\in\Delta'$ for every $i\in[n]$.
+% By the construction of $\calT'$, the following condition holds:
+% \begin{eqnarray}
+% (a_1,b_1)(a_2,b_2)\cdots \in L(\calT) \Leftrightarrow \nonumber\\ ((a_1,i_1),b_1)((a_2,i_2),b_2)\cdots \in L(\calT')\text{ for all }i_1,i_2,\cdots\in [n] \label{eq: upda2}
+% \end{eqnarray}
+% by (\ref{eq: upda1}) and (\ref{eq: upda2}),
+% $\calT\models\calA \Leftrightarrow \calT'\models\calA'$ holds.
+% Therefore, $\exists\calT.\calT\models\calA \Leftrightarrow \exists\calT'.\calT'\models\calA'$, and the realizability problem for UPDA is decidable by this reduction.
+
+% \begin{theorem}
+% The realizability problem for PDT and DPDA is decidable.
+% \end{theorem}
+% {\bf Proof.}\quad
+% Assume $\Sigma_\dblI = \{0,1\}$.
+% We reduce the problem to emptiness problem of DPDTA.
+% For an DPDA $\calA=(Q, Q_\dblI, Q_\dblO, q_0, z_0, F, \delta_\calA)$ over $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$,
+% we construct an DPDTA $\calB=(Q\times\Sigma_\dblO, (q_0, a_0), z_0, F\times\Sigma_\dblO, \delta_\calB)$ over $\Sigma_\dblO$ and $\Gamma$ for some $a_0\in\Sigma_\dblO$, and
+% an DPDT $\calT=(Q, q_0, z_0, \Delta)$ over $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma$ as satisfying follows:
+% $(p, 0, z) \to (q, z'_0), (q, a, z'_0) \to (p'_0, Z_0), (p, 1, z) \to (q, z'_1), (q, b, z'_1) \to (p'_1, Z_1)\in \delta_\calA$ iff $((p,c), c, z) \to ((p'_0, a), Z_0), ((p'_1, b), Z_1) \in \delta_\calB$ for all $c\in \Sigma_\dblO$ iff $(p, 0, z)\to (p'_0, a, Z_0), (p, 1, z)\to (p'_1, b, Z_1)\in\Delta$ iff .
+%
+% % Then, every transition rule of $\calB$ determines input symbols read in the child positions of input tree. Thus, $L(\calB)$ must be singleton or emptyset.
+%
+% Assume $L(\calB)\neq\emptyset$. Then, there exists an accepting run $(\rho,t)$ of $\calB$.
+% Therefore, for every $w\in\{0,1\}^\infty$, there exists a unique run $(\rho_w,t_w)$ of $\calT$.
+% Because $(\rho_w,t_w)$ is also an accepting run of $\calA$, $t_w\in L(\calT) \Rightarrow t_w\in L(\calA)$ holds for all $w$ (and also for all sequence over $\Sigma_\dblI$ and $\Sigma_\dblO$), and thus $\calT\models\calA$.
+%
+% Assume $L(\calB)=\emptyset$.
+% Then, for every run of $\calB$, there exists $w$ such that
+% the run $(\rho_w,t_w)$ of $\calA$ is not accepting.
+% Thus, every PDT cannot realize $\calA$ because every run of PDT with $w$ does not accepted by $\calA$. Thus, $\calT'\not\models\calA$ for any PDT $\calT'$.
+%
+% Hence, $L(\calB)\neq\emptyset$ iff there exists a PDT $\calT$ such that $\calT\models\calA$.
+%
+% \begin{theorem}
+% The realizability problem for PDT and DPDA is decidable.
+% \end{theorem}
+% {\bf Proof.}\quad
+% Assume $\Sigma_\dblI = \{0,1\}$.
+% We reduce the problem to emptiness problem of DPDTA.
+% For an DPDA $\calA=(Q, Q_\dblI, Q_\dblO, q_0, z_0, F, \delta_\calA)$ over $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$,
+% we construct an DPDTA $\calB=(Q, q_0, z_0, F, \delta_\calB)$ over $\Sigma_\dblO^2$ and $\Gamma$ as satisfying follows:
+% $(p, 0, z) \to (q, z'_0), (q, a, z'_0) \to (p'_0, Z_0), (p, 1, z) \to (q, z'_1), (q, b, z'_1) \to (p'_1, Z_1)\in \delta_\calA$ iff $(p, (a,b), z) \to (p'_0, Z_0), (p'_1, Z_1) \in \delta_\calB$.
+
+\begin{theorem}
+\label{th: NPDA-PDT}
+\Real $($\NPDA, \PDT$)$ is undecidable.
+\end{theorem}
+{\bf Proof.}\quad
+For NPDA, we reduce the problem from the universality problem of NPDA, which is undecidable.
+For a given NPDA $\calA = (Q, q_0, z_0, \delta, c)$ over $\Sigma$ and $\Gamma$,
+we can construct an NPDA $\calA' = (Q\cup Q', Q, Q', q_0, z_0, \delta',c')$ over $\Sigma, \Sigma_\dblO$ and $\Gamma$ that satisfies
+$L(\calA)=\Sigma^\omega$ iff there exists $\calT$ such that $\calT\models\calA$.
+$\Sigma_\dblO$ is an arbitrary alphabet,
+$Q'=\{q'_i\mid i\in[n], q_i\in Q\}$ where $Q=\{q_1,\cdots,q_n\}$,
+$c'(q_i)=c'(q'_i)=c(q_i)$ for all $i\in[n]$
+and $\delta'$ satisfies that
+$(q_i,a,z)\to (q_j,\com)\in\delta$ iff $(q_i,a,z)\to (q'_j,\com)\in\delta'$, and
+$(q'_j,b,z)\to (q_j,\skip)\in\delta'$ for all $b\in \Sigma_\dblO$.
+By the construction of $\calA'$, $L(\calA')=\<L(\calA),\Sigma_\dblO^\omega\>$ holds.
+If $L(\calA)=\Sigma^\omega$, then $L(\calA')=\<\Sigma^\omega,\Sigma_\dblO^\omega\>$
+and thus $\calT\models\calA$ holds for every $\calT$.
+If $L(\calA)\neq\Sigma^\omega$, there exists a word $w\in\Sigma^\omega$ such that $w\notin L(\calA)$.
+Every language of PDT contains a word $\<u, v\>$ for every $u\in\Sigma^\omega$ and some $v\in\Sigma_\dblO^\omega$, but $\<w, v\>\notin L(\calA')$ for any $v\in\Sigma_\dblO^\omega$.
+Hence, $\calT\not\models\calA'$ holds for any PDT $\calT$.
+In conclusion, this reduction holds and the realizability problem for PDT and NPDA is undecidable.
