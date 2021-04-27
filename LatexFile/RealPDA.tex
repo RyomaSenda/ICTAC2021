@@ -1,0 +1,101 @@
+\section{Realizability problems for PDA and PDT}
+
+For a specification $S$ and an implementation $I$,
+we write $I \models S$ if $L(I) \subseteq L(S)$.
+
+\begin{definition}
+Realizability problem \Real ($\calS$, $\calI$) for a class of specifications $\calS$ and of implementations $\calI$: For a specification $S\in\calS$, is there an implementation $I\in\calI$ such that $I \models S$ ?
+\end{definition}
+
+\begin{theorem}\label{the: DPDA}
+\Real $($\DPDA, \PDT$)$ is decidable.
+\end{theorem}
+{\bf Proof.}\quad
+Let $\calA$ be a given DPDA.
+By Lemmas \ref{lem: 1} and \ref{lem: 2},
+we can construct a PDT $\calT$ such that $\calT\models\calA$ if player I has a winning strategy for the game $\calG_\calA$.
+Because there is an algorithm for constructing $\calT$ [Walukiewucz, 2001], \Real $($\DPDA, \PDT$)$ is decidable.
+
+% \begin{theorem}
+% \Real $($\UPDA, \PDT$)$ is decidable.
+% \end{theorem}
+% {\bf Proof.}\quad
+% For UPDA, we reduce the problem to the realizability problem for DPDA.
+% W. l. o. g. assume a given UPDA $\calA = (Q, q_0, z_0, \delta, c)$ over $\Sigma_\dblI$ and $\Sigma_\dblO$ satisfies $|\delta(q,(a,b),z)|=n$ for a fixed $n\geq 2$ and
+% every rule is uniquely numbered in the range of $[n]$.
+% From $\calA$, we construct an DPDA $\calA' = (Q, q_0, z_0, \delta', c)$ over $\Sigma_\dblI \times [n]$ and $\Sigma_\dblO$ as the one that satisfies:
+% $r = (q,(a,b),z)\to(q',Z)\in\delta$ and $r$ is numbered as $i$ iff
+% $(q,((a,i),b),z)\to(q',Z)\in\delta'$.
+% By the construction of $\calA'$, the following condition holds:
+% \begin{eqnarray}
+% (a_1,b_1)(a_2,b_2)\cdots \in L(\calA) \Leftrightarrow \nonumber\\ ((a_1,i_1),b_1)((a_2,i_2),b_2)\cdots \in L(\calA')\text{ for all }i_1,i_2,\cdots\in [n] \label{eq: upda1}
+% \end{eqnarray}
+%
+% For a PDT $\calT=(P, p_0, z_0, \Delta)$ over $\Sigma_\dblI$ and $\Sigma_\dblO$,
+% we can construct a PDT $\calT'=(P, p_0, z_0, \Delta')$ over $\Sigma_\dblI\times[n]$ and $\Sigma_\dblO$ as the one that satisfies:
+% $(q,a,z)\to(q',b,Z)\in\Delta$ iff
+% $(q,(a,i),z)\to(q',b,Z)\in\Delta'$ for every $i\in[n]$.
+% By the construction of $\calT'$, the following condition holds:
+% \begin{eqnarray}
+% (a_1,b_1)(a_2,b_2)\cdots \in L(\calT) \Leftrightarrow \nonumber\\ ((a_1,i_1),b_1)((a_2,i_2),b_2)\cdots \in L(\calT')\text{ for all }i_1,i_2,\cdots\in [n] \label{eq: upda2}
+% \end{eqnarray}
+% by (\ref{eq: upda1}) and (\ref{eq: upda2}),
+% $\calT\models\calA \Leftrightarrow \calT'\models\calA'$ holds.
+% Therefore, $\exists\calT.\calT\models\calA \Leftrightarrow \exists\calT'.\calT'\models\calA'$, and the realizability problem for UPDA is decidable by this reduction.
+
+% \begin{theorem}
+% The realizability problem for PDT and DPDA is decidable.
+% \end{theorem}
+% {\bf Proof.}\quad
+% Assume $\Sigma_\dblI = \{0,1\}$.
+% We reduce the problem to emptiness problem of DPDTA.
+% For an DPDA $\calA=(Q, Q_\dblI, Q_\dblO, q_0, z_0, F, \delta_\calA)$ over $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$,
+% we construct an DPDTA $\calB=(Q\times\Sigma_\dblO, (q_0, a_0), z_0, F\times\Sigma_\dblO, \delta_\calB)$ over $\Sigma_\dblO$ and $\Gamma$ for some $a_0\in\Sigma_\dblO$, and
+% an DPDT $\calT=(Q, q_0, z_0, \Delta)$ over $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma$ as satisfying follows:
+% $(p, 0, z) \to (q, z'_0), (q, a, z'_0) \to (p'_0, Z_0), (p, 1, z) \to (q, z'_1), (q, b, z'_1) \to (p'_1, Z_1)\in \delta_\calA$ iff $((p,c), c, z) \to ((p'_0, a), Z_0), ((p'_1, b), Z_1) \in \delta_\calB$ for all $c\in \Sigma_\dblO$ iff $(p, 0, z)\to (p'_0, a, Z_0), (p, 1, z)\to (p'_1, b, Z_1)\in\Delta$ iff .
+%
+% % Then, every transition rule of $\calB$ determines input symbols read in the child positions of input tree. Thus, $L(\calB)$ must be singleton or emptyset.
+%
+% Assume $L(\calB)\neq\emptyset$. Then, there exists an accepting run $(\rho,t)$ of $\calB$.
+% Therefore, for every $w\in\{0,1\}^\infty$, there exists a unique run $(\rho_w,t_w)$ of $\calT$.
+% Because $(\rho_w,t_w)$ is also an accepting run of $\calA$, $t_w\in L(\calT) \Rightarrow t_w\in L(\calA)$ holds for all $w$ (and also for all sequence over $\Sigma_\dblI$ and $\Sigma_\dblO$), and thus $\calT\models\calA$.
+%
+% Assume $L(\calB)=\emptyset$.
+% Then, for every run of $\calB$, there exists $w$ such that
+% the run $(\rho_w,t_w)$ of $\calA$ is not accepting.
+% Thus, every PDT cannot realize $\calA$ because every run of PDT with $w$ does not accepted by $\calA$. Thus, $\calT'\not\models\calA$ for any PDT $\calT'$.
+%
+% Hence, $L(\calB)\neq\emptyset$ iff there exists a PDT $\calT$ such that $\calT\models\calA$.
+%
+% \begin{theorem}
+% The realizability problem for PDT and DPDA is decidable.
+% \end{theorem}
+% {\bf Proof.}\quad
+% Assume $\Sigma_\dblI = \{0,1\}$.
+% We reduce the problem to emptiness problem of DPDTA.
+% For an DPDA $\calA=(Q, Q_\dblI, Q_\dblO, q_0, z_0, F, \delta_\calA)$ over $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$,
+% we construct an DPDTA $\calB=(Q, q_0, z_0, F, \delta_\calB)$ over $\Sigma_\dblO^2$ and $\Gamma$ as satisfying follows:
+% $(p, 0, z) \to (q, z'_0), (q, a, z'_0) \to (p'_0, Z_0), (p, 1, z) \to (q, z'_1), (q, b, z'_1) \to (p'_1, Z_1)\in \delta_\calA$ iff $(p, (a,b), z) \to (p'_0, Z_0), (p'_1, Z_1) \in \delta_\calB$.
+
+\begin{theorem}
+\label{th: NPDA-PDT}
+\Real $($\NPDA, \PDT$)$ is undecidable.
+\end{theorem}
+{\bf Proof.}\quad
+For NPDA, we reduce the problem from the universality problem of NPDA, which is undecidable.
+For a given NPDA $\calA = (Q, q_0, z_0, \delta, c)$ over $\Sigma$ and $\Gamma$,
+we can construct an NPDA $\calA' = (Q\cup Q', Q, Q', q_0, z_0, \delta',c')$ over $\Sigma, \Sigma_\dblO$ and $\Gamma$ that satisfies
+$L(\calA)=\Sigma^\omega$ iff there exists $\calT$ such that $\calT\models\calA$.
+$\Sigma_\dblO$ is an arbitrary alphabet,
+$Q'=\{q'_i\mid i\in[n], q_i\in Q\}$ where $Q=\{q_1,\cdots,q_n\}$,
+$c'(q_i)=c'(q'_i)=c(q_i)$ for all $i\in[n]$
+and $\delta'$ satisfies that
+$(q_i,a,z)\to (q_j,\com)\in\delta$ iff $(q_i,a,z)\to (q'_j,\com)\in\delta'$, and
+$(q'_j,b,z)\to (q_j,\skip)\in\delta'$ for all $b\in \Sigma_\dblO$.
+By the construction of $\calA'$, $L(\calA')=\<L(\calA),\Sigma_\dblO^\omega\>$ holds.
+If $L(\calA)=\Sigma^\omega$, then $L(\calA')=\<\Sigma^\omega,\Sigma_\dblO^\omega\>$
+and thus $\calT\models\calA$ holds for every $\calT$.
+If $L(\calA)\neq\Sigma^\omega$, there exists a word $w\in\Sigma^\omega$ such that $w\notin L(\calA)$.
+Every language of PDT contains a word $\<u, v\>$ for every $u\in\Sigma^\omega$ and some $v\in\Sigma_\dblO^\omega$, but $\<w, v\>\notin L(\calA')$ for any $v\in\Sigma_\dblO^\omega$.
+Hence, $\calT\not\models\calA'$ holds for any PDT $\calT$.
+In conclusion, this reduction holds and the realizability problem for PDT and NPDA is undecidable.

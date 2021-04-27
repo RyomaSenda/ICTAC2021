@@ -1,8 +1,8 @@
-\section{Realizability problems for Register Automata}
+\section{Realizability problems for RPDA and RPDT}
 \subsection{Finite actions}
 For $k\in\Natz$,
-we define the set of visible finite input actions $A_k^\dblI = \Sigma_\dblI\times\{\skip\}\times \Tst_k$
-and output actions $A_k^\dblO = \{(\sigma_o, v(\com), \asgn, j, \com)\in \Sigma_\dblO\times\Com_v\times \Asgn_k\times [k]\times \Com([k])\}$ for $k$-RPDT.
+we define the set of visible finite input actions as $A_k^\dblI = \Sigma_\dblI\times\{\skip\}\times \Tst_k$
+and the set of visible output actions as $A_k^\dblO = \{(\sigma_o, v(\com), \asgn, j, \com)\in \Sigma_\dblO\times\Com_v\times \Asgn_k\times [k]\times \Com([k])\}$ for $k$-RPDT.
 A sequence $w = ((a^\dblI_1, \skip),d^\dblI_1) ((a^\dblO_1,v(\com_1)),d^\dblO_1)\cdots \in \DW(\Sigma_\dblI,\Sigma_\dblO,D)$ is compatible with a sequence
 $\overa = (a^\dblI_1, \skip,\tst_1)(a^\dblO_1,v(\com_1),\asgn_1,j_1, \com_1)\cdots \in (A_k^\dblI A_k^\dblO)^\omega$
 if there exists a run $(\rho, w)$ of $k$-RPDT satisfying follows:

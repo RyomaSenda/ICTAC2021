@@ -1,4 +1,4 @@
-\section{Register Pushdown Transducer and Register Pushdown Automata}
+\section{Register Pushdown Transducers and Register Pushdown Automata}
 \subsection{Data words and registers}
 We assume a countable set $D$ of \emph{data values}.
 For finite alphabets $\Sigma_\dblI,\Sigma_\dblO$ and a countable set $D$,
@@ -6,25 +6,25 @@ an infinite sequence $(a^\dblI_1,d_1)(a^\dblO,d'_1)\cdots \in ((\Sigma_\dblI\tim
 We write $\DW(\Sigma_\dblI,\Sigma_\dblO,D)=((\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D))^\omega$.
 
 For $k\in\Natz$, a mapping $\theta: [k] \to D$ is called an \emph{assignment}
-(of data values to $k$ registers) where $[k]=\{1,2,\ldots,k\}$.
+(of data values to $k$ registers).
 For $j_1\cdots j_n\in [k]^*$, we define $\theta(j_1\cdots j_n)=\theta(j_1)\cdots\theta(j_n)$ and $\theta(\varepsilon) = \varepsilon$.
 Let $\Theta_k$ denote the collection of assignments to $k$ registers.
 We denote $\Tst_k = \scrP([k]\cup\{\top\})$ and $\Asgn_k = \scrP([k])$
-where $\top\notin\Nat$ is the unique symbol that represents stack top value.
+where $\top\notin\Nat$ is the unique symbol that represents a stack top value.
 $\Tst_k$ is the set of guard conditions.
 For $\tst\in\Tst_k$, $\theta\in\Theta_k$ and $d,e\in D$,
 we denote $\theta,d,e\models\tst$ if $\theta(i) = d \Leftrightarrow i\in\tst$
 and $e = d \Leftrightarrow \top\in\tst$ hold.
 (In definitions of register pushdown transducer (automaton) in the next section,
-the data values $d$ and $e$ represent input data value and stack top data value, respectively.)
+the data values $d$ and $e$ represent an input data value and a stack top data value, respectively.)
 $\Asgn_k$ is the set of assignment conditions.
 For $\asgn\in\Asgn_k$, $\theta,\theta'\in\Theta_k$ and $d\in D$,
-we write $\theta' = \theta[\asgn\leftarrow d]$ if
-$\theta'(i) = d$ for $i\in\asgn$ and $\theta'(i)=\theta(i)$ for $i\notin\asgn$.
+let $\theta[\asgn\leftarrow d]$ be the assignment
+$\theta'$ such that $\theta'(i) = d$ for $i\in\asgn$ and $\theta'(i)=\theta(i)$ for $i\notin\asgn$.
 Let $Z_D: \Com([k])\times \Theta_k\times D \to D^*$ be a function defined as
 $Z_D(\pop,\theta,d)=\varepsilon$, $Z_D(\skip,\theta,d)=d$ and $Z_D(\push(j),\theta,d)=\theta(j)d$.
 
-\subsection{Definitions}
+\subsection{Register pushdown transducers}
 \begin{definition}
 A $k$-{register pushdown transducer} ($k$-RPDT) over finite alphabets $\Sigma_\dblI,\Sigma_\dblO$ and an infinite set $D$ of data values is
 $\calT=(P, p_0, \Delta)$ where
@@ -58,13 +58,13 @@ We define $L(\calT) = \{u\in \DW(\Sigma_\dblI,\Sigma_\dblO,D) \mid
 Let \RPDTk\ be the class of $k$-RPDT and \RPDT = $\bigcup_{k\in\Natz}$\RPDTk.
 Note that \RPDT$[0]$ = \PDT.
 
-\subsection{Register automata}\label{sec:RA}
+\subsection{Register pushdown automata}\label{sec:RA}
 \begin{definition}
 A $k$-register pushdown automaton ($k$-RPDA) over $\Sigma_\dblI,\Sigma_\dblO$ and $D$ is $\calA=(Q, Q_\dblI, Q_\dblO, q_0, \delta, c)$, where
 \begin{itemize}
 \item $Q$ is a finite set of states,
 \item $Q_\dblI\cup Q_\dblO = Q, Q_\dblI\cap Q_\dblO = \emptyset$,
-\item $q_0\in Q$ is the initial state,
+\item $q_0\in Q$ is the initial state, and
 \item $\delta: Q \times (\Sigma\cup\{\varepsilon\})\times \Tst_k \to \scrP(Q \times\Asgn_k\times \Com([k]))$ is a transition function having one of the forms:
 \begin{itemize}
 \item $(q_\dblI,a_\dblI,\tst)\to(q_\dblO,\asgn,\com)$ (input rule)
