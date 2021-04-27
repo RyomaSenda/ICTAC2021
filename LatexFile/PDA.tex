@@ -1,4 +1,4 @@
-\section{Pushdown Transducers, Pushdown Automata and Pushdown Games}
+\section{Pushdown Transducers, Automata and Games}
 \subsection{Pushdown Transducers}
 \begin{definition}
 A {pushdown transducer} (PDT)
@@ -22,75 +22,57 @@ For a state $p\in P$ and
 a stack $w \in \Gamma^*$,
 $(p, w)$ is called
 a {\em configuration} or {\em instantaneous description (abbreviated as ID)} of PDT $\calT$. Let $\ID_\calT$ denote the set of all IDs of $\calT$.
-For two IDs $(p, w), (q, w')\in \ID_\mathcal{T}$ and $(a,b)\in\Sigma_\dblI \times \Sigma_\dblO$,
-we say that $(p, w)$ can transit to $(q, w')$ with an input $a$ and an output $b$, written as $(p, w) \done_{\calT}^{a, b} (q, w')$, if there exist a rule $r=(p, a, z) \rightarrow (q, b, \com) \in \Delta$ and a sequence $u\in \Gamma^*$ such that $w=zu$ and $w'=Z(\com,z)u$.
+Let $\Rightarrow_\calT\subseteq \ID_\calT\times \Sigma_\dblI\cdot\Sigma_\dblO\times \ID_\calT$ be the transition relation of $\calT$ that satisfies follows:
+For two IDs $(p, u), (q, u')\in \ID_\calT$ and $ab\in\Sigma_\dblI\cdot \Sigma_\dblO$,
+$((p, u), ab, (q, u'))\in\ \Rightarrow_\calT$,
+written as $(p, w) \done_{\calT}^{ab} (q, w')$,
+if there exist a rule $r=(p, a, z) \rightarrow (q, b, \com) \in \Delta$ and a sequence $u\in \Gamma^*$ such that $w=zu$ and $w'=Z(\com,z)u$.
 If $\calT$ is clear from the context,
 we abbreviate
-$\done_{\calT}^{a, b}$ as $\done^{a, b}$.
-If a sequence of IDs $(q_0, w_0), \cdots, (q_n, w_n)\in \ID_\calT$
-and $a_1, \cdots, a_n\in\Sigma_\dblI, b_1, \cdots, b_n\in \Sigma_\dblO$ satisfy $(q_{i-1}, w_{i-1})\done^{a_i, b_i}(q_i, w_i)$ for all $i\in[n]$, we write $(q_0, w_0)\done^{w^\dblI, w^\dblO}(q_n, w_n)$
-where $w^\dblI = a_1 \cdots a_n$ and $w^\dblO = b_1 \cdots b_n$.
-
+$\done_{\calT}^{ab}$ as $\done^{ab}$.
+% If a sequence of IDs $(q_0, w_0), \cdots, (q_n, w_n)\in \ID_\calT$
+% and $a_1, \cdots, a_n\in\Sigma_\dblI, b_1, \cdots, b_n\in \Sigma_\dblO$ satisfy $(q_{i-1}, w_{i-1})\done^{a_i, b_i}(q_i, w_i)$ for all $i\in[n]$, we write $(q_0, w_0)\done^{w^\dblI, w^\dblO}(q_n, w_n)$
+% where $w^\dblI = a_1 \cdots a_n$ and $w^\dblO = b_1 \cdots b_n$.
 % If we emphasize the rule $r$ and the data value $d$,
 % we write $\done_d^r$.
 By definition, any ID $(p, \varepsilon)\in\ID_{\calT}$ has
 no successor.
 That is, there is no transition from an ID with empty stack.
-A {\em run} of PDT $\calT$ is a pair $(\rho, w)$ of an infinite sequence of IDs $\rho\in (\ID_\calT)^\omega$ and $w = a_1 b_1 \cdots \in (\Sigma_\dblI\cdot\Sigma_\dblO)^\omega$ that satisfy $\rho(i-1)\done_\calT^{a_i, b_i}\rho(i)$ for $i\geq 1$.
-Let $\RUN_\calT$ denote the set of all runs of $\calT$.
-We define $L(\calT) = \{w\in (\Sigma_\dblI\cdot\Sigma_\dblO)^\omega\mid
-\text{there exists a run}\allowbreak \text{ $(\rho, w)$ for some $\rho\in(\ID_\calT)^\omega$ where $\rho(0)=(p_0, z_0)$}\}$.
+We define a run and Language of PDT $\calT$ as those of
+deterministic TS $(\ID_\calT, (q_0,z_0), \Sigma_\dblI\cdot\Sigma_\dblO, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
 Let \PDT\ be the class of PDT.
-% We call a PDT $\calT=(P, p_0, z_0, \Delta)$ deterministic when $|\Delta(p,a,z)|\leq 1$ and complete when $|\Delta(p,a,z)|\geq 1$ for all $q\in Q, a\in\Sigma_\dblI$ and $z\in\Gamma$.
-% Let $\PDT$ be the class of deterministic complete PDT.
-
-% \begin{definition}
-% A {pushdown automata} (PDA) over finite alphabets $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$ is
-% $\calA=(\calT, c)$ where
-% $\calT=(P, p_0, z_0, \Delta)$ is a PDT and
-% $c: Q \to [n]$ is a coloring function where $n\in \Nat$ is the number of priorities.
-% \end{definition}
 
 \subsection{Pushdown Automata}
 
 \begin{definition}
-A {pushdown automata} (PDA) over finite alphabets $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$ is $\calA = (Q, Q_\dblI, Q_\dblO, q_0, z_0, c, \delta)$ where
+A nondeterministic {pushdown automata} (NPDA) over finite alphabets $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$ is $\calA = (Q, Q_\dblI, Q_\dblO, q_0, z_0, c, \delta)$ where
 $Q$, $Q_\dblI, Q_\dblO$ are finite sets of states that satisfy $Q=Q_\dblI\cup Q_\dblO$ and $Q_\dblI \cap Q_\dblO = \emptyset$,
 $q_0\in Q_\dblI$ is the initial state,
 $z_0\in \Gamma$ is the initial stack symbol,
 $c: Q \to [n]$ is a coloring function where $n\in \Nat$ is the number of priorities and
 $\delta: Q \times \Sigma \times \Gamma \to \scrP(Q \times \Com(\Gamma))$ is a finite set of transition rules, having one of the following forms:
 \begin{itemize}
-\item $(q_\dblI, a_\dblI, z) \rightarrow (q_\dblO, \com)$
-\item $(q_\dblO, a_\dblO, z) \rightarrow (q_\dblI, \com)$
+\item $(q_\dblX, a_\dblX, z) \rightarrow (q_\overX, \com)$ (input/output rules)
+\item $(q_\dblX, \varepsilon, z)\to(q'_\dblX,\com)$ ($\varepsilon$ rules)
 \end{itemize}
-where $q_\dblI\in Q_\dblI, q_\dblO\in Q_\dblO, a_\dblI\in \Sigma_\dblI, a_\dblO\in \Sigma_\dblO, z\in \Gamma$ and $\com\in \Com(\Gamma)$.
+where $(\dblX, \overX)\in\{(\dblI, \dblO), (\dblO,\dblI)\}$,
+$q_\dblX, q'_\dblX\in Q_\dblX, q_\overX\in Q_\overX, a_\dblX\in \Sigma_\dblX$, $z\in \Gamma$ and $\com\in \Com(\Gamma)$.
 \end{definition}
+We define $\ID_\calA= Q\times \Gamma^*$ and
+a transition relation $\vdash_\calA\subseteq \ID_\calA\times (\Sigma\cup\{\varepsilon\})\times \ID_\calA$ as
+$((q,u),a,(q',u'))\in\ \vdash_\calA$ iff there exist a rule $(p, a, z) \rightarrow (q, \com) \in \delta$ and a sequence $u\in \Gamma^*$ such that $w=zu$ and $w'=Z(\com,z)u$.
+We write $(q,u)\vdash^a_\calA(q',u')$ iff
+$((q,u),a,(q',u'))\in\ \vdash_\calA$.
+We write $\vdash^{a}_\calA$ as $\vdash^{a}$ if $\calA$ is clear from comtext.
 
-% In the rest of the paper,
-% we denote a PDA $\calA = (\calT, c)$ as $\calA = (Q, q_0, z_0, \delta, c)$
-% for $\calT = (Q, q_0, z_0, \Delta)$ and
-% $\delta: P\times (\Sigma_\dblI \times \Sigma_\dblO) \times \Gamma \to \scrP (P \times \Com(\Gamma))$ satisfies
-% $(p,a,z)\to (q,b,Z)\in\Delta$ iff $(p,(a,b),z)\to (q,Z)\in\Delta$
-% for $p,q\in Q, a\in\Sigma_\dblI, b\in\Sigma_\dblO, z\in\Gamma$ and $Z\in \Com(\Gamma)$.
-
-We define an ID, transition relation and
-a run of $\calA$ in a similar way to those of $\calT$.
-More concretely, we assume $\ID_\calA=\ID_\calT$,
-$(q,u)\vdash^a_\calA(q',u')$ iff there exist a rule $(p, a, z) \rightarrow (q, \com) \in \delta$ and a sequence $u\in \Gamma^*$ such that $w=zu$ and $w'=Z(\com,z)u$.
-
-A {\em run} of PDA $\calT$ is a pair $(\rho, w)$ of an infinite sequence of IDs $\rho\in (\ID_\calA)^\omega$ and $w = a_1 a_2 \cdots \in (\Sigma_\dblI\cdot\Sigma_\dblO)^\omega$ that satisfy $\rho(i-1)\done_\calT^{a_i}\rho(i)$ for $i\geq 1$.
-Let $\RUN_\calA$ denote the set of all runs of $\calA$.
-For $\rho \in (\ID_\calA)^\omega$,
-let $\state(\rho)\subseteq Q$ be the set of states that occur infinitely in $\rho$.
-
-We define $L_N(\calA)=\{w\in (\Sigma_\dblI \cdot \Sigma_\dblO)^\omega \mid \text{there exists a run }\allowbreak (\rho, w)\in\RUN_\calA\text{ where }\rho(0)=(p_0, z_0)\text{ and }\min_{q\in Q}\{c(q)\mid q\in\state(\rho)\}\text{ is even}\}$ and
-$L_U(\calA)=\{w\in (\Sigma_\dblI \cdot \Sigma_\dblO)^\omega \mid \text{every run }\allowbreak (\rho, w)\in\RUN_\calA\text{ where }\rho(0)=(p_0, z_0)\text{ satisfies that }\min_{q\in Q}\{c(q)\mid q\in\state(\rho)\}\text{ is even}\}$.
-
-We call a PDA $\calA=(P, p_0, z_0, \delta, c)$ deterministic if $|\delta(p,a,z)|\leq 1$ for all $p\in Q, a\in\Sigma$ and $z\in\Gamma$,
-nondeterministic if the language of $\calA$ is defined as $L_N(\calA)$ and universal if the language of $\calA$ is defined as $L_U(\calA)$.
-For those cases, we denote $\calA$ as DPDA, NPDA and UPDA, respectively.
-Let $\DPDA, \NPDA$ and $\UPDA$ be the class of DPDA, NPDA and UPDA, respectively.
+We call $\calA$ $\varepsilon$-free if $\calA$ has no $\varepsilon$ rule.
+We define a run and language as those of TS $\calS_\calA=(\ID_\calA, (q_0,z_0,\Sigma,\vdash_\calA,c')$ of $\calA$ where $c'((q,u))= c(q)$ for every $(q,u)\in\ID_\calA$.
+% We call a PDA $\calA=(P, p_0, z_0, \delta, c)$ deterministic if $|\delta(p,a,z)|\leq 1$ for all $p\in Q, a\in\Sigma$ and $z\in\Gamma$.
+We call a PDA $\calA$ deterministic if $\calS_\calA$ is deterministic,
+and then we write $\calA$ is DPDA.
+% nondeterministic if the language is defined as $L_N(\calS_\calA)$,
+% universal if the language is defined as $L_U(\calS_\calA)$.
+Let $\DPDA$ and $\NPDA$ be the class of $\varepsilon$-free DPDA and $\varepsilon$-free NPDA, respectively.
 
 \subsection{Pushdown Games}
 

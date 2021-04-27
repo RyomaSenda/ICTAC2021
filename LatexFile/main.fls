@@ -187,9 +187,9 @@ INPUT preliminaries.tex
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
-INPUT PDA.tex
-INPUT PDA.tex
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT PDA.tex
+INPUT PDA.tex
 OUTPUT main.dvi
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
