@@ -1,34 +1,30 @@
 \section{Realizability problems for RPDA and RPDT}
 \subsection{Finite actions}
 For $k\in\Natz$,
-we define the set of visible finite input actions as $A_k^\dblI = \Sigma_\dblI\times\{\skip\}\times \Tst_k$
-and the set of visible output actions as $A_k^\dblO = \{(\sigma_o, v(\com), \asgn, j, \com)\in \Sigma_\dblO\times\Com_v\times \Asgn_k\times [k]\times \Com([k])\}$ for $k$-RPDT.
-A sequence $w = ((a^\dblI_1, \skip),d^\dblI_1) ((a^\dblO_1,v(\com_1)),d^\dblO_1)\cdots \in \DW(\Sigma_\dblI,\Sigma_\dblO,D)$ is compatible with a sequence
-$\overa = (a^\dblI_1, \skip,\tst_1)(a^\dblO_1,v(\com_1),\asgn_1,j_1, \com_1)\cdots \in (A_k^\dblI A_k^\dblO)^\omega$
-if there exists a run $(\rho, w)$ of $k$-RPDT satisfying follows:
-For all $i\geq 1$, let $\rho(i-1)=(q,\theta,eu)$ and $\rho(i)=(q',\theta',u'u)$
-for some $e\in D, u\in D^*$ and $u'\in D^*$.
-Then $\theta, d^\dblI_i, e\models \tst_i, \theta'=\theta[\asgn_i\leftarrow d^\dblI_i], \theta'(j_1) = d^\dblO_i$ and $u'=Z_D(\com,\theta',e)$ hold.
+we define the set of visibly finite input actions as $A_k^\dblI = \Sigma_\dblI\times\{\skip\}\times \Tst_k$
+and the set of visibly output actions as $A_k^\dblO = \{(\sigma_o, v(\com), \asgn, j, \com)\in \Sigma_\dblO\times\Com_v\times \Asgn_k\times [k]\times \Com([k])\}$ for $k$-RPDT.
+A sequence $w = ((a^\dblI_0, \skip),d^\dblI_0) ((a^\dblO_0,v(\com_0)),d^\dblO_0)\cdots \in \DW(\Sigma_\dblI,\Sigma_\dblO,D)$ is compatible with a sequence
+$\overa = (a^\dblI_0, \skip,\tst_0)(a^\dblO_0,v(\com_0),\asgn_0,j_0, \com_0)\cdots \in (A_k^\dblI\cdot A_k^\dblO)^\omega$
+iff there exists a sequence $(\theta_0,u_0)(\theta_1, u_1)\cdots\in (\Theta_k\times D^*)^\omega$, called \emph{witness}, such that
+$\theta_0 = \theta_\bot$, $u_0 = \bot$,
+$\theta_i, d^\dblI_i, u_i(0) \models \tst_i, \theta_{i+1}=\theta_i[\asgn_i\leftarrow d^\dblI_i], \theta_{i+1}(j_i) = d^\dblO_i$ and $u_{i+1}={u_i(1:)}, u_i, \theta_{i+1}(j')u_i$
+if $\com_i=\pop,\skip,\push(j')$, respectively.
 Let $\Comp(\overa) = \{w\in \DW(\Sigma_\dblI,\Sigma_\dblO,D)\mid$ $w$ is compatible with $\overa$ $\}$.
-For specification $S \subseteq \DW(\Sigma_\dblI,\Sigma_\dblO,D)$, we define $W_{S,k}=\{\overa\mid \Comp(\overa)\subseteq S\}$.
+For specification $S \subseteq \DW(\Sigma_\dblI\times\Com_v,\Sigma_\dblO\times\Com_v,D)$, we define $W_{S,k}=\{\overa\mid \Comp(\overa)\subseteq S\}$.
+
+For a data word $w\in\DW(\Sigma_\dblI,\Sigma_\dblO,D)$ and
+a sequence $\overa\in(A_k^\dblI\cdot A_k^\dblO)^\omega$
+such that $w(i)=(a,d)$ and $\overa(i)=(a,\cdot)$ for all $i\geq 0$,
+we define $w\otimes\overa\in\DW(A_k^\dblI,A_k^\dblO,D)$ as satisfying
+$w\otimes\overa(i)=(\overa(i), d)$ where $w(i)=(a,d)$.
 
 \begin{theorem}\label{the: finite_actions}
-For a specification $S\subseteq \DW(\Sigma_\dblI,\Sigma_\dblO,D)$, the following statements are equivalent.
+For a specification $S\subseteq \DW(\Sigma_\dblI\times\Com_v,\Sigma_\dblO\times\Com_v,D))$, the following statements are equivalent.
 \begin{itemize}
 \item There exists a $k$-RPDT $\calT$ such that $L(\calT)\subseteq S$.
 \item There exists a PDT $\calT'$ such that $L(\calT')\subseteq W_{S,k}$.
 \end{itemize}
 \end{theorem}
-
-% As $A_k^\dblI$ and $A_k^\dblO$,
-% we define the set of finite input actions
-% $\dblA_k^\dblI = \Sigma_\dblI\times \Tst_k\times\Asgn_k\times \Com([k])$
-% and finite output actions
-% $\dblA_k^\dblO = \Sigma_\dblO\times \Tst_k\times\Asgn_k\times \Com([k])$ for $k$-RPDA.
-% A sequence $w = (a^\dblI_1,d^\dblI_1) (a^\dblO_1,d^\dblO_1) \cdots \in \DW(\Sigma_\dblI,\Sigma_\dblO,D)$ is compatible with a sequence
-% $\overa = (a^\dblI_1,\tst_1,\asgn_1,\com_1)(a^\dblO_1,\tst'_1,\asgn'_1,\com'_1)\cdots \in (\dblA_k^\dblI \dblA_k^\dblO)^\omega$
-% if there exists a run $(\rho, w)$ of $k$-RPDA along with conditions appearing in $\overa$.
-% Let $\Comp'(\overa) = \{w\in \DW(\Sigma_\dblI,\Sigma_\dblO,D)\mid$ $w$ is compatible with $\overa$ $\}$.
 
 \subsection{Decidability and undecidability of realizability problems}
 \begin{lemma}\label{lem: Lk}
@@ -38,31 +34,89 @@ $L_k = \{w\otimes\overa \mid w\in\Comp(\overa)\}$ is definable as a language of 
 Let $(k+2)$-DRPDA $\calA_k = (\{p, q\}\cup(\Asgn_k\times[k]\times\Com([k]))\cup[k], \{p\}, \{q\}\cup(\Asgn_k\times[k]\times\Com([k]))\cup[k], p, \delta_k, c_k)$ over $A_k^\dblI, A_k^\dblO$ and $D$ where
 $c_k(s)=2$ for all state $s$ and $\delta_k$ consists of rules of the form
 \begin{eqnarray}
-(p, (a_\dblI, \skip, \tst), \tst) &\to& (q, \{k+1\}, \skip)\label{eq: Lk1}\\
-(q, (a_\dblO, v(\com), \asgn, j, \com), \tst')&\to& ((\asgn,j,\com), \{k+2\},\skip)\label{eq: Lk2}\\
-((\asgn,j,\com), \varepsilon, \{k+1\}\cup\tst')&\to& (j, \asgn, \com)\label{eq: Lk3}\\
-(j, \varepsilon, \{j, k+2\}\cup\tst')&\to& (p, \emptyset, \skip)\label{eq: Lk4}
+(p, (a_\dblI, \skip, \tst), \tst\cup\tst') &\to& (q, \{k+1\}, \skip)\label{eq: Lk1}\\
+(q, (a_\dblO, v(\com), \asgn, j, \com), \tst'')&\to& ((\asgn,j,\com), \{k+2\},\skip)\label{eq: Lk2}\\
+((\asgn,j,\com), \tau, \{k+1\}\cup\tst'')&\to& (j, \asgn, \com)\label{eq: Lk3}\\
+(j, \tau, \{j, k+2\}\cup\tst'')&\to& (p, \emptyset, \skip)\label{eq: Lk4}
 \end{eqnarray}
-for all $(a_\dblI, \tst)\in A_k^\dblI$, $(a_\dblO, \asgn, j, \com)\in A_k^\dblO$ and $\tst'\in\Tst_{k+2}$.
-Then, $L(\calA_k) = L_k$ holds.
+for all $(a_\dblI, \tst)\in A_k^\dblI$, $(a_\dblO, \asgn, j, \com)\in A_k^\dblO$, $\tst'\subseteq \{k+1,k+2\}$ and $\tst''\in\Tst_{k+2}$.
+
+We show $L(\calA_k) = L_k$.
+For this proof, we redefine compatibility for finite sequences $w\in ((\Sigma_\dblI\times D)\cdot (\Sigma_\dblO\times D))^*$ and $\overa\in(A_k^\dblI\cdot A_k^\dblO)^*$.
+We show the following claim.
+\par\medskip\noindent
+{\it Claim.} Assume $n\in\Natz$ and let $w\otimes\overa = ((a^\dblI_0, \skip,\tst_0), d^\dblI_0)((a^\dblO_0,v(\com_0),\asgn_0,j_0, \com_0), d^\dblO_0)\cdots\in ((A_k^\dblI\times D)\cdot(A_k^\dblO\times D))^*$
+whose length is $2n$ and
+$\rho = (\theta_0,u_0)(\theta_1, u_1)\cdots\in (\Theta_k\times D^*)^*$ whose length is $n+1$ and $(\theta_0, u_0)=(\theta_\bot, \bot)$.
+Then,
+$\rho$ is a witness of the compatibility between $w$ and $\overa$ iff
+$(p,\theta'_0,u_0)\vdash^{w\otimes\overa(0:1)(\tau,d^\dblI_{0})(\tau,d^\dblO_{0})}(\theta'_1,u_1)\vdash^{w\otimes\overa(2:3)(\tau,d^\dblI_{1})(\tau,d^\dblO_{1})}\cdots\vdash^{w\otimes\overa(2n-2:2n-1)(\tau,d^\dblI_{n-1})(\tau,d^\dblO_{n-1})}(p,\theta'_{n},u_{n})$
+where $\theta'_i\in \Theta_{k+2}$ ($i\in[n]$) satisfies $\theta'_i(j)=\theta_i(j)$ for $j\in[k]$.
+\par\medskip\noindent
+(Proof of the claim)
+We show the claim by induction on $n$.
+The case of $n=0$ is obvious.
+We show the claim for arbitrary $n>0$ with the induction hypothesis.
+
+We first show left to right.
+By the induction hypothesis,
+$(p,\theta'_0,u_0)\vdash^{w\otimes\overa(0:1)(\tau,d^\dblI_{0})(\tau,d^\dblO_{0})\cdots w\otimes\overa(2n-4:2n-3)(\tau,d^\dblI_{n-2})(\tau,d^\dblO_{n-2})}(p,\theta'_{n-1},u_{n-1})$ holds.
+By the assumption, because $\rho$ is the witness,
+(a) $\theta_{n-1}, d^\dblI_{n-1}, u_{n-1}(0) \models \tst_{n-1}$,
+(b) $\theta_{n}=\theta_{n-1}[\asgn_{n-1}\leftarrow d^\dblI_{n-1}]$,
+(c) $\theta_{n}(j_{n-1}) = d^\dblO_{n-1}$ and
+(d) $u_{n}={u_{n-1}(1:)}, u_{n-1}, \theta_{n}(j')u_{n-1}$
+if $\com_{n-1}=\pop,\skip,\push(j')$, respectively.
+By the condition (a),
+$\calA_k$ can do a transition
+$(p,\theta'_{n-1},u_{n-1})\vdash^{w\otimes\overa(2n-2)}
+(q,\theta^1_{n-1},u_{n-1})$ for unique $\theta^1_{n-1}\in\Theta_{k+2}$ by the rule $(p, (a^\dblI_{n-1}, \skip, \tst_{n-1}), \tst_{n-1}\cup\tst') \to (q, \{k+1\}, \skip)$ of the form (\ref{eq: Lk1}).
+We can also say
+$(q,\theta^1_{n-1},u_{n-1})\vdash^{w\otimes\overa(2n-1)}
+((\asgn_{n-1}, j_{n-1}, \com_{n-1}),\theta^2_{n-1},u_{n-1})$ by the rule of the form (\ref{eq: Lk2}). Note that $\theta^2_{n-1}(j)=\theta_{n-1}(j)$ if $j\in[k]$, $\theta^2_{n-1}(k+1)=d^\dblI_{n-1}$ and
+$\theta^2_{n-1}(k+2)=d^\dblO_{n-1}$.
+$((\asgn_{n-1}, j_{n-1}, \com_{n-1}),\theta^2_{n-1},u_{n-1})\vdash^{(\tau,d^\dblI_{n-1})}(j_{n-1},\theta^3_{n-1},u_{n})$ is also valid transition of $\calA_k$ of the form (\ref{eq: Lk3}) by the conditions (b) and (d)
+where $\theta_3^{n-1}(j)=\theta_{n}(j)$
+for $j\in[k]$ and $\theta^3_{n-1}(k+2)=d^\dblO_{n-1}$.
+By the condition (c), $\theta_3^{n-1}(j_{n-1})=\theta_3^{n-1}(k+1)=d^\dblO_{n-1}$ holds.
+Thus, a transition $(j_{n-1},\theta^3_{n-1},u_{n})\vdash^{(\tau,d^\dblO_{n-1})}(p,\theta'_{n},u_{n})$ is valid with the rule of the form (\ref{eq: Lk4}).
+In conclusion,
+$(p,\theta'_{n-1},u_{n-1})\vdash^ {w\otimes\overa(2n-2:2n-1)(\tau,d^\dblI_{n-1})(\tau,d^\dblO_{n-1})}(p,\theta'_{n},u_{n})$
+holds, and with the induction hypothesis, we obtain the left to right of the claim.
+
+Next, we prove right to left. By the assumption,
+$(p,\theta'_{n-1},u_{n-1})\vdash^ {w\otimes\overa(2n-2:2n-1)(\tau,d^\dblI_{n-1})(\tau,d^\dblO_{n-1})}(p,\theta'_{n},u_{n})$
+holds. By checking four transition rules that realize the above transition relation, we can obtain that $\rho(n-1), \rho(n), w\otimes\overa(2n-2)$ and $w\otimes\overa(2n-1)$ satisfies the conditions (a) to (d) described in the previous paragraph. Thus, by the induction hypothesis,
+we obtain $\rho$ is a witness of the compatibility between $w$ and $\overa$.
+\par\medskip\noindent
+\begin{flushright}
+(end of the proof of the claim)
+\end{flushright}
+\par\medskip\noindent
+By the claim,
+$w\otimes\overa \in L_k\Leftrightarrow$
+there exists a witness $(\theta_0,u_0)(\theta_1, u_1)\cdots\in (\Theta_k\times D^*)^\omega$ of $w$ and $\overa\Leftrightarrow$
+there exists a run
+$(p,\theta'_0,u_0)\vdash^{w\otimes\overa(0:1)(\tau,d^\dblI_{0})(\tau,d^\dblO_{0})}(\theta'_1,u_1)\vdash^{w\otimes\overa(2:3)(\tau,d^\dblI_{1})(\tau,d^\dblO_{1})}\cdots$ of $\calA\Leftrightarrow$
+$w\otimes\overa \in L(\calA_k)$ holds.
 
 \begin{lemma}\label{lem: LkS}
-For specification $\calS$ definable by some visible $\varepsilon$-free $k'$-DRPDA.
+For specification $\calS$ definable by some visibly $\varepsilon$-free $k'$-DRPDA.
 $L_{k, \overS} = \{w\otimes\overa \mid w\in\Comp(\overa)\cap \overS\}$
-is definable as a language of visible $(k+k'+4)$-DRPDA.
+is definable as a language of visibly $(k+k'+4)$-DRPDA.
 \end{lemma}
 {\bf Proof.}\quad
 Let $L_{\overS} = \{w\otimes\overa\mid w\in\overS\}$,
-$\calA_{\overS}$ be a visible $\varepsilon$-free $k'$-DRPDA such that $L(\calA_{\overS})= L_{\overS}$ and $\calA_k$ be a $(k+2)$-DRPDA defined in Lemma \ref{lem: Lk}.
+$\calA_{\overS}$ be a visibly $\varepsilon$-free $k'$-DRPDA such that $L(\calA_{\overS})= L_{\overS}$ and $\calA_k$ be a $(k+2)$-DRPDA defined in Lemma \ref{lem: Lk}.
 Because $L_{k, \overS} = L_k \cap L_{\overS}$ and both $L_k$ and $L_{\overS}$ are
-visible DRPDA, it is enough to show we can construct visible $(k+k'+4)$-DRPDA $\calA$ such that $L(\calA)=L(\calA_{\overS})\cap L(\calA_k)$.
+visibly DRPDA, it is enough to show we can construct visibly $(k+k'+4)$-DRPDA $\calA$ such that $L(\calA)=L(\calA_{\overS})\cap L(\calA_k)$.
 
 For simplicity, we rewrite $\calA_k$ as $k_1$-DRPDA $\calA_1=(Q_1, Q^\dblI_1, Q^\dblO_1, q^0_1, \delta_1, c_1)$ and $\calA_{\overS}$ as $k_2$-DRPDA $\calA_2=(Q_2, Q^\dblI_2, Q^\dblO_2, q^0_2, \delta_2, c_2)$, but they satisfy that $c_1(q)$ is even for all $q\in Q_1$ and
 every rules in $\delta_1$ forms triple sequencial rules
 \begin{align}
 (q_1, (a,v(\com_1)), \tst_1) &\to (q_2,\asgn_1, \skip)& \tag{\ref{eq: Lk2}'}\\
-(q_2, \varepsilon, \tst_2) &\to (q_3,\asgn_2, \com_1)& \tag{\ref{eq: Lk3}'}\\
-(q_3, \varepsilon, \tst_3) &\to (q_4,\asgn_3, \skip)& \tag{\ref{eq: Lk4}'}.
+(q_2, \tau, \tst_2) &\to (q_3,\asgn_2, \com_1)& \tag{\ref{eq: Lk3}'}\\
+(q_3, \tau, \tst_3) &\to (q_4,\asgn_3, \skip)& \tag{\ref{eq: Lk4}'}.
 \end{align}
 Note that $(\ref{eq: Lk2}'), (\ref{eq: Lk3}')$ and $(\ref{eq: Lk4}')$ correspond to $(\ref{eq: Lk2}), (\ref{eq: Lk3})$ and $(\ref{eq: Lk4})$, respectively, and $(\ref{eq: Lk1})$ can be devided in three rules of the form $(\ref{eq: Lk2}'), (\ref{eq: Lk3}')$ and $(\ref{eq: Lk4}')$.
 
@@ -72,18 +126,18 @@ where $c((q_1,q_2,i))=c_2(q_2)$ for all $(q_1,q_2,i)\in Q$.
 For all rules
 \begin{itemize}
 \item $(q_1, (a,v(\com_1)), \tst_1)\to(q_2,\asgn_1, \skip)$,
-\item $(q_2, \varepsilon, \tst_2)\to(q_3,\asgn_2, \com_1)$,
-\item $(q_3, \varepsilon, \tst_3)\to(q_4,\asgn_3, \skip)\in\delta_1$ and
+\item $(q_2, \tau, \tst_2)\to(q_3,\asgn_2, \com_1)$,
+\item $(q_3, \tau, \tst_3)\to(q_4,\asgn_3, \skip)\in\delta_1$ and
 \item $(q, (a,v(\com)), \tst)\to(q',\asgn, \com)\in\delta_2$
 \end{itemize}
 $(v(\com_1)=v(\com))$ for $a\in\Sigma$,
 let $\tst^{+ k_1}=\{i+k_1\mid i\in\tst\}\cup\{\top\mid\top\in\tst\setminus[k_1]\}, \asgn^{+ k_1}=\{i+k_1\mid i\in\asgn\}$ and $\com^{+ k_1} = \push(j+k_1)$ if $\com=\push(j)$ and $\com^{+ k_1} = \com$ otherwise, then $\delta$ consists of the rules
 \begin{itemize}
-\item $((q_1, q, 1), \varepsilon, \tst'\cup\{\top\})\to((q_1, q, 2), \{k_1+k_2+1\}, \pop)$
-\item $((q_1, q, 2), \varepsilon, \tst'\cup\{\top\})\to((q_1, q, 3), \{k_1+k_2+2\}, \push(k_1+k_2+1))$
+\item $((q_1, q, 1), \tau, \tst'\cup\{\top\})\to((q_1, q, 2), \{k_1+k_2+1\}, \pop)$
+\item $((q_1, q, 2), \tau, \tst'\cup\{\top\})\to((q_1, q, 3), \{k_1+k_2+2\}, \push(k_1+k_2+1))$
 \item $((q_1, q, 3), (a,v(\com_1)), (\tst_1\cup\tst^{+ k_1})\setminus\top\cup\{k_1+k_2+t\mid$ $t=1$ if $\top\in\tst_1$ and $t=2$ if $\top\in\tst$ $\})\to((q_2, q', 4), \asgn_1\cup\asgn^{+ k_1}, \com^{+ k_1})$
-\item $((q_2, q', 4), \varepsilon, \tst_2\cup\tst')\to((q_3, q', 5), \asgn_2, \com_1)$
-\item $((q_3, q', 5), \varepsilon, \tst_3\cup\tst')\to((q_4, q', 0), \asgn_3, \skip)$
+\item $((q_2, q', 4), \tau, \tst_2\cup\tst')\to((q_3, q', 5), \asgn_2, \com_1)$
+\item $((q_3, q', 5), \tau, \tst_3\cup\tst')\to((q_4, q', 0), \asgn_3, \skip)$
 \end{itemize}
 for all $\tst'\in\Tst_{k_1+k_2+2}$.
 Then, $L(\calA)=L(\calA_1)\cap L(\calA_2)$.
@@ -103,10 +157,10 @@ Thus, $W_{S,k} = \overline{\lab(L_{\overS,k})}$ holds.
 For all $k\geq 0$, \Real $($\DRPDAv, \RPDTk$)$ is decidable.
 \end{theorem}
 {\bf Proof.}\quad
-By Lemma \ref{lem: LkS}, $L_{\overS,k}$ is definable by some visible DRPDA.
-Because every language recognized by some visible DRPDA can be converted to
-the language of visible DPDA by taking a projection on its label,
-$W_{S,k}$ is definable by some visible DPDA by Lemma \ref{lem: W=lab}.
+By Lemma \ref{lem: LkS}, $L_{\overS,k}$ is definable by some visibly DRPDA.
+Because every language recognized by some visibly DRPDA can be converted to
+the language of visibly DPDA by taking a projection on its label,
+$W_{S,k}$ is definable by some visibly DPDA by Lemma \ref{lem: W=lab}.
 By Theorem \ref{the: finite_actions}, we can check \Real $($\DPDA, \PDT$)$ for $W_{S,k}$, which is shown to be decidable in Theorem \ref{the: DPDA}, instead of checking \Real $($\DRPDAv, \RPDTk$)$.
 % By Theorem \ref{the: finite_actions}, we can check \Real $($\UPDA, \PDT$)$ for $W_{S,k}$ instead of checking \Real $($\URPDA, \RPDTk$)$.
 
@@ -116,21 +170,6 @@ For all $k\geq 0$, \Real $($\NRPDA, \RPDTk$)$ is undecidable.
 {\bf Proof.}\quad
 We can easily reduce the problem from \Real $($\NPDA, \PDT$)$,
 whose undecidability is proved in Theorem \ref{th: NPDA-PDT}.
-
-% TODO
-% prove of lemma cap
-% redefine finite actions with visiblility
-
-
-
-
-
-
-
-
-
-
-
 
 
 % \section{Realizability problems for Register Automata}
@@ -175,7 +214,7 @@ whose undecidability is proved in Theorem \ref{th: NPDA-PDT}.
 % $c_k(s)=2$ for all state $s$ and $\delta_k$ consists of rules of the form
 % $(p, (a_\dblI, \tst), \tst) \to (q, \{k+1\}, \skip)$,
 % $(q, (a_\dblO, \asgn, j, \com), \tst'\cup\{j\})\to ((\asgn,\com), \emptyset,\skip)$ and
-% $((\asgn,\com), \varepsilon, \tst''\cup\{k+1\})\to (p, \asgn, \com)$
+% $((\asgn,\com), \tau, \tst''\cup\{k+1\})\to (p, \asgn, \com)$
 % for all $(a_\dblI, \tst)\in A_k^\dblI$, $(a_\dblO, \asgn, j, \com)\in A_k^\dblO$ and $\tst',\tst''\in\Tst_k$.
 % Then, $L(\calA_k) = L_k$ holds.
 %

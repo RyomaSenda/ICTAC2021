@@ -19,14 +19,15 @@ where $p, q\in P$, $a\in\Sigma_\dblI$, $b\in\Sigma_\dblO$ and $z\in\Gamma$.
 \end{definition}
 \noindent
 For a state $p\in P$ and
-a stack $w \in \Gamma^*$,
-$(p, w)$ is called
+a stack $u \in \Gamma^*$,
+$(p, u)$ is called
 a {\em configuration} or {\em instantaneous description (abbreviated as ID)} of PDT $\calT$. Let $\ID_\calT$ denote the set of all IDs of $\calT$.
 Let $\Rightarrow_\calT\subseteq \ID_\calT\times \Sigma_\dblI\cdot\Sigma_\dblO\times \ID_\calT$ be the transition relation of $\calT$ that satisfies follows:
 For two IDs $(p, u), (q, u')\in \ID_\calT$ and $ab\in\Sigma_\dblI\cdot \Sigma_\dblO$,
 $((p, u), ab, (q, u'))\in\ \Rightarrow_\calT$,
-written as $(p, w) \done_{\calT}^{ab} (q, w')$,
-if there exist a rule $r=(p, a, z) \rightarrow (q, b, \com) \in \Delta$ and a sequence $u\in \Gamma^*$ such that $w=zu$ and $w'=Z(\com,z)u$.
+written as $(p, u) \done_{\calT}^{ab} (q, u')$,
+if there exist a rule $r=(p, a, z) \rightarrow (q, b, \com) \in \Delta$
+such that $z=u(0)$ and $u'={u(1:)}$ if $\com=\pop$, $u'=u$ if $\com=\skip$ and $u'=z'u$ if $\com=\push(z')$.
 If $\calT$ is clear from the context,
 we abbreviate
 $\done_{\calT}^{ab}$ as $\done^{ab}$.
@@ -38,8 +39,8 @@ $\done_{\calT}^{ab}$ as $\done^{ab}$.
 By definition, any ID $(p, \varepsilon)\in\ID_{\calT}$ has
 no successor.
 That is, there is no transition from an ID with empty stack.
-We define a run and Language of PDT $\calT$ as those of
-deterministic TS $(\ID_\calT, (q_0,z_0), \Sigma_\dblI\cdot\Sigma_\dblO, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
+We define a run and language of PDT $\calT$ as those of
+deterministic TS $(\ID_\calT, (q_0,z_0), \Sigma_\dblI\cdot\Sigma_\dblO, \emptyset, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
 Let \PDT\ be the class of PDT.
 
 \subsection{Pushdown Automata}
@@ -53,20 +54,20 @@ $c: Q \to [n]$ is a coloring function where $n\in \Nat$ is the number of priorit
 $\delta: Q \times \Sigma \times \Gamma \to \scrP(Q \times \Com(\Gamma))$ is a finite set of transition rules, having one of the following forms:
 \begin{itemize}
 \item $(q_\dblX, a_\dblX, z) \rightarrow (q_\overX, \com)$ (input/output rules)
-\item $(q_\dblX, \varepsilon, z)\to(q'_\dblX,\com)$ ($\varepsilon$ rules)
+\item $(q_\dblX, \tau, z)\to(q'_\dblX,\com)$ ($\tau$ rules)
 \end{itemize}
 where $(\dblX, \overX)\in\{(\dblI, \dblO), (\dblO,\dblI)\}$,
 $q_\dblX, q'_\dblX\in Q_\dblX, q_\overX\in Q_\overX, a_\dblX\in \Sigma_\dblX$, $z\in \Gamma$ and $\com\in \Com(\Gamma)$.
 \end{definition}
 We define $\ID_\calA= Q\times \Gamma^*$ and
-a transition relation $\vdash_\calA\subseteq \ID_\calA\times (\Sigma\cup\{\varepsilon\})\times \ID_\calA$ as
-$((q,u),a,(q',u'))\in\ \vdash_\calA$ iff there exist a rule $(p, a, z) \rightarrow (q, \com) \in \delta$ and a sequence $u\in \Gamma^*$ such that $w=zu$ and $w'=Z(\com,z)u$.
+a transition relation $\vdash_\calA\subseteq \ID_\calA\times (\Sigma\cup\{\tau\})\times \ID_\calA$ as
+$((q,u),a,(q',u'))\in\ \vdash_\calA$ iff there exist a rule $(p, a, z) \rightarrow (q, \com) \in \delta$ and a sequence $u\in \Gamma^*$ such that $z=u(0)$ and $u'={u(1:)}$ if $\com=\pop$, $u'=u$ if $\com=\skip$ and $u'=z'u$ if $\com=\push(z')$.
 We write $(q,u)\vdash^a_\calA(q',u')$ iff
 $((q,u),a,(q',u'))\in\ \vdash_\calA$.
 We write $\vdash^{a}_\calA$ as $\vdash^{a}$ if $\calA$ is clear from comtext.
 
-We call $\calA$ $\varepsilon$-free if $\calA$ has no $\varepsilon$ rule.
-We define a run and language as those of TS $\calS_\calA=(\ID_\calA, (q_0,z_0,\Sigma,\vdash_\calA,c')$ of $\calA$ where $c'((q,u))= c(q)$ for every $(q,u)\in\ID_\calA$.
+We call $\calA$ $\varepsilon$-free if $\calA$ has no $\tau$ rule.
+We define a run and language as those of TS $\calS_\calA=(\ID_\calA, (q_0,z_0,\Sigma, \{\tau\},\vdash_\calA,c')$ of $\calA$ where $c'((q,u))= c(q)$ for every $(q,u)\in\ID_\calA$.
 % We call a PDA $\calA=(P, p_0, z_0, \delta, c)$ deterministic if $|\delta(p,a,z)|\leq 1$ for all $p\in Q, a\in\Sigma$ and $z\in\Gamma$.
 We call a PDA $\calA$ deterministic if $\calS_\calA$ is deterministic,
 and then we write $\calA$ is DPDA.
@@ -99,7 +100,9 @@ every choice of a successor by players can be also expressed as
 a choice of a pair $(q,\com)\in Q\times \Com(\Gamma)$. Furthermore, a choice of a successor can be expressed as a choice of $a\in\Sigma$ if $\calA$ is deterministic.
 Thus, every valid sequence $\rho \in V^\infty$
 corresponds one-to-one with a sequence $\tau\in (Q\times \Com(\Gamma))^\infty$.
-In detail, for every $i\geq 0$, $\rho(i) = (q, zu), \tau(i) = (q', \com)$ and $\rho(i+1) = (q', Z(\com,z)u)$ hold for some $q, q'\in Q, z\in\Gamma, u\in\Gamma^*$ and $\com\in \Com(\Gamma)$.
+In detail, for every $\rho(i) = (q, zu)$ and $\tau(i) = (q', \com)$, $\rho(i+1) = (q', Zu)$ hold
+where $Z=\varepsilon, z, z'z$ if $\com=\pop,\skip,\push(z')$, respectively.
+% for some $q, q'\in Q, z\in\Gamma, u\in\Gamma^*$ and $\com\in \Com(\Gamma)$.
 We call $\tau$ valid if the corresponding $\rho$ is valid.
 
 \begin{theorem}{[Walukiewucz, 2001]}
@@ -112,7 +115,11 @@ That is, for every $\tau\in L(\calT)$, the corresponding play $\rho\in V^\infty$
 When $\calA$ is deterministic,
 there is also a one-to-one correspondence between
 a valid sequence $\rho\in V^\infty$ and a sequence of input and output alphabets $u\in\Sigma^\infty$.
-In detail, for every $i\geq 0$, $\rho(i) = (q, zu), \rho(i+1) = (q', Z(\com,z)u)$ and $(q, u(i), z) \to (q', \com)\in\delta$ hold for some $q, q'\in Q, z\in\Gamma, u\in\Gamma^*$ and $\com\in \Com(\Gamma)$.
+In detail, for every $\rho(i) = (q, zu)$ and $\rho(i+1) = (q', Zu)$,
+$(q, u(i), z) \to (q', \com)\in\delta$ hold
+where $Z=\varepsilon, z, z'z$ if $\com=\pop,\skip,\push(z')$, respectively.
+
+% for some $q, q'\in Q, z\in\Gamma, u\in\Gamma^*$ and $\com\in \Com(\Gamma)$.
 
 By the correspondence, the following lemma holds.
 \begin{lemma}

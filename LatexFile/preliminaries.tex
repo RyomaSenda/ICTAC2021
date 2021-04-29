@@ -4,40 +4,43 @@ For a set $A$, let $\scrP(A)$ be the power set of $A$,
 $A^*$ and $A^\omega$ be the sets of finite and infinite words over $A$,
 and we denote $A^\infty = A^* \cup A^\omega$.
 For a word $\alpha\in A^\infty$ over a set $A$,
-let $\alpha(i)\in A$ be the $i$-th element of $\alpha$ ($i\geq 0$).
+let $\alpha(i)\in A$ be the $i$-th element of $\alpha$ ($i\geq 0$),
+$\alpha(i:j)=\alpha(i)\alpha(i+1)\cdots\alpha(j-1)\alpha(j)$ for $i\geq j$
+and $\alpha(i:)=\alpha(i)\cdots$ for $i\geq 0$.
 Let $\<u, w\> = u(0)w(0)u(1)w(1)\cdots \in A^\infty$ for words $u,w\in A^\infty$ and $\<B, C\> = \{\<u, w\>\mid u\in B, w\in C\}$ for sets $B, C\subseteq A^\infty$.
 By $|\beta|$, we mean the cardinality of $\beta$ if $\beta$ is a set
 and the length of $\beta$ if $\beta$ is a finite sequence.
-We assume $\varepsilon$ represents the empty sequence.
-For $w\in (A\cup\{\varepsilon\})^\omega$, let
-$\ef(w)\in A^\omega$ be an epsilon free sequence of $w$.
-That is, $\ef(w)(i) = w(i)$ if $w(i)\in A$ and $\ef(w)(i)=\varepsilon$ if $w(i)=\varepsilon$ for $i\geq 0$.
+% We assume $\varepsilon$ represents the empty sequence, that is $|\varepsilon|=0$.
 
 In this paper, disjoint sets $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma$ denote
 a (finite) input alphabet, an output alphabet and a stack alphabet, respectively,
 and $\Sigma = \Sigma_\dblI \cup \Sigma_\dblO$.
 For a set $\Gamma$, let $\Com(\Gamma) = \{\pop,\skip\}\cup\{\push(z)\mid z\in \Gamma\}$ be the set of stack commands over $\Gamma$.
-Let $Z:\Com(\Gamma)\times \Gamma \to \Gamma^*$ be a function defined as $Z(\pop,z)=\varepsilon$, $Z(\skip,z)=z$ and $Z(\push(z'),z)=z'z$.
 
 \subsection{Transition Systems}
 \begin{definition}
 A {transition system} (TS)
-is $\calS=(S, s_0, A, \to_\calS, c)$ where
+is $\calS=(S, s_0, A, E, \to_\calS, c)$ where
 \begin{itemize}
 \item $S$ is a (finite or infinite) set of states,
 \item $s_0\in S$ is the initial state,
-\item $A$ is a (finite or infinite) alphabet,
-\item $\to_\calS\ \subseteq S\times(A\cup\{\varepsilon\})\times S$ is a set of transition relation, written as $s\to^a s'$ if $(s,a,s')\in\ \to_\calS$ and
+\item $A, E$ is (finite or infinite) alphabets such that $A\cap E = \emptyset$,
+\item $\to_\calS\ \subseteq S\times(A\cup E)\times S$ is a set of transition relation, written as $s\to^a s'$ if $(s,a,s')\in\ \to_\calS$ and
 \item $c: S \to [n]$ is a coloring function where $n\in \Nat$.
 \end{itemize}
 \end{definition}
 
-A run of TS $\calS=(S, s_0, A, \to_\calS, c)$ is
-a pair $(\rho, w)\in S^\omega \times A^\omega$ that satisfies
+A run of TS $\calS=(S, s_0, A, E, \to_\calS, c)$ is
+a pair $(\rho, w)\in S^\omega \times (A\cup E)^\omega$ that satisfies
 $\rho(0)=s_0$ and $\rho(i)\to^{w(i)}\rho(i+1)$ for $i\geq 0$.
 Let $C: S^\omega \to [n]$ be a minimal coloring function such that
 $C(\rho)=\min\{m\mid$ there exist infinite numbers of $i\geq 0$ such that $c(\rho(i)) = m\}$.
 We call $\calS$ deterministic if $s\to^a s_1$ and $s\to^a s_2$ implies $s_1=s_2$ for all $s,s_1,s_2\in S$ and $a\in A\cup\{\varepsilon\}$.
+
+For $w\in (A\cup E)^\omega$, let
+$\ef(w) = a_0a_1\cdots\in A^\infty$ be an epsilon free sequence of $w$
+which is obtained by removing all symbols belong to $E$.
+Note that $\ef(w)$ is not always an infinite sequence even if $w$ is an infinite sequence.
 We define the language of $\calS$ as
 $L(\calS)=\{\ef(w)\in A^\omega\mid$
 there exists a run $(\rho,w)$ such that $C(\rho)$ is even$\}$.

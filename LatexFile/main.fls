@@ -142,6 +142,8 @@ INPUT c:/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+INPUT c:/texlive/2018/texmf-dist/tex/latex/bbold/bbold.sty
+INPUT c:/texlive/2018/texmf-dist/tex/latex/bbold/bbold.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/base/latexsym.sty
@@ -184,6 +186,11 @@ INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm
 INPUT preliminaries.tex
 INPUT preliminaries.tex
+INPUT c:/texlive/2018/texmf-dist/tex/latex/bbold/Ubbold.fd
+INPUT c:/texlive/2018/texmf-dist/tex/latex/bbold/Ubbold.fd
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/bbold/bbold10.tfm
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/bbold/bbold7.tfm
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/bbold/bbold5.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti7.tfm

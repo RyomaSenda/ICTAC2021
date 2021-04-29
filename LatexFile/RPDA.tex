@@ -25,8 +25,6 @@ $\Asgn_k$ is the set of assignment conditions.
 For $\asgn\in\Asgn_k$, $\theta,\theta'\in\Theta_k$ and $d\in D$,
 let $\theta[\asgn\leftarrow d]$ be the assignment
 $\theta'$ such that $\theta'(i) = d$ for $i\in\asgn$ and $\theta'(i)=\theta(i)$ for $i\notin\asgn$.
-Let $Z_D: \Com([k])\times \Theta_k\times D \to D^*$ be a function defined as
-$Z_D(\pop,\theta,d)=\varepsilon$, $Z_D(\skip,\theta,d)=d$ and $Z_D(\push(j),\theta,d)=\theta(j)d$.
 
 \subsection{Register pushdown transducers}
 \begin{definition}
@@ -40,8 +38,9 @@ $D$ is used as a stack alphabet.
 Let $\ID_\calT= P\times \Theta_k\times D^*$
 and $\Rightarrow_\calT\ \subseteq \ID_\calT\times ((\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D))\times \ID_\calT$ be a transition relation of $\calT$ such that $((p, \theta, u), (a,d^\dblI)(b,d^\dblO), (q, \theta', u'))\in\ \Rightarrow_\calT$ iff
 there exist a rule $(p, a, \tst) \to (q, b, \asgn, j, \com) \in \Delta$
-a data value $e\in D$, and a sequence of data values $w\in D^*$ where $u=ew$ that satisfy the follows:
-$d^\dblI, e, \theta\models\tst$, $\theta' = \theta[\asgn\leftarrow d^\dblI]$, $\theta'(j) = d^\dblO$ and $u'= Z_D(\com,\theta',e)w$,
+that satisfy the follows:
+$d^\dblI, u(0), \theta\models\tst$, $\theta' = \theta[\asgn\leftarrow d^\dblI]$, $\theta'(j) = d^\dblO$ and
+$u'= u(1:),u,\theta'(j')u$ if $\com=\pop,\skip,\push(j')$, respectively,
 and then we write $(p, \theta, u) \done_{\calT}^{(a,d^\dblI)(b,d^\dblO)}(q, \theta', u')$.
 If $\calT$ is clear from the context,
 we abbreviate
@@ -52,7 +51,7 @@ $\done_{\calT}^{(a,d^\dblI)(b,d^\dblO)}$ as $\done^{(a,d^\dblI)(b,d^\dblO)}$.
 
 % If we emphasize the rule $r$ and the data value $d$,
 % we write $\done_d^r$.
-The run and languages of $\calT$ is those of TS $(\ID_\calT, (q_0,\theta_\bot, \bot), (\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D), \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
+The run and languages of $\calT$ is those of TS $(\ID_\calT, (q_0,\theta_\bot, \bot), (\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D), \emptyset, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
 Let \RPDTk\ be the class of $k$-RPDT and \RPDT = $\bigcup_{k\in\Natz}$\RPDTk.
 % Note that \RPDT$[0]$ = \PDT.
 
@@ -63,10 +62,10 @@ A nondeterministic $k$-register pushdown automaton ($k$-NRPDA) over $\Sigma_\dbl
 \item $Q$ is a finite set of states,
 \item $Q_\dblI\cup Q_\dblO = Q, Q_\dblI\cap Q_\dblO = \emptyset$,
 \item $q_0\in Q$ is the initial state, and
-\item $\delta: Q \times (\Sigma\cup\{\varepsilon\})\times \Tst_k \to \scrP(Q \times\Asgn_k\times \Com([k]))$ is a transition function having one of the forms:
+\item $\delta: Q \times (\Sigma\cup\{\tau\})\times \Tst_k \to \scrP(Q \times\Asgn_k\times \Com([k]))$ is a transition function having one of the forms:
 \begin{itemize}
 \item $(q_\dblX,a_\dblX,\tst)\to(q_\overX,\asgn,\com)$ (input rule)
-\item $(q_\dblX,\varepsilon,\tst)\to(q'_\dblX,\asgn,\com)$ ($\varepsilon$ rule)
+\item $(q_\dblX,\tau,\tst)\to(q'_\dblX,\asgn,\com)$ ($\tau$ rule)
 \end{itemize}
 where $(\dblX, \overX)\in\{(\dblI, \dblO), (\dblO,\dblI)\}$,
 $q_\dblX, q'_\dblX\in Q_\dblX, q_\overX\in Q_\overX, a_\dblX\in \Sigma_\dblX$, $\tst\in\Tst_k$, $\asgn\in\Asgn_k$ and $\com\in\Com([k])$.
@@ -75,25 +74,34 @@ $q_\dblX, q'_\dblX\in Q_\dblX, q_\overX\in Q_\overX, a_\dblX\in \Sigma_\dblX$, $
 \end{definition}
 \noindent
 Let $\ID_\calA= Q\times \Theta_k\times D^*$.
-We define a set of transition relation $\vdash_\calA\ \subseteq\ID_\calA\times ((\Sigma\cup\{\varepsilon\})\times D)\times \ID_\calA$ as satisfying
+We define a set of transition relation $\vdash_\calA\ \subseteq\ID_\calA\times ((\Sigma\cup\{\tau\})\times D)\times \ID_\calA$ as satisfying
 $((q,\theta,u), (a,d), (q',\theta',u'))\in\ \vdash_\calA$,
 written as $(q,\theta,u)\vdash^{(a,d)}(q',\theta',u')$, iff
 there exist a rule $(p, a, \tst) \to (q, \asgn, \com) \in \delta$
-a data value $e\in D$, and a sequence of data values $w\in D^*$ where $u=ew$ that satisfy the follows:
-$d, e, \theta\models\tst$, $\theta' = \theta[\asgn\leftarrow d]$ and $u'= Z_D(\com,\theta',e)w$.
+that satisfy the follows:
+$d, u(0), \theta\models\tst$, $\theta' = \theta[\asgn\leftarrow d]$ and
+$u'= u(1:),u,\theta'(j')u$ if $\com=\pop,\skip,\push(j')$, respectively.
 We write $\vdash^{(a,d)}_\calA$ as $\vdash^{(a,d)}$ if $\calA$ is clear from comtext.
+For sequence $s,s'\in\ID_\calA$ and
+$w\in((\Sigma_\dblI\times D)\cdot (\Sigma_\dblO\times D))^{n}$,
+we write $s\vdash^{w}s'$ if
+there exists a sequence $\rho\in\ID_\calA^{m}$ and
+$w'\in((\Sigma_\dblI\times D)\cdot (\Sigma_\dblO\times D))^{m-1}$ such that
+$\rho(0)=s, \rho(m)=s'$, $w=\ef(w')$ and
+$\rho(0)\vdash^{w(0)}\cdots\vdash^{w(n-1)}\rho(n)$.
+
 The run and language of $k$-DRPDA $\calA$ is those of TS
-$\calS_\calA=(\ID_\calA, (q_0, \theta_\bot, \bot), (\Sigma\cup\{\varepsilon\})\times D, \Rightarrow_\calA, c')$ where
+$\calS_\calA=(\ID_\calA, (q_0, \theta_\bot, \bot), \Sigma\times D, \{\tau\}\times D, \Rightarrow_\calA, c')$ where
 $c'((q,\theta,u))=c(q)$ for all $(q,\theta,u)\in\ID_\calA$.
 We call $\calA$ deterministic, or $k$-DRPDA, if $\calS_\calA$ is deterministic.
 
 \subsection{Classes of RPDA}
-An $\varepsilon$-free $k$-RPDA is an RPDA not having any $\varepsilon$ rules.
+An $\varepsilon$-free $k$-RPDA is an RPDA not having any $\tau$ rules.
 Let \DRPDA\ and \NRPDA\ be the class of $\varepsilon$-free $k$-DRPDA and $k$-NRPDA for all $k\in\Natz$, respectively.
 Let $\Com_v=\{\pop,\skip,\push\}$ and $v:\Com([k])\to\Com$ be a function such that $v(\push(j))=\push$ for $j\in[k]$ and $v(\com)=\com$ otherwise.
-An visible $k$-RPDA is input and output alphabets are $\Sigma_\dblI\times\Com_v$ and $\Sigma_\dblO\times\Com_v$, respectively,
-and every rule has one of the form $(q,(a,v(\com)))\to(q',\asgn,\com)$.
-Let \DRPDAv\ be the class of visible $\varepsilon$-free $k$-DRPDA for all $k\in\Natz$, respectively.
+We call $k$-RPDA $\calA$ visibly if whose input and output alphabets forms $\Sigma_\dblI\times\Com_v$ and $\Sigma_\dblO\times\Com_v$, respectively,
+and every rule of $\calA$ has the form $(q,(a,v(\com)))\to(q',\asgn,\com)$.
+Let \DRPDAv\ be the class of visibly $\varepsilon$-free $k$-DRPDA for all $k\in\Natz$, respectively.
 % $k$-RPDA $\calA=(Q, q_0, \delta, c)$ is said to be deterministic if
 % $|\delta(q,a,\tst)\ \cup\ \delta(q,\varepsilon,\tst)| \leq 1$ for all $q\in Q, a\in\Sigma, \tst\in\Tst_k$.
 % nondeterministic if the language of $\calA$ is defined as $L_N(\calA)$ and

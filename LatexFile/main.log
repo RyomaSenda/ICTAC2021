@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.sjis) (TeX Live 2018/W32TeX) (preloaded format=platex 2019.1.10)  28 APR 2021 00:15
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.sjis) (TeX Live 2018/W32TeX) (preloaded format=platex 2019.1.10)  29 APR 2021 20:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -474,7 +474,10 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (c:/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
+)) (c:/texlive/2018/texmf-dist/tex/latex/bbold/bbold.sty
+Package: bbold 1994/04/06 Bbold symbol package
+LaTeX Font Info:    Redeclaring math alphabet \mathbb on input line 42.
+) (c:/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2018/11/30 v3.6 Customized lists
 \enitkv@toks@=\toks36
 \labelindent=\skip69
@@ -500,22 +503,22 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 150.
+LaTeX Font Info:    ... okay on input line 150.
  ABD: EveryShipout initializing macros (./introduction.tex
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 1.
@@ -537,18 +540,20 @@ LaTeX Font Info:    Try loading font information for U+rsfs on input line 1.
  (c:/texlive/2018/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )) (./preliminaries.tex
+LaTeX Font Info:    Try loading font information for U+bbold on input line 2.
+ (c:/texlive/2018/texmf-dist/tex/latex/bbold/Ubbold.fd)
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 22.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 22.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 20.
 
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 24.
+(Font)              using `JT1/mc/m/n' instead on input line 22.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 24.
+(Font)              using `JY1/mc/m/n' instead on input line 22.
 
 ) (./PDA.tex [1
 
@@ -571,26 +576,67 @@ LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
 (Font)              using `JY1/mc/m/n' instead on input line 7.
 
 [3]) (./RPDA.tex [4]
-Underfull \hbox (badness 7814) in paragraph at lines 61--63
+Underfull \hbox (badness 7814) in paragraph at lines 60--62
 []\OT1/cmr/m/it/10 A non-de-ter-min-is-tic $\OML/cmm/m/it/10 k$\OT1/cmr/m/it/10 -register push-down au-toma-ton ($\OML/cmm/m/it/10 k$\OT1/cmr/m/it/10 -
  []
 
-) (./RealRPDA.tex [5] [6] [7]) (./conclusion.tex) (./references.tex
+
+Underfull \hbox (badness 4181) in paragraph at lines 93--97
+[]\OT1/cmr/m/n/10 The run and lan-guage of $\OML/cmm/m/it/10 k$\OT1/cmr/m/n/10 -DRPDA $\OMS/cmsy/m/n/10 A$ \OT1/cmr/m/n/10 is those of TS $\OMS/cmsy/m/n/10 S[] \OT1/cmr/m/n/10 =
+ []
+
+) (./RealRPDA.tex [5]
+Underfull \hbox (badness 1052) in paragraph at lines 3--14
+\OML/cmm/m/it/10 ^^F[] \OMS/cmsy/m/n/10 ^^B [][] ^^B [][] ^^B \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 ] \OMS/cmsy/m/n/10 ^^B []\OT1/cmr/m/n/10 ([\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 ])\OMS/cmsy/m/n/10 g$ \OT1/cmr/m/n/10 for $\OML/cmm/m/it/10 k$\OT1/cmr/m/n/10 -RPDT. A se-quence $\OML/cmm/m/it/10 w \OT1/cmr/m/n/10 =
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 47--55
+\OT1/cmr/m/it/10 Claim. \OT1/cmr/m/n/10 As-sume $\OML/cmm/m/it/10 n \OMS/cmsy/m/n/10 2 \U/bbold/m/n/10 N[]$ \OT1/cmr/m/n/10 and let $\OML/cmm/m/it/10 w \OMS/cmsy/m/n/10 
+ [] \OT1/cmr/m/n/10 =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--86
+[]\OT1/cmr/m/n/10 We first show left to right. By the in-duc-tion hy-poth-e-sis,
+ []
+
+
+Underfull \hbox (badness 8189) in paragraph at lines 61--86
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 )$
+ []
+
+
+Underfull \hbox (badness 1097) in paragraph at lines 61--86
+\OT1/cmr/m/n/10 tran-si-tion of $\OMS/cmsy/m/n/10 A[]$ \OT1/cmr/m/n/10 of the form (3) by the con-di-tions (b) and (d) where
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--91
+[]\OT1/cmr/m/n/10 Next, we prove right to left. By the as-sump-tion,
+ []
+
+
+Underfull \hbox (badness 2065) in paragraph at lines 87--91
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 )$ holds. By check-
+ []
+
+[7] [8]) (./conclusion.tex) (./references.tex
 
 LaTeX Warning: Empty `thebibliography' environment on input line 8.
 
-) [8] (./main.aux)
+) [9] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 12272 strings out of 493226
- 223196 string characters out of 6147196
- 303405 words of memory out of 5000000
- 15973 multiletter control sequences out of 15000+600000
- 13662 words of font info for 57 fonts, out of 8000000 for 9000
+ 12294 strings out of 493226
+ 223682 string characters out of 6147196
+ 303489 words of memory out of 5000000
+ 15984 multiletter control sequences out of 15000+600000
+ 14223 words of font info for 60 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 65i,8n,49p,499b,291s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 65i,8n,49p,499b,337s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (8 pages, 44120 bytes).
+Output written on main.dvi (9 pages, 53612 bytes).
