@@ -40,7 +40,7 @@ By definition, any ID $(p, \varepsilon)\in\ID_{\calT}$ has
 no successor.
 That is, there is no transition from an ID with empty stack.
 We define a run and language of PDT $\calT$ as those of
-deterministic TS $(\ID_\calT, (q_0,z_0), \Sigma_\dblI\cdot\Sigma_\dblO, \emptyset, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
+deterministic $0$-TS $(\ID_\calT, (q_0,z_0), \Sigma_\dblI\cdot\Sigma_\dblO, \emptyset, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
 Let \PDT\ be the class of PDT.
 
 \subsection{Pushdown Automata}
@@ -65,15 +65,16 @@ $((q,u),a,(q',u'))\in\ \vdash_\calA$ iff there exist a rule $(p, a, z) \rightarr
 We write $(q,u)\vdash^a_\calA(q',u')$ iff
 $((q,u),a,(q',u'))\in\ \vdash_\calA$.
 We write $\vdash^{a}_\calA$ as $\vdash^{a}$ if $\calA$ is clear from comtext.
-
-We call $\calA$ $\varepsilon$-free if $\calA$ has no $\tau$ rule.
 We define a run and language as those of TS $\calS_\calA=(\ID_\calA, (q_0,z_0,\Sigma, \{\tau\},\vdash_\calA,c')$ of $\calA$ where $c'((q,u))= c(q)$ for every $(q,u)\in\ID_\calA$.
 % We call a PDA $\calA=(P, p_0, z_0, \delta, c)$ deterministic if $|\delta(p,a,z)|\leq 1$ for all $p\in Q, a\in\Sigma$ and $z\in\Gamma$.
 We call a PDA $\calA$ deterministic if $\calS_\calA$ is deterministic,
 and then we write $\calA$ is DPDA.
+We call $\calA$ $m$-NPDA (or $m$-DPDA when $\calA$ is deterministic)
+if $\calS_\calA$ is $m$-TS.
+We abbreviate $0$-NPDA ($0$-DPDA) as NPDA (DPDA).
 % nondeterministic if the language is defined as $L_N(\calS_\calA)$,
 % universal if the language is defined as $L_U(\calS_\calA)$.
-Let $\DPDA$ and $\NPDA$ be the class of $\varepsilon$-free DPDA and $\varepsilon$-free NPDA, respectively.
+Let $\DPDA$ and $\NPDA$ be the class of DPDA and NPDA, respectively.
 
 \subsection{Pushdown Games}
 

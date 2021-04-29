@@ -51,7 +51,7 @@ $\done_{\calT}^{(a,d^\dblI)(b,d^\dblO)}$ as $\done^{(a,d^\dblI)(b,d^\dblO)}$.
 
 % If we emphasize the rule $r$ and the data value $d$,
 % we write $\done_d^r$.
-The run and languages of $\calT$ is those of TS $(\ID_\calT, (q_0,\theta_\bot, \bot), (\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D), \emptyset, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
+The run and languages of $\calT$ is those of deterministic $0$-TS $(\ID_\calT, (q_0,\theta_\bot, \bot), (\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D), \emptyset, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
 Let \RPDTk\ be the class of $k$-RPDT and \RPDT = $\bigcup_{k\in\Natz}$\RPDTk.
 % Note that \RPDT$[0]$ = \PDT.
 
@@ -94,14 +94,16 @@ The run and language of $k$-DRPDA $\calA$ is those of TS
 $\calS_\calA=(\ID_\calA, (q_0, \theta_\bot, \bot), \Sigma\times D, \{\tau\}\times D, \Rightarrow_\calA, c')$ where
 $c'((q,\theta,u))=c(q)$ for all $(q,\theta,u)\in\ID_\calA$.
 We call $\calA$ deterministic, or $k$-DRPDA, if $\calS_\calA$ is deterministic.
+We call $\calA$ $(m,k)$-NPRDA (or $(m,k)$-DRPDA when $\calA$ is deterministic)
+if $\calS_\calA$ is $m$-TS.
+We abbreviate $(0,k)$-NRPDA ($(0,k)$-DPDA) as $k$-NRPDA ($k$-DRPDA).
 
 \subsection{Classes of RPDA}
-An $\varepsilon$-free $k$-RPDA is an RPDA not having any $\tau$ rules.
-Let \DRPDA\ and \NRPDA\ be the class of $\varepsilon$-free $k$-DRPDA and $k$-NRPDA for all $k\in\Natz$, respectively.
+Let \DRPDA\ and \NRPDA\ be the class of $k$-DRPDA and $k$-NRPDA for all $k\in\Natz$, respectively.
 Let $\Com_v=\{\pop,\skip,\push\}$ and $v:\Com([k])\to\Com$ be a function such that $v(\push(j))=\push$ for $j\in[k]$ and $v(\com)=\com$ otherwise.
-We call $k$-RPDA $\calA$ visibly if whose input and output alphabets forms $\Sigma_\dblI\times\Com_v$ and $\Sigma_\dblO\times\Com_v$, respectively,
+We call $(m,k)$-RPDA $\calA$ visibly if whose input and output alphabets forms $\Sigma_\dblI\times\Com_v$ and $\Sigma_\dblO\times\Com_v$, respectively,
 and every rule of $\calA$ has the form $(q,(a,v(\com)))\to(q',\asgn,\com)$.
-Let \DRPDAv\ be the class of visibly $\varepsilon$-free $k$-DRPDA for all $k\in\Natz$, respectively.
+Let \DRPDAv\ be the class of visibly $k$-DRPDA for all $k\in\Natz$, respectively.
 % $k$-RPDA $\calA=(Q, q_0, \delta, c)$ is said to be deterministic if
 % $|\delta(q,a,\tst)\ \cup\ \delta(q,\varepsilon,\tst)| \leq 1$ for all $q\in Q, a\in\Sigma, \tst\in\Tst_k$.
 % nondeterministic if the language of $\calA$ is defined as $L_N(\calA)$ and
