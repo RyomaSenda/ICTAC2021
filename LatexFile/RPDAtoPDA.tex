@@ -1,0 +1,144 @@
+\documentclass[oribibl,envcountsame,dvipdfmx]{llncs}
+\usepackage{amsmath}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amssymb}
+
+\renewcommand{\L}{\mathtt{x}}
+\newcommand{\R}{\mathtt{x}'}
+\newcommand{\TOP}{\mathtt{top}}
+\newcommand{\LTOP}{\L_{\TOP}}
+\newcommand{\COMP}{\circ}
+\newcommand{\COMPBL}{\odot}
+\newcommand{\COMPBLT}{\COMPBL_{\mathtt{T}}}
+\newcommand{\TST}{\mathit{tst}}
+\newcommand{\ASGN}{\mathit{asgn}}
+\newcommand{\COM}{\mathit{com}}
+\newcommand{\SKIP}{\mathtt{skip}}
+\newcommand{\POP}{\mathtt{pop}}
+\newcommand{\PUSH}{\mathtt{push}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\QI}{Q_{\mathbb{I}}}
+\newcommand{\QO}{Q_{\mathbb{O}}}
+\newcommand{\SigmaI}{\Sigma_{\mathbb{I}}}
+\newcommand{\SigmaO}{\Sigma_{\mathbb{O}}}
+
+\begin{document}
+
+Let $\Phi_k$ be the set of
+\emph{equivalence relations}
+over the set of $2k+1$ symbols
+$X_k=\{
+ \L_1,\L_2,\ldots,\L_k,
+ \R_1,\R_2,\ldots,\R_k,
+ \LTOP \}$.
+
+For $\TST\subseteq [k]\cup\{\TOP\}$ and $\ASGN\subseteq [k]$,
+define a subset $\Phi_k^{\TST,\ASGN}$ of $\Phi_k$ as:
+\[
+  \Phi_k^{\TST,\ASGN} = \{ \phi\in\Phi_k \mid
+    \begin{aligned}[t]
+      & (\forall i\in\rlap{$\TST :{}$}\hphantom{\ASGN:{}}
+      \forall j\in [k]\cup\{\TOP\} :
+      j\in\TST \Leftrightarrow \L_i \equiv_{\phi} \L_j), \\
+      & (\forall i\in\ASGN : \forall j\in [k]\cup\{\TOP\} :
+      j\in\TST \Leftrightarrow \L_j \equiv_{\phi} \R_i), \\
+      & (\forall i,j\in\ASGN :
+      \R_i \equiv_{\phi} \R_j), \\
+      & (\forall i\in [k]\setminus\ASGN :
+      \L_i \equiv_{\phi} \R_i)\}.
+    \end{aligned}
+\]
+For $j\in[k]$, define
+\(
+  \Phi_k^{=,j} = \{ \phi\in\Phi_k \mid
+    \LTOP \equiv_{\phi} \L_j, \
+    \forall i\in[k] : \L_i \equiv_{\phi} \R_i \}.
+\)
+
+Let $\COMPBL$ and $\COMPBLT$ be binary relations over $\Phi_k$ defined as:
+\begin{align*}
+  \phi_1\COMPBL\phi_2 \ &:\Leftrightarrow \
+      \R_i \equiv_{\phi_1} \R_j \Leftrightarrow \L_i \equiv_{\phi_2} \L_j
+      \ \text{for } i,j\in[k].
+  \\
+%
+  \phi_1\COMPBLT\phi_2 \ &:\Leftrightarrow \
+      \phi_1\COMPBL\phi_2 \ \text{and} \
+      \R_i \equiv_{\phi_1} \LTOP \Leftrightarrow \L_i \equiv_{\phi_2} \LTOP
+      \ \text{for } i\in[k].
+\end{align*}
+%We say $\phi_1$ and $\phi_2$ are \emph{composable} if $\phi_1\COMPBLT\phi_2$.
+
+For $\phi_1,\phi_2\in\Phi_k$ with $\phi_1\COMPBL\phi_2$,
+the \emph{composition} $\phi_1\COMP\phi_2$ of them
+is the equivalence relation in $\Phi_k$ that satisfies the followings:
+\begin{align*}
+  \L_i \equiv_{\phi_1} \L_j &\Leftrightarrow
+  \L_i \equiv_{\phi_1\COMP\phi_2} \L_j &&\text{for } i,j\in [k]\cup\{\TOP\},\\
+  \R_i \equiv_{\phi_2} \R_j &\Leftrightarrow
+  \R_i \equiv_{\phi_1\COMP\phi_2} \R_j &&\text{for } i,j\in [k],\\
+  (\exists l\in [k] : \L_i \equiv_{\phi_1} \R_l \mathrel{\land}
+  \L_l \equiv_{\phi_2} \R_j) &\Leftrightarrow
+  \L_i \equiv_{\phi_1\COMP\phi_2} \R_j
+  &&\text{for } i\in[k]\cup\{\TOP\},\ j\in [k].
+\end{align*}
+
+For $\phi\in\Phi_k$ and $\Phi'\subseteq\Phi_k$,
+let $\phi\COMPBL\Phi' = \{\phi'\in\Phi' \mid \phi\COMPBL\phi'\}$
+and $\phi\COMPBLT\Phi' = \{\phi'\in\Phi' \mid \phi\COMPBLT\phi'\}$.
+For any $\phi\in\Phi_k$, $\TST\subseteq [k]\cup\{\TOP\}$,
+and $\ASGN\subseteq[k]$,
+$\phi\COMPBLT\Phi_k^{\TST,\ASGN}$ consists of exactly one equivalence relation.
+Similarly,
+$\phi\COMPBL\Phi_k^{=,j}$ consists of exactly one equivalence relation
+for any $\phi\in\Phi_k$ and $j\in [k]$.
+
+\bigskip
+
+Let $\calA=(Q,\QI,\QO,q_0,\delta,c)$ be a $k$-NRPDA
+over $\SigmaI$, $\SigmaO$, and $D$.
+We construct a PDA
+$\calA'=(Q',\QI',\QO',q'_0,z_0,\delta',c')$
+over $\SigmaI$, $\SigmaO$, and $\Phi_k$,
+where $Q'=Q\times\Phi_k$, $\QI'=\QI\times\Phi_k$, $\QO'=\QO\times\Phi_k$,
+\ldots,
+such that
+\ldots.
+
+%We write $(q,a,\TST)\to(q',\ASGN,\COM)\in\delta$ to mean
+%$(q',\ASGN,\COM)\in\delta(q,a,\TST)$.
+
+\begin{align}
+&
+\begin{array}{l}
+  \delta(q,a,\TST) \ni (q',\ASGN,\SKIP), \
+  \phi_1\COMPBL\phi_2, \
+  \phi_3\in \phi_2\COMPBLT\Phi_k^{\TST,\ASGN}
+  \\ \hline
+  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_2\COMP\phi_3),\SKIP)
+\end{array}
+%
+\\[\medskipamount]
+&
+\begin{array}{l}
+  \delta(q,a,\TST) \ni (q',\ASGN,\POP), \
+  \phi_1\COMPBL\phi_2, \
+  \phi_3\in \phi_2\COMPBLT\Phi_k^{\TST,\ASGN}
+  \\ \hline
+  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_1\COMP\phi_2\COMP\phi_3),\POP)
+\end{array}
+%
+\\[\medskipamount]
+&
+\begin{array}{l}
+  \delta(q,a,\TST) \ni (q',\ASGN,\PUSH(j)), \
+  \phi_1\COMPBL\phi_2, \
+  \phi_3\in \phi_2\COMPBLT\Phi_k^{\TST,\ASGN}, \
+  \phi_4\in \phi_3\COMPBL\Phi_k^{=,j}
+  \\ \hline
+  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_4),\PUSH(\phi_2\COMP\phi_3))
+\end{array}
+%
+\end{align}
+
+\end{document}
