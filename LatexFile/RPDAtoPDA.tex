@@ -307,7 +307,7 @@ $((q,\theta,\fst(v)),\allowbreak (q,\theta,v))\in R$
 for every $(q,\theta,v)\in\ID_{\!\calA}^{\AUG}$
 is a bisimulation relation
 between $\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$.
-We can show the following lemma:
+We can show the following lemma.
 %
 \begin{lemma}\label{lemma:bisim-rpda-pda}
 $\calS_{\calA}^{\AUG}$ is $\sigma$-bisimilar to
@@ -316,10 +316,11 @@ $\calS_{\calA'}$.
 \begin{proof}
 Let $R\subseteq \ID_{\!\calA}^{\AUG}\times\ID_{\!\calA'}$
 be the smallest relation
-that satisfies the following:
+that satisfies
 for every $q\in Q$, $\theta_0,\ldots,\theta_n\in\Theta_k$,
 $d_0,\ldots,d_{n-1}\in D$, and $\phi_0,\ldots,\phi_n\in\Phi_k$,
-$((q,\theta_n,(d_{n-1},\theta_{n-1})\ldots(d_1,\theta_1)(d_0,\theta_0)),
+$((q,\theta_n,(d_{n-1},\theta_{n-1})\allowbreak\ldots\allowbreak
+(d_1,\theta_1)(d_0,\theta_0)),
 ((q,\phi_n),\phi_{n-1}\ldots\phi_1\phi_0))\in R$
 if
 $\forall i\in[n]: \theta_{i-1},d_{i-1},\theta_i\models\phi_i$ and
