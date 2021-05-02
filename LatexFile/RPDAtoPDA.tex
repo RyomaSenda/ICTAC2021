@@ -1,28 +1,113 @@
 \documentclass[oribibl,envcountsame,dvipdfmx]{llncs}
 \usepackage{amsmath}
-\usepackage[shortlabels]{enumitem}
 \usepackage{amssymb}
+\usepackage{bbold}
+\usepackage[shortlabels]{enumitem}
 
+\newcommand{\tst}{\mathit{tst}}
+\newcommand{\asgn}{\mathit{asgn}}
+\renewcommand{\skip}{\mathtt{skip}}
+\newcommand{\pop}{\mathtt{pop}}
+\newcommand{\push}{\mathtt{push}}
+\newcommand{\com}{\mathit{com}}
+\renewcommand{\top}{\mathtt{top}}
+\newcommand{\Ltop}{\L_{\top}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand\ID{\mathit{ID}}
+%
 \renewcommand{\L}{\mathtt{x}}
 \newcommand{\R}{\mathtt{x}'}
-\newcommand{\TOP}{\mathtt{top}}
-\newcommand{\LTOP}{\L_{\TOP}}
 \newcommand{\COMP}{\circ}
 \newcommand{\COMPBL}{\odot}
 \newcommand{\COMPBLT}{\COMPBL_{\mathtt{T}}}
-\newcommand{\TST}{\mathit{tst}}
-\newcommand{\ASGN}{\mathit{asgn}}
-\newcommand{\COM}{\mathit{com}}
-\newcommand{\SKIP}{\mathtt{skip}}
-\newcommand{\POP}{\mathtt{pop}}
-\newcommand{\PUSH}{\mathtt{push}}
-\newcommand{\calA}{\mathcal{A}}
-\newcommand{\QI}{Q_{\mathbb{I}}}
-\newcommand{\QO}{Q_{\mathbb{O}}}
-\newcommand{\SigmaI}{\Sigma_{\mathbb{I}}}
-\newcommand{\SigmaO}{\Sigma_{\mathbb{O}}}
+\newcommand{\AUG}{\mathrm{aug}}
+\newcommand{\fst}{\mathit{fst}}
+\newcommand{\phizero}{\phi_{\bot}}
+%
+\newcommand{\QI}{Q_{\mathbb{i}}}
+\newcommand{\QO}{Q_{\mathbb{o}}}
+\newcommand{\SigmaI}{\Sigma_{\mathbb{i}}}
+\newcommand{\SigmaO}{\Sigma_{\mathbb{o}}}
 
 \begin{document}
+
+%%%%%%%%%%
+\section*{Preliminaries}
+
+For a function $f:A\to B$ from a set $A$ to a set $B$,
+let $f(w)=f(w(0))f(w(1))\ldots$ for a word $w\in A^{\infty}$
+and let $f(L)=\{f(w)\mid w\in L\}$ for a set $L\subseteq A^{\infty}$
+of words.
+
+Let $\fst$ be the function such that $\fst((a,b))=a$ for any pair $(a,b)$.
+Let $\mathit{id}$ be the identity function; i.e.,
+$\mathit{id}(a)=a$ for any $a$.
+
+%%%%%%%%%%
+\subsection*{Transition Systems}
+
+Consider two TSs
+$\calS_1=(S_1,s_{01},A_1,E_1,{\to_{\calS_1}},c_1)$ and
+$\calS_2=(S_2,s_{02},A_2,E_2,{\to_{\calS_2}},\allowbreak c_2)$
+and
+a function $\sigma:(A_1\cup E_1)\to(A_2\cup E_2)$.
+We call $R\subseteq S_1\times S_2$
+a $\sigma$-\emph{bisimulation relation} from $\calS_1$ to $\calS_2$
+if $R$ satisfies the followings:
+\begin{enumerate}[label=(\arabic*)]
+\item $(s_{01},s_{02})\in R$.
+\item For any $s_1,s'_1\in S_1$, $s_2\in S_2$, and
+  $a_1\in A_1\cup E_1$,
+  if $s_1\to_{\calS_1}^{a_1} s'_1$ and $(s_1,s_2)\in R$,
+  then $\exists s'_2\in S_2: s_2\to_{\calS_2}^{\sigma(a_1)} s'_2$
+  and $(s'_1,s'_2)\in R$.
+\item For any $s_1\in S_1$, $s_2,s'_2\in S_2$, and
+  $a_2\in A_2\cup E_2$,
+  if $s_2\to_{\calS_2}^{a_2} s'_2$ and $(s_1,s_2)\in R$,
+  then $\exists s'_1\in S_1$, $\exists a_1\in A_1\cup E_1:
+  \sigma(a_1)=a_2$ and
+  $s_1\to_{\calS_1}^{a_1} s'_1$
+  and $(s'_1,s'_2)\in R$.
+\item If $(s_1,s_2)\in R$, then $c_1(s_1)=c_2(s_2)$.
+\end{enumerate}
+%
+We say $\calS_1$ is $\sigma$-\emph{bisimilar} to
+$\calS_2$ if there exists a $\sigma$-bisimulation relation
+from $\calS_1$ to $\calS_2$.
+%
+We call $R$ a bisimulation relation
+if $R$ is a $\mathit{id}$-bisimulation relation.
+We say $\calS_1$ and $\calS_2$ are bisimular if
+$\calS_1$ is $\mathit{id}$-bisimular to $\calS_2$.
+
+The following lemma can be proved by definition.
+\begin{lemma}\label{lemma:bisim-lang}
+If
+$\calS_1=(S_1,s_{01},A_1,E_1,{\to_{\calS_1}},c_1)$ is
+$\sigma$-bisimilar to
+$\calS_2=(S_2,s_{02},A_2,\allowbreak E_2,{\to_{\calS_2}},c_2)$
+for
+a function $\sigma:(A_1\cup E_1)\to(A_2\cup E_2)$
+that satisfies $a\in A_1 \Leftrightarrow \sigma(a)\in A_2$
+for any $a\in A_1\cup E_1$,
+then
+$\sigma(L(\calS_1))=L(\calS_2)$.
+\end{lemma}
+
+%%%%%%%%%%
+\section*{Register Pushdown Transducers and
+  Register Pushdown Automata}
+
+\subsection*{PDA simulating RPDA}
+
+Let $\sigma:((\Sigma\cup\{\tau\})\times D)\to(\Sigma\cup\{\tau\})$
+be the function
+defined as $\sigma((a,d))=a$
+for any $a\in\Sigma\cup\{\tau\}$ and $d\in D$.
+In this subsection, we show that we can construct an NPDA $\calA'$
+from a given $k$-NRPDA $\calA$ over $\SigmaI$, $\SigmaO$, $D$
+such that $\sigma(L(\calA))=L(\calA')$.
 
 Let $\Phi_k$ be the set of
 \emph{equivalence relations}
@@ -30,30 +115,65 @@ over the set of $2k+1$ symbols
 $X_k=\{
  \L_1,\L_2,\ldots,\L_k,
  \R_1,\R_2,\ldots,\R_k,
- \LTOP \}$.
+ \Ltop \}$.
+ We write $a\equiv_{\phi}b$ and $a\not\equiv_{\phi}b$ to mean
+ $(a,b)\in\phi$ and $(a,b)\notin\phi$, respectively,
+for $a,b\in X_k$ and $\phi\in\Phi_k$.
+%
+Intuitively,
+each $\phi\in\Phi_k$ represents the equality and inequality
+among the data values in the registers and the stack top,
+as well as the transition of the values in the registers
+between two assignments.
+Two assignments $\theta,\theta'$ and a value $d$ at the stack top
+satisfy $\phi$,
+denoted as $\theta,d,\theta'\models\phi$,
+if and only if for $i,j\in[k]$,
+\begin{align*}
+  \L_i\equiv_{\phi}\L_j &\Leftrightarrow \theta(i)=\theta(j),
+  & \L_i\equiv_{\phi}\Ltop &\Leftrightarrow \theta(i)=d, \\
+  \L_i\equiv_{\phi}\R_j &\Leftrightarrow \theta(i)=\theta'(j),
+  & \R_j\equiv_{\phi}\Ltop &\Leftrightarrow \theta'(j)=d , \\
+  \R_i\equiv_{\phi}\R_j &\Leftrightarrow \theta'(i)=\theta'(j).
+\end{align*}
+%
+Let $\phizero\in\Phi_k$ be the equivalence relation
+satisfying $a\equiv_{\phizero}b$ for any $a,b\in X_k$.
 
-For $\TST\subseteq [k]\cup\{\TOP\}$ and $\ASGN\subseteq [k]$,
-define a subset $\Phi_k^{\TST,\ASGN}$ of $\Phi_k$ as:
+For $\tst\subseteq [k]\cup\{\top\}$ and $\asgn\subseteq [k]$,
+define a subset $\Phi_k^{\tst,\asgn}$ of $\Phi_k$ as:
 \[
-  \Phi_k^{\TST,\ASGN} = \{ \phi\in\Phi_k \mid
+  \Phi_k^{\tst,\asgn} = \{ \phi\in\Phi_k \mid
     \begin{aligned}[t]
-      & (\forall i\in\rlap{$\TST :{}$}\hphantom{\ASGN:{}}
-      \forall j\in [k]\cup\{\TOP\} :
-      j\in\TST \Leftrightarrow \L_i \equiv_{\phi} \L_j), \\
-      & (\forall i\in\ASGN : \forall j\in [k]\cup\{\TOP\} :
-      j\in\TST \Leftrightarrow \L_j \equiv_{\phi} \R_i), \\
-      & (\forall i,j\in\ASGN :
+      & (\forall i\in\rlap{$\tst :{}$}\hphantom{\asgn:{}}
+      \forall j\in [k]\cup\{\top\} :
+      j\in\tst \Leftrightarrow \L_i \equiv_{\phi} \L_j), \\
+      & (\forall i\in\asgn : \forall j\in [k]\cup\{\top\} :
+      j\in\tst \Leftrightarrow \L_j \equiv_{\phi} \R_i), \\
+      & (\forall i,j\in\asgn :
       \R_i \equiv_{\phi} \R_j), \\
-      & (\forall i\in [k]\setminus\ASGN :
+      & (\forall i\in [k]\setminus\asgn :
       \L_i \equiv_{\phi} \R_i)\}.
     \end{aligned}
 \]
 For $j\in[k]$, define
-\(
+$
   \Phi_k^{=,j} = \{ \phi\in\Phi_k \mid
-    \LTOP \equiv_{\phi} \L_j, \
-    \forall i\in[k] : \L_i \equiv_{\phi} \R_i \}.
-\)
+    \Ltop \equiv_{\phi} \L_j, \
+    \forall i\in[k] : \L_i \equiv_{\phi} \R_i \}
+$.
+By definition,
+$\theta,e,\theta'\models\phi$ for
+%$\theta,\theta'\in\Theta_k$, $e\in D$, and
+$\phi\in\Phi_k^{\tst,\asgn}$
+if and only if
+$\theta,d,e\models\tst$ and
+$\theta'=\theta[\asgn\gets d]$ for some $d\in D$.
+Similarly,
+$\theta,e,\theta'\models\phi$ for
+$\phi\in\Phi_k^{=,j}$
+if and only if
+$\theta'=\theta$ and $\theta(j)=e$.
 
 Let $\COMPBL$ and $\COMPBLT$ be binary relations over $\Phi_k$ defined as:
 \begin{align*}
@@ -64,81 +184,161 @@ Let $\COMPBL$ and $\COMPBLT$ be binary relations over $\Phi_k$ defined as:
 %
   \phi_1\COMPBLT\phi_2 \ &:\Leftrightarrow \
       \phi_1\COMPBL\phi_2 \ \text{and} \
-      \R_i \equiv_{\phi_1} \LTOP \Leftrightarrow \L_i \equiv_{\phi_2} \LTOP
+      \R_i \equiv_{\phi_1} \Ltop \Leftrightarrow \L_i \equiv_{\phi_2} \Ltop
       \ \text{for } i\in[k].
 \end{align*}
 %We say $\phi_1$ and $\phi_2$ are \emph{composable} if $\phi_1\COMPBLT\phi_2$.
+Below we will define the \emph{composition} of two equivalence relations,
+and $\phi_1\COMPBL\phi_2$ means that
+$\phi_1$ and $\phi_2$ are composable.
+%
+For $\phi\in\Phi_k$ and $\Phi'\subseteq\Phi_k$,
+let $\phi\COMPBL\Phi' = \{\phi'\in\Phi' \mid \phi\COMPBL\phi'\}$
+and $\phi\COMPBLT\Phi' = \{\phi'\in\Phi' \mid \phi\COMPBLT\phi'\}$.
+By definition,
+$\phi\COMPBLT\Phi_k^{\tst,\asgn}$ consists of at most one equivalence relation
+for any $\phi\in\Phi_k$, $\tst\subseteq [k]\cup\{\top\}$,
+and $\asgn\subseteq[k]$.
+Similarly,
+$\phi\COMPBL\Phi_k^{=,j}$ consists of exactly one equivalence relation
+for any $\phi\in\Phi_k$ and $j\in [k]$.
+
 
 For $\phi_1,\phi_2\in\Phi_k$ with $\phi_1\COMPBL\phi_2$,
 the \emph{composition} $\phi_1\COMP\phi_2$ of them
 is the equivalence relation in $\Phi_k$ that satisfies the followings:
 \begin{align*}
   \L_i \equiv_{\phi_1} \L_j &\Leftrightarrow
-  \L_i \equiv_{\phi_1\COMP\phi_2} \L_j &&\text{for } i,j\in [k]\cup\{\TOP\},\\
+  \L_i \equiv_{\phi_1\COMP\phi_2} \L_j &&\text{for } i,j\in [k]\cup\{\top\},\\
   \R_i \equiv_{\phi_2} \R_j &\Leftrightarrow
   \R_i \equiv_{\phi_1\COMP\phi_2} \R_j &&\text{for } i,j\in [k],\\
   (\exists l\in [k] : \L_i \equiv_{\phi_1} \R_l \mathrel{\land}
   \L_l \equiv_{\phi_2} \R_j) &\Leftrightarrow
   \L_i \equiv_{\phi_1\COMP\phi_2} \R_j
-  &&\text{for } i\in[k]\cup\{\TOP\},\ j\in [k].
+  &&\text{for } i\in[k]\cup\{\top\},\ j\in [k].
 \end{align*}
+%
+By definition,
+if $\theta_1,d_1,\theta_2\models\phi_1$ and
+$\theta_2,d_2,\theta_3\models\phi_2$,
+then
+$\theta_1\,d_1,\theta_3\models\phi_1\COMP\phi_2$.
+By definition, $\COMP$ is associative.
 
-For $\phi\in\Phi_k$ and $\Phi'\subseteq\Phi_k$,
-let $\phi\COMPBL\Phi' = \{\phi'\in\Phi' \mid \phi\COMPBL\phi'\}$
-and $\phi\COMPBLT\Phi' = \{\phi'\in\Phi' \mid \phi\COMPBLT\phi'\}$.
-For any $\phi\in\Phi_k$, $\TST\subseteq [k]\cup\{\TOP\}$,
-and $\ASGN\subseteq[k]$,
-$\phi\COMPBLT\Phi_k^{\TST,\ASGN}$ consists of exactly one equivalence relation.
-Similarly,
-$\phi\COMPBL\Phi_k^{=,j}$ consists of exactly one equivalence relation
-for any $\phi\in\Phi_k$ and $j\in [k]$.
-
-\bigskip
+%%%%%%%%%%
+\smallskip
 
 Let $\calA=(Q,\QI,\QO,q_0,\delta,c)$ be a $k$-NRPDA
 over $\SigmaI$, $\SigmaO$, and $D$.
 We construct a PDA
-$\calA'=(Q',\QI',\QO',q'_0,z_0,\delta',c')$
+$\calA'=(Q',\QI',\QO',q'_0,\phizero,\delta',c')$
 over $\SigmaI$, $\SigmaO$, and $\Phi_k$,
 where $Q'=Q\times\Phi_k$, $\QI'=\QI\times\Phi_k$, $\QO'=\QO\times\Phi_k$,
-\ldots,
-such that
-\ldots.
-
-%We write $(q,a,\TST)\to(q',\ASGN,\COM)\in\delta$ to mean
-%$(q',\ASGN,\COM)\in\delta(q,a,\TST)$.
-
+$q'_0=(q_0,\phizero)$,
+$c'((q,\phi))=c(q)$ for any $q\in Q$ and $\phi\in\Phi_k$,
+and for any $(q,\phi_2)\in Q'$, $a\in\Sigma\cup\{\tau\}$,
+and $\phi_1\in\Phi_k$,
+$\delta'((q,\phi_2),a,\phi_1)$ is the smallest set
+satisfying the following inference rules:
+%We write $(q,a,\tst)\to(q',\asgn,\COM)\in\delta$ to mean
+%$(q',\asgn,\COM)\in\delta(q,a,\tst)$.
+%
 \begin{align}
 &
 \begin{array}{l}
-  \delta(q,a,\TST) \ni (q',\ASGN,\SKIP), \
+  \delta(q,a,\tst) \ni (q',\asgn,\skip), \
   \phi_1\COMPBL\phi_2, \
-  \phi_3\in \phi_2\COMPBLT\Phi_k^{\TST,\ASGN}
+  \phi_3\in \phi_2\COMPBLT\Phi_k^{\tst,\asgn}
   \\ \hline
-  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_2\COMP\phi_3),\SKIP)
+  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_2\COMP\phi_3),\skip)
 \end{array}
 %
 \\[\medskipamount]
 &
 \begin{array}{l}
-  \delta(q,a,\TST) \ni (q',\ASGN,\POP), \
+  \delta(q,a,\tst) \ni (q',\asgn,\pop), \
   \phi_1\COMPBL\phi_2, \
-  \phi_3\in \phi_2\COMPBLT\Phi_k^{\TST,\ASGN}
+  \phi_3\in \phi_2\COMPBLT\Phi_k^{\tst,\asgn}
   \\ \hline
-  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_1\COMP\phi_2\COMP\phi_3),\POP)
+  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_1\COMP\phi_2\COMP\phi_3),\pop)
 \end{array}
 %
 \\[\medskipamount]
 &
 \begin{array}{l}
-  \delta(q,a,\TST) \ni (q',\ASGN,\PUSH(j)), \
+  \delta(q,a,\tst) \ni (q',\asgn,\push(j)), \
   \phi_1\COMPBL\phi_2, \
-  \phi_3\in \phi_2\COMPBLT\Phi_k^{\TST,\ASGN}, \
+  \phi_3\in \phi_2\COMPBLT\Phi_k^{\tst,\asgn}, \
   \phi_4\in \phi_3\COMPBL\Phi_k^{=,j}
   \\ \hline
-  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_4),\PUSH(\phi_2\COMP\phi_3))
+  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_4),\push(\phi_2\COMP\phi_3))
 \end{array}
 %
 \end{align}
+
+Let $\calS_{\calA}=(\ID_{\!\calA},(q_0,\theta_{\bot},\bot),
+\Sigma\times D,\{\tau\}\times D,{\vdash_{\!\calA}},c_{\calA})$
+and $\calS_{\calA'}=(\ID_{\!\calA'},(q'_0,\phizero),\allowbreak
+\Sigma,\{\tau\},{\vdash_{\!\calA'}},c_{\calA'})$ be the TSs
+that represent the semantics of $\calA$ and $\calA'$, respectively.
+Below we show that $\calS_{\calA}$ is $\sigma$-bisimilar to
+$\calS_{\calA'}$.
+We define an intermediate TS
+$\calS_{\calA}^{\AUG}=
+(\ID_{\!\calA}^{\AUG},(q_0,\theta_{\bot},(\bot,\theta_{\bot})),
+\Sigma\times D,\{\tau\}\times D,{\vdash_{\!\calA^{\AUG}}},c'_{\calA})$
+where
+$\ID_{\!\calA}^{\AUG}=Q\times\Theta_k\times(D\times\Theta_k)^*$,
+$c'_{\calA}((q,\theta,v))=c_{\calA}((q,\theta,\fst(v)))$ for
+any $(q,\theta,v)\in\ID_{\!\calA}^{\AUG}$,
+and $\vdash_{\!\calA^{\AUG}}$ is defined as follows:
+$(q,\theta,v)\vdash_{\!\calA^{\AUG}}^{(a,d)}(q',\theta',v')$
+if and only if
+$\delta(q,a,\tst)\ni (q',\asgn,\com)$,
+$d,\fst(v(0)),\theta\models\tst$,
+$\theta'=\theta[\asgn\gets d]$, and
+$v'= v(1{:})$, $v$, and $(\theta'(j'),\theta')v$
+if $\com=\pop$, $\skip$, and $\push(j')$, respectively.
+Obviously,
+$\calS_{\calA}$ and $\calS_{\calA'}$ are bisimilar;
+the smallest relation $R\subseteq \ID_{\!\calA}\times\ID_{\!\calA}^{\AUG}$
+satisfying
+$((q,\theta,\fst(v)),\allowbreak (q,\theta,v))\in R$ 
+for every $(q,\theta,v)\in\ID_{\!\calA}^{\AUG}$
+is a bisimulation relation
+between $\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$.
+We can show the following lemma:
+%
+\begin{lemma}\label{lemma:bisim-rpda-pda}
+$\calS_{\calA}^{\AUG}$ is $\sigma$-bisimilar to
+$\calS_{\calA'}$.
+\end{lemma}
+\begin{proof}
+Let $R\subseteq \ID_{\!\calA}^{\AUG}\times\ID_{\!\calA'}$
+be the smallest relation
+that satisfies the following:
+for every $q\in Q$, $\theta_0,\ldots,\theta_n\in\Theta_k$,
+$d_0,\ldots,d_{n-1}\in D$, and $\phi_0,\ldots,\phi_n\in\Phi_k$,
+$((q,\theta_n,(d_{n-1},\theta_{n-1})\ldots(d_1,\theta_1)(d_0,\theta_0)),
+((q,\phi_n),\phi_{n-1}\ldots\phi_1\phi_0))\in R$
+if
+$\forall i\in[n]: \theta_{i-1},d_{i-1},\theta_i\models\phi_i$ and
+$\theta_0,d_0,\theta_0\models\phi_0$.
+(Note that
+$\forall i\in[n]: \theta_{i-1},d_{i-1},\theta_i\models\phi_i$ and
+$\theta_0,d_0,\theta_0\models\phi_0$
+imply
+$\forall i\in[n]: \phi_{i-1}\COMPBL\phi_i$.)
+%
+We can show that $R$ is a $\sigma$-bisimulation relation from
+$\calS_{\calA}^{\AUG}$ to $\calS_{\calA'}$.
+\end{proof}
+
+By Lemmas~\ref{lemma:bisim-lang} and \ref{lemma:bisim-rpda-pda},
+we obtain the following theorem.
+\begin{theorem}
+For a given $k$-NRPDA $\calA$, we can construct an NPDA $\calA'$
+such that $\sigma(L(\calA))=L(\calA')$.
+\end{theorem}
 
 \end{document}
