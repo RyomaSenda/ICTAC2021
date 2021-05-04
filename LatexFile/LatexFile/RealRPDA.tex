@@ -2,36 +2,25 @@
 \subsection{Visibly RPDA}
 Let \DRPDA\ and \NRPDA\ be the unions of $k$-DRPDA and $k$-NRPDA for all $k\in\Natz$, respectively.
 Let $\Com_v=\{\pop,\skip,\push\}$ and $v:\Com([k])\to\Com_v$ be the function such that $v(\push(j))=\push$ for $j\in[k]$ and $v(\com)=\com$ otherwise.
-We say that an $k$-DRPDA $\calA$
-over $\Sigma_\dblI,\Sigma_\dblI$ and $D$
-visibly manipulates its stack (or a {\em visibly} RPDA) if
-there exists a function $\vis: \Sigma\to\Com_v$
-such that
-and every rule $(q,a,\tst)\to(q',\asgn,\com)$ of $\calA$
-satisfies $\vis(a)=\v(\com)$.
+We say that an $(m,k)$-RPDA $\calA$ visibly manipulates its stack (or a {\em visibly} RPDA) if its input and output alphabets are
+$\Sigma_\dblI\times\Com_v$ and $\Sigma_\dblO\times\Com_v$, respectively,
+and every rule of $\calA$ has the form $(q,(a,v(\com)),\tst)\to(q',\asgn,\com)$.
 Let \DRPDAv\ be the union of visibly $k$-DRPDA for all $k\in\Natz$, respectively.
-
-% Let $\Com_v=\{\pop,\skip,\push\}$ and $v:\Com([k])\to\Com_v$ be the function such that $v(\push(j))=\push$ for $j\in[k]$ and $v(\com)=\com$ otherwise.
-% We say that an $(m,k)$-RPDA $\calA$ visibly manipulates its stack (or a {\em visibly} RPDA) if its input and output alphabets are
-% $\Sigma_\dblI\times\Com_v$ and $\Sigma_\dblO\times\Com_v$, respectively,
-% and every rule of $\calA$ has the form $(q,(a,v(\com)),\tst)\to(q',\asgn,\com)$.
-% Let \DRPDAv\ be the union of visibly $k$-DRPDA for all $k\in\Natz$, respectively.
-
 
 \subsection{Finite actions}
 For $k\in\Natz$,
 we define the set of finite input actions as $A_k^\dblI = \Sigma_\dblI\times \Tst_k$
 and the set of finite output actions as $A_k^\dblO = \Sigma_\dblO\times \Asgn_k\times [k]\times \Com([k])$.
-A sequence $w = (a^\dblI_0,d^\dblI_0) (a^\dblO_0,d^\dblO_0)\cdots \in \DW(\Sigma_\dblI\times\Com_v,\Sigma_\dblO\times\Com_v,D)$ is \emph{compatible} with a sequence
+A sequence $w = ((a^\dblI_0, \skip),d^\dblI_0) ((a^\dblO_0,v(\com_0)),d^\dblO_0)\cdots \in \DW(\Sigma_\dblI\times\Com_v,\Sigma_\dblO\times\Com_v,D)$ is \emph{compatible} with a sequence
 $\overa = (a^\dblI_0, \tst_0)(a^\dblO_0,\asgn_0,j_0, \com_0)\cdots \in (A_k^\dblI\cdot A_k^\dblO)^\omega$
 iff there exists a sequence $(\theta_0,u_0)(\theta_1, u_1)\cdots\in (\Theta_k\times D^*)^\omega$, called a \emph{witness}, such that
 $\theta_0 = \theta^{k}_\bot$, $u_0 = \bot$,
 $(\theta_i, d^\dblI_i, u_i(0)) \models \tst_i, \theta_{i+1}=\theta_i[\asgn_i\leftarrow d^\dblI_i], \theta_{i+1}(j_i) = d^\dblO_i$ and $u_{i+1}=\upds(u_i,\theta_{i+1},\com_i)$.
-Let $\Comp(\overa) = \{w\in \DW(\Sigma_\dblI,\Sigma_\dblO,D)\mid$ $w$ is compatible with $\overa$ $\}$.
-For a specification $S \subseteq \DW(\Sigma_\dblI,\Sigma_\dblO,D)$, we define $W_{S,k}=\{\overa\mid \Comp(\overa)\subseteq S\}$.
+Let $\Comp(\overa) = \{w\in \DW(\Sigma_\dblI\times\Com_v,\Sigma_\dblO\times\Com_v,D)\mid$ $w$ is compatible with $\overa$ $\}$.
+For a specification $S \subseteq \DW(\Sigma_\dblI\times\Com_v,\Sigma_\dblO\times\Com_v,D)$, we define $W_{S,k}=\{\overa\mid \Comp(\overa)\subseteq S\}$.
 
 \begin{theorem}\label{the: finite_actions}
-For a specification $S\subseteq \DW(\Sigma_\dblI,\Sigma_\dblO,D)$, the following statements are equivalent.
+For a specification $S\subseteq \DW(\Sigma_\dblI\times\Com_v,\Sigma_\dblO\times\Com_v,D)$, the following statements are equivalent.
 \begin{itemize}
 \item There exists a $k$-RPDT $\calT$ such that $L(\calT)\subseteq S$.
 \item There exists a PDT $\calT'$ such that $L(\calT')\subseteq W_{S,k}$.
@@ -39,17 +28,17 @@ For a specification $S\subseteq \DW(\Sigma_\dblI,\Sigma_\dblO,D)$, the following
 \end{theorem}
 
 For a data word
-$w\in\DW(\Sigma_\dblI,\Sigma_\dblO,D)$ and
+$w\in\DW(\Sigma_\dblI\times\Com_v,\Sigma_\dblO\times\Com_v,D)$ and
 a sequence $\overa\in(A_k^\dblI\cdot A_k^\dblO)^\omega$
 such that
 for each $i\geq 0$, there exists
-$a\in\Sigma$
+$(a,\comv)\in\Sigma\times \Com_v$
 and we can write
-$w(i)=(a,d)$ and $\overa(i)=(a,\tst)$ if $i$ is even
+$w(i)=((a,\skip),d)$ and $\overa(i)=(a,\tst)$ if $i$ is even
 and
-$w(i)=(a,d)$ and $\overa(i)=(a,\asgn,j,\com)$ if $i$ is odd,
-we define $w\otimes\overa\in\DW(A_k^\dblI,A_k^\dblO,D)$ as
-$w\otimes\overa(i)=(\overa(i), d)$ where $w(i)=(a,d)$.
+$w(i)=((a,v(\com)),d)$ and $\overa(i)=(a,\asgn,j,\com)$ if $i$ is odd,
+we define $w\otimes\overa\in\DW(A_k^\dblI\times\Com_v,A_k^\dblO\times\Com_v,D)$ as
+$w\otimes\overa(i)=((\overa(i),\comv), d)$ where $w(i)=((a,\comv),d)$.
 % We call an $(m,k)$-DRPDA $\calA$ over $A^\dblI_k,A^\dblO_k$ and $D$
 % visible if
 % Finite actions $A^\dblI_k$ and $A^\dblO_k$
@@ -74,15 +63,13 @@ $\calA_k = (Q, Q_\dblI, Q\setminus Q_\dblI, p, \delta_k, c_k)$ over $A_k^\dblI, 
 $Q=\{p, q\}\cup(\Asgn_k\times[k]\times\Com([k]))\cup[k]$, $Q_\dblI=\{p\}$
 and $c_k(s)=2$ for every $s\in Q$ and $\delta_k$ consists of rules of the form
 \begin{eqnarray}
-(p, (a_\dblI, \tst), \tst\cup\tst') &\to& (q, \{k+1\}, \skip)\label{eq: Lk1}\\
-(q, (a_\dblO, \asgn, j, \com), \tst'')&\to& ((\asgn,j,\com), \{k+2\},\skip)\label{eq: Lk2}\\
+(p, ((a_\dblI, \tst), \skip), \tst\cup\tst') &\to& (q, \{k+1\}, \skip)\label{eq: Lk1}\\
+(q, ((a_\dblO, \asgn, j, \com), v(\com)), \tst'')&\to& ((\asgn,j,\com), \{k+2\},\skip)\label{eq: Lk2}\\
 ((\asgn,j,\com), \tau, \{k+1\}\cup\tst'')&\to& (j, \asgn, \com)\label{eq: Lk3}\\
 (j, \tau, \{j, k+2\}\cup\tst'')&\to& (p, \emptyset, \skip)\label{eq: Lk4}
 \end{eqnarray}
 for all $(a_\dblI, \tst)\in A_k^\dblI$, $(a_\dblO, \asgn, j, \com)\in A_k^\dblO$, $\tst'\subseteq \{k+1,k+2\}$ and $\tst''\in\Tst_{k+2}$.
-We can show $L(\calA_k)=L_k$
-by checking $w\otimes\overa \in L(\calA_k)\Leftrightarrow
-w\in\Comp(\overa)$ by the induction on the length of $w\otimes\overa$.
+We can show $L(\calA_k)=L_k$.
 
 \begin{lemma}\label{lem: LkS}
 For a specification $\calS$ defined by some visibly $k'$-DRPDA,
@@ -94,22 +81,21 @@ Let $L_{\overS} = \{w\otimes\overa\mid w\in\overS\}$.
 We can construct visibly $\calA_{\overS}$ be a $k'$-DRPDA such that $L(\calA_{\overS})= L_{\overS}$.
 Let $\calA_k$ be the $(2,k+2)$-DRPDA
 such that $L(\calA_k)=L_k$, which is given in Lemma \ref{lem: Lk}.
-Because $L_{\overS, k} = L_k \cap L_{\overS}$, it is enough to show that we can construct a visibly $(4,k+k'+4)$-DRPDA $\calA$ such that $L(\calA)=L(\calA_{\overS})\cap L(\calA_k)$.
+Because $L_{\overS, k} = L_k \cap L_{\overS}$ and both $L_k$ and $L_{\overS}$ are
+visibly DRPDA, it is enough to show that we can construct a visibly $(4,k+k'+4)$-DRPDA $\calA$ such that $L(\calA)=L(\calA_{\overS})\cap L(\calA_k)$.
 
 We can convert $\calA_k$ to a $(2,k_1)$-DRPDA $\calA_1=(Q_1, Q^\dblI_1, Q^\dblO_1, q^0_1, \delta_1, c_1)$
-over $A^\dblI_{k_1+k_2+2}\cup A^\dblO_{k_1+k_2+2}$ and $D$
+over $A^\dblI_{k_1+k_2+2}\times\Com_v,A^\dblO_{k_1+k_2+2}\times\Com_v$
 and $\calA_{\overS}$ to a visibly $k_2$-DRPDA $\calA_2=(Q_2, Q^\dblI_2, Q^\dblO_2, q^0_2, \delta_2, c_2)$
-over $A^\dblI_{k_1+k_2+2}\cup A^\dblO_{k_1+k_2+2}$ and $D$
-where
+over $A^\dblI_{k_1+k_2+2}\times\Com_v,A^\dblO_{k_1+k_2+2}\times\Com_v$ where
 $c_1(q)$ is even for every $q\in Q_1$ and
 every rule in $\delta_1$
 consists of several groups of three consecutive rules having the following forms:
 \begin{align}
-(q_1, a, \tst_1) &\to (q_2,\asgn_1, \skip)& \tag{\ref{eq: Lk2}'}\\
+(q_1, (a,v(\com_1)), \tst_1) &\to (q_2,\asgn_1, \skip)& \tag{\ref{eq: Lk2}'}\\
 (q_2, \tau, \tst_2) &\to (q_3,\asgn_2, \com_1)& \tag{\ref{eq: Lk3}'}\\
 (q_3, \tau, \tst_3) &\to (q_4,\asgn_3, \skip)& \tag{\ref{eq: Lk4}'}.
 \end{align}
-where $\vis(a)=v(\com_1)$.
 Note that $(\ref{eq: Lk2}'), (\ref{eq: Lk3}')$ and $(\ref{eq: Lk4}')$ correspond to $(\ref{eq: Lk2}), (\ref{eq: Lk3})$ and $(\ref{eq: Lk4})$, respectively, and $(\ref{eq: Lk1})$ can be treated as the triple sequencial rules by adding meaningless $\tau$ rules.
 
 We construct $(4,k_1+k_2+2)$-DRPDA
@@ -117,17 +103,17 @@ $\calA=(Q_1\times Q_2\times[5], Q^\dblI_1\times Q^\dblI_2\times[5], Q^\dblO_1\ti
 where $c((q_1,q_2,i))=c_2(q_2)$ for all $(q_1,q_2,i)\in Q$.
 For all rules
 \begin{eqnarray}
-(q_1, a, \tst_1) &\to & (q_2,\asgn_1, \skip)\in\delta_1\label{eq: LkS1}\\
+(q_1, (a,v(\com_1)), \tst_1) &\to & (q_2,\asgn_1, \skip)\in\delta_1\label{eq: LkS1}\\
 (q_2, \tau, \tst_2) &\to & (q_3,\asgn_2, \com_1)\in\delta_1\label{eq: LkS2}\\
 (q_3, \tau, \tst_3) &\to & (q_4,\asgn_3, \skip)\in\delta_1\label{eq: LkS3}\\
-(q, a, \tst) &\to & (q',\asgn, \com)\in\delta_2\label{eq: LkS4}
+(q, (a,v(\com)), \tst) &\to & (q',\asgn, \com)\in\delta_2\label{eq: LkS4}
 \end{eqnarray}
-(note that $v(\com_1)=\vis(a)=v(\com)$ always hold) for $a\in A^\dblI_{k_1+k_2+2}\cup A^\dblO_{k_1+k_2+2}$,
+$(v(\com_1)=v(\com))$ for $a\in A^\dblI_{k_1+k_2+2}\cup A^\dblO_{k_1+k_2+2}$,
 let $\tst^{+ k_1}=\{i+k_1\mid i\in\tst\}\cup\{\top\mid\top\in\tst\setminus[k_1]\}, \asgn^{+ k_1}=\{i+k_1\mid i\in\asgn\}$ and $\com^{+ k_1} = \push(j+k_1)$ if $\com=\push(j)$ and $\com^{+ k_1} = \com$ otherwise, then $\delta$ consists of the rules
 \begin{eqnarray}
 ((q_1, q, 1), \tau, \tst'\cup\{\top\}) &\to & ((q_1, q, 2), \{k_1+k_2+1\}, \pop)\label{eq: LkS5}\\
 ((q_1, q, 2), \tau, \tst'\cup\{\top\}) &\to & ((q_1, q, 3), \{k_1+k_2+2\}, \push(k_1+k_2+1)) \quad\label{eq: LkS6}\\
-((q_1, q, 3), a,
+((q_1, q, 3), (a,v(\com_1)),
 &\tst_1 &\cup\ ((\tst^{+ k_1}\setminus\{\top\})\cup\Top)) \nonumber\\
  &\to & ((q_2, q', 4), \asgn_1\cup\asgn^{+ k_1}, \com^{+ k_1})\label{eq: LkS7}\\
 ((q_2, q, 4), \tau, \tst_2\cup\tst') &\to & ((q_3, q', 5), \asgn_2, \com_1)\label{eq: LkS8}\\
@@ -135,8 +121,7 @@ let $\tst^{+ k_1}=\{i+k_1\mid i\in\tst\}\cup\{\top\mid\top\in\tst\setminus[k_1]\
 \end{eqnarray}
 for all $\tst'\in\Tst_{k_1+k_2+2}$ where
 $\Top=\{k_1+k_2+2\}$ if $\top\in\tst$ and $\Top=\emptyset$ otherwise.
-We can show $L(\calA)=L(\calA_1)\cap L(\calA_2)$
-by checking $w\in L(\calA)$ iff $w\in L(\calA_1)$ and $w\in L(\calA_2)$ by the induction on the length of $w$.
+We can show $L(\calA)=L(\calA_1)\cap L(\calA_2)$.
 
 \begin{lemma}  \label{lem: W=lab}
 $W_{S,k} = \overline{\lab(L_{\overS,k})}$.
@@ -153,10 +138,10 @@ Thus, $W_{S,k} = \overline{\lab(L_{\overS,k})}$ holds.
 For all $k\geq 0$, \Real $($\DRPDAv, \RPDTk$)$ is decidable.
 \end{theorem}
 {\bf Proof.}\quad
-By Lemma \ref{lem: LkS}, $L_{\overS,k}$ is definable by some DRPDA.
-Because every language recognized by a DRPDA can be converted to
-the language of DPDA by taking the projection on its label,
-$W_{S,k}$ is definable by some DPDA by Lemma \ref{lem: W=lab}.
+By Lemma \ref{lem: LkS}, $L_{\overS,k}$ is definable by some visibly DRPDA.
+Because every language recognized by a visibly DRPDA can be converted to
+the language of visibly DPDA by taking the projection on its label,
+$W_{S,k}$ is definable by some visibly DPDA by Lemma \ref{lem: W=lab}.
 By Theorem \ref{the: finite_actions}, we can check \Real $($\DPDA, \PDT$)$ for $W_{S,k}$, which is shown to be decidable in Theorem \ref{the: DPDA}, instead of checking \Real $($\DRPDAv, \RPDTk$)$.
 % By Theorem \ref{the: finite_actions}, we can check \Real $($\UPDA, \PDT$)$ for $W_{S,k}$ instead of checking \Real $($\URPDA, \RPDTk$)$.
 

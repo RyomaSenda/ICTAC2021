@@ -12,21 +12,21 @@ By Examples \ref{ex: PDT} and \ref{ex: PDA},
 $L(\calT)\subseteq L(\calA)$ holds for PDT $\calT$ and DPDA $\calA$
 defined in the examples.
 Thus, $\calT\models\calA$ holds.
-% Let us consider $\calA = (\{q,q',q_a,q_b\},\{q,q'\},\{q_a,q_b\},q,z,\delta,c')$
-% which is obtained from $\calA$ but the coloring function $c'$
-% is defined as $c'(q')=2$ and $c'(s)=3$ for $s=q,q_a,q_b$.
-% For example, the pair of the sequences
-% $(\rho,w)\in\ID_\calA^\omega\times \Sigma^\omega$
-% in Example \ref{ex: PDA}
-% is a run of $\calA'$ but $w\notin L(\calA)$ because
-% $\rho$ has no bad sequence and never visit $q'$.
-% We can check that all sequence $w'\in (\{a\}\cdot\Sigma)^\omega$
-% is not in $L(\calA')$ because
-% the run $(\rho',w')$ of $w'$ never visit $q_\bot$ over one times.
-% Then, we can check there are no PDT $\calT$ such that $\calT\models\calA$
-% because every language $L(\calT)$ of PDT $\calT$
-% always includes a word $w\in (\{a\}\cdot\Sigma)^\omega$,
-% and thus there exists a word $w\in L(\calT)\cap \overline{L(\calA)}$, it means $L(\calT)\not\subseteq L(\calA)$.
+Let us consider $\calA'=(\{q_0,q_\bot,q_\dblI,q_\dblO\}, \{q_0,q_\dblI\}, \{q_\bot,q_\dblO\},q_0,z_0,\delta,c')$
+which is obtained from $\calA$ but the coloring function $c'$
+is defined as $c'(q_\bot)=1$ and $c'(p)=2$ for $p=q_0,q_\dblI,q_\dblO$.
+For example, the pair of the sequences
+$(\rho,w)\in\ID_\calA^\omega\times \Sigma^\omega$
+in Example \ref{ex: PDA}
+is a run of $\calA'$ but $w\notin L(\calA)$ because
+$\rho$ has only one $q_\bot$ in its states.
+We can check that all sequence $w'\in (\{a\}\cdot\Sigma)^\omega$
+is not in $L(\calA')$ because
+the run $(\rho',w')$ of $w'$ never visit $q_\bot$ over one times.
+Then, we can check there are no PDT $\calT$ such that $\calT\models\calA$
+because every language $L(\calT)$ of PDT $\calT$
+always includes a word $w\in (\{a\}\cdot\Sigma)^\omega$,
+and thus there exists a word $w\in L(\calT)\cap \overline{L(\calA)}$, it means $L(\calT)\not\subseteq L(\calA)$.
 \end{example}
 
 \begin{theorem}\label{the: DPDA}
@@ -36,10 +36,10 @@ Thus, $\calT\models\calA$ holds.
 Let $\calA$ be a given DPDA.
 By Lemma \ref{lem: 2},
 we can construct a PDT $\calT$ such that
-$\rho$ is winning play of $\calG_\calA$ iff $f_2(\rho)\in L(T)$.
+$w\in L(T)$ iff $f^{-1}_2(w)$ is winning play of $\calG_\calA$.
 By the definition of $f_2$,
 $\rho(i)\vdash^{w(i)} \rho(i+1)$ holds
-for all $i\geq 0$ for $\rho\in\PL$ such that $f_2(\rho)=w$.
+for all $i\geq 0$ where $\rho=f^{-1}_2(w)$.
 Then, $w\in L(\calA)$ holds, and thus $\calT\models\calA$.
 Hence, we can say $\calT\models\calA$ iff player I has a winning strategy for the game $\calG_\calA$.
 Because there is an algorithm for constructing $\calT$

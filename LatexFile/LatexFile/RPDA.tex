@@ -60,21 +60,46 @@ Let \RPDTk\ be the class of $k$-RPDT and \RPDT = $\bigcup_{k\in\Natz}$\RPDTk.
 \begin{example}
 \label{ex: PDT}
 Let us consider $1$-RPDT
-$\calT = (\{p,p'\},p,\Delta)$
-over $\{a\},\{b\}$ and $D$ where
+$\calT = (\{p,p'\},p,z_0,\Delta)$
+over $\{a\},\{b\}$ and $\{z_0,z\}$ where
 $\Delta = \{
-(p, a, \{1,\top\}) \rightarrow (p', b, \{1\}, 1, \push(1)),
-(p',a, \{1,\top\}) \rightarrow (p', b, \emptyset, 1, \skip),
-(p',a, \emptyset) \rightarrow (p, b, \{1\}, 1, \push(1))
+(p, a, \tst) \rightarrow (p', b, \{1\}, 1, \push(1))
+(p', a, \{\}) \rightarrow (p, b, \{1\}, 1, \push(1))
+(p', a, \{1\}) \rightarrow (p, b, \{1\}, 1, \push(1))
+(p, a, \{\top\}) \rightarrow (p', b, \{1\}, 1, \pop)
+(p, a, \{1,\top\}) \rightarrow (p', b, \{1\}, 1, \pop)
 \}$
-Let $(\rho,w)\in \ID_\calT^\omega\times ((\{a\}\times D)\cdot(\{b\}\times D))^\omega$
+Let $(\rho,w)\in \ID_\calT^\omega\times \{a,b\}^\omega$
 be a pair of sequences where
-$\rho=(p,[\bot],\bot)(p',[d_1],d_1\bot)(p',[d_1],d_1\bot)(p',[d_2],d_2d_1\bot)(p',[d_2],d_2d_1\bot)\cdots$
-, where $[d]\in\Theta_1$ is the assignment such that $[d](1)=d$,
-and
-$w=(a,d_1)(b,d_1)(a,d_1)(b,d_1)(a,d_2)(b,d_2)(a,d_2)(b,d_2)\cdots$,
+$\rho=(p,z_0)(p,zz_0)(p,zzz_0)(p,zzzz_0)\cdots$ and $w=aba^\omega$,
 then $(\rho,w)$ is a run of $\calT$.
+
+Let $\#_a(w), \#_b(w)\in \Natz$ denote the number of $a$, $b$
+appearing in $w\in\{a,b\}^*$, respectively.
+$L(\calT)$ is the set of the sequence $w\in \{a,b\}^\omega$
+that satisfies one of the following conditions:
+(i) $w = t_0 w_0 t_1 w_1\cdots
+\in(\{ab, ba\} \times \{aa, bb\}^*)^\omega$
+where for all $i\geq 0$, $t_i\in \{ab, ba\}$ and
+$w_i\in \{aa, bb\}^*$ such that
+$\#_b(w_i)-\#_a(w_i)=2$.
+(ii) $w = t_0 w_0 t_1 w_1\cdots t_n w_n
+\in(\{ab, ba\} \times \{aa, bb\}^*)^*\cdot(\{ab, ba\} \times \{aa, bb\}^\omega)$
+where for all $0\leq i\leq n$, $t_i\in \{ab, ba\}$ and
+$w_i\in \{aa, bb\}^*$ such that
+$\#_b(w_i)-\#_a(w_i)=2$ for $0\leq i< n$ and
+$w_n\in \{aa, bb\}^\omega$ such that
+$\#_a(w')-\#_b(w')\geq 0$
+for all subsequence $w'=w(0:m)$ of $w$ for all $m\in\Natz$.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=6cm]{PDT.png}
+  \caption{An example of run for a sequence $w = t_0 w_0 t_1 w_1\cdots$.}
+  \label{fig: PDT}
+\end{figure}
 \end{example}
+
+
 
 \subsection{Register pushdown automata}\label{sec:RA}
 \begin{definition}

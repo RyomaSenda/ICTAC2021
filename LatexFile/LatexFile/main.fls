@@ -225,13 +225,23 @@ INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 OUTPUT main.dvi
 INPUT PDA.tex
 INPUT PDA.tex
+INPUT PDT.png
+INPUT extractbb -B cropbox -O PDT.png
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti9.tfm
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/bbold/bbold9.tfm
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/bbold/bbold6.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
+INPUT PDA.png
+INPUT extractbb -B cropbox -O PDA.png
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
 INPUT RealPDA.tex
 INPUT RealPDA.tex
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT RPDA.tex
 INPUT RPDA.tex
+INPUT PDT.png
 INPUT RealRPDA.tex
 INPUT RealRPDA.tex
 INPUT conclusion.tex
