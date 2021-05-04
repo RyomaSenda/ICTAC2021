@@ -12,6 +12,13 @@ Let $\<u, w\> = u(0)w(0)u(1)w(1)\cdots \in A^\infty$ for words $u,w\in A^\infty$
 By $|\beta|$, we mean the cardinality of $\beta$ if $\beta$ is a set
 and the length of $\beta$ if $\beta$ is a finite sequence.
 % We assume $\varepsilon$ represents the empty sequence, that is $|\varepsilon|=0$.
+For a function $f:A\to B$ from a set $A$ to a set $B$,
+let $f(w)=f(w(0))f(w(1))\ldots$ for a word $w\in A^{\infty}$
+and let $f(L)=\{f(w)\mid w\in L\}$ for a set $L\subseteq A^{\infty}$
+of words.
+Let $\fst$ be the function such that $\fst((a,b))=a$ for any pair $(a,b)$.
+Let $\mathit{id}$ be the identity function; i.e.,
+$\mathit{id}(a)=a$ for any $a$.
 
 In this paper, disjoint sets $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma$ denote
 a (finite) input alphabet, an output alphabet and a stack alphabet, respectively,
@@ -47,6 +54,61 @@ there exists a run $(\rho,w)$ such that $\mininf(\rho)$ is even$\}$.
 For $m\in\Natz$, we call an $\calS$ $m$-TS
 if for every run $(\rho,w)$ of $\calS$,
 $w$ contains no consecutive subsequence $w'\in E^{m+1}$.
+
+
+
+Consider two TSs
+$\calS_1=(S_1,s_{01},A_1,E_1,{\to_{\calS_1}},c_1)$ and
+$\calS_2=(S_2,s_{02},A_2,E_2,{\to_{\calS_2}},\allowbreak c_2)$
+and
+a function $\sigma:(A_1\cup E_1)\to(A_2\cup E_2)$.
+We call $R\subseteq S_1\times S_2$
+a $\sigma$-\emph{bisimulation relation} from $\calS_1$ to $\calS_2$
+if $R$ satisfies the followings:
+\begin{enumerate}[label=(\arabic*)]
+\item $(s_{01},s_{02})\in R$.
+\item For any $s_1,s'_1\in S_1$, $s_2\in S_2$, and
+  $a_1\in A_1\cup E_1$,
+  if $s_1\to_{\calS_1}^{a_1} s'_1$ and $(s_1,s_2)\in R$,
+  then $\exists s'_2\in S_2: s_2\to_{\calS_2}^{\sigma(a_1)} s'_2$
+  and $(s'_1,s'_2)\in R$.
+\item For any $s_1\in S_1$, $s_2,s'_2\in S_2$, and
+  $a_2\in A_2\cup E_2$,
+  if $s_2\to_{\calS_2}^{a_2} s'_2$ and $(s_1,s_2)\in R$,
+  then $\exists s'_1\in S_1$, $\exists a_1\in A_1\cup E_1:
+  \sigma(a_1)=a_2$ and
+  $s_1\to_{\calS_1}^{a_1} s'_1$
+  and $(s'_1,s'_2)\in R$.
+\item If $(s_1,s_2)\in R$, then $c_1(s_1)=c_2(s_2)$.
+\end{enumerate}
+%
+We say $\calS_1$ is $\sigma$-\emph{bisimilar} to
+$\calS_2$ if there exists a $\sigma$-bisimulation relation
+from $\calS_1$ to $\calS_2$.
+%
+We call $R$ a bisimulation relation
+if $R$ is a $\mathit{id}$-bisimulation relation.
+We say $\calS_1$ and $\calS_2$ are bisimilar if
+$\calS_1$ is $\mathit{id}$-bisimilar to $\calS_2$.
+
+The following lemma can be proved by definition.
+\begin{lemma}\label{lemma:bisim-lang}
+If
+$\calS_1=(S_1,s_{01},A_1,E_1,{\to_{\calS_1}},c_1)$ is
+$\sigma$-bisimilar to
+$\calS_2=(S_2,s_{02},A_2,\allowbreak E_2,{\to_{\calS_2}},c_2)$
+for
+a function $\sigma:(A_1\cup E_1)\to(A_2\cup E_2)$
+that satisfies $a\in A_1 \Leftrightarrow \sigma(a)\in A_2$
+for any $a\in A_1\cup E_1$,
+then
+$\sigma(L(\calS_1))=L(\calS_2)$.
+\end{lemma}
+
+
+
+
+
 
 % universal language as
 % $L_U(\calS)=\{\ef(w)\in A^\omega\mid$

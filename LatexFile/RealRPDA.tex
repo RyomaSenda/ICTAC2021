@@ -73,12 +73,12 @@ Let $(2,k+2)$-DRPDA
 $\calA_k = (Q, Q_\dblI, Q\setminus Q_\dblI, p, \delta_k, c_k)$ over $A_k^\dblI, A_k^\dblO$ and $D$ where
 $Q=\{p, q\}\cup(\Asgn_k\times[k]\times\Com([k]))\cup[k]$, $Q_\dblI=\{p\}$
 and $c_k(s)=2$ for every $s\in Q$ and $\delta_k$ consists of rules of the form
-\begin{eqnarray}
-(p, (a_\dblI, \tst), \tst\cup\tst') &\to& (q, \{k+1\}, \skip)\label{eq: Lk1}\\
-(q, (a_\dblO, \asgn, j, \com), \tst'')&\to& ((\asgn,j,\com), \{k+2\},\skip)\label{eq: Lk2}\\
-((\asgn,j,\com), \tau, \{k+1\}\cup\tst'')&\to& (j, \asgn, \com)\label{eq: Lk3}\\
-(j, \tau, \{j, k+2\}\cup\tst'')&\to& (p, \emptyset, \skip)\label{eq: Lk4}
-\end{eqnarray}
+\begin{align}
+(p, (a_\dblI, \tst), \tst\cup\tst')&\to(q, \{k+1\}, \skip)\label{eq: Lk1}\\
+(q, (a_\dblO, \asgn, j, \com), \tst'')&\to(\asgn,j,\com), \{k+2\},\skip)\label{eq: Lk2}\\
+((\asgn,j,\com), \tau, \{k+1\}\cup\tst'')&\to(j, \asgn, \com)\label{eq: Lk3}\\
+(j, \tau, \{j, k+2\}\cup\tst'')&\to(p, \emptyset, \skip)\label{eq: Lk4}
+\end{align}
 for all $(a_\dblI, \tst)\in A_k^\dblI$, $(a_\dblO, \asgn, j, \com)\in A_k^\dblO$, $\tst'\subseteq \{k+1,k+2\}$ and $\tst''\in\Tst_{k+2}$.
 We can show $L(\calA_k)=L_k$
 by checking $w\otimes\overa \in L(\calA_k)\Leftrightarrow
@@ -105,9 +105,9 @@ $c_1(q)$ is even for every $q\in Q_1$ and
 every rule in $\delta_1$
 consists of several groups of three consecutive rules having the following forms:
 \begin{align}
-(q_1, a, \tst_1) &\to (q_2,\asgn_1, \skip)& \tag{\ref{eq: Lk2}'}\\
-(q_2, \tau, \tst_2) &\to (q_3,\asgn_2, \com_1)& \tag{\ref{eq: Lk3}'}\\
-(q_3, \tau, \tst_3) &\to (q_4,\asgn_3, \skip)& \tag{\ref{eq: Lk4}'}.
+(q_1, a, \tst_1) &\to (q_2,\asgn_1, \skip) \tag{\ref{eq: Lk2}'}\\
+(q_2, \tau, \tst_2) &\to (q_3,\asgn_2, \com_1) \tag{\ref{eq: Lk3}'}\\
+(q_3, \tau, \tst_3) &\to (q_4,\asgn_3, \skip) \tag{\ref{eq: Lk4}'}.
 \end{align}
 where $\vis(a)=v(\com_1)$.
 Note that $(\ref{eq: Lk2}'), (\ref{eq: Lk3}')$ and $(\ref{eq: Lk4}')$ correspond to $(\ref{eq: Lk2}), (\ref{eq: Lk3})$ and $(\ref{eq: Lk4})$, respectively, and $(\ref{eq: Lk1})$ can be treated as the triple sequencial rules by adding meaningless $\tau$ rules.
@@ -116,25 +116,26 @@ We construct $(4,k_1+k_2+2)$-DRPDA
 $\calA=(Q_1\times Q_2\times[5], Q^\dblI_1\times Q^\dblI_2\times[5], Q^\dblO_1\times Q^\dblO_2\times[5], (q^1_0, q^2_0, 1), \delta, c)$
 where $c((q_1,q_2,i))=c_2(q_2)$ for all $(q_1,q_2,i)\in Q$.
 For all rules
-\begin{eqnarray}
-(q_1, a, \tst_1) &\to & (q_2,\asgn_1, \skip)\in\delta_1\label{eq: LkS1}\\
-(q_2, \tau, \tst_2) &\to & (q_3,\asgn_2, \com_1)\in\delta_1\label{eq: LkS2}\\
-(q_3, \tau, \tst_3) &\to & (q_4,\asgn_3, \skip)\in\delta_1\label{eq: LkS3}\\
-(q, a, \tst) &\to & (q',\asgn, \com)\in\delta_2\label{eq: LkS4}
-\end{eqnarray}
+\begin{align}
+(q_1, a, \tst_1) &\to (q_2,\asgn_1, \skip)\in\delta_1\label{eq: LkS1}\\
+(q_2, \tau, \tst_2) &\to (q_3,\asgn_2, \com_1)\in\delta_1\label{eq: LkS2}\\
+(q_3, \tau, \tst_3) &\to (q_4,\asgn_3, \skip)\in\delta_1\label{eq: LkS3}\\
+(q, a, \tst) &\to (q',\asgn, \com)\in\delta_2\label{eq: LkS4}
+\end{align}
 (note that $v(\com_1)=\vis(a)=v(\com)$ always hold) for $a\in A^\dblI_{k_1+k_2+2}\cup A^\dblO_{k_1+k_2+2}$,
 let $\tst^{+ k_1}=\{i+k_1\mid i\in\tst\}\cup\{\top\mid\top\in\tst\setminus[k_1]\}, \asgn^{+ k_1}=\{i+k_1\mid i\in\asgn\}$ and $\com^{+ k_1} = \push(j+k_1)$ if $\com=\push(j)$ and $\com^{+ k_1} = \com$ otherwise, then $\delta$ consists of the rules
-\begin{eqnarray}
-((q_1, q, 1), \tau, \tst'\cup\{\top\}) &\to & ((q_1, q, 2), \{k_1+k_2+1\}, \pop)\label{eq: LkS5}\\
-((q_1, q, 2), \tau, \tst'\cup\{\top\}) &\to & ((q_1, q, 3), \{k_1+k_2+2\}, \push(k_1+k_2+1)) \quad\label{eq: LkS6}\\
+\begin{align}
+((q_1, q, 1), \tau, \tst[0,k_1+k_2+2]\cup\{\top\}) &\to ((q_1, q, 2), \{k_1+k_2+1\}, \pop)\label{eq: LkS5}\\
+((q_1, q, 2), \tau, \tst[0,k_1+k_2+2]\cup\{\top\}) &\to ((q_1, q, 3), \{k_1+k_2+2\}, \push(k_1+k_2+1)) \label{eq: LkS6}\\
 ((q_1, q, 3), a,
-&\tst_1 &\cup\ ((\tst^{+ k_1}\setminus\{\top\})\cup\Top)) \nonumber\\
- &\to & ((q_2, q', 4), \asgn_1\cup\asgn^{+ k_1}, \com^{+ k_1})\label{eq: LkS7}\\
-((q_2, q, 4), \tau, \tst_2\cup\tst') &\to & ((q_3, q', 5), \asgn_2, \com_1)\label{eq: LkS8}\\
-((q_3, q', 5), \tau, \tst_3\cup\tst') &\to & ((q_4, q', 1), \asgn_3, \skip)\label{eq: LkS9}
-\end{eqnarray}
-for all $\tst'\in\Tst_{k_1+k_2+2}$ where
-$\Top=\{k_1+k_2+2\}$ if $\top\in\tst$ and $\Top=\emptyset$ otherwise.
+\tst_1\cup ((\tst^{+ k_1}\setminus\{\top\})\cup\Top))
+ &\to ((q_2, q', 4), \asgn_1\cup\asgn^{+ k_1}, \com^{+ k_1})\label{eq: LkS7}\\
+((q_2, q, 4), \tau,((\tst_2\setminus\{\top\})\cup\Top')\cup\tst[k_1,k_1+k_2+1])
+&\to ((q_3, q', 5), \asgn_2, \com_1)\label{eq: LkS8}\\
+((q_3, q', 5), \tau, \tst_3\cup\tst[k_1,k_1+k_2+2]) &\to ((q_4, q', 1), \asgn_3, \skip)\label{eq: LkS9}
+\end{align}
+for all $\tst[i,j]\in\Tst_{j}\setminus\Tst_{i}$ (we assume $\Tst_0=\emptyset$) where
+$\Top=\{k_1+k_2+2\}$ ($\Top'=\{k_1+k_2+1\}$) if $\top\in\tst$ ($\top\in\tst_2$) and $\Top=\emptyset$ ($\Top'=\emptyset$) otherwise.
 We can show $L(\calA)=L(\calA_1)\cap L(\calA_2)$
 by checking $w\in L(\calA)$ iff $w\in L(\calA_1)$ and $w\in L(\calA_2)$ by the induction on the length of $w$.
 

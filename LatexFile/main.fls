@@ -144,6 +144,8 @@ INPUT c:/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/bbold/bbold.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/bbold/bbold.sty
+INPUT c:/texlive/2018/texmf-dist/tex/latex/ncctools/nccmath.sty
+INPUT c:/texlive/2018/texmf-dist/tex/latex/ncctools/nccmath.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT c:/texlive/2018/texmf-dist/tex/latex/base/latexsym.sty
@@ -221,6 +223,9 @@ INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/bbold/bbold5.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 OUTPUT main.dvi
 INPUT PDA.tex
@@ -232,6 +237,8 @@ INPUT RealPDA.tex
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT RPDA.tex
 INPUT RPDA.tex
+INPUT RPDAtoPDA.tex
+INPUT RPDAtoPDA.tex
 INPUT RealRPDA.tex
 INPUT RealRPDA.tex
 INPUT conclusion.tex

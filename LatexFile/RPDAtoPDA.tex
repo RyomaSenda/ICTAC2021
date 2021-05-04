@@ -1,105 +1,4 @@
-\documentclass[oribibl,envcountsame,dvipdfmx]{llncs}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{bbold}
-\usepackage[shortlabels]{enumitem}
-
-\newcommand{\tst}{\mathit{tst}}
-\newcommand{\asgn}{\mathit{asgn}}
-\renewcommand{\skip}{\mathtt{skip}}
-\newcommand{\pop}{\mathtt{pop}}
-\newcommand{\push}{\mathtt{push}}
-\newcommand{\com}{\mathit{com}}
-\renewcommand{\top}{\mathtt{top}}
-\newcommand{\Ltop}{\L_{\top}}
-\newcommand{\calA}{\mathcal{A}}
-\newcommand{\calS}{\mathcal{S}}
-\newcommand\ID{\mathit{ID}}
-%
-\renewcommand{\L}{\mathtt{x}}
-\newcommand{\R}{\mathtt{x}'}
-\newcommand{\COMP}{\circ}
-\newcommand{\COMPBL}{\odot}
-\newcommand{\COMPBLT}{\COMPBL_{\mathtt{T}}}
-\newcommand{\AUG}{\mathrm{aug}}
-\newcommand{\fst}{\mathit{fst}}
-\newcommand{\phizero}{\phi_{\bot}}
-%
-\newcommand{\QI}{Q_{\mathbb{i}}}
-\newcommand{\QO}{Q_{\mathbb{o}}}
-\newcommand{\SigmaI}{\Sigma_{\mathbb{i}}}
-\newcommand{\SigmaO}{\Sigma_{\mathbb{o}}}
-
-\begin{document}
-
-%%%%%%%%%%
-\section*{Preliminaries}
-
-For a function $f:A\to B$ from a set $A$ to a set $B$,
-let $f(w)=f(w(0))f(w(1))\ldots$ for a word $w\in A^{\infty}$
-and let $f(L)=\{f(w)\mid w\in L\}$ for a set $L\subseteq A^{\infty}$
-of words.
-
-Let $\fst$ be the function such that $\fst((a,b))=a$ for any pair $(a,b)$.
-Let $\mathit{id}$ be the identity function; i.e.,
-$\mathit{id}(a)=a$ for any $a$.
-
-%%%%%%%%%%
-\subsection*{Transition Systems}
-
-Consider two TSs
-$\calS_1=(S_1,s_{01},A_1,E_1,{\to_{\calS_1}},c_1)$ and
-$\calS_2=(S_2,s_{02},A_2,E_2,{\to_{\calS_2}},\allowbreak c_2)$
-and
-a function $\sigma:(A_1\cup E_1)\to(A_2\cup E_2)$.
-We call $R\subseteq S_1\times S_2$
-a $\sigma$-\emph{bisimulation relation} from $\calS_1$ to $\calS_2$
-if $R$ satisfies the followings:
-\begin{enumerate}[label=(\arabic*)]
-\item $(s_{01},s_{02})\in R$.
-\item For any $s_1,s'_1\in S_1$, $s_2\in S_2$, and
-  $a_1\in A_1\cup E_1$,
-  if $s_1\to_{\calS_1}^{a_1} s'_1$ and $(s_1,s_2)\in R$,
-  then $\exists s'_2\in S_2: s_2\to_{\calS_2}^{\sigma(a_1)} s'_2$
-  and $(s'_1,s'_2)\in R$.
-\item For any $s_1\in S_1$, $s_2,s'_2\in S_2$, and
-  $a_2\in A_2\cup E_2$,
-  if $s_2\to_{\calS_2}^{a_2} s'_2$ and $(s_1,s_2)\in R$,
-  then $\exists s'_1\in S_1$, $\exists a_1\in A_1\cup E_1:
-  \sigma(a_1)=a_2$ and
-  $s_1\to_{\calS_1}^{a_1} s'_1$
-  and $(s'_1,s'_2)\in R$.
-\item If $(s_1,s_2)\in R$, then $c_1(s_1)=c_2(s_2)$.
-\end{enumerate}
-%
-We say $\calS_1$ is $\sigma$-\emph{bisimilar} to
-$\calS_2$ if there exists a $\sigma$-bisimulation relation
-from $\calS_1$ to $\calS_2$.
-%
-We call $R$ a bisimulation relation
-if $R$ is a $\mathit{id}$-bisimulation relation.
-We say $\calS_1$ and $\calS_2$ are bisimilar if
-$\calS_1$ is $\mathit{id}$-bisimilar to $\calS_2$.
-
-The following lemma can be proved by definition.
-\begin{lemma}\label{lemma:bisim-lang}
-If
-$\calS_1=(S_1,s_{01},A_1,E_1,{\to_{\calS_1}},c_1)$ is
-$\sigma$-bisimilar to
-$\calS_2=(S_2,s_{02},A_2,\allowbreak E_2,{\to_{\calS_2}},c_2)$
-for
-a function $\sigma:(A_1\cup E_1)\to(A_2\cup E_2)$
-that satisfies $a\in A_1 \Leftrightarrow \sigma(a)\in A_2$
-for any $a\in A_1\cup E_1$,
-then
-$\sigma(L(\calS_1))=L(\calS_2)$.
-\end{lemma}
-
-%%%%%%%%%%
-\section*{Register Pushdown Transducers and
-  Register Pushdown Automata}
-
-\subsection*{PDA simulating RPDA}
+\subsection{PDA simulating RPDA}
 
 Let $\sigma:((\Sigma\cup\{\tau\})\times D)\to(\Sigma\cup\{\tau\})$
 be the function
@@ -303,7 +202,7 @@ Obviously,
 $\calS_{\calA}$ and $\calS_{\calA'}$ are bisimilar;
 the smallest relation $R\subseteq \ID_{\!\calA}\times\ID_{\!\calA}^{\AUG}$
 satisfying
-$((q,\theta,\fst(v)),\allowbreak (q,\theta,v))\in R$ 
+$((q,\theta,\fst(v)),\allowbreak (q,\theta,v))\in R$
 for every $(q,\theta,v)\in\ID_{\!\calA}^{\AUG}$
 is a bisimulation relation
 between $\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$.
@@ -360,7 +259,7 @@ $\com'=\push(\phi_n\COMP\phi')$ and $\phi''\in\phi'\COMPBL\Phi_k^{=,j'}$
 if $\com=\push(j')$.
 Therefore,
 $((q,\phi_n),u)\vdash_{\calA'}^a ((q',\phi''),u')$
-where $u'=u(1{:})$, $u$, or 
+where $u'=u(1{:})$, $u$, or
 $(\phi_n\COMP\phi')u$ for $u=\phi_{n-1}\ldots\phi_0$
 if $\com'=\pop$, $\skip$, or $\push(\phi_n\COMP\phi')$, respectively.
 Because $\theta_{n-1},d_{n-1},\theta_n\models\phi_n$ and
@@ -406,7 +305,6 @@ $(\theta'(j'),\theta')v$
 if $\com=\pop$, $\skip$, or $\push(j')$, respectively.
 We can show that $((q',\theta',v'),((q',\phi''),u'))\in R$
 in the same way as the last paragraph.
-\qed
 \end{proof}
 
 By Lemmas~\ref{lemma:bisim-lang} and \ref{lemma:bisim-rpda-pda},
@@ -415,5 +313,3 @@ we obtain the following theorem.
 For a given $k$-NRPDA $\calA$, we can construct an NPDA $\calA'$
 such that $\sigma(L(\calA))=L(\calA')$.
 \end{theorem}
-
-\end{document}

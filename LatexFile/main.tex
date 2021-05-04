@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{bbold}
+\usepackage{nccmath}
 %\usepackage{bmpsize} %%% senda
 %\usepackage{amsthm}
 \usepackage{booktabs}
@@ -19,6 +20,7 @@
 %\usepackage{thmtools}
 \usepackage{xspace}
 \usepackage{here}
+\usepackage[shortlabels]{enumitem}
 
 \setlist[itemize]{itemsep=1pt}
 %\SetAlgorithmName{Algorithm}
@@ -97,37 +99,53 @@
 \def\overx{{\overline{x}}}
 \def\overX{{\overline{\dblX}}}
 
-\def\Comp{{\mathit{Comp}}}
+\def\Comp{{\mathtt{Comp}}}
 \def\States{\mathit{States}}
 \def\state{\mathit{state}}
 \def\rep{\mathit{rep}}
 \def\mininf{{\rm min_{inf}}}
-\def\upds{\mathit{upds}}
-\def\diff{\mathit{diff}}
+\def\upds{\mathtt{upds}}
+\def\diff{\mathtt{diff}}
 \def\PL{\mathit{PL}}
 \def\ID{\mathit{ID}}
-\def\Tst{\mathit{Tst}}
-\def\tst{\mathit{tst}}
-\def\Asgn{\mathit{Asgn}}
-\def\asgn{\mathit{asgn}}
-\def\Com{\mathit{Com}}
-\def\com{\mathit{com}}
+\def\Tst{\mathtt{Tst}}
+\def\tst{\mathtt{tst}}
+\def\Asgn{\mathtt{Asgn}}
+\def\asgn{\mathtt{asgn}}
+\def\Com{\mathtt{Com}}
+\def\com{\mathtt{com}}
 \def\comv{\mathit{comv}}
-\def\vis{\mathit{vis}}
+\def\vis{\mathtt{vis}}
 \def\v{\mathit{v}}
 
-\def\pop{\mathit{pop}}
-\def\skip{\mathit{skip}}
-\def\push{\mathit{push}}
+\def\pop{\mathtt{pop}}
+\def\skip{\mathtt{skip}}
+\def\push{\mathtt{push}}
 
-\def\top{\mathit{top}}
-\def\Top{\mathit{Top}}
-\def\lab{\mathit{Lab}}
-\def\DW{\mathit{DW}}
+\def\top{\mathtt{top}}
+\def\Top{\mathtt{Top}}
+\def\lab{\mathtt{Lab}}
+\def\DW{\mathtt{DW}}
 \def\ef{\mathit{ef}}
 
 \newcommand{\Buchi}{B\"{u}chi\ }
 \def\qed{\QED}
+
+
+
+\newcommand{\Ltop}{\L_{\top}}
+\newcommand{\COMP}{\circ}
+\newcommand{\COMPBL}{\odot}
+\newcommand{\COMPBLT}{\COMPBL_{\mathtt{T}}}
+\newcommand{\AUG}{\mathrm{aug}}
+\newcommand{\fst}{\mathit{fst}}
+\newcommand{\phizero}{\phi_{\bot}}
+\newcommand{\QI}{Q_{\mathbb{i}}}
+\newcommand{\QO}{Q_{\mathbb{o}}}
+\newcommand{\SigmaI}{\Sigma_{\mathbb{i}}}
+\newcommand{\SigmaO}{\Sigma_{\mathbb{o}}}
+
+
 
 \let\<=\langle
 \let\>=\rangle
@@ -177,6 +195,7 @@
 \input{PDA}
 \input{RealPDA}
 \input{RPDA}
+\input{RPDAtoPDA}
 \input{RealRPDA}
 \input{conclusion}
 
