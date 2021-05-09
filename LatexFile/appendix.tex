@@ -1,7 +1,7 @@
 \appendix
 \section{Appendix}
 
-\subsection{A full proof of Lemma \ref{lem: ef}}
+\subsection{A proof of Lemma \ref{lem: ef}}
 \setcounter{lemma}{\ref{lem: ef}}
 \addtocounter{lemma}{-1}
 \begin{lemma}
@@ -26,34 +26,60 @@ $m$-DPDA $\calA=(Q, Q_\dblI, Q_\dblO, q_0,z_0,\delta,c)$
 over $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma$
 can be converted to an
 $(m-1)$-DPDA $\calA'$
-over $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma\cup\Gamma^2$
+over $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma^2$
 such that $L(\calA)=L(\calA')$.
-Let $\calA'=(Q\times(\Gamma\cup\{\bot\}), Q_\dblI\times(\Gamma\cup\{\bot\}), Q_\dblO\times(\Gamma\cup\{\bot\}), (q_0,\bot),(\bot,z_0),\delta',c')$
+Let $\calA'=(Q\cup(Q\times\Gamma), Q_\dblI\cup(Q_\dblI\times\Gamma), Q_\dblO\cup(Q_\dblO\times\Gamma), (q_0,z_0), (z_0,z_0),\delta',c')$
 such that
+$c'(q)=c(q), c'((q,a))=c(q)$ for all $q\in Q, a\in\Sigma$ and
 \begin{itemize}
 \item
-$(q,a,z_1)\to (q',\pop), (q',\tau,z_2)\to (q'',\pop)\in\delta$
+$(q,a,z_1)\to (q',\pop)\in\delta$
 iff
-$((q,\bot),a,(z_1,z_2))\to ((q'',\bot),\pop)$,
-$((q,z_c),a,(z_c,z_1))\to ((q'',z_2),\pop)\in\delta'$
-for all $z_c\in\Gamma$.
+$(q,a,(z_1,z_2))\to ((q',z_2),\pop)$,
+$((q,z_1),a,(z_c,z'_c))\to (q',\skip)\in\delta'$
+for all $z_c,z'_c\in\Gamma$.
 \item
-$(q,a,z_1)\to (q',\push(z'))\in\delta', (q',\tau,z')\to (q'',\pop)\in\delta$
-or
-$(q,\tau,z_1)\to (q',\push(z'))\in\delta', (q',a,z')\to (q'',\pop)\in\delta$
+$(q,a,z_1)\to (q',\skip)\in\delta$
 iff
-$((q,\bot),a,(z_1,z_2))\to ((q'',\bot),\skip)$,
-$((q,z_c),a,(z_c,z_1))\to ((q'',z_c),\skip)\in\delta'$
-for all $z_c, z_2\in\Gamma$.
+$(q,a,(z_1,z_2))\to (q',\skip)$,
+$((q,z_1),a,(z_c,z'_c))\to ((q',z_1),\skip)\in\delta'$
+for all $z_c,z'_c\in\Gamma$.
 \item
-$(q,\tau,z_1)\to (q',\push(z')), (q',a,z')\to (q'',\push(z''))\in\delta$
+$(q,a,z_1)\to (q',\push(z'))\in\delta$
 iff
-$((q,\bot),a,(z_1,z_2))\to ((q'',\bot),\push((z'',z')))$,
-$((q,z_c),a,(z_c,z_1))\to ((q'',z''),\pop)\in\delta'$
-for all $z_c\in\Gamma$.
-
+$(q,a,(z_1,z_2))\to ((q',z'),\skip)$,
+$((q,z_1),a,(z_c,z'_c))\to (q',\push((z',z_1)))\in\delta'$
+for all $z_c,z'_c\in\Gamma$.
 \end{itemize}
-
+for $a\in\Sigma$, and
+\begin{itemize}
+\item
+$(q,a,z_1)\to (q',\pop), (q',b,z_2)\to (q'',\pop)\in\delta$
+iff
+$(q,x,(z_1,z_2))\to (q'',\pop)$,
+$((q,z_1),x,(z_2,z_c))\to ((q'',z_c),\pop)\in\delta'$
+for all $z_c\in\Gamma$.
+\item
+$(q,a,z_1)\to (q',\push(z'))\in\delta', (q',b,z')\to (q'',\pop)\in\delta$
+iff
+$(q,x,(z_1,z_c))\to (q'',\skip)$,
+$((q,z_1),x,(z_c,z'_c))\to ((q'',z_1),\skip)\in\delta'$
+for all $z_c, z'_c\in\Gamma$.
+\item
+$(q,a,z_1)\to (q',\push(z')), (q',b,z')\to (q'',\push(z''))\in\delta$
+iff
+$(q,x,(z_1,z_c))\to (q'',\push((z'',z')))$,
+$((q,z_1),x,(z_c,z'_c))\to ((q'',z''),\push(z',z_1))\in\delta'$
+for all $z_c, z'_c\in\Gamma$.
+\end{itemize}
+where $a,b\in\Sigma\cup\{\tau\}$,
+$x=a$ if $a\in\Sigma$ and $x=b$ otherwise.
+As the definition of $\calA'$,
+the ID $(q,z_1z_2z_3\cdots z_n)$ of $\calA$ corresponds to
+an ID $(q, (z_1,z_2)\cdots(z_{n-1},z_n))$ of $\calA'$ if $n$ is even and
+an ID $((q,z_1), (z_2,z_3)\cdots(z_{n-1},z_n))$ if $n$ is odd.
+We can check $L(\calA)=L(\calA')$ by the induction on
+the length of a sequence $w\in L(\calA)$.
 
 \subsection{A full proof of Lemma \ref{lem: Lk}}
 \setcounter{lemma}{\ref{lem: Lk}}
@@ -63,25 +89,23 @@ $L_k = \{w\otimes\overa \mid w\in\Comp(\overa)\}$ is definable as the language o
 \end{lemma}
 {\bf Proof.}\quad
 Let $(2,k+2)$-DRPDA
-$\calA_k = (Q, Q_\dblI, Q\setminus Q_\dblI, p, \delta_k, c_k)$ over $A_k^\dblI, A_k^\dblO$ and $D$ where
-$Q=\{p, q\}\cup(\Asgn_k\times[k]\times\Com([k]))\cup[k]$, $Q_\dblI=\{p\}$
-and $c_k(s)=2$ for every $s\in Q$ and $\delta_k$ consists of rules of the form
+$\calA_1=(Q_1, Q^\dblI_1, Q^\dblO_1, q^0_1, \delta_1, c_1)$
+over $A_k^\dblI, A_k^\dblO$ and $D$ where
+$Q_1=\{p, q\}\cup(\Asgn_k\times[k]\times\Com([k]))\cup[k]$, $Q^\dblI_1=\{p\}$, $Q^\dblO_1 = Q_1\setminus Q^\dblI_1$, $q^0_1 = p$,
+$c_1(s)=2$ for every $s\in Q$ and $\delta_1$ consists of rules of the form
 \begin{align}
-(p, (a_\dblI, \tst), \tst\cup\tst') &\to& (q, \{k+1\}, \skip) \tag{\ref{eq: Lk1}}\\
-(q, (a_\dblO, \asgn, j, \com), \tst'')&\to& ((\asgn,j,\com), \{k+2\},\skip)\tag{\ref{eq: Lk2}}\\
-((\asgn,j,\com), \tau, \{k+1\}\cup\tst'')&\to& (j, \asgn, \com)\tag{\ref{eq: Lk3}}\\
-(j, \tau, \{j, k+2\}\cup\tst'')&\to& (p, \emptyset, \skip)\tag{\ref{eq: Lk4}}
+(p, (a_\dblI, \tst), \tst\cup\tst')&\to(q, \{k+1\}, \skip)\tag{\ref{eq: Lk1}}\\
+(q, (a_\dblO, \asgn, j, \com), \tst'')&\to((\asgn,j,\com), \{k+2\},\skip)\tag{\ref{eq: Lk2}}\\
+((\asgn,j,\com), \tau, \{k+1\}\cup\tst'')&\to(j, \asgn, \com)\tag{\ref{eq: Lk3}}\\
+(j, \tau, \{j, k+2\}\cup\tst'')&\to(p, \emptyset, \skip)\tag{\ref{eq: Lk4}}
 \end{align}
 for all $(a_\dblI, \tst)\in A_k^\dblI$, $(a_\dblO, \asgn, j, \com)\in A_k^\dblO$, $\tst'\subseteq \{k+1,k+2\}$ and $\tst''\in\Tst_{k+2}$.
-We can show $L(\calA_k)=L_k$
-by checking $w\otimes\overa \in L(\calA_k)\Leftrightarrow
-w\in\Comp(\overa)$ by the induction on the length of $w\otimes\overa$.
 
 We show $L(\calA_k) = L_k$.
 For this proof, we redefine compatibility for finite sequences $w\in ((\Sigma_\dblI\times D)\cdot (\Sigma_\dblO\times D))^*$ and $\overa\in(A_k^\dblI\cdot A_k^\dblO)^*$.
 We show the following claim.
 \par\medskip\noindent
-{\it Claim.} Assume $n\in\Natz$ and let $w\otimes\overa = (((a^\dblI_0,\tst_0),\skip), d^\dblI_0)(((a^\dblO_0,\asgn_0,j_0, \com_0), v(\com_0)), d^\dblO_0)\cdots\in ((A_k^\dblI\times D)\cdot(A_k^\dblO\times D))^*$
+{\it Claim.} Let $n\in\Natz$ and $w\otimes\overa = ((a^\dblI_0,\skip), d^\dblI_0)((a^\dblO_0,\asgn_0,j_0, \com_0), d^\dblO_0)\cdots$ $\in ((A_k^\dblI\times D)\cdot(A_k^\dblO\times D))^*$
 whose length is $2n$ and
 $\rho = (\theta_0,u_0)(\theta_1, u_1)\cdots\in (\Theta_k\times D^*)^*$ whose length is $n+1$ and $(\theta_0, u_0)=(\theta^{k}_\bot, \bot)$.
 Then,
@@ -101,11 +125,11 @@ By the assumption, because $\rho$ is the witness,
 (a) $\theta_{n-1}, d^\dblI_{n-1}, u_{n-1}(0) \models \tst_{n-1}$,
 (b) $\theta_{n}=\theta_{n-1}[\asgn_{n-1}\leftarrow d^\dblI_{n-1}]$,
 (c) $\theta_{n}(j_{n-1}) = d^\dblO_{n-1}$ and
-(d) $u_{n}=\upds(u_{n-1},\theta_n,\com_{n-1})$.
+(d) $u_{n}=\upds(u_{n-1},\theta_n,\com_{n-1})$ hold.
 By the condition (a),
 $\calA_k$ can do a transition
 $(p,\theta'_{n-1},u_{n-1})\vdash^{w\otimes\overa(2n-2)}
-(q,\theta^1_{n-1},u_{n-1})$ for unique $\theta^1_{n-1}\in\Theta_{k+2}$ by the rule $(p, ((a^\dblI_{n-1}, \tst_{n-1}), \skip), \tst_{n-1}\cup\tst') \to (q, \{k+1\}, \skip)$ of the form (\ref{eq: Lk1}).
+(q,\theta^1_{n-1},u_{n-1})$ for unique $\theta^1_{n-1}\in\Theta_{k+2}$ by the rule $(p, (a^\dblI_{n-1}, \tst_{n-1}), \tst_{n-1}\cup\tst') \to (q, \{k+1\}, \skip)$ of the form (\ref{eq: Lk1}).
 We can also say
 $(q,\theta^1_{n-1},u_{n-1})\vdash^{w\otimes\overa(2n-1)}
 ((\asgn_{n-1}, j_{n-1}, \com_{n-1}),\theta^2_{n-1},u_{n-1})$ by the rule of the form (\ref{eq: Lk2}). Note that $\theta^2_{n-1}(j)=\theta_{n-1}(j)$ if $j\in[k]$, $\theta^2_{n-1}(k+1)=d^\dblI_{n-1}$ and
@@ -146,39 +170,46 @@ $L_{\overS, k} = \{w\otimes\overa \mid w\in\Comp(\overa)\cap \overS\}$
 is definable as the language of a $(4,k+k'+4)$-DRPDA.
 \end{lemma}
 {\bf Proof.}\quad
-Let $L_{\overS} = \{w\otimes\overa\mid w\in\overS\}$.
-We can construct visibly $\calA_{\overS}$ be a $k'$-DRPDA such that $L(\calA_{\overS})= L_{\overS}$.
-Let $\calA_k$ be the $(2,k+2)$-DRPDA
-such that $L(\calA_k)=L_k$, which is given in Lemma \ref{lem: Lk}.
-Because $L_{\overS, k} = L_k \cap L_{\overS}$, it is enough to show that we can construct a visibly $(4,k+k'+4)$-DRPDA $\calA$ such that $L(\calA)=L(\calA_{\overS})\cap L(\calA_k)$.
+Let $L_{\overS} = \{w\otimes\overa\mid w\in\overS, \overa\in(A_k^\dblI\cdot A_k^\dblO)^\omega\}$.
+We can construct a visibly $k'$-DRPDA
+$\calA_2=(Q_2, Q^\dblI_2, Q^\dblO_2, q^0_2, \delta_2, c_2)$
+over $A^\dblI_{k}, A^\dblO_{k}$ and $D$
+such that $L(\calA_2)= L_{\overS}$.
+Let $\calA_1$ be the $(2,k+2)$-DRPDA
+such that $L(\calA_1)=L_k$, which is given in Lemma \ref{lem: Lk}.
+Because $L_{\overS, k} = L_{\overS} \cap L_k$, it is enough to show that we can construct a $(4,k+k'+4)$-DRPDA $\calA$
+over $A^\dblI_{k}, A^\dblO_{k}$ and $D$
+such that $L(\calA)=L(\calA_1)\cap L(\calA_2)$.
 
-We can convert $\calA_k$ to a $(2,k_1)$-DRPDA $\calA_1=(Q_1, Q^\dblI_1, Q^\dblO_1, q^0_1, \delta_1, c_1)$
-over $A^\dblI_{k_1+k_2+2}\cup A^\dblO_{k_1+k_2+2}$ and $D$
-and $\calA_{\overS}$ to a visibly $k_2$-DRPDA $\calA_2=(Q_2, Q^\dblI_2, Q^\dblO_2, q^0_2, \delta_2, c_2)$
-over $A^\dblI_{k_1+k_2+2}\cup A^\dblO_{k_1+k_2+2}$ and $D$
-where
+To construct $\calA$, we use the facts that
 $c_1(q)$ is even for every $q\in Q_1$ and
-every rule in $\delta_1$
-consists of several groups of three consecutive rules having the following forms:
+$\delta_1$ consists of several groups of three consecutive rules having the following forms:
 \begin{align}
-(q_1, a, \tst_1) &\to (q_2,\asgn_1, \skip)& \tag{\ref{eq: Lk2}'}\\
-(q_2, \tau, \tst_2) &\to (q_3,\asgn_2, \com_1)& \tag{\ref{eq: Lk3}'}\\
-(q_3, \tau, \tst_3) &\to (q_4,\asgn_3, \skip)& \tag{\ref{eq: Lk4}'}.
+(q_1, a, \tst_1) &\to (q_2,\asgn_1, \skip) \tag{\ref{eq: Lk2}'}\\
+(q_2, \tau, \tst_2) &\to (q_3,\asgn_2, \com_1) \tag{\ref{eq: Lk3}'}\\
+(q_3, \tau, \tst_3) &\to (q_4,\asgn_3, \skip) \tag{\ref{eq: Lk4}'}.
 \end{align}
-where $\vis(a)=v(\com_1)$.
-Note that $(\ref{eq: Lk2}'), (\ref{eq: Lk3}')$ and $(\ref{eq: Lk4}')$ correspond to $(\ref{eq: Lk2}), (\ref{eq: Lk3})$ and $(\ref{eq: Lk4})$, respectively, and $(\ref{eq: Lk1})$ can be treated as the triple sequencial rules by adding meaningless $\tau$ rules.
+Note that $\vis(a)=v(\com_1)$ always holds for every consecutive rules.
+$(\ref{eq: Lk2}'), (\ref{eq: Lk3}')$ and $(\ref{eq: Lk4}')$ correspond to $(\ref{eq: Lk2}), (\ref{eq: Lk3})$ and $(\ref{eq: Lk4})$, respectively, and $(\ref{eq: Lk1})$
+is also converted to three consecutive rules like $(\ref{eq: Lk2}')$-$(\ref{eq: Lk4}')$
+by adding dummy $\tau$ rules.
 
+We let $k_1=k+2$ and $k_2=k'$.
 We construct $(4,k_1+k_2+2)$-DRPDA
-$\calA=(Q_1\times Q_2\times[5], Q^\dblI_1\times Q^\dblI_2\times[5], Q^\dblO_1\times Q^\dblO_2\times[5], (q^1_0, q^2_0, 1), \delta, c)$
-where $c((q_1,q_2,i))=c_2(q_2)$ for all $(q_1,q_2,i)\in Q$.
+$\calA=(Q_\dblI\cup Q_\dblO\cup\{q_0\}, Q_\dblI\cup\{q_0\}, Q_\dblO, q_0, \delta, c)$
+where $Q_\dblI=Q^\dblI_1\times Q^\dblI_2\times[5]$,
+$Q_\dblO=Q^\dblO_1\times Q^\dblO_2\times[5]$.
+$c$ is defined as $c(q_0)=1$ and
+$c((q_1,q_2,i))=c_2(q_2)$ for all $(q_1,q_2,i)\in Q$.
+$\delta$ has first $\tau$ rule $(q_0,\tau,[k]\cup\{\top\})\to((q^1_0, q^2_0,1), \push(1))$.
 For all rules
 \begin{align}
-(q_1, a, \tst_1) &\to & (q_2,\asgn_1, \skip)\in\delta_1\tag{\ref{eq: LkS1}}\\
-(q_2, \tau, \tst_2) &\to & (q_3,\asgn_2, \com_1)\in\delta_1\tag{\ref{eq: LkS2}}\\
-(q_3, \tau, \tst_3) &\to & (q_4,\asgn_3, \skip)\in\delta_1\tag{\ref{eq: LkS3}}\\
-(q, a, \tst) &\to & (q',\asgn, \com)\in\delta_2\tag{\ref{eq: LkS4}'}\\
+(q_1, a, \tst_1) &\to  (q_2,\asgn_1, \skip)\in\delta_1\tag{\ref{eq: LkS1}}\\
+(q_2, \tau, \tst_2) &\to  (q_3,\asgn_2, \com_1)\in\delta_1\tag{\ref{eq: LkS2}}\\
+(q_3, \tau, \tst_3) &\to  (q_4,\asgn_3, \skip)\in\delta_1\tag{\ref{eq: LkS3}}\\
+(q, a, \tst) &\to (q',\asgn, \com)\in\delta_2\tag{\ref{eq: LkS4}}
 \end{align}
-(note that $v(\com_1)=\vis(a)=v(\com)$ always hold) for $a\in A^\dblI_{k_1+k_2+2}\cup A^\dblO_{k_1+k_2+2}$,
+(note that $v(\com_1)=\vis(a)=v(\com)$ always hold) for $a\in A^\dblI_{k}\cup A^\dblO_{k}$,
 let $\tst^{+ k_1}=\{i+k_1\mid i\in\tst\}\cup\{\top\mid\top\in\tst\setminus[k_1]\}, \asgn^{+ k_1}=\{i+k_1\mid i\in\asgn\}$ and $\com^{+ k_1} = \push(j+k_1)$ if $\com=\push(j)$ and $\com^{+ k_1} = \com$ otherwise, then $\delta$ consists of the rules
 \begin{align}
 ((q_1, q, 1), \tau, \tst[0,k_1+k_2+2]\cup\{\top\}) &\to ((q_1, q, 2), \{k_1+k_2+1\}, \pop)\tag{\ref{eq: LkS5}}\\
@@ -188,34 +219,60 @@ let $\tst^{+ k_1}=\{i+k_1\mid i\in\tst\}\cup\{\top\mid\top\in\tst\setminus[k_1]\
  &\to ((q_2, q', 4), \asgn_1\cup\asgn^{+ k_1}, \com^{+ k_1})\tag{\ref{eq: LkS7}}\\
 ((q_2, q, 4), \tau,((\tst_2\setminus\{\top\})\cup\Top')\cup\tst[k_1,k_1+k_2+1])
 &\to ((q_3, q', 5), \asgn_2, \com_1)\tag{\ref{eq: LkS8}}\\
-((q_3, q', 5), \tau, \tst_3\cup\tst[k_1,k_1+k_2+2]) &\to ((q_4, q', 1), \asgn_3, \skip)\tag{\ref{eq: LkS9}}\\
+((q_3, q', 5), \tau, \tst_3\cup\tst[k_1,k_1+k_2+2]) &\to ((q_4, q', 1), \asgn_3, \skip)\tag{\ref{eq: LkS9}}
 \end{align}
 for all $\tst[i,j]\in\Tst_{j}\setminus\Tst_{i}$ (we assume $\Tst_0=\emptyset$) where
 $\Top=\{k_1+k_2+2\}$ ($\Top'=\{k_1+k_2+1\}$) if $\top\in\tst$ ($\top\in\tst_2$) and $\Top=\emptyset$ ($\Top'=\emptyset$) otherwise.
+
+Fig. \ref{fig: lem_LkS} indicates an example of transitions
+from $(q_1,q,1)$ to $(q_4,q',1)$ with updating
+contents of registers and stack.
+The first to $k_1$-th registers simulate
+the registers of $\calA_1$,
+$(k_1+1)$-th to $(k_1+k_2)$-th register simulate
+the registers of $\calA_2$ and
+$(k_1+k_2+1)$-th and $(k_1+k_2+2)$-th registers
+is for keeping the first and second stack top contents, respectively.
+The stack contents of $\calA$ simulates that of $\calA_1$ and $\calA_2$ by restoring contents of stacks of $\calA_1$ and $\calA_2$ alternately.
+
+The transition rules (\ref{eq: LkS5}) and (\ref{eq: LkS6})
+is for restoring two stack data values from the top
+to $(k_1+k_2+1)$-th and $(k_1+k_2+2)$-th registers.
+The transition rule (\ref{eq: LkS7})
+is for updating states, registers and stacks
+by simulating the rules (\ref{eq: LkS1}) and (\ref{eq: LkS4}).
+Because the first to $k_2$-th registers of $\calA_2$ is simulated by $(k_1+1)$-th to $(k_1+k_2)$-th registers of $\calA$,
+we use $\tst^{+k_1}$, $\asgn^{+k_1}$ and $\com^{+k_1}$
+instead of $\tst$, $\asgn$ and $\com$, and
+replace $\top$ in $\tst^{+k_1}$ to $k_1+k_2+2$.
+The transition rules (\ref{eq: LkS8}) and (\ref{eq: LkS9})
+simulates the rules (\ref{eq: LkS2}) and (\ref{eq: LkS3}), respectively.
 
 For two assignments $\theta_1\in\Theta_{k_1}$ and $\theta_2\in\Theta_{k_2}$,
 let $[\theta_1,\theta_2,d,d']\in\Theta_{k_1+k_2+2}$
 be the assignment such that
 $[\theta_1,\theta_2,d,d'](i)=\theta_1(i)$ if $i\in[k_1]$,
-$[\theta_1,\theta_2,d,d'](i)=\theta_2(i)$ if $k_1+1\leq 1\leq k_2$,
+$[\theta_1,\theta_2,d,d'](i)=\theta_2(i)$ if $k_1+1\leq i\leq k_2$,
 $[\theta_1,\theta_2,d,d'](k_1+k_2+1)=d$ and
 $[\theta_1,\theta_2,d,d'](k_1+k_2+2)=d'$.
 To prove $L(\calA)=L(\calA_1)\cap L(\calA_2)$,
 we show the following claim.
 \par\medskip\noindent
 {\it Claim.}
-For all $n\in\Natz$ and $w\in ((A_{k_1}^\dblI \cup A_{k_1}^\dblO) \times D)^n$,
+For all $n\in\Natz$ and $w\in ((A_{k}^\dblI \cup A_{k}^\dblO) \times D)^n$,
 there exists sequences of transitions
 $(q_0^1,\theta^1_0,u^1_0)\vdash_{\calA_1}^{w(0)(\tau,d_0)(\tau,d'_0)}
 (q_1^1,\theta^1_1,u^1_1)\vdash_{\calA_1}^{w(1)(\tau,d_1)(\tau,d'_1)} \cdots \vdash_{\calA_1}^{w(n-1)(\tau,d_{n-1})(\tau,d'_{n-1})}
 (q^1_n,\theta^1_n,u^1_n)$ and
 $(q_0^2,\theta^2_0,u^2_0)\vdash_{\calA_2}^{w(0)}
-(q_1^2,\theta^2_1,u^2_1)\vdash_{\calA_2}^{w(1)} \cdots \vdash_{\calA_2}^{w(n-1)} (q^2_n,\theta^2_n,u^2_n)$
+(q_1^2,\theta^2_1,u^2_1)\vdash_{\calA_2}^{w(1)} \cdots$\\
+$\vdash_{\calA_2}^{w(n-1)} (q^2_n,\theta^2_n,u^2_n)$
 iff
-$(q_0, \theta^\calA_\bot, \bot)
+$(q_0, \theta^{k_1+k_2+2}_\bot, \bot)
 \vdash_\calA^{(\tau,\bot)}
-((q^1_0,q^2_0,1),[\theta^1_0,\theta^2_0,d^1_0,d^2_0],\<u^1_0,u^2_0\>)
-\vdash_\calA^{(\tau,u^1_0(0))(\tau,u^2_0(0))w(0)(\tau,d_0)(\tau,d'_0)}
+((q^1_0,q^2_0,1),[\theta^1_0,\theta^2_0,d^1_0,d^2_0],\<u^1_0,u^2_0\>)$
+\\
+$\vdash_\calA^{(\tau,u^1_0(0))(\tau,u^2_0(0))w(0)(\tau,d_0)(\tau,d'_0)}
 ((q^1_1,q^2_1,1),[\theta^1_1,\theta^2_1,d^1_1,d^2_1],\<u^1_1,u^2_1\>)
 \vdash_\calA^{(\tau,u^1_1(0))(\tau,u^2_1(0))w(1)(\tau,d_1)(\tau,d'_1)}
 \cdots
@@ -228,7 +285,7 @@ $d_{i-1}, d'_{i-1}\in D$.
 \par\medskip\noindent
 (Proof of the claim)
 We show the claim by the induction on $n$.
-The case $n_0$ is obvious.
+The case $n=0$ is obvious.
 
 We first show left to right.
 By induction hypothesis,
@@ -236,9 +293,12 @@ $(q_0, \theta^\calA_\bot, \bot)
 \vdash_\calA^{(\tau,\bot)}
 ((q^1_0,q^2_0,1),[\theta^1_0,\theta^2_0,d^1_0,d^2_0],\<u^1_0,u^2_0\>)
 \vdash_\calA^{(\tau,u^1_0(0))(\tau,u^2_0(0))w(0)(\tau,d_0)(\tau,d'_0)}
-\cdots
-\vdash_\calA^{(\tau,u^1_{n-2}(0))(\tau,u^2_{n-2}(0))w(n-2)(\tau,d_{n-2})(\tau,d'_{n-2})}
-((q^1_{n-1},q^2_{n-1},1),[\theta^1_{n-1},\theta^2_{n-1},d^1_{n-1},d^2_{n-1}],\<u^1_{n-1},u^2_{n-1}\>)$
+\cdots$
+\\
+$\vdash_\calA^{(\tau,u^1_{n-2}(0))(\tau,u^2_{n-2}(0))w(n-2)(\tau,d_{n-2})(\tau,d'_{n-2})}
+((q^1_{n-1},q^2_{n-1},1),[\theta^1_{n-1},\theta^2_{n-1},d^1_{n-1},d^2_{n-1}],$
+\\
+$\<u^1_{n-1},u^2_{n-1}\>)$
 holds.
 Also, by the assumption,
 $(q^1_{n-1},\theta^1_{n-1},u^1_{n-1})
@@ -261,17 +321,19 @@ and let the following be the rules used in these transitions.
 (q'', \tau, \tst_3) &\to(q_{n},\asgn_3, \skip)\in\delta_1 \tag{\ref{eq: LkS3}'}\\
 (q_{n-1}, (a,v(\com)), \tst) &\to(q_{n},\asgn, \com)\in\delta_2 \tag{\ref{eq: LkS4}'}
 \end{align}
-We can check\\
-$((q^1_{n-1},q^2_{n-1},1),[\theta^1_{n-1},\theta^2_{n-1},d^1_{n-1},d^2_{n-1}],\<u^1_{n-1},u^2_{n-1}\>)
-\vdash_\calA^{(\tau,u^1_{n-1}(0))(\tau,u^2_{n-1}(0))}
-((q^1_{n-1},q^2_{n-1},3),[\theta^1_{n-1},\theta^2_{n-1},u^1_{n-1}(0),u^1_{n-1}(0)],\<u^1_{n-1},u^2_{n-1}\>)
-\vdash_\calA^{w(n-1)}
-((q^1_{n-1},q^2_{n-1},4),[\theta^1_{n},\theta',u^1_{n-1}(0),u^1_{n-1}(0)],\<u^1_{n-1},u^2_{n}\>)
-\vdash_\calA^{(\tau,d_{n-1})}
-((q^1_{n-1},q^2_{n-1},5),[\theta^1_{n},\theta'',u^1_{n-1}(0),u^1_{n-1}(0)],\<u^1_{n},u^2_{n}\>)
-\vdash_\calA^{(\tau,d'_{n-1})}
-((q^1_{n},q^2_{n},1),[\theta^1_{n},\theta^2_{n},u^1_{n-1}(0),u^1_{n-1}(0)],\<u^1_{n},u^2_{n}\>)$\\
-, and thus the right side of the claim holds.
+We can check the follows.
+\begin{align*}
+&((q^1_{n-1},q^2_{n-1},1),[\theta^1_{n-1},\theta^2_{n-1},d^1_{n-1},d^2_{n-1}],\<u^1_{n-1},u^2_{n-1}\>)
+\vdash_\calA^{(\tau,u^1_{n-1}(0))(\tau,u^2_{n-1}(0))}\\
+&((q^1_{n-1},q^2_{n-1},3),[\theta^1_{n-1},\theta^2_{n-1},u^1_{n-1}(0),u^1_{n-1}(0)],\<u^1_{n-1},u^2_{n-1}\>)
+\vdash_\calA^{w(n-1)}\\
+&((q^1_{n-1},q^2_{n-1},4),[\theta^1_{n},\theta',u^1_{n-1}(0),u^1_{n-1}(0)],\<u^1_{n-1},u^2_{n}\>)
+\vdash_\calA^{(\tau,d_{n-1})}\\
+&((q^1_{n-1},q^2_{n-1},5),[\theta^1_{n},\theta'',u^1_{n-1}(0),u^1_{n-1}(0)],\<u^1_{n},u^2_{n}\>)
+\vdash_\calA^{(\tau,d'_{n-1})}\\
+&((q^1_{n},q^2_{n},1),[\theta^1_{n},\theta^2_{n},u^1_{n-1}(0),u^1_{n-1}(0)],\<u^1_{n},u^2_{n}\>)
+\end{align*}
+Thus, the right side of the claim holds.
 In a similar way, we can also show right to left.
 \begin{flushright}
 (end of the proof of the claim)
@@ -292,11 +354,12 @@ $(q_0, \theta^\calA_\bot, \bot)
 \vdash_\calA^{(\tau,\bot)}
 ((q^1_0,q^2_0,1),[\theta^1_0,\theta^2_0,d^1_0,d^2_0],\<u^1_0,u^2_0\>)
 \vdash_\calA^{(\tau,u^1_0(0))(\tau,u^2_0(0))w(0)(\tau,d_0)(\tau,d'_0)}
-((q^1_1,q^2_1,1),[\theta^1_1,\theta^2_1,d^1_1,d^2_1],\<u^1_1,u^2_1\>)
+((q^1_1,q^2_1,1),$
+\\
+$[\theta^1_1,\theta^2_1,d^1_1,d^2_1],\<u^1_1,u^2_1\>)
 \vdash_\calA^{(\tau,u^1_1(0))(\tau,u^2_1(0))w(1)(\tau,d_1)(\tau,d'_1)}
 \cdots$
 that satisfies the minimum number appearing in
 the sequence $(q^1_0,q^2_0,1), (q^1_0,q^2_0,2) \cdots, (q^1_1,q^2_1,1), \cdots$ infinitely is even.
 $\Leftrightarrow$
-$w\in L(\calA)$ holds
-for all $w\in \DW(A_{k_1}^\dblI, A_{k_1}^\dblO, D)$.
+$w\in L(\calA)$ holds.

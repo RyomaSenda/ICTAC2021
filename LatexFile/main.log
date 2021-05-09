@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.sjis) (TeX Live 2018/W32TeX) (preloaded format=platex 2019.1.10)  4 MAY 2021 21:15
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.sjis) (TeX Live 2018/W32TeX) (preloaded format=platex 2019.1.10)  10 MAY 2021 01:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -503,11 +503,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box91
 \@float@everytoks=\toks39
 \@floatcapt=\box92
-) (./main.aux
-
-LaTeX Warning: Label `ex: PDT' multiply defined.
-
-)
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 174.
@@ -587,205 +583,152 @@ Underfull \hbox (badness 10000) in paragraph at lines 60--68
 []\OT1/cmr/m/n/10 Consider two TSs $\OMS/cmsy/m/n/10 S[] \OT1/cmr/m/n/10 = (\OML/cmm/m/it/10 S[]; s[]; A[]; E[]; []; c[]\OT1/cmr/m/n/10 )$ and $\OMS/cmsy/m/n/10 S[] \OT1/cmr/m/n/10 =
  []
 
-) (./PDA.tex [2]
-Underfull \hbox (badness 3547) in paragraph at lines 131--168
-\OT1/cmr/m/n/10 over $\OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 a; b\OMS/cmsy/m/n/10 g$ \OT1/cmr/m/n/10 and $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 z\OMS/cmsy/m/n/10 g$ \OT1/cmr/m/n/10 where $\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]\OT1/cmr/m/n/10 ) = 1$, $\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s\OT1/cmr/m/n/10 ) = 2$ for $\OML/cmm/m/it/10 s \OT1/cmr/m/n/10 =
- []
-
-
-Underfull \hbox (badness 4518) in paragraph at lines 131--168
-\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; z\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; a; z\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z\OT1/cmr/m/n/10 ))\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; b; z\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 !
- []
-
-[3] [4]) (./RealPDA.tex
+) (./PDA.tex [2] [3]
+File: PDA.png Graphic file (type bmp)
+<PDA.png>
+ [4]) (./RealPDA.tex
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 7.
+(Font)              using `JT1/mc/m/n' instead on input line 6.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 7.
+(Font)              using `JY1/mc/m/n' instead on input line 6.
 
-) (./RPDA.tex [5]
-Underfull \hbox (badness 10000) in paragraph at lines 62--77
+[5]) (./RPDA.tex [6]
+Underfull \hbox (badness 10000) in paragraph at lines 64--79
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p[]; b; \OMS/cmsy/m/n/10 ;\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p[]; a; \OMS/cmsy/m/n/10 ;\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; b; \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 1\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 (1))\OMS/cmsy/m/n/10 g$ \OT1/cmr/m/n/10 Let $(\OML/cmm/m/it/10 ^^Z; w\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 2
  []
 
 
-Underfull \hbox (badness 7576) in paragraph at lines 62--77
+Underfull \hbox (badness 7576) in paragraph at lines 64--79
 [][] \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 ((\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 a\OMS/cmsy/m/n/10 g ^^B \OML/cmm/m/it/10 D\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 b\OMS/cmsy/m/n/10 g ^^B \OML/cmm/m/it/10 D\OT1/cmr/m/n/10 ))[]$ be a pair of se-quences where
  []
 
 
-Underfull \hbox (badness 6675) in paragraph at lines 62--77
+Underfull \hbox (badness 6675) in paragraph at lines 64--79
 \OML/cmm/m/it/10 ^^Z \OT1/cmr/m/n/10 = (\OML/cmm/m/it/10 p; \OT1/cmr/m/n/10 [\OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 p[]; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; d[]\OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 p[]; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; d[]\OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 p[]; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; d[]d[]\OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 p[]; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; d[]d[]\OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 ) [] $
  []
 
 
-Underfull \hbox (badness 3612) in paragraph at lines 62--77
+Underfull \hbox (badness 3612) in paragraph at lines 64--79
 \OT1/cmr/m/n/10 , where $[\OML/cmm/m/it/10 d\OT1/cmr/m/n/10 ] \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ^^B[]$ \OT1/cmr/m/n/10 is the as-sign-ment such that $[\OML/cmm/m/it/10 d\OT1/cmr/m/n/10 ](1) = \OML/cmm/m/it/10 d$\OT1/cmr/m/n/10 , and
  []
 
-[6]
-Underfull \hbox (badness 7814) in paragraph at lines 81--83
+
+Underfull \hbox (badness 7814) in paragraph at lines 83--85
 []\OT1/cmr/m/it/10 A non-de-ter-min-is-tic $\OML/cmm/m/it/10 k$\OT1/cmr/m/it/10 -register push-down au-toma-ton ($\OML/cmm/m/it/10 k$\OT1/cmr/m/it/10 -
  []
 
-) (./RPDAtoPDA.tex [7] [8] [9]) (./RealRPDA.tex [10] [11]
-Overfull \hbox (110.06154pt too wide) detected at line 136
+[7]) (./RPDAtoPDA.tex [8] [9]) (./RealRPDA.tex [10] [11]
+File: lem_Lk.png Graphic file (type bmp)
+<lem_Lk.png>
+ [12]
+Overfull \hbox (112.8671pt too wide) detected at line 183
 []
  []
 
-) (./conclusion.tex) [12] (./references.tex
+File: lem_LkS.png Graphic file (type bmp)
+<lem_LkS.png>
+[13]) (./conclusion.tex) [14] (./references.tex
 
 LaTeX Warning: Empty `thebibliography' environment on input line 8.
 
-) [13] (./appendix.tex
-Underfull \hbox (badness 6792) in paragraph at lines 49--54
-[]$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; ^^\; z[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]\OT1/cmr/m/n/10 ))\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; a; z[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ^^N$ \OT1/cmr/m/n/10 iff
+) [15] (./appendix.tex
+Underfull \hbox (badness 5954) in paragraph at lines 36--42
+[]$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; a; z[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ^^N$ \OT1/cmr/m/n/10 iff $(\OML/cmm/m/it/10 q; a; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]; z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; z[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )$,
  []
 
 
-Underfull \hbox (badness 6078) in paragraph at lines 49--54
-\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q; \OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; a; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]; z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; \OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 z[]; z[]\OT1/cmr/m/n/10 )))$, $((\OML/cmm/m/it/10 q; z[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; a; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]; z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 !
+Underfull \hbox (badness 10000) in paragraph at lines 42--48
+[]$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; a; z[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ^^N$ \OT1/cmr/m/n/10 iff $(\OML/cmm/m/it/10 q; a; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]; z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 )$,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--91
-\OT1/cmr/m/it/10 Claim. \OT1/cmr/m/n/10 As-sume $\OML/cmm/m/it/10 n \OMS/cmsy/m/n/10 2 \U/bbold/m/n/10 N[]$ \OT1/cmr/m/n/10 and let $\OML/cmm/m/it/10 w \OMS/cmsy/m/n/10 
- [] \OT1/cmr/m/n/10 =
+Underfull \hbox (badness 1881) in paragraph at lines 48--53
+[]$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; a; z[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ^^N$ \OT1/cmr/m/n/10 iff $(\OML/cmm/m/it/10 q; a; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]; z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; z[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )$,
  []
 
-
-Underfull \hbox (badness 1466) in paragraph at lines 83--91
-\OT1/cmr/m/n/10 (((\OML/cmm/m/it/10 a[]; [][]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; d[]\OT1/cmr/m/n/10 )(((\OML/cmm/m/it/10 a[]; [][]; j[]; [][]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; v\OT1/cmr/m/n/10 ([][]))\OML/cmm/m/it/10 ; d[]\OT1/cmr/m/n/10 ) [] \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 A[] \OMS/cmsy/m/n/10 ^^B \OML/cmm/m/it/10 D\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^A
- []
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 97--121
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 121--145
 []\OT1/cmr/m/n/10 We first show left to right. By the in-duc-tion hy-poth-e-sis,
  []
 
 
-Underfull \hbox (badness 8189) in paragraph at lines 97--121
+Underfull \hbox (badness 8189) in paragraph at lines 121--145
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 )$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--126
+Underfull \hbox (badness 1394) in paragraph at lines 121--145
+\OT1/cmr/m/n/10 and $\OML/cmm/m/it/10 ^^R[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k \OT1/cmr/m/n/10 + 2) = \OML/cmm/m/it/10 d[]$\OT1/cmr/m/n/10 . $(([][]\OML/cmm/m/it/10 ; j[]; [][]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--150
 []\OT1/cmr/m/n/10 Next, we prove right to left. By the as-sump-tion,
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 122--126
+Underfull \hbox (badness 2065) in paragraph at lines 146--150
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 )$ holds. By check-
  []
 
-[15]
-Overfull \hbox (110.06154pt too wide) detected at line 192
+[17]
+Overfull \hbox (110.06154pt too wide) detected at line 223
 []
  []
 
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 205--228
-\OT1/cmr/m/it/10 Claim. \OT1/cmr/m/n/10 For all $\OML/cmm/m/it/10 n \OMS/cmsy/m/n/10 2 \U/bbold/m/n/10 N[]$ \OT1/cmr/m/n/10 and $\OML/cmm/m/it/10 w \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 A[] \OMS/cmsy/m/n/10 [ \OML/cmm/m/it/10 A[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^B \OML/cmm/m/it/10 D\OT1/cmr/m/n/10 )[]$,
+
+Underfull \vbox (badness 1132) has occurred while \output is active []
+
+ [18]
+Overfull \hbox (60.11775pt too wide) in paragraph at lines 260--285
+[]$\OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[]; d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 205--228
-\OT1/cmr/m/n/10 there ex-ists se-quences of tran-si-tions $(\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
- []
-
-
-Underfull \hbox (badness 6675) in paragraph at lines 205--228
-\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] [] `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 )$ and
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--228
-\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[]; d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--228
-\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[]; d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
- []
-
-
-Overfull \hbox (1.19337pt too wide) in paragraph at lines 205--228
+Overfull \hbox (1.19337pt too wide) in paragraph at lines 260--285
 [] \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[]; d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 )$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 233--258
-\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[]; d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
+Overfull \hbox (8.05237pt too wide) in paragraph at lines 290--318
+[]$\OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[]; d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ;$ 
  []
 
 
-Overfull \hbox (83.08253pt too wide) in paragraph at lines 233--258
-[] \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[]; d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 )$
+Underfull \hbox (badness 1097) in paragraph at lines 290--318
+[]$\OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 )$ holds. Also, by the as-sump-tion, $(\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
+ []
+
+[19])
+Underfull \hbox (badness 2469) in paragraph at lines 341--210
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] [] $ \OT1/cmr/m/n/10 and $(\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 263--276
-[]$\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[]; d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
+Underfull \hbox (badness 6445) in paragraph at lines 341--210
+[] $ \OT1/cmr/m/n/10 that sat-is-fies the min-i-mum num-ber ap-pear-ing in the se-quence
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 263--276
-\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 3)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; u[]\OT1/cmr/m/n/10 (0)\OML/cmm/m/it/10 ; u[]\OT1/cmr/m/n/10 (0)]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 263--276
-\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 4)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; u[]\OT1/cmr/m/n/10 (0)\OML/cmm/m/it/10 ; u[]\OT1/cmr/m/n/10 (0)]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 263--276
-\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 5)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; u[]\OT1/cmr/m/n/10 (0)\OML/cmm/m/it/10 ; u[]\OT1/cmr/m/n/10 (0)]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
- []
-
-)
-Underfull \hbox (badness 10000) in paragraph at lines 279--210
-\OT1/cmr/m/n/10 that sat-is-fies the min-i-mum num-ber ap-pear-ing in the se-quence
- []
-
-
-Underfull \hbox (badness 3568) in paragraph at lines 279--210
+Underfull \hbox (badness 3568) in paragraph at lines 341--210
 \OML/cmm/m/it/10 q[]; q[]; [] $ \OT1/cmr/m/n/10 in-finitely is even. $\OMS/cmsy/m/n/10 ,$ \OT1/cmr/m/n/10 there ex-ists a run $(\OML/cmm/m/it/10 q[]; ^^R[]; \OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 279--210
-\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[]; d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 279--210
-\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[]; d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] [] $
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 279--210
-\OT1/cmr/m/n/10 that sat-is-fies the min-i-mum num-ber ap-pear-ing in the se-quence
- []
-
-[17] [18] (./main.aux)
+[20] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 12474 strings out of 493226
- 225644 string characters out of 6147196
- 309188 words of memory out of 5000000
- 16142 multiletter control sequences out of 15000+600000
- 20373 words of font info for 87 fonts, out of 8000000 for 9000
+ 12511 strings out of 493226
+ 226137 string characters out of 6147196
+ 307187 words of memory out of 5000000
+ 16168 multiletter control sequences out of 15000+600000
+ 21914 words of font info for 93 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 65i,14n,49p,499b,291s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 65i,14n,49p,499b,360s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (18 pages, 112048 bytes).
+Output written on main.dvi (20 pages, 122272 bytes).

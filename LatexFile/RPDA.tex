@@ -54,11 +54,13 @@ $\done_{\calT}^{(a,d^\dblI)(b,d^\dblO)}$ as $\done^{(a,d^\dblI)(b,d^\dblO)}$.
 % If we emphasize the rule $r$ and the data value $d$,
 % we write $\done_d^r$.
 A run and the language $L(\calT)$ of $\calT$ are those of deterministic $0$-TS $(\ID_\calT, (q_0,\theta^k_\bot, \bot), (\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D), \emptyset, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
+In this paper,
+we assume that every run of RPDT never reach an ID whose stack is empty.
 Let \RPDTk\ be the class of $k$-RPDT and \RPDT = $\bigcup_{k\in\Natz}$\RPDTk.
 % Note that \RPDT$[0]$ = \PDT.
 
 \begin{example}
-\label{ex: PDT}
+\label{ex: RPDT}
 Let us consider $1$-RPDT
 $\calT = (\{p,p'\},p,\Delta)$
 over $\{a\},\{b\}$ and $D$ where

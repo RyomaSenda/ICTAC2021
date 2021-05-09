@@ -4,11 +4,18 @@ Let \DRPDA\ and \NRPDA\ be the unions of $k$-DRPDA and $k$-NRPDA for all $k\in\N
 Let $\Com_v=\{\pop,\skip,\push\}$ and $v:\Com([k])\to\Com_v$ be the function such that $v(\push(j))=\push$ for $j\in[k]$ and $v(\com)=\com$ otherwise.
 We say that an $k$-DRPDA $\calA$
 over $\Sigma_\dblI,\Sigma_\dblI$ and $D$
-visibly manipulates its stack (or a {\em visibly} RPDA) if
+stack visibly manipulates its stack (or a {\em stack visibly} RPDA) if
 there exists a function $\vis: \Sigma\to\Com_v$
 such that
-and every rule $(q,a,\tst)\to(q',\asgn,\com)$ of $\calA$
+every rule $(q,a,\tst)\to(q',\asgn,\com)$ of $\calA$
 satisfies $\vis(a)=\v(\com)$.
+Also, we say that $\calA$ is a {\em test visibly} RPDA if
+there exists a function $\vis_t: \Sigma\to\Tst_k$
+such that
+every rule $(q,a,\tst)\to(q',\asgn,\com)$ of $\calA$
+satisfies $\vis_t(a)=\tst$.
+If $\calA$ is stack visibly and test visibly RPDA,
+we call $\calA$ visibly RPDA.
 Let \DRPDAv\ be the union of visibly $k$-DRPDA for all $k\in\Natz$, respectively.
 
 % Let $\Com_v=\{\pop,\skip,\push\}$ and $v:\Com([k])\to\Com_v$ be the function such that $v(\push(j))=\push$ for $j\in[k]$ and $v(\com)=\com$ otherwise.
@@ -37,6 +44,32 @@ For a specification $S\subseteq \DW(\Sigma_\dblI,\Sigma_\dblO,D)$, the following
 \item There exists a PDT $\calT'$ such that $L(\calT')\subseteq W_{S,k}$.
 \end{itemize}
 \end{theorem}
+{\bf Proof.}\quad
+Assume $k$-RPDT $\calT$ over $\Sigma_\dblI,\Sigma_\dblO$ and $D$ satisfies $L(\calT)\subseteq S$.
+Then we construct PDT $\calT'$ over $A_k^\dblI,A_k^\dblO$ and $\{z\}$ such that
+$(q,a,\tst)\to(q',\asgn,j,\com)$ iff $(q,(a,\tst),z)\to(q',(\asgn,j,\com),\skip)$.
+% where $\com'=\com$ if $v(\com)=\pop,\skip$ and $\com'=\push(z)$ if $v(\com)=\push$.
+For $\overa\in L(\calT')$, every $w\in\Comp(\overa)$
+has a witness and thus $w\in L(\calT)$ holds.
+By the assumption $L(\calT)\subseteq S$,
+$\Comp(\overa)\subseteq S$ holds and thus $\overa\in W_{S,k}$.
+Hence, we obtain $L(\calT')\subseteq W_{S,k}$.
+
+Next, assume an PDT $\calT'$ over $A_k^\dblI,A_k^\dblO$ and $\Gamma$
+satisfies $L(\calT')\subseteq W_{S,k}$.
+By the assumption, every $\overa\in L(\calT')$
+satisfies $\Comp(\overa)\subseteq S$.
+We construct a $k$-RPDT $\calT$ over $\Sigma_\dblI,\Sigma_\dblO$ and $D$
+such that
+$(q,a,\tst)\to(q',\asgn,j,\com)$ iff $(q,(a,\tst),z)\to(q',(\asgn,j,\com),\com')$ for some $z\in\Gamma$ and $\com'\in\Com(\Gamma)$.
+For $w\in L(\calT)$, the compatible sequence
+$\overa\in (A_k^\dblI\cdot A_k^\dblO)^\omega$ satisfies
+$\overa\in L(\calT')$.
+Because $\Comp(\overa)\subseteq S$ holds for $\overa\in L(\calT')$, $w\in S$ holds.
+Hence, we obtain $L(\calT)\subseteq S$.
+\medskip
+
+
 
 For a data word
 $w\in\DW(\Sigma_\dblI,\Sigma_\dblO,D)$ and
@@ -70,12 +103,13 @@ $L_k = \{w\otimes\overa \mid w\in\Comp(\overa)\}$ is definable as the language o
 \end{lemma}
 {\bf Proof sketch.}\quad
 Let $(2,k+2)$-DRPDA
-$\calA_k = (Q, Q_\dblI, Q\setminus Q_\dblI, p, \delta_k, c_k)$ over $A_k^\dblI, A_k^\dblO$ and $D$ where
-$Q=\{p, q\}\cup(\Asgn_k\times[k]\times\Com([k]))\cup[k]$, $Q_\dblI=\{p\}$
-and $c_k(s)=2$ for every $s\in Q$ and $\delta_k$ consists of rules of the form
+$\calA_1=(Q_1, Q^\dblI_1, Q^\dblO_1, q^0_1, \delta_1, c_1)$
+over $A_k^\dblI, A_k^\dblO$ and $D$ where
+$Q_1=\{p, q\}\cup(\Asgn_k\times[k]\times\Com([k]))\cup[k]$, $Q^\dblI_1=\{p\}$, $Q^\dblO_1 = Q_1\setminus Q^\dblI_1$, $q^0_1 = p$,
+$c_1(s)=2$ for every $s\in Q$ and $\delta_1$ consists of rules of the form
 \begin{align}
 (p, (a_\dblI, \tst), \tst\cup\tst')&\to(q, \{k+1\}, \skip)\label{eq: Lk1}\\
-(q, (a_\dblO, \asgn, j, \com), \tst'')&\to(\asgn,j,\com), \{k+2\},\skip)\label{eq: Lk2}\\
+(q, (a_\dblO, \asgn, j, \com), \tst'')&\to((\asgn,j,\com), \{k+2\},\skip)\label{eq: Lk2}\\
 ((\asgn,j,\com), \tau, \{k+1\}\cup\tst'')&\to(j, \asgn, \com)\label{eq: Lk3}\\
 (j, \tau, \{j, k+2\}\cup\tst'')&\to(p, \emptyset, \skip)\label{eq: Lk4}
 \end{align}
@@ -83,38 +117,51 @@ for all $(a_\dblI, \tst)\in A_k^\dblI$, $(a_\dblO, \asgn, j, \com)\in A_k^\dblO$
 We can show $L(\calA_k)=L_k$
 by checking $w\otimes\overa \in L(\calA_k)\Leftrightarrow
 w\in\Comp(\overa)$ by the induction on the length of $w\otimes\overa$.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=10cm]{lem_Lk.png}
+  \caption{An example of transitions of $\calA_k$}
+  \label{fig: lem_Lk}
+\end{figure}
 
 \begin{lemma}\label{lem: LkS}
 For a specification $\calS$ defined by some visibly $k'$-DRPDA,
 $L_{\overS, k} = \{w\otimes\overa \mid w\in\Comp(\overa)\cap \overS\}$
 is definable as the language of a $(4,k+k'+4)$-DRPDA.
 \end{lemma}
-{\bf Proof.}\quad
-Let $L_{\overS} = \{w\otimes\overa\mid w\in\overS\}$.
-We can construct visibly $\calA_{\overS}$ be a $k'$-DRPDA such that $L(\calA_{\overS})= L_{\overS}$.
-Let $\calA_k$ be the $(2,k+2)$-DRPDA
-such that $L(\calA_k)=L_k$, which is given in Lemma \ref{lem: Lk}.
-Because $L_{\overS, k} = L_k \cap L_{\overS}$, it is enough to show that we can construct a visibly $(4,k+k'+4)$-DRPDA $\calA$ such that $L(\calA)=L(\calA_{\overS})\cap L(\calA_k)$.
+{\bf Proof sketch.}\quad
+Let $L_{\overS} = \{w\otimes\overa\mid w\in\overS, \overa\in(A_k^\dblI\cdot A_k^\dblO)^\omega\}$.
+We can construct a visibly $k'$-DRPDA
+$\calA_2=(Q_2, Q^\dblI_2, Q^\dblO_2, q^0_2, \delta_2, c_2)$
+over $A^\dblI_{k}, A^\dblO_{k}$ and $D$
+such that $L(\calA_2)= L_{\overS}$.
+Let $\calA_1$ be the $(2,k+2)$-DRPDA
+such that $L(\calA_1)=L_k$, which is given in Lemma \ref{lem: Lk}.
+Because $L_{\overS, k} = L_{\overS} \cap L_k$, it is enough to show that we can construct a $(4,k+k'+4)$-DRPDA $\calA$
+over $A^\dblI_{k}, A^\dblO_{k}$ and $D$
+such that $L(\calA)=L(\calA_1)\cap L(\calA_2)$.
 
-We can convert $\calA_k$ to a $(2,k_1)$-DRPDA $\calA_1=(Q_1, Q^\dblI_1, Q^\dblO_1, q^0_1, \delta_1, c_1)$
-over $A^\dblI_{k_1+k_2+2}\cup A^\dblO_{k_1+k_2+2}$ and $D$
-and $\calA_{\overS}$ to a visibly $k_2$-DRPDA $\calA_2=(Q_2, Q^\dblI_2, Q^\dblO_2, q^0_2, \delta_2, c_2)$
-over $A^\dblI_{k_1+k_2+2}\cup A^\dblO_{k_1+k_2+2}$ and $D$
-where
+To construct $\calA$, we use the facts that
 $c_1(q)$ is even for every $q\in Q_1$ and
-every rule in $\delta_1$
-consists of several groups of three consecutive rules having the following forms:
+$\delta_1$ consists of several groups of three consecutive rules having the following forms:
 \begin{align}
 (q_1, a, \tst_1) &\to (q_2,\asgn_1, \skip) \tag{\ref{eq: Lk2}'}\\
 (q_2, \tau, \tst_2) &\to (q_3,\asgn_2, \com_1) \tag{\ref{eq: Lk3}'}\\
 (q_3, \tau, \tst_3) &\to (q_4,\asgn_3, \skip) \tag{\ref{eq: Lk4}'}.
 \end{align}
-where $\vis(a)=v(\com_1)$.
-Note that $(\ref{eq: Lk2}'), (\ref{eq: Lk3}')$ and $(\ref{eq: Lk4}')$ correspond to $(\ref{eq: Lk2}), (\ref{eq: Lk3})$ and $(\ref{eq: Lk4})$, respectively, and $(\ref{eq: Lk1})$ can be treated as the triple sequencial rules by adding meaningless $\tau$ rules.
+Note that $\vis(a)=v(\com_1)$ always holds for every consecutive rules.
+$(\ref{eq: Lk2}'), (\ref{eq: Lk3}')$ and $(\ref{eq: Lk4}')$ correspond to $(\ref{eq: Lk2}), (\ref{eq: Lk3})$ and $(\ref{eq: Lk4})$, respectively, and $(\ref{eq: Lk1})$
+is also converted to three consecutive rules like $(\ref{eq: Lk2}')$-$(\ref{eq: Lk4}')$
+by adding dummy $\tau$ rules.
 
+We let $k_1=k+2$ and $k_2=k'$.
 We construct $(4,k_1+k_2+2)$-DRPDA
-$\calA=(Q_1\times Q_2\times[5], Q^\dblI_1\times Q^\dblI_2\times[5], Q^\dblO_1\times Q^\dblO_2\times[5], (q^1_0, q^2_0, 1), \delta, c)$
-where $c((q_1,q_2,i))=c_2(q_2)$ for all $(q_1,q_2,i)\in Q$.
+$\calA=(Q_\dblI\cup Q_\dblO\cup\{q_0\}, Q_\dblI\cup\{q_0\}, Q_\dblO, q_0, \delta, c)$
+where $Q_\dblI=Q^\dblI_1\times Q^\dblI_2\times[5]$,
+$Q_\dblO=Q^\dblO_1\times Q^\dblO_2\times[5]$.
+$c$ is defined as $c(q_0)=1$ and
+$c((q_1,q_2,i))=c_2(q_2)$ for all $(q_1,q_2,i)\in Q$.
+$\delta$ has first $\tau$ rule $(q_0,\tau,[k]\cup\{\top\})\to((q^1_0, q^2_0,1), \push(1))$.
 For all rules
 \begin{align}
 (q_1, a, \tst_1) &\to (q_2,\asgn_1, \skip)\in\delta_1\label{eq: LkS1}\\
@@ -122,7 +169,7 @@ For all rules
 (q_3, \tau, \tst_3) &\to (q_4,\asgn_3, \skip)\in\delta_1\label{eq: LkS3}\\
 (q, a, \tst) &\to (q',\asgn, \com)\in\delta_2\label{eq: LkS4}
 \end{align}
-(note that $v(\com_1)=\vis(a)=v(\com)$ always hold) for $a\in A^\dblI_{k_1+k_2+2}\cup A^\dblO_{k_1+k_2+2}$,
+(note that $v(\com_1)=\vis(a)=v(\com)$ always hold) for $a\in A^\dblI_{k}\cup A^\dblO_{k}$,
 let $\tst^{+ k_1}=\{i+k_1\mid i\in\tst\}\cup\{\top\mid\top\in\tst\setminus[k_1]\}, \asgn^{+ k_1}=\{i+k_1\mid i\in\asgn\}$ and $\com^{+ k_1} = \push(j+k_1)$ if $\com=\push(j)$ and $\com^{+ k_1} = \com$ otherwise, then $\delta$ consists of the rules
 \begin{align}
 ((q_1, q, 1), \tau, \tst[0,k_1+k_2+2]\cup\{\top\}) &\to ((q_1, q, 2), \{k_1+k_2+1\}, \pop)\label{eq: LkS5}\\
@@ -130,16 +177,47 @@ let $\tst^{+ k_1}=\{i+k_1\mid i\in\tst\}\cup\{\top\mid\top\in\tst\setminus[k_1]\
 ((q_1, q, 3), a,
 \tst_1\cup ((\tst^{+ k_1}\setminus\{\top\})\cup\Top))
  &\to ((q_2, q', 4), \asgn_1\cup\asgn^{+ k_1}, \com^{+ k_1})\label{eq: LkS7}\\
-((q_2, q, 4), \tau,((\tst_2\setminus\{\top\})\cup\Top')\cup\tst[k_1,k_1+k_2+1])
+((q_2, q', 4), \tau,((\tst_2\setminus\{\top\})\cup\Top')\cup\tst[k_1,k_1+k_2+1])
 &\to ((q_3, q', 5), \asgn_2, \com_1)\label{eq: LkS8}\\
 ((q_3, q', 5), \tau, \tst_3\cup\tst[k_1,k_1+k_2+2]) &\to ((q_4, q', 1), \asgn_3, \skip)\label{eq: LkS9}
 \end{align}
 for all $\tst[i,j]\in\Tst_{j}\setminus\Tst_{i}$ (we assume $\Tst_0=\emptyset$) where
 $\Top=\{k_1+k_2+2\}$ ($\Top'=\{k_1+k_2+1\}$) if $\top\in\tst$ ($\top\in\tst_2$) and $\Top=\emptyset$ ($\Top'=\emptyset$) otherwise.
+
+Fig. \ref{fig: lem_LkS} indicates an example of transitions
+from $(q_1,q,1)$ to $(q_4,q',1)$ with updating
+contents of registers and stack.
+The first to $k_1$-th registers simulate
+the registers of $\calA_1$,
+$(k_1+1)$-th to $(k_1+k_2)$-th register simulate
+the registers of $\calA_2$ and
+$(k_1+k_2+1)$-th and $(k_1+k_2+2)$-th registers
+is for keeping the first and second stack top contents, respectively.
+The stack contents of $\calA$ simulates that of $\calA_1$ and $\calA_2$ by restoring contents of stacks of $\calA_1$ and $\calA_2$ alternately.
+
+The transition rules (\ref{eq: LkS5}) and (\ref{eq: LkS6})
+is for restoring two stack data values from the top
+to $(k_1+k_2+1)$-th and $(k_1+k_2+2)$-th registers.
+The transition rule (\ref{eq: LkS7})
+is for updating states, registers and stacks
+by simulating the rules (\ref{eq: LkS1}) and (\ref{eq: LkS4}).
+Because the first to $k_2$-th registers of $\calA_2$ is simulated by $(k_1+1)$-th to $(k_1+k_2)$-th registers of $\calA$,
+we use $\tst^{+k_1}$, $\asgn^{+k_1}$ and $\com^{+k_1}$
+instead of $\tst$, $\asgn$ and $\com$, and
+replace $\top$ in $\tst^{+k_1}$ to $k_1+k_2+2$.
+The transition rules (\ref{eq: LkS8}) and (\ref{eq: LkS9})
+simulates the rules (\ref{eq: LkS2}) and (\ref{eq: LkS3}), respectively.
+
 We can show $L(\calA)=L(\calA_1)\cap L(\calA_2)$
 by checking $w\in L(\calA)$ iff $w\in L(\calA_1)$ and $w\in L(\calA_2)$ by the induction on the length of $w$.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=12cm]{lem_LkS.png}
+  \caption{An example of transitions of $\calA$}
+  \label{fig: lem_LkS}
+\end{figure}
 
-\begin{lemma}  \label{lem: W=lab}
+\begin{lemma} \label{lem: W=lab}
 $W_{S,k} = \overline{\lab(L_{\overS,k})}$.
 \end{lemma}
 {\bf Proof.}\quad
@@ -154,11 +232,17 @@ Thus, $W_{S,k} = \overline{\lab(L_{\overS,k})}$ holds.
 For all $k\geq 0$, \Real $($\DRPDAv, \RPDTk$)$ is decidable.
 \end{theorem}
 {\bf Proof.}\quad
-By Lemma \ref{lem: LkS}, $L_{\overS,k}$ is definable by some DRPDA.
-Because every language recognized by a DRPDA can be converted to
-the language of DPDA by taking the projection on its label,
-$W_{S,k}$ is definable by some DPDA by Lemma \ref{lem: W=lab}.
-By Theorem \ref{the: finite_actions}, we can check \Real $($\DPDA, \PDT$)$ for $W_{S,k}$, which is shown to be decidable in Theorem \ref{the: DPDA}, instead of checking \Real $($\DRPDAv, \RPDTk$)$.
+By Lemma \ref{lem: LkS}, $L_{\overS,k}$ is definable by
+a $(4,k+k'+4)$-DRPDA.
+By Lemma \ref{the: RPDAtoPDA},
+$\lab(L_{\overS,k})$ is definable by a $4$-DPDA.
+Thus, $W_{S,k} = \overline{\lab(L_{\overS,k})}$ is also definable by
+a $4$-DPDA $\calA_f$ by Lemma \ref{lem: W=lab}.
+By Theorem \ref{the: finite_actions}, we can check \Real $($\DPDA, \PDT$)$ for $W_{S,k}$.
+By Lemma \ref{lem: ef}, we can construct $0$-DPDA $\calA'_f$ such that
+$L(\calA'_f)=L(\calA_f)$.
+We can check \Real $($\DPDA, \PDT$)$ for $\calA'_f$,
+which is shown to be decidable in Theorem \ref{the: DPDA}, instead of checking \Real $($\DRPDAv, \RPDTk$)$.
 % By Theorem \ref{the: finite_actions}, we can check \Real $($\UPDA, \PDT$)$ for $W_{S,k}$ instead of checking \Real $($\URPDA, \RPDTk$)$.
 
 \begin{theorem}

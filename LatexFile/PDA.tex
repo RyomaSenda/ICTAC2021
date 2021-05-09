@@ -24,7 +24,7 @@ $(p, u)$ is called
 a {\em configuration} or {\em instantaneous description (abbreviated as ID)} of PDT $\calT$. Let $\ID_\calT$ denote the set of all IDs of $\calT$.
 Let $\Rightarrow_\calT\subseteq \ID_\calT\times \Sigma_\dblI\cdot\Sigma_\dblO\times \ID_\calT$ be the transition relation of $\calT$ that satisfies the following conditions.
 For $u\in\Gamma^+$ and $\com\in\Com(\Gamma)$, let us define $\upds(u,\com)$
-as $\upds(u,\com)=u(1:)$, $\upds(u,skip)=u$ and $\upds(u,push(z'))=z'u$.
+as $\upds(u,\com)=u(1:)$, $\upds(u,\skip)=u$ and $\upds(u,\push(z'))=z'u$.
 
 For two IDs $(p, u), (q, u')\in \ID_\calT$,
 $a\in\Sigma_\dblI$ and $b\in\Sigma_\dblO$,
@@ -40,11 +40,13 @@ $\done_{\calT}^{ab}$ as $\done^{ab}$.
 % where $w^\dblI = a_1 \cdots a_n$ and $w^\dblO = b_1 \cdots b_n$.
 % If we emphasize the rule $r$ and the data value $d$,
 % we write $\done_d^r$.
-By definition, any ID $(p, \varepsilon)\in\ID_{\calT}$ has
-no successor.
+% By definition, any ID $(p, \varepsilon)\in\ID_{\calT}$ has
+% no successor.
 That is, there is no transition from an ID with empty stack.
 We define a run and the language $L(\calT)\subseteq (\Sigma_\dblI \cdot \Sigma_\dblO)^{\omega}$ of PDT $\calT$ as those of
 deterministic $0$-TS $(\ID_\calT, (q_0,z_0), \Sigma_\dblI\cdot\Sigma_\dblO, \emptyset, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
+In this paper,
+we assume that every run of PDT never reach an ID whose stack is empty.
 Let \PDT\ be the class of PDT.
 
 \begin{example}
@@ -54,7 +56,7 @@ $\calT = (\{p\},p,z,\Delta)$
 over $\{0,1\},\{a,b\}$ and $\{z\}$ where
 $\Delta = \{
 (p, 0, z) \rightarrow (p, a, \skip),
-(p, 1, z) \rightarrow (p, b, \push(z)),
+(p, 1, z) \rightarrow (p, b, \push(z))
 \}$
 We can see
 a pair of sequences $(\rho,w)\in \ID_\calT^\omega\times (\{0,1\}\cdot\{a,b\})^\omega$ where
@@ -132,16 +134,19 @@ Let us consider DPDA
 $\calA = (\{q,q',q_a,q_b\},\{q,q'\},\{q_a,q_b\},q,z,\delta,c)$
 over $\{0,1\},\{a,b\}$ and $\{z\}$ where
 $c(q')=1$, $c(s)=2$ for $s=q,q_a,q_b$ and
-$\delta = \{
-(q, 0, z) \rightarrow (q_a, \skip),
-(q, 1, z) \rightarrow (q_b, \skip),
-(q', 0, z) \rightarrow (q_a, \skip),
-(q', 1, z) \rightarrow (q_b, \skip),
-(q_a, a, z) \rightarrow (q, \push(z)),
-(q_b, b, z) \rightarrow (q, \push(z)),
-(q_a, b, z) \rightarrow (q', \pop),
-(q_b, a, z) \rightarrow (q', \pop)
-\}$.
+$\delta$ is defined as Fig. \ref{fig: PDA}.
+
+% $\delta = \{
+% (q, 0, z) \rightarrow (q_a, \skip),
+% (q, 1, z) \rightarrow (q_b, \skip),
+% (q_a, a, z) \rightarrow (q, \push(z)),
+% (q_b, b, z) \rightarrow (q, \push(z)),
+% (q_a, b, z) \rightarrow (q', \pop),
+% (q_b, a, z) \rightarrow (q', \pop),
+% (q', 0, z) \rightarrow (q_a, \skip),
+% (q', 1, z) \rightarrow (q_b, \skip)
+% \}$.
+
 We can see
 a pair of sequences $(\rho,w)\in \ID_\calT^\omega\times (\{0,1\}\cdot\{a,b\})^\omega$ defined in Example \ref{ex: PDT},
 where $\rho=(q,z)(q,z)(q,zz)(q,zz)(q,zzz)(q,zzz)\cdots$
@@ -152,7 +157,7 @@ are not in $L(\calA)$ because
 the run $(\rho_1,w_1)$ visits $q'$ infinitely and
 the input sequence $w_2$ forces a stack of $\calA$ empty
 by reading $0b$ first.
-We call $0a$ and $1b$ good sequence and $0b$ and $1a$ bad sequence.
+We call $0a$ and $1b$ good sequences and $0b$ and $1a$ bad sequences.
 For a sequence $w\in(\{0,1\}\cdot\{a,b\})^\infty$,
 let $\#_g(w)$ and $\#_b(w)$ be the number of
 good and bad sequences appearing in $w$, respectively.
@@ -161,12 +166,33 @@ $L(\calA)=\{w\in(\{0,1\}\cdot\{a,b\})^\omega\mid
 \#_b(w)$ is finite and
 $\#_g(w')-\#_b(w')\geq 0$
 for all subsequence $w'=w(0:m)$ of $w$ for all $m\in\Natz\}$.
-To compare with PDT $\calT$ defined in Example \ref{ex: PDT},
+For PDT $\calT$ defined in Example \ref{ex: PDT},
 we can check $L(\calT)\subseteq L(\calA)$
-because $L(\calT)=(\{0a\}\cup\{1b\})^\omega$ never contains
-the sequence that includes bad sequence.
+because $L(\calT)=(\{0a\}\cup\{1b\})^\omega$ contains no sequence that includes a bad sequence.
 \end{example}
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=8cm]{PDA.png}
+  \caption{States and transitions of $\calA$.
+  (A label $a,b \to c$ from $q$ to $q'$ means
+  $(q,a,b)\to(q',c)\in\delta$.)}
+  \label{fig: PDA}
+\end{figure}
 
+The following lemma states that
+the class of language recognized by $m$-DPDA and $0$-DPDA is the same
+for a fixed $m$.
+\begin{lemma}
+\label{lem: ef}
+For a given $m$-DPDA $\calA$,
+we can construct a $0$-DPDA $\calA'$ such that
+$L(\calA)=L(\calA')$
+\end{lemma}\
+A main idea to prove is that
+we define a stack alphabet $\Gamma'$ of $\calA'$ as a $m$-tuple of
+the stack alphabet $\Gamma$ of $\calA$, that is, $\Gamma'=\Gamma^m$.
+We can simulate $m$-steps consecutive push rules (or pop rules) of $\calA$
+as 1-step push (or pop) rule of $\calA'$.
 
 % \begin{example}
 % \label{ex: PDA}
@@ -217,13 +243,6 @@ the sequence that includes bad sequence.
 %   $(q,a,b)\to(q',c)\in\delta$.)}
 %   \label{fig: PDA}
 % \end{figure}
-
-\begin{lemma}
-\label{lem: ef}
-For a given $m$-DPDA $\calA$,
-we can construct a $0$-DPDA $\calA'$ such that
-$L(\calA)=L(\calA')$
-\end{lemma}
 
 \subsection{Pushdown Games}
 
@@ -295,7 +314,7 @@ that is, $L(\calT) = \{ f_1(\rho) \mid
 \label{the: wal}
 If player I has a winning strategy of $\calG_\calA$,
 we can construct a PDT $\calT$ over $Q_\dblI\times\Com(\Gamma), Q_\dblO\times\Com(\Gamma)$ and a stack alphabet $\Gamma'$ that gives a winning strategy of $\calG_\calA$.
-That is, $\rho\in \PL$ is winning for Player I iff $f_1(\rho)\in L(T)$.
+That is, $\rho\in \PL$ is winning for Player I iff $f_1(\rho)\in L(\calT)$.
 \end{theorem}
 
 By Lemma \ref{lem: cor},
@@ -308,5 +327,5 @@ in a similar way to Theorem \ref{the: wal}.
 \label{lem: 2}
 If player I has a winning strategy of $\calG_\calA$,
 we can construct a PDT $\calT$ over $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma'$ that gives a winning strategy of $\calG_\calA$.
-That is, $\rho\in \PL$ is winning for Player I iff $f_2(\rho)\in L(T)$.
+That is, $\rho\in \PL$ is winning for Player I iff $f_2(\rho)\in L(\calT)$.
 \end{lemma}

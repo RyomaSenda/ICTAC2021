@@ -1,5 +1,4 @@
 \section{Realizability problems for PDA and PDT}
-
 For a specification $S$ and an implementation $I$,
 we write $I \models S$ if $L(I) \subseteq L(S)$.
 
@@ -12,21 +11,6 @@ By Examples \ref{ex: PDT} and \ref{ex: PDA},
 $L(\calT)\subseteq L(\calA)$ holds for PDT $\calT$ and DPDA $\calA$
 defined in the examples.
 Thus, $\calT\models\calA$ holds.
-% Let us consider $\calA = (\{q,q',q_a,q_b\},\{q,q'\},\{q_a,q_b\},q,z,\delta,c')$
-% which is obtained from $\calA$ but the coloring function $c'$
-% is defined as $c'(q')=2$ and $c'(s)=3$ for $s=q,q_a,q_b$.
-% For example, the pair of the sequences
-% $(\rho,w)\in\ID_\calA^\omega\times \Sigma^\omega$
-% in Example \ref{ex: PDA}
-% is a run of $\calA'$ but $w\notin L(\calA)$ because
-% $\rho$ has no bad sequence and never visit $q'$.
-% We can check that all sequence $w'\in (\{a\}\cdot\Sigma)^\omega$
-% is not in $L(\calA')$ because
-% the run $(\rho',w')$ of $w'$ never visit $q_\bot$ over one times.
-% Then, we can check there are no PDT $\calT$ such that $\calT\models\calA$
-% because every language $L(\calT)$ of PDT $\calT$
-% always includes a word $w\in (\{a\}\cdot\Sigma)^\omega$,
-% and thus there exists a word $w\in L(\calT)\cap \overline{L(\calA)}$, it means $L(\calT)\not\subseteq L(\calA)$.
 \end{example}
 
 \begin{theorem}\label{the: DPDA}
