@@ -22,7 +22,6 @@ For a state $p\in P$ and
 a finite sequence representing stack contents $u \in \Gamma^*$,
 $(p, u)$ is called
 a {\em configuration} or {\em instantaneous description (abbreviated as ID)} of PDT $\calT$. Let $\ID_\calT$ denote the set of all IDs of $\calT$.
-Let $\Rightarrow_\calT\subseteq \ID_\calT\times \Sigma_\dblI\cdot\Sigma_\dblO\times \ID_\calT$ be the transition relation of $\calT$ that satisfies the following conditions.
 For $u\in\Gamma^+$ and $\com\in\Com(\Gamma)$, let us define $\upds(u,\com)$
 as $\upds(u,\com)=u(1:)$, $\upds(u,\skip)=u$ and $\upds(u,\push(z'))=z'u$.
 
@@ -42,12 +41,13 @@ $\done_{\calT}^{ab}$ as $\done^{ab}$.
 % we write $\done_d^r$.
 % By definition, any ID $(p, \varepsilon)\in\ID_{\calT}$ has
 % no successor.
-That is, there is no transition from an ID with empty stack.
+We will use similar abbreviations for the other models defined later.
+Note that there is no transition from an ID with empty stack.
 We define a run and the language $L(\calT)\subseteq (\Sigma_\dblI \cdot \Sigma_\dblO)^{\omega}$ of PDT $\calT$ as those of
 deterministic $0$-TS $(\ID_\calT, (q_0,z_0), \Sigma_\dblI\cdot\Sigma_\dblO, \emptyset, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
 In this paper,
-we assume that every run of PDT never reach an ID whose stack is empty.
-Let \PDT\ be the class of PDT.
+we assume that no run of PDT reaches an ID whose stack is empty.
+Let \PDT\ be the class consisting of PDT.
 
 \begin{example}
 \label{ex: PDT}
@@ -63,7 +63,7 @@ a pair of sequences $(\rho,w)\in \ID_\calT^\omega\times (\{0,1\}\cdot\{a,b\})^\o
 $\rho=(p,z)(p,z)(p,zz)(p,zz)(p,zzz)(p,zzz)\cdots$
 and $w=(0a1b)^\omega$
 is a run of $\calT$.
-Also, we can check $L(\calT)=(\{0a\}\cup\{1b\})^\omega$.
+Also, $L(\calT)=(\{0a\}\cup\{1b\})^\omega$.
 \end{example}
 
 % Let $(\rho,w)\in \ID_\calT^\omega\times \{a,b\}^\omega$
@@ -99,11 +99,11 @@ Also, we can check $L(\calT)=(\{0a\}\cup\{1b\})^\omega$.
 
 \begin{definition}
 A nondeterministic {pushdown automata} (NPDA) over finite alphabets $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$ is $\calA = (Q, Q_\dblI, Q_\dblO, q_0, z_0, \delta, c)$ where
-$Q$, $Q_\dblI, Q_\dblO$ are finite sets of states that satisfy $Q=Q_\dblI\cup Q_\dblO$ and $Q_\dblI \cap Q_\dblO = \emptyset$,
+$Q$, $Q_\dblI, Q_\dblO$ are finite sets of states such that $Q=Q_\dblI\cup Q_\dblO$ and $Q_\dblI \cap Q_\dblO = \emptyset$,
 $q_0\in Q_\dblI$ is the initial state,
 $z_0\in \Gamma$ is the initial stack symbol,
-$c: Q \to [n]$ is a coloring function where $n\in \Nat$ is the number of priorities and
-$\delta: Q \times \Sigma \times \Gamma \to \scrP(Q \times \Com(\Gamma))$ is a finite set of transition rules, having one of the following forms:
+$c: Q \to [n]$ is the coloring function where $n\in \Nat$ is the number of priorities and
+$\delta: Q \times \Sigma \times \Gamma \to \scrP(Q \times \Com(\Gamma))$ is a finite set of transition rules having one of the following forms:
 \begin{itemize}
 \item $(q_\dblX, a_\dblX, z) \rightarrow (q_\overX, \com)$ (input/output rules)
 \item $(q_\dblX, \tau, z)\to(q'_\dblX,\com)$ ($\tau$ rules)
@@ -112,7 +112,7 @@ where $(\dblX, \overX)\in\{(\dblI, \dblO), (\dblO,\dblI)\}$,
 $q_\dblX, q'_\dblX\in Q_\dblX, q_\overX\in Q_\overX, a_\dblX\in \Sigma_\dblX$, $z\in \Gamma$ and $\com\in \Com(\Gamma)$.
 \end{definition}
 We define $\ID_\calA= Q\times \Gamma^*$ and
-a transition relation $\vdash_\calA\subseteq \ID_\calA\times (\Sigma\cup\{\tau\})\times \ID_\calA$ as
+the transition relation $\vdash_\calA\subseteq \ID_\calA\times (\Sigma\cup\{\tau\})\times \ID_\calA$ as
 $((q,u),a,(q',u'))\in\ \vdash_\calA$ iff there exist a rule $(p, a, z) \rightarrow (q, \com) \in \delta$ and a sequence $u\in \Gamma^*$ such that $z=u(0)$ and $u'=\upds(u,\com)$.
 We write $(q,u)\vdash^a_\calA(q',u')$ iff
 $((q,u),a,(q',u'))\in\ \vdash_\calA$.
@@ -134,8 +134,7 @@ Let us consider DPDA
 $\calA = (\{q,q',q_a,q_b\},\{q,q'\},\{q_a,q_b\},q,z,\delta,c)$
 over $\{0,1\},\{a,b\}$ and $\{z\}$ where
 $c(q')=1$, $c(s)=2$ for $s=q,q_a,q_b$ and
-$\delta$ is defined as Fig. \ref{fig: PDA}.
-
+$\delta$ is defined as in Fig. \ref{fig: PDA}.
 % $\delta = \{
 % (q, 0, z) \rightarrow (q_a, \skip),
 % (q, 1, z) \rightarrow (q_b, \skip),
@@ -146,29 +145,28 @@ $\delta$ is defined as Fig. \ref{fig: PDA}.
 % (q', 0, z) \rightarrow (q_a, \skip),
 % (q', 1, z) \rightarrow (q_b, \skip)
 % \}$.
-
 We can see
-a pair of sequences $(\rho,w)\in \ID_\calT^\omega\times (\{0,1\}\cdot\{a,b\})^\omega$ defined in Example \ref{ex: PDT},
+a pair of sequences $(\rho,w)\in \ID_\calT^\omega\times (\{0,1\}\cdot\{a,b\})^\omega$ in Example \ref{ex: PDT},
 where $\rho=(q,z)(q,z)(q,zz)(q,zz)(q,zzz)(q,zzz)\cdots$
 and $w=(0a1b)^\omega$,
-is a run of $\calA$.
-However, the sequence $w_1=(0a1a)^\omega$ and $w_2=0b(0a1b)^\omega$
+is also a run of $\calA$.
+However, $w_1=(0a1a)^\omega$ and $w_2=0b(0a1b)^\omega$
 are not in $L(\calA)$ because
 the run $(\rho_1,w_1)$ visits $q'$ infinitely and
 the input sequence $w_2$ forces a stack of $\calA$ empty
 by reading $0b$ first.
-We call $0a$ and $1b$ good sequences and $0b$ and $1a$ bad sequences.
+We call $0a$ and $1b$ push subsequences and $0b$ and $1a$ pop subsequences.
 For a sequence $w\in(\{0,1\}\cdot\{a,b\})^\infty$,
-let $\#_g(w)$ and $\#_b(w)$ be the number of
-good and bad sequences appearing in $w$, respectively.
+let $\#_{push}(w)$ and $\#_{pop}(w)$ be the number of
+push and pop subsequences appearing in $w$, respectively.
 We can check
 $L(\calA)=\{w\in(\{0,1\}\cdot\{a,b\})^\omega\mid
-\#_b(w)$ is finite and
-$\#_g(w')-\#_b(w')\geq 0$
-for all subsequence $w'=w(0:m)$ of $w$ for all $m\in\Natz\}$.
+\#_{pop}(w)$ is finite and
+$\#_{push}(w')-\#_{pop}(w')\geq 0$
+for every subsequence $w'=w(0:m)$ of $w$ for all $m\in\Natz\}$.
 For PDT $\calT$ defined in Example \ref{ex: PDT},
-we can check $L(\calT)\subseteq L(\calA)$
-because $L(\calT)=(\{0a\}\cup\{1b\})^\omega$ contains no sequence that includes a bad sequence.
+we know $L(\calT)\subseteq L(\calA)$
+because $L(\calT)=(\{0a\}\cup\{1b\})^\omega$ contains no sequence that includes a pop subsequences.
 \end{example}
 \begin{figure}[t]
   \centering
@@ -180,7 +178,7 @@ because $L(\calT)=(\{0a\}\cup\{1b\})^\omega$ contains no sequence that includes 
 \end{figure}
 
 The following lemma states that
-the class of language recognized by $m$-DPDA and $0$-DPDA is the same
+the class of language recognized by $m$-DPDA and $0$-DPDA are the same
 for a fixed $m$.
 \begin{lemma}
 \label{lem: ef}
@@ -188,11 +186,10 @@ For a given $m$-DPDA $\calA$,
 we can construct a $0$-DPDA $\calA'$ such that
 $L(\calA)=L(\calA')$
 \end{lemma}\
-A main idea to prove is that
-we define a stack alphabet $\Gamma'$ of $\calA'$ as a $m$-tuple of
-the stack alphabet $\Gamma$ of $\calA$, that is, $\Gamma'=\Gamma^m$.
-We can simulate $m$-steps consecutive push rules (or pop rules) of $\calA$
-as 1-step push (or pop) rule of $\calA'$.
+{\bf Proof sketch}\quad
+We define the stack alphabet $\Gamma'$ of $\calA'$ as $\Gamma'=\Gamma^m$.
+We can simulate $m$-steps by consecutive push rules (or pop rules) of $\calA$
+as a single step by a push (or pop) rule of $\calA'$.
 
 % \begin{example}
 % \label{ex: PDA}
@@ -255,9 +252,9 @@ $C((q,u)) = c(q)$ for all $(q,u)\in V$.
 
 The game starts with some $(q_0,z_0)\in V_\dblI$.
 When the current vertex is $v\in V_\dblI$,
-Player I chooses a successor $v'\in V_\dblO$ of $v$ as the next vertex.
+Player II chooses a successor $v'\in V_\dblO$ of $v$ as the next vertex.
 When the current vertex is $v\in V_\dblO$,
-Player II chooses a successor $v'\in V_\dblI$ of $v$.
+Player I chooses a successor $v'\in V_\dblI$ of $v$.
 Formally, a finite or infinite sequence $\rho\in V^\infty$ is
 \emph{valid} if
 $\rho(0)=(q_0,z_0)$ and
@@ -302,7 +299,7 @@ Then, $f_1$ and $f_2$ are well-defined and both of $f_1$ and $f_2$ are injection
 % Because $\calA$ is deterministic,
 % $\rho$ is determined uniquely.
 % \par\medskip\noindent
-[Walukiewucz, 2001] proved that
+\cite{Wa96} proved that
 we can construct a PDT $\calT$
 that gives a winning strategy of $\calG_\calA$,
 that is, $L(\calT) = \{ f_1(\rho) \mid
@@ -310,7 +307,7 @@ that is, $L(\calT) = \{ f_1(\rho) \mid
 % [Walukiewucz, 2001] proved that
 % we can construct an PDT $\calT$ such that
 % $L(\calT)$ equals to the set of all sequences $\pi\in (Q\times\Com)^\omega$ whose corresponding play is winning.
-\begin{theorem}{[Walukiewucz, 2001]}
+\begin{theorem}{\cite{Wa96}}
 \label{the: wal}
 If player I has a winning strategy of $\calG_\calA$,
 we can construct a PDT $\calT$ over $Q_\dblI\times\Com(\Gamma), Q_\dblO\times\Com(\Gamma)$ and a stack alphabet $\Gamma'$ that gives a winning strategy of $\calG_\calA$.

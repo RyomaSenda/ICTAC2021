@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.sjis) (TeX Live 2018/W32TeX) (preloaded format=platex 2019.1.10)  10 MAY 2021 01:27
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.sjis) (TeX Live 2018/W32TeX) (preloaded format=platex 2019.1.10)  12 MAY 2021 00:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -506,60 +506,71 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 174.
-LaTeX Font Info:    ... okay on input line 174.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
  ABD: EveryShipout initializing macros
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 188.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 189.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 188.
-LaTeX Font Info:    Try loading font information for U+msa on input line 188.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 189.
+LaTeX Font Info:    Try loading font information for U+msa on input line 189.
  (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 188.
+LaTeX Font Info:    Try loading font information for U+msb on input line 189.
  (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 188.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 189.
  (c:/texlive/2018/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 188.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 189.
  (c:/texlive/2018/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 190.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 191.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 190.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 191.
  (./introduction.tex
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 1.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 1.
+ [1
+
+] [2]
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 97.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 97.
+
+
+LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
+(Font)              using `JT1/gt/m/n' instead on input line 118.
+
+
+LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
+(Font)              using `JY1/gt/m/n' instead on input line 118.
+
 ) (./preliminaries.tex
 LaTeX Font Info:    Try loading font information for U+bbold on input line 2.
- (c:/texlive/2018/texmf-dist/tex/latex/bbold/Ubbold.fd)
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 28.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 28.
-
+ (c:/texlive/2018/texmf-dist/tex/latex/bbold/Ubbold.fd) [3]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
 (Font)              using `JT1/mc/m/n' instead on input line 30.
@@ -569,24 +580,14 @@ LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
 (Font)              using `JY1/mc/m/n' instead on input line 30.
 
 
-LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
-(Font)              using `JT1/gt/m/n' instead on input line 41.
-
-
-LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
-(Font)              using `JY1/gt/m/n' instead on input line 41.
-
-[1
-
-]
 Underfull \hbox (badness 10000) in paragraph at lines 60--68
 []\OT1/cmr/m/n/10 Consider two TSs $\OMS/cmsy/m/n/10 S[] \OT1/cmr/m/n/10 = (\OML/cmm/m/it/10 S[]; s[]; A[]; E[]; []; c[]\OT1/cmr/m/n/10 )$ and $\OMS/cmsy/m/n/10 S[] \OT1/cmr/m/n/10 =
  []
 
-) (./PDA.tex [2] [3]
+[4]) (./PDA.tex [5]
 File: PDA.png Graphic file (type bmp)
 <PDA.png>
- [4]) (./RealPDA.tex
+ [6]) (./RealPDA.tex
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
 (Font)              using `JT1/mc/m/n' instead on input line 6.
@@ -595,46 +596,28 @@ LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
 (Font)              using `JY1/mc/m/n' instead on input line 6.
 
-[5]) (./RPDA.tex [6]
-Underfull \hbox (badness 10000) in paragraph at lines 64--79
-\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p[]; b; \OMS/cmsy/m/n/10 ;\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p[]; a; \OMS/cmsy/m/n/10 ;\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; b; \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 1\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 (1))\OMS/cmsy/m/n/10 g$ \OT1/cmr/m/n/10 Let $(\OML/cmm/m/it/10 ^^Z; w\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 2
+[7]) (./RPDA.tex [8]
+Underfull \hbox (badness 1072) in paragraph at lines 62--76
+\OT1/cmr/m/n/10 Let $(\OML/cmm/m/it/10 ^^Z; w\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 2 [][] ^^B \OT1/cmr/m/n/10 ((\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 a\OMS/cmsy/m/n/10 g ^^B \OML/cmm/m/it/10 D\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 b\OMS/cmsy/m/n/10 g ^^B \OML/cmm/m/it/10 D\OT1/cmr/m/n/10 ))[]$ be a pair of se-quences
  []
 
 
-Underfull \hbox (badness 7576) in paragraph at lines 64--79
-[][] \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 ((\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 a\OMS/cmsy/m/n/10 g ^^B \OML/cmm/m/it/10 D\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 b\OMS/cmsy/m/n/10 g ^^B \OML/cmm/m/it/10 D\OT1/cmr/m/n/10 ))[]$ be a pair of se-quences where
+Underfull \hbox (badness 3439) in paragraph at lines 62--76
+\OT1/cmr/m/n/10 , $[\OML/cmm/m/it/10 d\OT1/cmr/m/n/10 ] \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ^^B[]$ \OT1/cmr/m/n/10 is the as-sign-ment such that $[\OML/cmm/m/it/10 d\OT1/cmr/m/n/10 ](1) = \OML/cmm/m/it/10 d$\OT1/cmr/m/n/10 , and $\OML/cmm/m/it/10 w \OT1/cmr/m/n/10 =
  []
 
 
-Underfull \hbox (badness 6675) in paragraph at lines 64--79
-\OML/cmm/m/it/10 ^^Z \OT1/cmr/m/n/10 = (\OML/cmm/m/it/10 p; \OT1/cmr/m/n/10 [\OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 p[]; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; d[]\OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 p[]; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; d[]\OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 p[]; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; d[]d[]\OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 p[]; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; d[]d[]\OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 ) [] $
- []
-
-
-Underfull \hbox (badness 3612) in paragraph at lines 64--79
-\OT1/cmr/m/n/10 , where $[\OML/cmm/m/it/10 d\OT1/cmr/m/n/10 ] \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ^^B[]$ \OT1/cmr/m/n/10 is the as-sign-ment such that $[\OML/cmm/m/it/10 d\OT1/cmr/m/n/10 ](1) = \OML/cmm/m/it/10 d$\OT1/cmr/m/n/10 , and
- []
-
-
-Underfull \hbox (badness 7814) in paragraph at lines 83--85
+Underfull \hbox (badness 7814) in paragraph at lines 80--82
 []\OT1/cmr/m/it/10 A non-de-ter-min-is-tic $\OML/cmm/m/it/10 k$\OT1/cmr/m/it/10 -register push-down au-toma-ton ($\OML/cmm/m/it/10 k$\OT1/cmr/m/it/10 -
  []
 
-[7]) (./RPDAtoPDA.tex [8] [9]) (./RealRPDA.tex [10] [11]
+[9]) (./RPDAtoPDA.tex [10] [11] [12]) (./RealRPDA.tex [13]
 File: lem_Lk.png Graphic file (type bmp)
 <lem_Lk.png>
- [12]
-Overfull \hbox (112.8671pt too wide) detected at line 183
-[]
- []
-
+ [14] [15]
 File: lem_LkS.png Graphic file (type bmp)
 <lem_LkS.png>
-[13]) (./conclusion.tex) [14] (./references.tex
-
-LaTeX Warning: Empty `thebibliography' environment on input line 8.
-
-) [15] (./appendix.tex
+ [16]) (./conclusion.tex) [17] (./references.tex [18]) [19] (./appendix.tex
 Underfull \hbox (badness 5954) in paragraph at lines 36--42
 []$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; a; z[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ^^N$ \OT1/cmr/m/n/10 iff $(\OML/cmm/m/it/10 q; a; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]; z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; z[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )$,
  []
@@ -649,7 +632,7 @@ Underfull \hbox (badness 1881) in paragraph at lines 48--53
 []$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; a; z[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ^^N$ \OT1/cmr/m/n/10 iff $(\OML/cmm/m/it/10 q; a; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]; z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; z[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )$,
  []
 
-[16]
+[20]
 Underfull \hbox (badness 10000) in paragraph at lines 121--145
 []\OT1/cmr/m/n/10 We first show left to right. By the in-duc-tion hy-poth-e-sis,
  []
@@ -674,7 +657,7 @@ Underfull \hbox (badness 2065) in paragraph at lines 146--150
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 )$ holds. By check-
  []
 
-[17]
+[21]
 Overfull \hbox (110.06154pt too wide) detected at line 223
 []
  []
@@ -682,7 +665,7 @@ Overfull \hbox (110.06154pt too wide) detected at line 223
 
 Underfull \vbox (badness 1132) has occurred while \output is active []
 
- [18]
+ [22]
 Overfull \hbox (60.11775pt too wide) in paragraph at lines 260--285
 []$\OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[]; d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
  []
@@ -702,33 +685,33 @@ Underfull \hbox (badness 1097) in paragraph at lines 290--318
 []$\OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 )$ holds. Also, by the as-sump-tion, $(\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
  []
 
-[19])
-Underfull \hbox (badness 2469) in paragraph at lines 341--210
+[23])
+Underfull \hbox (badness 2469) in paragraph at lines 341--222
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] [] $ \OT1/cmr/m/n/10 and $(\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
  []
 
 
-Underfull \hbox (badness 6445) in paragraph at lines 341--210
+Underfull \hbox (badness 6445) in paragraph at lines 341--222
 [] $ \OT1/cmr/m/n/10 that sat-is-fies the min-i-mum num-ber ap-pear-ing in the se-quence
  []
 
 
-Underfull \hbox (badness 3568) in paragraph at lines 341--210
+Underfull \hbox (badness 3568) in paragraph at lines 341--222
 \OML/cmm/m/it/10 q[]; q[]; [] $ \OT1/cmr/m/n/10 in-finitely is even. $\OMS/cmsy/m/n/10 ,$ \OT1/cmr/m/n/10 there ex-ists a run $(\OML/cmm/m/it/10 q[]; ^^R[]; \OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
  []
 
-[20] (./main.aux)
+[24] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 12511 strings out of 493226
- 226137 string characters out of 6147196
- 307187 words of memory out of 5000000
- 16168 multiletter control sequences out of 15000+600000
+ 12552 strings out of 493226
+ 226401 string characters out of 6147196
+ 309186 words of memory out of 5000000
+ 16209 multiletter control sequences out of 15000+600000
  21914 words of font info for 93 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 65i,14n,49p,499b,360s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 65i,14n,49p,499b,358s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (20 pages, 122272 bytes).
+Output written on main.dvi (24 pages, 146276 bytes).

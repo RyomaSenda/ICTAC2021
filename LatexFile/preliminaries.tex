@@ -16,7 +16,7 @@ For a function $f:A\to B$ from a set $A$ to a set $B$,
 let $f(w)=f(w(0))f(w(1))\ldots$ for a word $w\in A^{\infty}$
 and let $f(L)=\{f(w)\mid w\in L\}$ for a set $L\subseteq A^{\infty}$
 of words.
-Let $\fst$ be the function such that $\fst((a,b))=a$ for any pair $(a,b)$.
+Let $\fst$ and $\scnd$ be the functions such that $\fst((a,b))=a$ and $\scnd((a,b))=b$ for any pair $(a,b)$.
 Let $\mathit{id}$ be the identity function; i.e.,
 $\mathit{id}(a)=a$ for any $a$.
 
@@ -32,8 +32,8 @@ is $\calS=(S, s_0, A, E, \to_\calS, c)$ where
 \begin{itemize}
 \item $S$ is a (finite or infinite) set of states,
 \item $s_0\in S$ is the initial state,
-\item $A, E$ is (finite or infinite) alphabets such that $A\cap E = \emptyset$,
-\item $\to_\calS\ \subseteq S\times(A\cup E)\times S$ is a set of transition relation, written as $s\to^a s'$ if $(s,a,s')\in\ \to_\calS$ and
+\item $A, E$ are (finite or infinite) alphabets such that $A\cap E = \emptyset$,
+\item $\to_\calS\ \subseteq S\times(A\cup E)\times S$ is a transition relation, written as $s\to^a s'$ if $(s,a,s')\in\ \to_\calS$ and
 \item $c: S \to [n]$ is a coloring function where $n\in \Nat$.
 \end{itemize}
 \end{definition}
@@ -41,7 +41,7 @@ An element of $A$ is an observable label and an element of $E$ is an internal la
 A \emph{run} of TS $\calS=(S, s_0, A, E, \to_\calS, c)$ is
 a pair $(\rho, w)\in S^\omega \times (A\cup E)^\omega$ that satisfies
 $\rho(0)=s_0$ and $\rho(i)\to^{w(i)}\rho(i+1)$ for $i\geq 0$.
-Let $\mininf: S^\omega \to [n]$ be a minimal coloring function such that
+Let $\mininf: S^\omega \to [n]$ be the minimal coloring function such that
 $\mininf(\rho)=\min\{m\mid$ there exist an infinite number of $i\geq 0$ such that $c(\rho(i)) = m\}$.
 We call $\calS$ deterministic if $s\to^a s_1$ and $s\to^a s_2$ implies $s_1=s_2$ for all $s,s_1,s_2\in S$ and $a\in A\cup E$.
 
@@ -87,7 +87,7 @@ $\calS_2$ if there exists a $\sigma$-bisimulation relation
 from $\calS_1$ to $\calS_2$.
 %
 We call $R$ a bisimulation relation
-if $R$ is a $\mathit{id}$-bisimulation relation.
+if $R$ is an $\mathit{id}$-bisimulation relation.
 We say $\calS_1$ and $\calS_2$ are bisimilar if
 $\calS_1$ is $\mathit{id}$-bisimilar to $\calS_2$.
 

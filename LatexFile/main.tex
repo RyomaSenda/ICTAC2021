@@ -116,7 +116,7 @@
 \def\com{\mathtt{com}}
 \def\comv{\mathit{comv}}
 \def\vis{\mathtt{vis}}
-\def\v{\mathit{v}}
+\def\T{\mathit{T}}
 
 \def\pop{\mathtt{pop}}
 \def\skip{\mathtt{skip}}
@@ -139,6 +139,7 @@
 \newcommand{\COMPBLT}{\COMPBL_{\mathtt{T}}}
 \newcommand{\AUG}{\mathrm{aug}}
 \newcommand{\fst}{\mathit{fst}}
+\newcommand{\scnd}{\mathit{scnd}}
 \newcommand{\phizero}{\phi_{\bot}}
 \newcommand{\QI}{Q_{\mathbb{i}}}
 \newcommand{\QO}{Q_{\mathbb{o}}}
@@ -188,7 +189,18 @@
 \maketitle
 
 \begin{abstract}
-
+The realizability problem for
+a given specification $\calS$ is to decide
+whether there exists an implementation satisfying $\calS$.
+However the problem is important in the field of reactive synthesis,
+the problem has not been studied yet
+when specification and implementation are given by
+pushdown computational models.
+This paper investigates
+the realizability problem for the cases that
+specification and implementation are given by
+a pushdown automaton (PDA) and a pushdown transducer (PDT),
+and a register pushdown automata (RPDA) and a register pushdown transducer (RPDT).
 \end{abstract}
 \input{introduction}
 \input{preliminaries}

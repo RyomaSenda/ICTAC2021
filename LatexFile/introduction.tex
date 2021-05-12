@@ -1,1 +1,131 @@
 \section{Introduction}
+\noindent
+Reactive synthesis is a method of synthesizing a system that satisfies a given specification
+representing the input-output relation of the system.
+A specification is formally a subset of an infinite alternate sequences of input and output symbols.
+When an environment or a user gives inputs $i_0, i_1, \ldots$ in this order
+to a system, the latter is required to emit a sequence
+of outputs $o_0, o_1, \ldots$ such that $(i_0, o_0)(i_1, o_1)\cdots \in S$.
+The realizability problem is to decide whether for a given specification $S$,
+there exists a reactive system satisfying $S$, and if exists, to generate such a system
+(called an implementation of $S$).
+
+Studies on reactive synthesis has its origin in 1960s and has been one of central topics
+in formal methods, as well as model checking \cite{CGP01}.
+Among them, B\"{u}chi and Landweber \cite{BL69} show EXPTIME-completeness of the problem
+when a specification is given by a finite $\omega$-automaton (a finite automaton on infinite words).
+Pnueli and Rosner \cite{PR89} show 2EXPTIME-completeness of the problem
+when a specification is given by an LTL formula.
+We can find an excellent tutorial and survey of the previous studies
+on the synthesis problem in \cite{BCJ18}.
+The standard approach to the problem is as follows.
+%Assume that a specification is given by a deterministic finite automaton ${\cal A}$
+%on infinite words of input and output symbols.
+When a specification is given by an LTL formula $\varphi$, we translate $\varphi$ to
+an equivalent nondeterministic $\omega$-automaton and then convert it to
+an equivalent deterministic $\omega$-automaton ${\cal A}$.
+Next, we convert ${\cal A}$ to a tree automaton (or equivalently, a parity game) ${\cal B}$
+by separating the input and output streams.
+Then, we test whether $L({\cal B})=\emptyset$ (or equivalently, there is a winning strategy
+for player I in ${\cal B}$).
+The answer to the problem is affirmative if and only if $L({\cal B})\not=\emptyset$,
+and any $t\in L({\cal B})$ (or any winning strategy for ${\cal B}$)
+is an implementation of the specification.
+
+Classical models such as a finite automaton cannot deal with
+objects from an infinite set (called data values).
+However, when we add an ability of manipulating data values to such a classical model,
+the model easily becomes Turing-complete and basic problems become undecidable.
+Register automaton (RA) is an extension of finite automaton by adding limited ability of
+manipulating data values \cite{KF94,NSV04,Se06}.
+An RA has a finite number of registers for storing data values taken from an input word and
+it can compare the contents of its registers with the current input data value
+to determine the next transition.
+RA inherits some good properties from finite automaton such as the closure under some
+language opeations.
+The membership and emptiness are decidable for RA while the universality is undecidable.
+With the increase of interest in RA, the realizability problem for register models
+has been investigated recently \cite{ESK14,KMB18,EFR19,KK19}.
+A specification is given by an RA and
+an implementation is represented by a register transducer (abbreviated as RT).
+
+Pushdown automaton (PDA) is a simple model for recursive programs.
+Model checking algorithms for pushdown systems (PDA without input)
+has been extensively studied \cite{Gr67,Wa96,BEM97,EHRS00,EKS01}.
+Extensions by adding registers are also done for PDA \cite{CL15,MRT17,STS21},
+called register pushdown automaton (RPDA).
+Since many real-world programs are recursive and also manipulate data values,
+it is important to investigate the realizability problem for PDA/RPDA.
+\medskip\par
+This paper first extends the realizability problem to PDA and pushdown transducer.
+%%% The main difficulty to solve the problem for PDA is that
+A pushdown transducer (PDT) is a deterministic PDA with output.
+PDT serves as a model of a recursive program that emits outputs
+according to the inputs given from its environment.
+The main difficulties to solve the realizability problem in this setting
+come from the facts that
+the class of languages recognized by nondeterministic PDA (NPDA) (i.e., context-free languages)
+does not have the closure properties under some set operations and
+some relevant decision problems such as the universality are undecidable for PDA.
+To avoid these difficulties, this paper mainly considers deterministic PDA (DPDA).
+(Note that, PDT is deterministic by definition.)
+In section 4, we show that the realizability problem for DPDA is decidable
+while the problem is undecidable for NPDA.
+The former is proved by using the well-known property that
+the (two-players zero-sum parity) pushdown game is decidable and
+a winning strategy of the game can be constructed as a PDT \cite{Wa96}.
+
+Then, the paper moves to the realizability problem for RPDA and register PDT.
+In section 5, we introduce RPDA and register PDT (RPDT).
+Both RPDA and RPDT read a data word, which is an infinite sequence of
+a pair $(a,d)$ of a symbol $a$ from a finite alphabet and a data value $d$ from
+an infinite set.
+We show that the projection of the language recognized by a nondeterministic RPDA
+to the finite alphabet can be recognized by a nondeterministic PDA.
+Note that we assume the freshness of input data values \cite{Tz10} for RPDA.
+
+In section 6, we discuss the realizability problem for deterministic RPDA (DRPDA) and RPDT.
+Our approach is to reduce the problem for DRPDA to the problem for DPDA.
+In this reduction, we want to convert a given DRPDA to a DPDA that recognizes
+the projection to the finite alphabet of the former language by using the method
+in section 5.
+For this purpose, we further assume that a given DPDA has the visibility
+on the guard condition inherited from the DRPDA as well as the visibility
+of stack operation (see \cite{AM04} for the visibility of stack operation).
+Finally, we show that the realizability problem is decidable for visibly DRPDA and RPDT.
+\medskip\par\noindent
+{\bf Related work}~
+RA is frequently used as
+computation models for querying structured data such as XML documents
+and graph databases \cite{LV12,LTV15}.
+LTL with the freeze quantifier (LTL$\downarrow$) \cite{DL09,DLN07} is
+an extension of LTL by adding the ability of memorizing and comparing data values.
+LTL$\downarrow$ has the strong relationship with two-way alternate extension of RA.
+Two-variable first-order logic on data words \cite{BDMSS11}(also see \cite{Bo02})
+is another famous logic for data values,
+whose expressive power is incomparable with LTL$\downarrow$.
+Other extensions of RA are found in \cite{BKL14,CLTW17,DFSS19,BCGK12}.
+Nominal automaton \cite{BKL14} is an extension of finite automaton
+by using nominal sets, which are infinite sets having finite orbits
+of group actions and equivariant functions among them.
+
+When considering the realizability for RA,
+the difficulty is to identify the number of registers
+needed for implementing the specification, i.e., the number of registers of RT.
+If the upperbound of the registers of RT is not given as an input,
+the realizability problem is undecidable for both of nondeterministic and
+universal RA \cite{EFR19}.
+If the upperbound of the registers is {\em a priori} known,
+the problem (called the bounded synthesis
+problem) is shown to be decidable in EXP-TIME for universal RA \cite{KK19}.
+In \cite{EFR19}, it is shown that the bounded synthesis problem remains undecidable
+for nondeterministic RA (NRA) \cite{EFR19}
+and becomes decidable in 2EXP-TIME for a subclass called test-free NRA.
+
+Extensions by adding registers are also done for PDA \cite{CL15,MRT17,STS21} and
+context-free languages \cite{CK98,STS18,STS19},
+called register pushdown automata (RPDA) and register context-free grammar (RCFG), respectively.
+The expressive powers of RPDA and RCFG are the same.
+RPDA is a natural model for recursive programs with data values while
+RCFG has an advantage such that explicit representation of pushdown stack is not needed.
+For other extensions of PDA and verification of them, see \cite{ST12,XO13,RBB10}.

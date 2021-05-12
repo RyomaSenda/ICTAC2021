@@ -20,14 +20,14 @@ Thus, $\calT\models\calA$ holds.
 Let $\calA$ be a given DPDA.
 By Lemma \ref{lem: 2},
 we can construct a PDT $\calT$ such that
-$\rho$ is winning play of $\calG_\calA$ iff $f_2(\rho)\in L(T)$.
+$\rho$ is a winning play of $\calG_\calA$ iff $f_2(\rho)\in L(T)$.
 By the definition of $f_2$,
 $\rho(i)\vdash^{w(i)} \rho(i+1)$ holds
-for all $i\geq 0$ for $\rho\in\PL$ such that $f_2(\rho)=w$.
+for all $i\geq 0$ where $\rho\in\PL$ such that $f_2(\rho)=w$.
 Then, $w\in L(\calA)$ holds, and thus $\calT\models\calA$.
-Hence, we can say $\calT\models\calA$ iff player I has a winning strategy for the game $\calG_\calA$.
+Hence, $\calT\models\calA$ holds iff player I has a winning strategy for the game $\calG_\calA$.
 Because there is an algorithm for constructing $\calT$
-in [Walukiewucz, 2001], \Real $($\DPDA, \PDT$)$ is decidable.
+in \cite{Wa96}, \Real $($\DPDA, \PDT$)$ is decidable.
 
 % \begin{theorem}
 % \Real $($\UPDA, \PDT$)$ is decidable.

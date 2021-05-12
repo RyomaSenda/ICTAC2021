@@ -29,50 +29,47 @@ $\theta'$ such that $\theta'(i) = d$ for $i\in\asgn$ and $\theta'(i)=\theta(i)$ 
 
 \subsection{Register pushdown transducers}
 \begin{definition}
-A $k$-{register pushdown transducer} ($k$-RPDT) over finite alphabets $\Sigma_\dblI,\Sigma_\dblO$ and an infinite set $D$ of data values is
-$\calT=(P, p_0, \Delta)$ where
+A $k$-{register pushdown transducer} ($k$-RPDT) over finite alphabets $\Sigma_\dblI,\Sigma_\dblO$ and an infinite set $\Gamma$ of data values is
+$\calT=(P, p_0, z_0, \Delta)$ where
 $P$ is a finite set of states,
 $p_0\in P$ is the initial state,
-$\Delta: P\times\Sigma_\dblI\times\Tst_k \to P\times\Sigma_\dblO\times \Asgn_k \times [k]\times \Com([k])$ is a finite set of deterministic transition rules.
+$\Delta: P\times\Sigma_\dblI\times\Tst_k\times\Gamma \to P\times\Sigma_\dblO\times \Asgn_k \times [k]\times \Com(\Gamma\times[k])$ is a finite set of deterministic transition rules.
 \end{definition}
-$D$ is used as a stack alphabet.
-For $u\in D^+$, $\theta'\in\Theta_k$ and $\com\in\Com([k])$, let us define $\upds(u,\theta',\com)$ as $\upds(u,\theta',\pop)=u(1:)$, $\upds(u,\theta',\skip)=u$ and $\upds(u,\theta',\push(j'))=\theta'(j')u$.
-Let $\ID_\calT= P\times \Theta_k\times D^*$
+% $D$ is used as a stack alphabet.
+For $u\in (\Gamma\times D)^+$, $\theta'\in\Theta_k$ and $\com\in\Com(\Gamma\times[k])$, let us define $\upds(u,\theta',\com)$ as $\upds(u,\theta',\pop)=u(1:)$, $\upds(u,\theta',\skip)=u$ and $\upds(u,\theta',\push((z,j')))=(z,\theta'(j'))u$.
+Let $\ID_\calT= P\times \Theta_k\times (\Gamma\times D)^*$
 and $\Rightarrow_\calT\ \subseteq \ID_\calT\times ((\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D))\times \ID_\calT$ be the transition relation of $\calT$ such that $((p, \theta, u), (a,d^\dblI)(b,d^\dblO), (q, \theta', u'))\in\ \Rightarrow_\calT$ iff
-there exists a rule $(p, a, \tst) \to (q, b, \asgn, j, \com) \in \Delta$
+there exists a rule $(p, a, \tst, z) \to (q, b, \asgn, j, \com) \in \Delta$
 that satisfies the following conditions:
-$(d^\dblI, u(0), \theta)\models\tst$, $\theta' = \theta[\asgn\leftarrow d^\dblI]$, $\theta'(j) = d^\dblO$ and
+$(d^\dblI, \scnd(u(0)), \theta)\models\tst$, $\theta' = \theta[\asgn\leftarrow d^\dblI]$, $\theta'(j) = d^\dblO$
+$z=\fst(u(0))$ and
 $u'=\upds(u,\theta',\com)$,
 and we write $(p, \theta, u) \done_{\calT}^{(a,d^\dblI)(b,d^\dblO)}(q, \theta', u')$.
-If $\calT$ is clear from the context,
-we abbreviate
-$\done_{\calT}^{(a,d^\dblI)(b,d^\dblO)}$ as $\done^{(a,d^\dblI)(b,d^\dblO)}$.
 % If a sequence of IDs $(q_0, \theta_0, w_0), \cdots, (q_n, \theta_n, w_n)\in \ID_\mathcal{T}$
 % and data values $d^\dblI_1, \cdots, d^\dblI_n, d^\dblO_1, \cdots, d^\dblO_n\in D$ satisfy $(q_{i-1}, \theta_{i-1}, w_{i-1})\done^{d^\dblI_i, d^\dblO_i}(q_i, \theta_i, w_i)$ for all $i\in[n]$, we write $(q_0, \theta_0, w_0)\done^{w^\dblI, w^\dblO}(q_n, \theta_n, w_n)$
 % where $w^\dblI = d^\dblI_1 \cdots d^\dblI_n$ and $w^\dblO = d^\dblO_1 \cdots d^\dblO_n$.
 
 % If we emphasize the rule $r$ and the data value $d$,
 % we write $\done_d^r$.
-A run and the language $L(\calT)$ of $\calT$ are those of deterministic $0$-TS $(\ID_\calT, (q_0,\theta^k_\bot, \bot), (\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D), \emptyset, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
+A run and the language $L(\calT)$ of $\calT$ are those of deterministic $0$-TS $(\ID_\calT, (q_0,\theta^k_\bot, (z_0,\bot)), (\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D), \emptyset, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
 In this paper,
-we assume that every run of RPDT never reach an ID whose stack is empty.
+we assume that no run of RPDT reaches an ID whose stack is empty.
 Let \RPDTk\ be the class of $k$-RPDT and \RPDT = $\bigcup_{k\in\Natz}$\RPDTk.
 % Note that \RPDT$[0]$ = \PDT.
 
 \begin{example}
 \label{ex: RPDT}
 Let us consider $1$-RPDT
-$\calT = (\{p,p'\},p,\Delta)$
-over $\{a\},\{b\}$ and $D$ where
+$\calT = (\{p\},p,\Delta)$
+over $\{a\},\{b\}$ and $\{z\}$ where
 $\Delta = \{
-(p, a, \{1,\top\}) \rightarrow (p', b, \{1\}, 1, \push(1)),
-(p',a, \{1,\top\}) \rightarrow (p', b, \emptyset, 1, \skip),
-(p',a, \emptyset) \rightarrow (p, b, \{1\}, 1, \push(1))
+(p, a, \{1,\top\}) \rightarrow (p, b, \emptyset, 1, \skip),
+(p, a, \emptyset) \rightarrow (p, b, \{1\}, 1, \push(1))
 \}$
 Let $(\rho,w)\in \ID_\calT^\omega\times ((\{a\}\times D)\cdot(\{b\}\times D))^\omega$
 be a pair of sequences where
-$\rho=(p,[\bot],\bot)(p',[d_1],d_1\bot)(p',[d_1],d_1\bot)(p',[d_2],d_2d_1\bot)(p',[d_2],d_2d_1\bot)\cdots$
-, where $[d]\in\Theta_1$ is the assignment such that $[d](1)=d$,
+$\rho=(p,[\bot],\bot)(p,[d_1],d_1\bot)(p,[d_1],d_1\bot)(p,[d_2],d_2d_1\bot)(p,[d_2],d_2d_1\bot)\cdots$
+, $[d]\in\Theta_1$ is the assignment such that $[d](1)=d$,
 and
 $w=(a,d_1)(b,d_1)(a,d_1)(b,d_1)(a,d_2)(b,d_2)(a,d_2)(b,d_2)\cdots$,
 then $(\rho,w)$ is a run of $\calT$.
@@ -99,12 +96,11 @@ $q_\dblX, q'_\dblX\in Q_\dblX, q_\overX\in Q_\overX, a_\dblX\in \Sigma_\dblX$, $
 Let $\ID_\calA= Q\times \Theta_k\times D^*$.
 We define the transition relation $\vdash_\calA\ \subseteq\ID_\calA\times ((\Sigma\cup\{\tau\})\times D)\times \ID_\calA$ as
 $((q,\theta,u), (a,d), (q',\theta',u'))\in\ \vdash_\calA$,
-written as $(q,\theta,u)\vdash^{(a,d)}(q',\theta',u')$, iff
+written as $(q,\theta,u)\vdash^{(a,d)}_{\calA}(q',\theta',u')$, iff
 there exists a rule $(p, a, \tst) \to (q, \asgn, \com) \in \delta$
 such that
 $(d, u(0), \theta)\models\tst$, $\theta' = \theta[\asgn\leftarrow d]$ and
 $u'= \upds(u,\theta',\com)$.
-We write $\vdash^{(a,d)}_\calA$ as $\vdash^{(a,d)}$ if $\calA$ is clear from the context.
 For $s,s'\in\ID_\calA$ and
 $w\in((\Sigma_\dblI\times D)\cdot (\Sigma_\dblO\times D))^{m}$,
 we write $s\vdash^{w}s'$ if
@@ -113,9 +109,28 @@ $\rho(0)=s, \rho(m)=s'$, and
 $\rho(0)\vdash^{w(0)}\cdots\vdash^{w(m-1)}\rho(m)$.
 
 A run and the language $L(\calA)$ of $k$-DRPDA $\calA$ are those of TS
-$\calS_\calA=(\ID_\calA, (q_0, \theta^k_\bot, \bot), \Sigma\times D, \{\tau\}\times D, \Rightarrow_\calA, c')$ where
+$\calS_\calA=(\ID_\calA, (q_0, \theta^k_\bot, \bot), \Sigma\times D, \{\tau\}\times D, \vdash_\calA, c')$ where
 $c'((q,\theta,u))=c(q)$ for all $(q,\theta,u)\in\ID_\calA$.
-We call an $\calA$ deterministic, or $k$-DRPDA, if $\calS_\calA$ is deterministic.
-We call an $\calA$ $(m,k)$-NRPDA (or an $(m,k)$-DRPDA when $\calA$ is deterministic)
+We call $\calA$ deterministic, or $k$-DRPDA, if $\calS_\calA$ is deterministic.
+We call $\calA$ an $(m,k)$-NRPDA (or an $(m,k)$-DRPDA when $\calA$ is deterministic)
 if $\calS_\calA$ is an $m$-TS.
 We abbreviate $(0,k)$-NRPDA ($(0,k)$-DPDA) as $k$-NRPDA ($k$-DRPDA).
+
+\subsection{Visibly RPDA}
+Let \DRPDA\ and \NRPDA\ be the unions of $k$-DRPDA and $k$-NRPDA for all $k\in\Natz$, respectively.
+Let $\Com_v=\{\pop,\skip,\push\}$ and $v:\Com([k])\to\Com_v$ be the function such that $v(\push(j))=\push$ for $j\in[k]$ and $v(\com)=\com$ otherwise.
+We say that a $k$-DRPDA $\calA$
+over $\Sigma_\dblI,\Sigma_\dblI$ and $D$
+visibly manipulates its stack (or a {\em stack-visibly} RPDA) if
+there exists a function $\vis: \Sigma\to\Com_v$
+such that
+every rule $(q,a,\tst)\to(q',\asgn,\com)$ of $\calA$
+satisfies $\vis(a)=v(\com)$.
+Also, we say that $\calA$ is a {\em test-visibly} RPDA if
+there exists a function $\vis_t: \Sigma\to\Tst_k$
+such that
+every rule $(q,a,\tst)\to(q',\asgn,\com)$ of $\calA$
+satisfies $\vis_t(a)=\tst$.
+If $\calA$ is stack-visibly and test-visibly RPDA,
+we call $\calA$ a visibly RPDA.
+Let \DRPDAv\ be the union of visibly $k$-DRPDA for all $k\in\Natz$, respectively.
