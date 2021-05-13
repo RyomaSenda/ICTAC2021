@@ -212,16 +212,16 @@ For all rules
 (note that $v(\com_1)=\vis(a)=v(\com)$ always hold) for $a\in A^\dblI_{k}\cup A^\dblO_{k}$,
 let $\tst^{+ k_1}=\{i+k_1\mid i\in\tst\}\cup\{\top\mid\top\in\tst\setminus[k_1]\}, \asgn^{+ k_1}=\{i+k_1\mid i\in\asgn\}$ and $\com^{+ k_1} = \push(j+k_1)$ if $\com=\push(j)$ and $\com^{+ k_1} = \com$ otherwise, then $\delta$ consists of the rules
 \begin{align}
-((q_1, q, 1), \tau, \tst[0,k_1+k_2+2]\cup\{\top\}) &\to ((q_1, q, 2), \{k_1+k_2+1\}, \pop)\tag{\ref{eq: LkS5}}\\
-((q_1, q, 2), \tau, \tst[0,k_1+k_2+2]\cup\{\top\}) &\to ((q_1, q, 3), \{k_1+k_2+2\}, \push(k_1+k_2+1))\tag{\ref{eq: LkS6}}\\
+((q_1, q, 1), \tau, \T^{k_1+k_2+2}_{1}\cup\{\top\}) &\to ((q_1, q, 2), \{k_1+k_2+1\}, \pop)\tag{\ref{eq: LkS5}}\\
+((q_1, q, 2), \tau, \T^{k_1+k_2+2}_{1}\cup\{\top\})&\to ((q_1, q, 3), \{k_1+k_2+2\}, \push(k_1+k_2+1))\tag{\ref{eq: LkS6}}\\
 ((q_1, q, 3), a,
-\tst_1\cup ((\tst^{+ k_1}\setminus\{\top\})\cup\Top))
- &\to ((q_2, q', 4), \asgn_1\cup\asgn^{+ k_1}, \com^{+ k_1})\tag{\ref{eq: LkS7}}\\
-((q_2, q, 4), \tau,((\tst_2\setminus\{\top\})\cup\Top')\cup\tst[k_1,k_1+k_2+1])
+\tst_1\cup ((\tst^{+ k_1}\ \setminus\ &\{\top\})\cup\Top))\nonumber\\
+&\to ((q_2, q', 4), \asgn_1\cup\asgn^{+ k_1}, \com^{+ k_1})\tag{\ref{eq: LkS7}}\\
+((q_2, q', 4), \tau,((\tst_2\setminus\{\top\})\ \cup\ &\Top')\cup\T^{k_1+k_2+1}_{k_1+1})\nonumber\\
 &\to ((q_3, q', 5), \asgn_2, \com_1)\tag{\ref{eq: LkS8}}\\
-((q_3, q', 5), \tau, \tst_3\cup\tst[k_1,k_1+k_2+2]) &\to ((q_4, q', 1), \asgn_3, \skip)\tag{\ref{eq: LkS9}}
+((q_3, q', 5), \tau, \tst_3\cup\T^{k_1+k_2+2}_{k_1+1}) &\to ((q_4, q', 1), \asgn_3, \skip)\tag{\ref{eq: LkS9}}
 \end{align}
-for all $\tst[i,j]\in\Tst_{j}\setminus\Tst_{i}$ (we assume $\Tst_0=\emptyset$) where
+for all $\T^{j}_{i}\in\Tst_{j}\setminus\Tst_{i-1}$ (we assume $\Tst_0=\emptyset$) where
 $\Top=\{k_1+k_2+2\}$ ($\Top'=\{k_1+k_2+1\}$) if $\top\in\tst$ ($\top\in\tst_2$) and $\Top=\emptyset$ ($\Top'=\emptyset$) otherwise.
 
 Fig. \ref{fig: lem_LkS} indicates an example of transitions

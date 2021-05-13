@@ -139,7 +139,7 @@
 \newcommand{\COMPBLT}{\COMPBL_{\mathtt{T}}}
 \newcommand{\AUG}{\mathrm{aug}}
 \newcommand{\fst}{\mathit{fst}}
-\newcommand{\scnd}{\mathit{scnd}}
+\newcommand{\scnd}{\mathit{snd}}
 \newcommand{\phizero}{\phi_{\bot}}
 \newcommand{\QI}{Q_{\mathbb{i}}}
 \newcommand{\QO}{Q_{\mathbb{o}}}
@@ -173,15 +173,15 @@
 %%\setcounter{theorem}{1}
 
 \begin{document}
-\title{Title}
+\title{Reactive Synthesis from \\ Visibly Register Pushdown Automata}
 
 \author{Ryoma Senda\inst{1} \and Yoshiaki Takata\inst{2}
 	\and Hiroyuki Seki\inst{1}}
 
-\institute{Graduate School of Informatics, Nagoya University,  \\
+\institute{Graduate School of Informatics, Nagoya University  \\
    Furo-cho, Chikusa, Nagoya 464-8601, Japan \\
    \email{ryoma.private@sqlab.jp}, \email{seki@i.nagoya-u.ac.jp}
-	\and Graduate School of Engineering, Kochi University of Technology,\\
+	\and Graduate School of Engineering, Kochi University of Technology\\
    Tosayamada, Kami City, Kochi 782-8502, Japan \\
    \email{takata.yoshiaki@kochi-tech.ac.jp}
 }
@@ -192,16 +192,21 @@
 The realizability problem for
 a given specification $\calS$ is to decide
 whether there exists an implementation satisfying $\calS$.
-However the problem is important in the field of reactive synthesis,
+Although the problem is important in the field of reactive synthesis
+of recursive programs,
 the problem has not been studied yet
 when specification and implementation are given by
 pushdown computational models.
 This paper investigates
 the realizability problem for the cases that
-specification and implementation are given by
+a specification and an implementation are given by
 a pushdown automaton (PDA) and a pushdown transducer (PDT),
 and a register pushdown automata (RPDA) and a register pushdown transducer (RPDT).
 \end{abstract}
+
+% Keyword
+% Reactive synthesis, Realizability problem, Pushdown automata, Register pushdown automata
+
 \input{introduction}
 \input{preliminaries}
 \input{PDA}

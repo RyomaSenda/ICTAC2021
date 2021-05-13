@@ -5,7 +5,7 @@ be the function
 defined as $\sigma((a,d))=a$
 for any $a\in\Sigma\cup\{\tau\}$ and $d\in D$.
 In this subsection, we show that we can construct an NPDA $\calA'$
-from a given $k$-NRPDA $\calA$ over $\SigmaI$, $\SigmaO$, $D$
+from a given $k$-NRPDA $\calA$ over $\SigmaI$, $\SigmaO$, $\Gamma$
 such that $\sigma(L(\calA))=L(\calA')$.
 
 Let $\Phi_k$ be the set of
@@ -22,7 +22,7 @@ for $a,b\in X_k$ and $\phi\in\Phi_k$.
 Intuitively,
 each $\phi\in\Phi_k$ represents the equality and inequality
 among the data values in the registers and the stack top,
-as well as the transition of the values in the registers
+as well as the transfer of the values in the registers
 between two assignments.
 Two assignments $\theta,\theta'$ and a value $d$ at the stack top
 satisfy $\phi$,
@@ -128,7 +128,7 @@ By definition, $\COMP$ is associative.
 \smallskip
 
 Let $\calA=(Q,\QI,\QO,q_0,\delta,c)$ be a $k$-NRPDA
-over $\SigmaI$, $\SigmaO$, and $D$.
+over $\SigmaI$, $\SigmaO$, and $\Gamma$.
 We construct a PDA
 $\calA'=(Q',\QI',\QO',q'_0,\phizero,\delta',c')$
 over $\SigmaI$, $\SigmaO$, and $\Phi_k$,
@@ -150,7 +150,7 @@ satisfying the following inference rules:
   \phi_3\in \phi_2\COMPBLT\Phi_k^{\tst,\asgn}
   \\ \hline
   \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_2\COMP\phi_3),\skip)
-\end{array}
+\end{array}\label{eq: PDAtoRPDA1}
 %
 \\[\medskipamount]
 &
@@ -160,7 +160,7 @@ satisfying the following inference rules:
   \phi_3\in \phi_2\COMPBLT\Phi_k^{\tst,\asgn}
   \\ \hline
   \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_1\COMP\phi_2\COMP\phi_3),\pop)
-\end{array}
+\end{array}\label{eq: PDAtoRPDA2}
 %
 \\[\medskipamount]
 &
@@ -171,7 +171,7 @@ satisfying the following inference rules:
   \phi_4\in \phi_3\COMPBL\Phi_k^{=,j}
   \\ \hline
   \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_4),\push(\phi_2\COMP\phi_3))
-\end{array}
+\end{array}\label{eq: PDAtoRPDA3}
 %
 \end{align}
 
@@ -199,7 +199,7 @@ $\theta'=\theta[\asgn\gets d]$, and
 $v'= v(1{:})$, $v$, or $(\theta'(j'),\theta')v$
 if $\com=\pop$, $\skip$, or $\push(j')$, respectively.
 Obviously,
-$\calS_{\calA}$ and $\calS_{\calA'}$ are bisimilar;
+$\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$ are bisimilar;
 the smallest relation $R\subseteq \ID_{\!\calA}\times\ID_{\!\calA}^{\AUG}$
 satisfying
 $((q,\theta,\fst(v)),\allowbreak (q,\theta,v))\in R$
@@ -207,6 +207,8 @@ for every $(q,\theta,v)\in\ID_{\!\calA}^{\AUG}$
 is a bisimulation relation
 between $\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$.
 We can show the following lemma.
+Note that if $\calA$ is a test-visibly DRPDA,
+$\calA'$ is deterministic.
 %
 \begin{lemma}\label{lemma:bisim-rpda-pda}
 $\calS_{\calA}^{\AUG}$ is $\sigma$-bisimilar to
@@ -243,7 +245,7 @@ then
 there exist $\tst$, $\asgn$, $\com$, and $d$ such that
 $\delta(q,a,\tst)\ni (q',\asgn,\com)$,
 $\theta_n,d,d_{n-1}\models\tst$,
-$\theta'=\theta[\asgn\gets d]$, and
+$\theta'=\theta_n[\asgn\gets d]$, and
 $v'=v(1{:})$, $v$, or
 $(\theta'(j'),\theta')v$
 if $\com=\pop$, $\skip$, or $\push(j')$, respectively.
@@ -259,9 +261,7 @@ $\com'=\push(\phi_n\COMP\phi')$ and $\phi''\in\phi'\COMPBL\Phi_k^{=,j'}$
 if $\com=\push(j')$.
 Therefore,
 $((q,\phi_n),u)\vdash_{\calA'}^a ((q',\phi''),u')$
-where $u'=u(1{:})$, $u$, or
-$(\phi_n\COMP\phi')u$ for $u=\phi_{n-1}\ldots\phi_0$
-if $\com'=\pop$, $\skip$, or $\push(\phi_n\COMP\phi')$, respectively.
+where $u'=\upds(u,\com')$.
 Because $\theta_{n-1},d_{n-1},\theta_n\models\phi_n$ and
 $\theta_n,d_{n-1},\theta'\models\phi'$,
 $\theta_{n-1},d_{n-1},\theta'\models\phi_n\COMP\phi'$.
@@ -278,9 +278,7 @@ On the other hand,
 if $((q,\phi_n),u)\vdash_{\calA'}^a ((q',\phi''),u')$, then
 $\delta'((q,\phi_n),a,\allowbreak
 \phi_{n-1})\ni ((q',\phi''),\com')$
-where
-$\com'=\pop$, $\skip$, or $\push(\phi''')$ if
-$u'=u(1{:})$, $u$, or $\phi'''u$, respectively.
+where $u'=\upds(u,\com')$ holds.
 By definition,
 there exist $\tst$, $\asgn$, $\com$, and
 $\phi'\in\phi_n\COMP\Phi_k^{\tst,\asgn}$ such that
@@ -311,6 +309,7 @@ By Lemmas~\ref{lemma:bisim-lang} and \ref{lemma:bisim-rpda-pda},
 we obtain the following theorem.
 \begin{theorem}
 \label{the: RPDAtoPDA}
-For a given $(m,k)$-NRPDA $\calA$, we can construct an NPDA $m$-$\calA'$
+For a given $(m,k)$-NRPDA (test-visibly $(m,k)$-DRPDA) $\calA$,
+we can construct an $m$-NPDA ($m$-DPDA) $\calA'$
 such that $\sigma(L(\calA))=L(\calA')$.
 \end{theorem}

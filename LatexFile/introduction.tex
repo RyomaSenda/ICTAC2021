@@ -11,22 +11,20 @@ there exists a reactive system satisfying $S$, and if exists, to generate such a
 (called an implementation of $S$).
 
 Studies on reactive synthesis has its origin in 1960s and has been one of central topics
-in formal methods, as well as model checking \cite{CGP01}.
-Among them, B\"{u}chi and Landweber \cite{BL69} show EXPTIME-completeness of the problem
+in formal methods \cite{CGP01}.
+Among them, B\"{u}chi and Landweber \cite{BL69} showed EXPTIME-completeness of the problem
 when a specification is given by a finite $\omega$-automaton (a finite automaton on infinite words).
-Pnueli and Rosner \cite{PR89} show 2EXPTIME-completeness of the problem
+Pnueli and Rosner \cite{PR89} showed 2EXPTIME-completeness of the problem
 when a specification is given by an LTL formula.
 We can find an excellent tutorial and survey of the previous studies
 on the synthesis problem in \cite{BCJ18}.
 The standard approach to the problem is as follows.
 %Assume that a specification is given by a deterministic finite automaton ${\cal A}$
 %on infinite words of input and output symbols.
-When a specification is given by an LTL formula $\varphi$, we translate $\varphi$ to
-an equivalent nondeterministic $\omega$-automaton and then convert it to
-an equivalent deterministic $\omega$-automaton ${\cal A}$.
-Next, we convert ${\cal A}$ to a tree automaton (or equivalently, a parity game) ${\cal B}$
+Assume, for example, that a specification is given by a deterministic $\omega$-automaton ${\cal A}$.
+We convert ${\cal A}$ to a tree automaton (or equivalently, a parity game) ${\cal B}$
 by separating the input and output streams.
-Then, we test whether $L({\cal B})=\emptyset$ (or equivalently, there is a winning strategy
+Then, we test whether $L({\cal B})\neq\emptyset$ (or equivalently, there is a winning strategy
 for player I in ${\cal B}$).
 The answer to the problem is affirmative if and only if $L({\cal B})\not=\emptyset$,
 and any $t\in L({\cal B})$ (or any winning strategy for ${\cal B}$)
@@ -81,13 +79,13 @@ Both RPDA and RPDT read a data word, which is an infinite sequence of
 a pair $(a,d)$ of a symbol $a$ from a finite alphabet and a data value $d$ from
 an infinite set.
 We show that the projection of the language recognized by a nondeterministic RPDA
-to the finite alphabet can be recognized by a nondeterministic PDA.
-Note that we assume the freshness of input data values \cite{Tz10} for RPDA.
+onto the finite alphabet can be recognized by a nondeterministic PDA,
+when we assume the freshness of input data values \cite{Tz10} for RPDA.
 
 In section 6, we discuss the realizability problem for deterministic RPDA (DRPDA) and RPDT.
 Our approach is to reduce the problem for DRPDA to the problem for DPDA.
 In this reduction, we want to convert a given DRPDA to a DPDA that recognizes
-the projection to the finite alphabet of the former language by using the method
+the projection onto the finite alphabet of the former language by using the method
 in section 5.
 For this purpose, we further assume that a given DPDA has the visibility
 on the guard condition inherited from the DRPDA as well as the visibility
@@ -116,15 +114,15 @@ If the upperbound of the registers of RT is not given as an input,
 the realizability problem is undecidable for both of nondeterministic and
 universal RA \cite{EFR19}.
 If the upperbound of the registers is {\em a priori} known,
-the problem (called the bounded synthesis
-problem) is shown to be decidable in EXP-TIME for universal RA \cite{KK19}.
-In \cite{EFR19}, it is shown that the bounded synthesis problem remains undecidable
+the problem (called the bounded realizability
+problem) is shown to be decidable in EXPTIME for universal RA \cite{KK19}.
+In \cite{EFR19}, it is shown that the bounded realizability problem remains undecidable
 for nondeterministic RA (NRA) \cite{EFR19}
-and becomes decidable in 2EXP-TIME for a subclass called test-free NRA.
+and becomes decidable in 2EXPTIME for a subclass called test-free NRA.
 
 Extensions by adding registers are also done for PDA \cite{CL15,MRT17,STS21} and
 context-free languages \cite{CK98,STS18,STS19},
-called register pushdown automata (RPDA) and register context-free grammar (RCFG), respectively.
+called register pushdown automaton (RPDA) and register context-free grammar (RCFG), respectively.
 The expressive powers of RPDA and RCFG are the same.
 RPDA is a natural model for recursive programs with data values while
 RCFG has an advantage such that explicit representation of pushdown stack is not needed.

@@ -1,4 +1,4 @@
-\section{Register Pushdown Transducers and Register Pushdown Automata}
+\section{Register Pushdown Transducers and Automata}
 \subsection{Data words and registers}
 We assume a countable set $D$ of \emph{data values}.
 For finite alphabets $\Sigma_\dblI,\Sigma_\dblO$,
@@ -23,16 +23,17 @@ and ($e = d \Leftrightarrow \top\in\tst$) hold.
 In the definitions of register pushdown transducer and automaton in the next section,
 the data values $d$ and $e$ correspond to an input data value and a stack top data value, respectively.
 $\Asgn_k$ is the set of assignment conditions.
-For $\asgn\in\Asgn_k$, $\theta,\theta'\in\Theta_k$ and $d\in D$,
+For $\asgn\in\Asgn_k$, $\theta\in\Theta_k$ and $d\in D$,
 let $\theta[\asgn\leftarrow d]$ be the assignment
-$\theta'$ such that $\theta'(i) = d$ for $i\in\asgn$ and $\theta'(i)=\theta(i)$ for $i\notin\asgn$.
+$\theta'\in\Theta_k$ such that $\theta'(i) = d$ for $i\in\asgn$ and $\theta'(i)=\theta(i)$ for $i\notin\asgn$.
 
 \subsection{Register pushdown transducers}
 \begin{definition}
-A $k$-{register pushdown transducer} ($k$-RPDT) over finite alphabets $\Sigma_\dblI,\Sigma_\dblO$ and an infinite set $\Gamma$ of data values is
+A $k$-{register pushdown transducer} ($k$-RPDT) over finite alphabets $\Sigma_\dblI,\Sigma_\dblO$ and $\Gamma$ is
 $\calT=(P, p_0, z_0, \Delta)$ where
 $P$ is a finite set of states,
 $p_0\in P$ is the initial state,
+$z_0\in \Gamma$ is the initial stack symbol and
 $\Delta: P\times\Sigma_\dblI\times\Tst_k\times\Gamma \to P\times\Sigma_\dblO\times \Asgn_k \times [k]\times \Com(\Gamma\times[k])$ is a finite set of deterministic transition rules.
 \end{definition}
 % $D$ is used as a stack alphabet.
@@ -41,7 +42,7 @@ Let $\ID_\calT= P\times \Theta_k\times (\Gamma\times D)^*$
 and $\Rightarrow_\calT\ \subseteq \ID_\calT\times ((\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D))\times \ID_\calT$ be the transition relation of $\calT$ such that $((p, \theta, u), (a,d^\dblI)(b,d^\dblO), (q, \theta', u'))\in\ \Rightarrow_\calT$ iff
 there exists a rule $(p, a, \tst, z) \to (q, b, \asgn, j, \com) \in \Delta$
 that satisfies the following conditions:
-$(d^\dblI, \scnd(u(0)), \theta)\models\tst$, $\theta' = \theta[\asgn\leftarrow d^\dblI]$, $\theta'(j) = d^\dblO$
+$(d^\dblI, \scnd(u(0)), \theta)\models\tst$, $\theta' = \theta[\asgn\leftarrow d^\dblI]$, $\theta'(j) = d^\dblO$,
 $z=\fst(u(0))$ and
 $u'=\upds(u,\theta',\com)$,
 and we write $(p, \theta, u) \done_{\calT}^{(a,d^\dblI)(b,d^\dblO)}(q, \theta', u')$.
@@ -77,29 +78,31 @@ then $(\rho,w)$ is a run of $\calT$.
 
 \subsection{Register pushdown automata}\label{sec:RA}
 \begin{definition}
-A nondeterministic $k$-register pushdown automaton ($k$-NRPDA) over $\Sigma_\dblI,\Sigma_\dblO$ and $D$ is $\calA=(Q, Q_\dblI, Q_\dblO, q_0, \delta, c)$, where
+A nondeterministic $k$-register pushdown automaton ($k$-NRPDA) over $\Sigma_\dblI,\Sigma_\dblO$ and $\Gamma$ is $\calA=(Q, Q_\dblI, Q_\dblO, q_0, z_0, \delta, c)$, where
 \begin{itemize}
 \item $Q$ is a finite set of states,
 \item $Q_\dblI\cup Q_\dblO = Q, Q_\dblI\cap Q_\dblO = \emptyset$,
-\item $q_0\in Q$ is the initial state, and
-\item $\delta: Q \times (\Sigma\cup\{\tau\})\times \Tst_k \to \scrP(Q \times\Asgn_k\times \Com([k]))$ is a transition function having one of the forms:
+\item $q_0\in Q$ is the initial state, 
+\item $z_0\in \Gamma$ is the initial stack symbol and
+\item $\delta: Q \times (\Sigma\cup\{\tau\})\times \Tst_k\times\Gamma \to \scrP(Q \times\Asgn_k\times \Com(\Gamma\times[k]))$ is a transition function having one of the forms:
 \begin{itemize}
-\item $(q_\dblX,a_\dblX,\tst)\to(q_\overX,\asgn,\com)$ (input/output rule)
-\item $(q_\dblX,\tau,\tst)\to(q'_\dblX,\asgn,\com)$ ($\tau$ rule)
+\item $(q_\dblX,a_\dblX,\tst,z)\to(q_\overX,\asgn,\com)$ (input/output rule)
+\item $(q_\dblX,\tau,\tst,z)\to(q'_\dblX,\asgn,\com)$ ($\tau$ rule)
 \end{itemize}
 where $(\dblX, \overX)\in\{(\dblI, \dblO), (\dblO,\dblI)\}$,
-$q_\dblX, q'_\dblX\in Q_\dblX, q_\overX\in Q_\overX, a_\dblX\in \Sigma_\dblX$, $\tst\in\Tst_k$, $\asgn\in\Asgn_k$ and $\com\in\Com([k])$.
+$q_\dblX, q'_\dblX\in Q_\dblX, q_\overX\in Q_\overX, a_\dblX\in \Sigma_\dblX$, $\tst\in\Tst_k$, $\asgn\in\Asgn_k$ and $\com\in\Com(\Gamma\times[k])$.
 \item $c: Q \to [n]$ where $n\in \Nat$ is the number of priorities.
 \end{itemize}
 \end{definition}
 \noindent
-Let $\ID_\calA= Q\times \Theta_k\times D^*$.
+Let $\ID_\calA= Q\times \Theta_k\times (\Gamma\times D)^*$.
 We define the transition relation $\vdash_\calA\ \subseteq\ID_\calA\times ((\Sigma\cup\{\tau\})\times D)\times \ID_\calA$ as
 $((q,\theta,u), (a,d), (q',\theta',u'))\in\ \vdash_\calA$,
 written as $(q,\theta,u)\vdash^{(a,d)}_{\calA}(q',\theta',u')$, iff
-there exists a rule $(p, a, \tst) \to (q, \asgn, \com) \in \delta$
+there exists a rule $(p, a, \tst, z) \to (q, \asgn, \com) \in \delta$
 such that
-$(d, u(0), \theta)\models\tst$, $\theta' = \theta[\asgn\leftarrow d]$ and
+$(d, \scnd(u(0)), \theta)\models\tst$, $\theta' = \theta[\asgn\leftarrow d]$,
+$z=\fst(u(0))$ and
 $u'= \upds(u,\theta',\com)$.
 For $s,s'\in\ID_\calA$ and
 $w\in((\Sigma_\dblI\times D)\cdot (\Sigma_\dblO\times D))^{m}$,
@@ -109,15 +112,33 @@ $\rho(0)=s, \rho(m)=s'$, and
 $\rho(0)\vdash^{w(0)}\cdots\vdash^{w(m-1)}\rho(m)$.
 
 A run and the language $L(\calA)$ of $k$-DRPDA $\calA$ are those of TS
-$\calS_\calA=(\ID_\calA, (q_0, \theta^k_\bot, \bot), \Sigma\times D, \{\tau\}\times D, \vdash_\calA, c')$ where
+$\calS_\calA=(\ID_\calA, (q_0, \theta^k_\bot, (z_0,\bot)), \Sigma\times D, \{\tau\}\times D, \vdash_\calA, c')$ where
 $c'((q,\theta,u))=c(q)$ for all $(q,\theta,u)\in\ID_\calA$.
 We call $\calA$ deterministic, or $k$-DRPDA, if $\calS_\calA$ is deterministic.
 We call $\calA$ an $(m,k)$-NRPDA (or an $(m,k)$-DRPDA when $\calA$ is deterministic)
 if $\calS_\calA$ is an $m$-TS.
 We abbreviate $(0,k)$-NRPDA ($(0,k)$-DPDA) as $k$-NRPDA ($k$-DRPDA).
+Let \DRPDA\ and \NRPDA\ be the unions of $k$-DRPDA and $k$-NRPDA for all $k\in\Natz$, respectively.
+
+\medskip
+For simplicity,
+we assume that the set of stack alphabet $\Gamma$
+is the singleton $\{z\}$.
+We abbreviate
+$k$-RPDT $\calT=(P, p_0, z_0, \Delta)$ as $\calT=(P, p_0, \Delta)$,
+the set of all
+IDs of $k$-RPDT $P\times\Theta_k\times(\Gamma\times D)^+$
+as $P\times\Theta_k\times D^*$,
+the stack command $\Com(\Gamma\times[k])$ as $\Com([k])$,
+every rules $(p, a, \tst, z) \to (q, b, \asgn, j, \com)$ of $\calT$ as
+$(p, a, \tst) \to (q, b, \asgn, j, \com')$ where
+$\com\in\Com(\Gamma\times[k])$ and $\com'\in\Com([k])$
+such that $\com'=\com$ if $\com=\pop$ or $\skip$ and
+$\com'=\push(j')$ if $\com'=\push(z,j')$ for some $j'\in[k]$.
+except in the proof of Theorem \ref{th: DPDAv}.
+We apply a similar abbreviation to those of RPDA.
 
 \subsection{Visibly RPDA}
-Let \DRPDA\ and \NRPDA\ be the unions of $k$-DRPDA and $k$-NRPDA for all $k\in\Natz$, respectively.
 Let $\Com_v=\{\pop,\skip,\push\}$ and $v:\Com([k])\to\Com_v$ be the function such that $v(\push(j))=\push$ for $j\in[k]$ and $v(\com)=\com$ otherwise.
 We say that a $k$-DRPDA $\calA$
 over $\Sigma_\dblI,\Sigma_\dblI$ and $D$
@@ -134,3 +155,11 @@ satisfies $\vis_t(a)=\tst$.
 If $\calA$ is stack-visibly and test-visibly RPDA,
 we call $\calA$ a visibly RPDA.
 Let \DRPDAv\ be the union of visibly $k$-DRPDA for all $k\in\Natz$, respectively.
+
+In the next subsection,
+we show that the label of the language of an RPDA can be
+simulated by a PDA.
+The test-visibility of RPDA $\calA$ guarantees that
+the simulating PDA is deterministic if $\calA$ is deterministic.
+In the proof of Lemma \ref{lem: LkS} in Section 6,
+the stack-visibility of DRPDA enables us to take the intersection of two DRPDA.

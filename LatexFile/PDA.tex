@@ -1,4 +1,9 @@
 \section{Pushdown Transducers, Automata and Games}
+We assume that disjoint sets $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma$ denote
+a (finite) input alphabet, an output alphabet and a stack alphabet, respectively,
+and $\Sigma = \Sigma_\dblI \cup \Sigma_\dblO$.
+For a set $\Gamma$, let $\Com(\Gamma) = \{\pop,\skip\}\cup\{\push(z)\mid z\in \Gamma\}$ be the set of stack commands over $\Gamma$.
+
 \subsection{Pushdown Transducers}
 \begin{definition}
 A {pushdown transducer} (PDT)
@@ -23,7 +28,7 @@ a finite sequence representing stack contents $u \in \Gamma^*$,
 $(p, u)$ is called
 a {\em configuration} or {\em instantaneous description (abbreviated as ID)} of PDT $\calT$. Let $\ID_\calT$ denote the set of all IDs of $\calT$.
 For $u\in\Gamma^+$ and $\com\in\Com(\Gamma)$, let us define $\upds(u,\com)$
-as $\upds(u,\com)=u(1:)$, $\upds(u,\skip)=u$ and $\upds(u,\push(z'))=z'u$.
+as $\upds(u,\pop)=u(1:)$, $\upds(u,\skip)=u$ and $\upds(u,\push(z'))=z'u$.
 
 For two IDs $(p, u), (q, u')\in \ID_\calT$,
 $a\in\Sigma_\dblI$ and $b\in\Sigma_\dblO$,
@@ -47,7 +52,7 @@ We define a run and the language $L(\calT)\subseteq (\Sigma_\dblI \cdot \Sigma_\
 deterministic $0$-TS $(\ID_\calT, (q_0,z_0), \Sigma_\dblI\cdot\Sigma_\dblO, \emptyset, \Rightarrow_\calT, c)$ where $c(s)=2$ for all $s\in\ID_\calT$.
 In this paper,
 we assume that no run of PDT reaches an ID whose stack is empty.
-Let \PDT\ be the class consisting of PDT.
+Let \PDT\ be the class consisting of all PDT.
 
 \begin{example}
 \label{ex: PDT}
@@ -116,7 +121,6 @@ the transition relation $\vdash_\calA\subseteq \ID_\calA\times (\Sigma\cup\{\tau
 $((q,u),a,(q',u'))\in\ \vdash_\calA$ iff there exist a rule $(p, a, z) \rightarrow (q, \com) \in \delta$ and a sequence $u\in \Gamma^*$ such that $z=u(0)$ and $u'=\upds(u,\com)$.
 We write $(q,u)\vdash^a_\calA(q',u')$ iff
 $((q,u),a,(q',u'))\in\ \vdash_\calA$.
-We write $\vdash^{a}_\calA$ as $\vdash^{a}$ if $\calA$ is clear from comtext.
 We define a run and the language $L(\calA)$ of $\calA$ as those of TS $\calS_\calA=(\ID_\calA, (q_0,z_0),\Sigma, \{\tau\},\vdash_\calA,c')$
 where $c'((q,u))= c(q)$ for every $(q,u)\in\ID_\calA$.
 % We call a PDA $\calA=(P, p_0, z_0, \delta, c)$ deterministic if $|\delta(p,a,z)|\leq 1$ for all $p\in Q, a\in\Sigma$ and $z\in\Gamma$.
@@ -166,7 +170,7 @@ $\#_{push}(w')-\#_{pop}(w')\geq 0$
 for every subsequence $w'=w(0:m)$ of $w$ for all $m\in\Natz\}$.
 For PDT $\calT$ defined in Example \ref{ex: PDT},
 we know $L(\calT)\subseteq L(\calA)$
-because $L(\calT)=(\{0a\}\cup\{1b\})^\omega$ contains no sequence that includes a pop subsequences.
+because $L(\calT)=(\{0a\}\cup\{1b\})^\omega$ contains no sequence that includes a pop subsequence.
 \end{example}
 \begin{figure}[t]
   \centering
@@ -178,7 +182,7 @@ because $L(\calT)=(\{0a\}\cup\{1b\})^\omega$ contains no sequence that includes 
 \end{figure}
 
 The following lemma states that
-the class of language recognized by $m$-DPDA and $0$-DPDA are the same
+the class of languages recognized by $m$-DPDA and $0$-DPDA are the same
 for a fixed $m$.
 \begin{lemma}
 \label{lem: ef}
@@ -188,8 +192,8 @@ $L(\calA)=L(\calA')$
 \end{lemma}\
 {\bf Proof sketch}\quad
 We define the stack alphabet $\Gamma'$ of $\calA'$ as $\Gamma'=\Gamma^m$.
-We can simulate $m$-steps by consecutive push rules (or pop rules) of $\calA$
-as a single step by a push (or pop) rule of $\calA'$.
+We can simulate $m$-steps with consecutive push rules (or pop rules) of $\calA$
+by a single step with a push (or pop) rule of $\calA'$.
 
 % \begin{example}
 % \label{ex: PDA}
@@ -299,7 +303,7 @@ Then, $f_1$ and $f_2$ are well-defined and both of $f_1$ and $f_2$ are injection
 % Because $\calA$ is deterministic,
 % $\rho$ is determined uniquely.
 % \par\medskip\noindent
-\cite{Wa96} proved that
+It is proved in \cite{Wa96} that
 we can construct a PDT $\calT$
 that gives a winning strategy of $\calG_\calA$,
 that is, $L(\calT) = \{ f_1(\rho) \mid

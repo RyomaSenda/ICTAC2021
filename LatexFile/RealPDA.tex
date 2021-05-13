@@ -101,8 +101,8 @@ we can construct an NPDA $\calA' = (Q\times[2], Q\times\{1\}, Q\times\{2\}, q_0,
 where $\Sigma'_\dblI = \Sigma_\dblI\cup \Sigma_\dblO$,
 $\Sigma'_\dblO$ is an arbitrary (nonempty) alphabet,
 $c'((q,1))=c'((q,2))=c(q)$ for all $q\in Q$
-and $\delta'$ satisfies that
-$((q,1),a,z)\to ((q',2),\com)\in\delta$ iff $(q,a,z)\to (q',\com)\in\delta'$, and
+and
+$((q,1),a,z)\to ((q',2),\com)\in\delta'$ iff $(q,a,z)\to (q',\com)\in\delta$, and
 $((q',2),b,z)\to ((q',1),\skip)\in\delta'$ for all $b\in \Sigma'_\dblO$ and $z\in \Gamma$.
 
 We show $L(\calA)=(\Sigma'_\dblI)^\omega$ iff there exists $\calT$ such that $\calT\models\calA$.
@@ -114,4 +114,4 @@ Then, there exists a word $w\in(\Sigma'_\dblI)^\omega$ such that $w\notin L(\cal
 For any PDT $\calT$ and any $u\in(\Sigma'_\dblI)^\omega$, there is $v\in(\Sigma'_\dblO)^\omega$ such that $\<u, v\>\in L(\calA')$.
 On the other hand, $\<w, v\>\notin L(\calA')$ holds for any $v\in(\Sigma'_\dblO)^\omega$.
 Hence, $\calT\not\models\calA'$ holds for any PDT $\calT$.
-This completes the reduction and the realizability problem for PDT and NPDA is undecidable.
+This completes the reduction and the realizability problem for NPDA and PDT is undecidable.
