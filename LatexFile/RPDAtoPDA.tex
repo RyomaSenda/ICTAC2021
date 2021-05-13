@@ -1,12 +1,12 @@
 \subsection{PDA simulating RPDA}
 
-Let $\sigma:((\Sigma\cup\{\tau\})\times D)\to(\Sigma\cup\{\tau\})$
-be the function
-defined as $\sigma((a,d))=a$
-for any $a\in\Sigma\cup\{\tau\}$ and $d\in D$.
+%Let $\lab:((\Sigma\cup\{\tau\})\times D)\to(\Sigma\cup\{\tau\})$
+%be the function
+%defined as $\lab((a,d))=a$
+%for any $a\in\Sigma\cup\{\tau\}$ and $d\in D$.
 In this subsection, we show that we can construct an NPDA $\calA'$
 from a given $k$-NRPDA $\calA$ over $\SigmaI$, $\SigmaO$, $\Gamma$
-such that $\sigma(L(\calA))=L(\calA')$.
+such that $\lab(L(\calA))=L(\calA')$.
 
 Let $\Phi_k$ be the set of
 \emph{equivalence relations}
@@ -50,8 +50,8 @@ define a subset $\Phi_k^{\tst,\asgn}$ of $\Phi_k$ as:
       & (\forall i\in\asgn : \forall j\in [k]\cup\{\top\} :
       j\in\tst \Leftrightarrow \L_j \equiv_{\phi} \R_i), \\
       & (\forall i,j\in\asgn :
-      \R_i \equiv_{\phi} \R_j), \\
-      & (\forall i\in [k]\setminus\asgn :
+      \R_i \equiv_{\phi} \R_j), \
+       (\forall i\in [k]\setminus\asgn :
       \L_i \equiv_{\phi} \R_i)\}.
     \end{aligned}
 \]
@@ -74,7 +74,7 @@ $\phi\in\Phi_k^{=,j}$
 iff
 $\theta'=\theta$ and $\theta(j)=e$.
 
-Let $\COMPBL$ and $\COMPBLT$ be binary relations over $\Phi_k$ defined as:
+Let $\COMPBL$ and $\COMPBLT$ be binary predicates over $\Phi_k$ defined as:
 \begin{align*}
   \phi_1\COMPBL\phi_2 \ &:\Leftrightarrow \
       \R_i \equiv_{\phi_1} \R_j \Leftrightarrow \L_i \equiv_{\phi_2} \L_j
@@ -129,7 +129,14 @@ By definition, $\COMP$ is associative.
 
 Let $\calA=(Q,\QI,\QO,q_0,\delta,c)$ be a $k$-NRPDA
 over $\SigmaI$, $\SigmaO$, and $\Gamma$.
-We construct a PDA
+As mentioned in Section~\ref{sec:RA},
+we assume that $\Gamma$ is a singleton and
+use the simplified definition of $\delta$ for readability.
+Note that we can extend the following results to arbitrary $\Gamma$
+by replacing $\Phi_k$ used as the stack alphabet of
+the constructed PDA with $\Gamma\times\Phi_k$.
+%
+From $\calA$, we construct a PDA
 $\calA'=(Q',\QI',\QO',q'_0,\phizero,\delta',c')$
 over $\SigmaI$, $\SigmaO$, and $\Phi_k$,
 where $Q'=Q\times\Phi_k$, $\QI'=\QI\times\Phi_k$, $\QO'=\QO\times\Phi_k$,
@@ -174,13 +181,40 @@ satisfying the following inference rules:
 \end{array}\label{eq: PDAtoRPDA3}
 %
 \end{align}
+Note that if $\calA$ is a test-visibly DRPDA,
+$\calA'$ is deterministic.
+The number of equivalence relations in $\Phi_k$ equals
+the $(2k+1)$th Bell number
+and is $2^{O(k\log k)}$.
+When constructing $\delta'$,
+we choose arbitrary $\phi_1$ and $\phi_2$ for each transition rule of
+$\calA$ in general,
+and thus the size of $\calA'$ is exponential to the one of $\calA$.
+
+The main idea of this construction is as follows:
+$\calA'$ simulates $\calA$ without keeping data values in
+the stack.
+When $\pop$ is performed,
+$\calA'$ must know whether or not
+the data value in the new stack top of $\calA$
+equals the \emph{current} value of each register.
+For this purpose,
+$\calA'$ keeps an abstract ``history'' of
+the register assignments in the stack,
+which tells whether
+each of the data values in the stack of $\calA$ equals
+the current value of each register.
+The precise meanings of the stack of $\calA'$
+will become clear
+by considering the $\lab$-bisimulation relation
+shown in the proof of Lemma~\ref{lemma:bisim-rpda-pda} below.
 
 Let $\calS_{\calA}=(\ID_{\!\calA},(q_0,\theta_{\bot},\bot),
 \Sigma\times D,\{\tau\}\times D,{\vdash_{\!\calA}},c_{\calA})$
 and $\calS_{\calA'}=(\ID_{\!\calA'},(q'_0,\phizero),\allowbreak
 \Sigma,\{\tau\},{\vdash_{\!\calA'}},c_{\calA'})$ be the TSs
 that represent the semantics of $\calA$ and $\calA'$, respectively.
-Below we show that $\calS_{\calA}$ is $\sigma$-bisimilar to
+Below we show that $\calS_{\calA}$ is $\lab$-bisimilar to
 $\calS_{\calA'}$.
 We define an intermediate TS
 $\calS_{\calA}^{\AUG}=
@@ -198,23 +232,36 @@ $d,\fst(v(0)),\theta\models\tst$,
 $\theta'=\theta[\asgn\gets d]$, and
 $v'= v(1{:})$, $v$, or $(\theta'(j'),\theta')v$
 if $\com=\pop$, $\skip$, or $\push(j')$, respectively.
-Obviously,
-$\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$ are bisimilar;
+$\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$ are essentially
+the same TSs but $\calS_{\calA}^{\AUG}$
+``saves'' the current register assignment in the stack.
+The saved assignments do not take part in transitions and thus
+%the behaviors of 
+%$\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$ are the same.
+%Obviously,
+$\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$ are obviously bisimilar;
 the smallest relation $R\subseteq \ID_{\!\calA}\times\ID_{\!\calA}^{\AUG}$
 satisfying
 $((q,\theta,\fst(v)),\allowbreak (q,\theta,v))\in R$
 for every $(q,\theta,v)\in\ID_{\!\calA}^{\AUG}$
 is a bisimulation relation
 between $\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$.
-We can show the following lemma.
-Note that if $\calA$ is a test-visibly DRPDA,
-$\calA'$ is deterministic.
+%
+On the other hand,
+each equivalence relation in the stack of $\calA'$ represents
+the relation among each data value in the stack and
+two adjacent saved assignments
+of $\calS_{\calA}^{\AUG}$,
+which yields $\lab$-bisimilarity from
+$\calS_{\calA}^{\AUG}$ to $\calS_{\calA'}$,
+as shown in the following lemma.
 %
 \begin{lemma}\label{lemma:bisim-rpda-pda}
-$\calS_{\calA}^{\AUG}$ is $\sigma$-bisimilar to
+$\calS_{\calA}^{\AUG}$ is $\lab$-bisimilar to
 $\calS_{\calA'}$.
 \end{lemma}
-\begin{proof}
+%
+{\bf Proof sketch.}\quad
 Let $R\subseteq \ID_{\!\calA}^{\AUG}\times\ID_{\!\calA'}$
 be the smallest relation
 that satisfies
@@ -227,7 +274,52 @@ if
 $\forall i\in[n]: \theta_{i-1},d_{i-1},\theta_i\models\phi_i$ and
 $\theta_{\bot},{\bot},\theta_0\models\phi_0$.
 %
-We can show that $R$ is a $\sigma$-bisimulation relation from
+If
+$((q,\theta_n,v), ((q,\phi_n),u))\in R$ and
+$(q,\theta_n,v)\vdash_{\calA^{\AUG}}^{(a,d)}(q',\theta',v')$,
+then by the definition of $\delta'$,
+$((q,\phi_n),u)\vdash_{\calA'}^a ((q',\phi''),u')$
+such that $((q',\theta',v'), ((q',\phi''),u'))\in R$.
+Conversely, if
+$((q,\theta_n,v),\allowbreak ((q,\phi_n),u))\in R$ and
+$((q,\phi_n),u)\vdash_{\calA'}^a ((q',\phi''),u')$,
+then by the definition of $\delta'$,
+there must be a transition of $\calA$ that enables
+$(q,\theta_n,v)\vdash_{\calA^{\AUG}}^{(a,d)} (q',\theta',v')$
+such that $((q',\theta',v'), ((q',\phi''),u'))\in R$.
+%
+Therefore, $R$ is a $\lab$-bisimulation relation from
+$\calS_{\calA}^{\AUG}$ to $\calS_{\calA'}$.
+
+\smallskip
+
+By Lemmas~\ref{lemma:bisim-lang} and \ref{lemma:bisim-rpda-pda},
+we obtain the following theorem.
+\begin{theorem}
+\label{the: RPDAtoPDA}
+For a given $(m,k)$-NRPDA (resp.\ test-visibly $(m,k)$-DRPDA) $\calA$,
+we can construct an $m$-NPDA (resp.\ $m$-DPDA) $\calA'$
+such that $\lab(L(\calA))=L(\calA')$.
+\end{theorem}
+
+-----------------------------------------------------
+
+A full proof of Lemma~\ref{lemma:bisim-rpda-pda}
+
+%\begin{proof}
+Let $R\subseteq \ID_{\!\calA}^{\AUG}\times\ID_{\!\calA'}$
+be the smallest relation
+that satisfies
+for every $q\in Q$, $\theta_0,\ldots,\theta_n\in\Theta_k$,
+$d_0,\ldots,d_{n-1}\in D$, and $\phi_0,\ldots,\phi_n\in\Phi_k$,
+$((q,\theta_n,(d_{n-1},\theta_{n-1})\allowbreak\ldots\allowbreak
+(d_1,\theta_1)(d_0,\theta_0)),
+((q,\phi_n),\phi_{n-1}\ldots\phi_1\phi_0))\in R$
+if
+$\forall i\in[n]: \theta_{i-1},d_{i-1},\theta_i\models\phi_i$ and
+$\theta_{\bot},{\bot},\theta_0\models\phi_0$.
+%
+We can show that $R$ is a $\lab$-bisimulation relation from
 $\calS_{\calA}^{\AUG}$ to $\calS_{\calA'}$.
 
 Assume that
@@ -303,13 +395,4 @@ $(\theta'(j'),\theta')v$
 if $\com=\pop$, $\skip$, or $\push(j')$, respectively.
 We can show that $((q',\theta',v'),((q',\phi''),u'))\in R$
 in the same way as the last paragraph.
-\end{proof}
-
-By Lemmas~\ref{lemma:bisim-lang} and \ref{lemma:bisim-rpda-pda},
-we obtain the following theorem.
-\begin{theorem}
-\label{the: RPDAtoPDA}
-For a given $(m,k)$-NRPDA (test-visibly $(m,k)$-DRPDA) $\calA$,
-we can construct an $m$-NPDA ($m$-DPDA) $\calA'$
-such that $\sigma(L(\calA))=L(\calA')$.
-\end{theorem}
+%\end{proof}
