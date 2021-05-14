@@ -4,7 +4,7 @@ We assume a countable set $D$ of \emph{data values}.
 For finite alphabets $\Sigma_\dblI,\Sigma_\dblO$,
 an infinite sequence $(a^\dblI_1,d_1)(a^\dblO,d'_1)\cdots \in ((\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D))^\omega$ is called a \emph{data word}.
 We let $\DW(\Sigma_\dblI,\Sigma_\dblO,D)=((\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D))^\omega$.
-
+We define the projection $\lab: \Sigma\times D \to \Sigma$ as $\lab((a,d))=a$ for $(a,d)\in \Sigma\times D$.
 For $k\in\Natz$, a mapping $\theta: [k] \to D$ is called an \emph{assignment}
 (of data values to $k$ registers).
 Let $\Theta_k$ denote the collection of assignments to $k$ registers.
@@ -42,7 +42,7 @@ Let $\ID_\calT= P\times \Theta_k\times (\Gamma\times D)^*$
 and $\Rightarrow_\calT\ \subseteq \ID_\calT\times ((\Sigma_\dblI\times D)\cdot(\Sigma_\dblO\times D))\times \ID_\calT$ be the transition relation of $\calT$ such that $((p, \theta, u), (a,d^\dblI)(b,d^\dblO), (q, \theta', u'))\in\ \Rightarrow_\calT$ iff
 there exists a rule $(p, a, \tst, z) \to (q, b, \asgn, j, \com) \in \Delta$
 that satisfies the following conditions:
-$(d^\dblI, \scnd(u(0)), \theta)\models\tst$, $\theta' = \theta[\asgn\leftarrow d^\dblI]$, $\theta'(j) = d^\dblO$,
+$(\theta, d^\dblI, \scnd(u(0)))\models\tst$, $\theta' = \theta[\asgn\leftarrow d^\dblI]$, $\theta'(j) = d^\dblO$,
 $z=\fst(u(0))$ and
 $u'=\upds(u,\theta',\com)$,
 and we write $(p, \theta, u) \done_{\calT}^{(a,d^\dblI)(b,d^\dblO)}(q, \theta', u')$.
@@ -58,41 +58,22 @@ we assume that no run of RPDT reaches an ID whose stack is empty.
 Let \RPDTk\ be the class of $k$-RPDT and \RPDT = $\bigcup_{k\in\Natz}$\RPDTk.
 % Note that \RPDT$[0]$ = \PDT.
 
-\begin{example}
-\label{ex: RPDT}
-Let us consider $1$-RPDT
-$\calT = (\{p\},p,\Delta)$
-over $\{a\},\{b\}$ and $\{z\}$ where
-$\Delta = \{
-(p, a, \{1,\top\}) \rightarrow (p, b, \emptyset, 1, \skip),
-(p, a, \emptyset) \rightarrow (p, b, \{1\}, 1, \push(1))
-\}$
-Let $(\rho,w)\in \ID_\calT^\omega\times ((\{a\}\times D)\cdot(\{b\}\times D))^\omega$
-be a pair of sequences where
-$\rho=(p,[\bot],\bot)(p,[d_1],d_1\bot)(p,[d_1],d_1\bot)(p,[d_2],d_2d_1\bot)(p,[d_2],d_2d_1\bot)\cdots$
-, $[d]\in\Theta_1$ is the assignment such that $[d](1)=d$,
-and
-$w=(a,d_1)(b,d_1)(a,d_1)(b,d_1)(a,d_2)(b,d_2)(a,d_2)(b,d_2)\cdots$,
-then $(\rho,w)$ is a run of $\calT$.
-\end{example}
-
 \subsection{Register pushdown automata}\label{sec:RA}
 \begin{definition}
 A nondeterministic $k$-register pushdown automaton ($k$-NRPDA) over $\Sigma_\dblI,\Sigma_\dblO$ and $\Gamma$ is $\calA=(Q, Q_\dblI, Q_\dblO, q_0, z_0, \delta, c)$, where
-\begin{itemize}
-\item $Q$ is a finite set of states,
-\item $Q_\dblI\cup Q_\dblO = Q, Q_\dblI\cap Q_\dblO = \emptyset$,
-\item $q_0\in Q$ is the initial state, 
-\item $z_0\in \Gamma$ is the initial stack symbol and
-\item $\delta: Q \times (\Sigma\cup\{\tau\})\times \Tst_k\times\Gamma \to \scrP(Q \times\Asgn_k\times \Com(\Gamma\times[k]))$ is a transition function having one of the forms:
+$Q$ is a finite set of states,
+$Q_\dblI\cup Q_\dblO = Q, Q_\dblI\cap Q_\dblO = \emptyset$,
+$q_0\in Q$ is the initial state,
+$z_0\in \Gamma$ is the initial stack symbol,
+$c: Q \to [n]$ where $n\in \Nat$ is the number of priorities
+and
+$\delta: Q \times (\Sigma\cup\{\tau\})\times \Tst_k\times\Gamma \to \scrP(Q \times\Asgn_k\times \Com(\Gamma\times[k]))$ is a transition function having one of the forms:
 \begin{itemize}
 \item $(q_\dblX,a_\dblX,\tst,z)\to(q_\overX,\asgn,\com)$ (input/output rule)
 \item $(q_\dblX,\tau,\tst,z)\to(q'_\dblX,\asgn,\com)$ ($\tau$ rule)
 \end{itemize}
 where $(\dblX, \overX)\in\{(\dblI, \dblO), (\dblO,\dblI)\}$,
-$q_\dblX, q'_\dblX\in Q_\dblX, q_\overX\in Q_\overX, a_\dblX\in \Sigma_\dblX$, $\tst\in\Tst_k$, $\asgn\in\Asgn_k$ and $\com\in\Com(\Gamma\times[k])$.
-\item $c: Q \to [n]$ where $n\in \Nat$ is the number of priorities.
-\end{itemize}
+$q_\dblX, q'_\dblX\in Q_\dblX, q_\overX\in Q_\overX, a_\dblX\in \Sigma_\dblX$, $\tst\in\Tst_k$, $z\in\Gamma$, $\asgn\in\Asgn_k$ and $\com\in\Com(\Gamma\times[k])$.
 \end{definition}
 \noindent
 Let $\ID_\calA= Q\times \Theta_k\times (\Gamma\times D)^*$.
@@ -101,7 +82,7 @@ $((q,\theta,u), (a,d), (q',\theta',u'))\in\ \vdash_\calA$,
 written as $(q,\theta,u)\vdash^{(a,d)}_{\calA}(q',\theta',u')$, iff
 there exists a rule $(p, a, \tst, z) \to (q, \asgn, \com) \in \delta$
 such that
-$(d, \scnd(u(0)), \theta)\models\tst$, $\theta' = \theta[\asgn\leftarrow d]$,
+$(\theta, d, \scnd(u(0)))\models\tst$, $\theta' = \theta[\asgn\leftarrow d]$,
 $z=\fst(u(0))$ and
 $u'= \upds(u,\theta',\com)$.
 For $s,s'\in\ID_\calA$ and
@@ -128,9 +109,9 @@ We abbreviate
 $k$-RPDT $\calT=(P, p_0, z_0, \Delta)$ as $\calT=(P, p_0, \Delta)$,
 the set of all
 IDs of $k$-RPDT $P\times\Theta_k\times(\Gamma\times D)^+$
-as $P\times\Theta_k\times D^*$,
+as $P\times\Theta_k\times D^+$,
 the stack command $\Com(\Gamma\times[k])$ as $\Com([k])$,
-every rules $(p, a, \tst, z) \to (q, b, \asgn, j, \com)$ of $\calT$ as
+every rule $(p, a, \tst, z) \to (q, b, \asgn, j, \com)$ of $\calT$ as
 $(p, a, \tst) \to (q, b, \asgn, j, \com')$ where
 $\com\in\Com(\Gamma\times[k])$ and $\com'\in\Com([k])$
 such that $\com'=\com$ if $\com=\pop$ or $\skip$ and
@@ -138,28 +119,49 @@ $\com'=\push(j')$ if $\com'=\push(z,j')$ for some $j'\in[k]$.
 except in the proof of Theorem \ref{th: DPDAv}.
 We apply a similar abbreviation to those of RPDA.
 
+\begin{example}
+\label{ex: RPDT}
+Let us consider $1$-RPDT
+$\calT = (\{p\},p,\Delta)$
+over $\{a\},\{b\}$
+and $\Gamma$ ($=\{z\}$) where
+$\Delta = \{
+(p, a, \{1,\top\}) \rightarrow (p, b, \emptyset, 1, \skip),$
+$(p, a, \emptyset) \rightarrow (p, b, \{1\}, 1, \push(1))
+\}$
+Let $\rho=(p,[\bot],\bot)(p,[d_1],d_1\bot)(p,[d_1],d_1\bot)(p,[d_2],d_2d_1\bot)\cdots$
+, $[d]\in\Theta_1$ be the assignment such that $[d](1)=d$,
+and
+$w=(a,d_1)(b,d_1)(a,d_1)(b,d_1)(a,d_2)(b,d_2)\cdots$,
+then $(\rho,w)$ is a run of $\calT$.
+\end{example}
+
 \subsection{Visibly RPDA}
 Let $\Com_v=\{\pop,\skip,\push\}$ and $v:\Com([k])\to\Com_v$ be the function such that $v(\push(j))=\push$ for $j\in[k]$ and $v(\com)=\com$ otherwise.
 We say that a $k$-DRPDA $\calA$
-over $\Sigma_\dblI,\Sigma_\dblI$ and $D$
+over $\Sigma_\dblI,\Sigma_\dblO$ and $\Gamma$
 visibly manipulates its stack (or a {\em stack-visibly} RPDA) if
 there exists a function $\vis: \Sigma\to\Com_v$
 such that
 every rule $(q,a,\tst)\to(q',\asgn,\com)$ of $\calA$
 satisfies $\vis(a)=v(\com)$.
-Also, we say that $\calA$ is a {\em test-visibly} RPDA if
+We define a stack-visibly PDA in a similar way.
+Stack-visibility of RPDA will be used
+in the proof of Lemma \ref{lem: LkS}
+in order to take the intersection of the two DRPDA.
+
+Also, we say that $\calA$ is a {\em test-visibly} DRPDA if
 there exists a function $\vis_t: \Sigma\to\Tst_k$
 such that
 every rule $(q,a,\tst)\to(q',\asgn,\com)$ of $\calA$
 satisfies $\vis_t(a)=\tst$.
-If $\calA$ is stack-visibly and test-visibly RPDA,
-we call $\calA$ a visibly RPDA.
-Let \DRPDAv\ be the union of visibly $k$-DRPDA for all $k\in\Natz$, respectively.
-
 In the next subsection,
-we show that the label of the language of an RPDA can be
-simulated by a PDA.
-The test-visibility of RPDA $\calA$ guarantees that
-the simulating PDA is deterministic if $\calA$ is deterministic.
-In the proof of Lemma \ref{lem: LkS} in Section 6,
-the stack-visibility of DRPDA enables us to take the intersection of two DRPDA.
+we prove that the projection of the language recognized by
+a NRPDA $\calA$ onto the finite alphabets
+can be recognized by a NPDA $\calA'$,
+and if $\calA$ is a test-visibly DRPDA,
+$\calA'$ is deterministic.
+
+If $\calA$ is a stack-visibly and test-visibly DRPDA,
+we call $\calA$ a visibly DRPDA.
+Let \DRPDAv\ be the union of visibly $k$-DRPDA for all $k\in\Natz$, respectively.

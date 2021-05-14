@@ -2,9 +2,9 @@
 We assume that disjoint sets $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma$ denote
 a (finite) input alphabet, an output alphabet and a stack alphabet, respectively,
 and $\Sigma = \Sigma_\dblI \cup \Sigma_\dblO$.
-For a set $\Gamma$, let $\Com(\Gamma) = \{\pop,\skip\}\cup\{\push(z)\mid z\in \Gamma\}$ be the set of stack commands over $\Gamma$.
+Let $\Com(\Gamma) = \{\pop,\skip\}\cup\{\push(z)\mid z\in \Gamma\}$ be the set of stack commands over $\Gamma$.
 
-\subsection{Pushdown Transducers}
+\subsection{Pushdown transducers}
 \begin{definition}
 A {pushdown transducer} (PDT)
 over finite alphabets $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$
@@ -100,7 +100,7 @@ Also, $L(\calT)=(\{0a\}\cup\{1b\})^\omega$.
 % \end{figure}
 % \end{example}
 
-\subsection{Pushdown Automata}
+\subsection{Pushdown automata}
 
 \begin{definition}
 A nondeterministic {pushdown automata} (NPDA) over finite alphabets $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$ is $\calA = (Q, Q_\dblI, Q_\dblO, q_0, z_0, \delta, c)$ where
@@ -118,7 +118,7 @@ $q_\dblX, q'_\dblX\in Q_\dblX, q_\overX\in Q_\overX, a_\dblX\in \Sigma_\dblX$, $
 \end{definition}
 We define $\ID_\calA= Q\times \Gamma^*$ and
 the transition relation $\vdash_\calA\subseteq \ID_\calA\times (\Sigma\cup\{\tau\})\times \ID_\calA$ as
-$((q,u),a,(q',u'))\in\ \vdash_\calA$ iff there exist a rule $(p, a, z) \rightarrow (q, \com) \in \delta$ and a sequence $u\in \Gamma^*$ such that $z=u(0)$ and $u'=\upds(u,\com)$.
+$((q,u),a,(q',u'))\in\ \vdash_\calA$ iff there exist a rule $(q, a, z) \rightarrow (q', \com) \in \delta$ and a sequence $u\in \Gamma^*$ such that $z=u(0)$ and $u'=\upds(u,\com)$.
 We write $(q,u)\vdash^a_\calA(q',u')$ iff
 $((q,u),a,(q',u'))\in\ \vdash_\calA$.
 We define a run and the language $L(\calA)$ of $\calA$ as those of TS $\calS_\calA=(\ID_\calA, (q_0,z_0),\Sigma, \{\tau\},\vdash_\calA,c')$
@@ -245,7 +245,7 @@ by a single step with a push (or pop) rule of $\calA'$.
 %   \label{fig: PDA}
 % \end{figure}
 
-\subsection{Pushdown Games}
+\subsection{Pushdown games}
 
 \begin{definition}
 A {pushdown game} of DPDA $\calA = (Q, Q_\dblI, Q_\dblO, q_0, z_0, \delta, c)$ over $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma$ is $\calG_\calA = (V, V_\dblI, V_\dblO, E, C)$ where
@@ -254,7 +254,7 @@ and $C: V \to [n]$ is the coloring function such that
 $C((q,u)) = c(q)$ for all $(q,u)\in V$.
 \end{definition}
 
-The game starts with some $(q_0,z_0)\in V_\dblI$.
+The game starts with $(q_0,z_0)\in V_\dblI$.
 When the current vertex is $v\in V_\dblI$,
 Player II chooses a successor $v'\in V_\dblO$ of $v$ as the next vertex.
 When the current vertex is $v\in V_\dblO$,
@@ -269,7 +269,7 @@ A play $\rho\in \PL$ is \emph{winning} for Player I iff
 $\min\{m\in[n] \mid $ there exist an infinite
 number of $i\geq 0$ such that $c(\rho(i)) = m\}$ is even.
 
-By the definition of $\calG_\calA$,
+Since $\calA$ is deterministic,
 the following lemma holds.
 \begin{lemma}
 \label{lem: cor}
@@ -315,7 +315,7 @@ that is, $L(\calT) = \{ f_1(\rho) \mid
 \label{the: wal}
 If player I has a winning strategy of $\calG_\calA$,
 we can construct a PDT $\calT$ over $Q_\dblI\times\Com(\Gamma), Q_\dblO\times\Com(\Gamma)$ and a stack alphabet $\Gamma'$ that gives a winning strategy of $\calG_\calA$.
-That is, $\rho\in \PL$ is winning for Player I iff $f_1(\rho)\in L(\calT)$.
+That is, $\rho\in \PL$ is winning for Player I if $f_1(\rho)\in L(\calT)$.
 \end{theorem}
 
 By Lemma \ref{lem: cor},
@@ -324,9 +324,9 @@ the set of sequences $w\in\Sigma^\omega$
 such that the play $\rho$ is winning where $f_2(\rho)=w$.
 Thus, we can obtain the following lemma
 in a similar way to Theorem \ref{the: wal}.
-\begin{lemma}
-\label{lem: 2}
+\begin{corollary}
+\label{col: 2}
 If player I has a winning strategy of $\calG_\calA$,
 we can construct a PDT $\calT$ over $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma'$ that gives a winning strategy of $\calG_\calA$.
-That is, $\rho\in \PL$ is winning for Player I iff $f_2(\rho)\in L(\calT)$.
-\end{lemma}
+That is, $\rho\in \PL$ is winning for Player I if $f_2(\rho)\in L(\calT)$.
+\end{corollary}

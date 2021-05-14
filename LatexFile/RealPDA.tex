@@ -14,20 +14,20 @@ Thus, $\calT\models\calA$ holds.
 \end{example}
 
 \begin{theorem}\label{the: DPDA}
-\Real $($\DPDA, \PDT$)$ is decidable.
+\Real $($\DPDA, \PDT$)$ is in EXPTIME.
 \end{theorem}
 {\bf Proof.}\quad
 Let $\calA$ be a given DPDA.
-By Lemma \ref{lem: 2},
+By definitions, $f_2(\rho)\in L(\calA)$ iff
+$\rho$ is a winning play for Player I of $\calG_\calA$.
+By Corollary \ref{col: 2},
+if Player I has a winning strategy,
 we can construct a PDT $\calT$ such that
-$\rho$ is a winning play of $\calG_\calA$ iff $f_2(\rho)\in L(T)$.
-By the definition of $f_2$,
-$\rho(i)\vdash^{w(i)} \rho(i+1)$ holds
-for all $i\geq 0$ where $\rho\in\PL$ such that $f_2(\rho)=w$.
-Then, $w\in L(\calA)$ holds, and thus $\calT\models\calA$.
-Hence, $\calT\models\calA$ holds iff player I has a winning strategy for the game $\calG_\calA$.
-Because there is an algorithm for constructing $\calT$
-in \cite{Wa96}, \Real $($\DPDA, \PDT$)$ is decidable.
+$\rho$ is a winning play of $\calG_\calA$ if $f_2(\rho)\in L(\calT)$.
+Hence, $\calT\models\calA$ holds.
+If Player I does not have a winning strategy, there is no $\calT$ such that $\calT \models \calA$.
+Because there is an EXPTIME algorithm for constructing $\calT$ (if exists)
+in \cite{Wa96}, \Real $($\DPDA, \PDT$)$ is in EXPTIME.
 
 % \begin{theorem}
 % \Real $($\UPDA, \PDT$)$ is decidable.

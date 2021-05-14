@@ -202,51 +202,48 @@ $Q_\dblO=Q^\dblO_1\times Q^\dblO_2\times[5]$.
 $c$ is defined as $c(q_0)=1$ and
 $c((q_1,q_2,i))=c_2(q_2)$ for all $(q_1,q_2,i)\in Q$.
 $\delta$ has first $\tau$ rule $(q_0,\tau,[k]\cup\{\top\})\to((q^1_0, q^2_0,1), \push(1))$.
-For all rules
+For all rules (\ref{eq: Lk2}'), (\ref{eq: Lk3}'), (\ref{eq: Lk4}') in $\delta_1$ and
 \begin{align}
-(q_1, a, \tst_1) &\to  (q_2,\asgn_1, \skip)\in\delta_1\tag{\ref{eq: LkS1}}\\
-(q_2, \tau, \tst_2) &\to  (q_3,\asgn_2, \com_1)\in\delta_1\tag{\ref{eq: LkS2}}\\
-(q_3, \tau, \tst_3) &\to  (q_4,\asgn_3, \skip)\in\delta_1\tag{\ref{eq: LkS3}}\\
-(q, a, \tst) &\to (q',\asgn, \com)\in\delta_2\tag{\ref{eq: LkS4}}
+(q, a, \tst) &\to (q',\asgn, \com)\in\delta_2\label{eq: LkS1}
 \end{align}
-(note that $v(\com_1)=\vis(a)=v(\com)$ always hold) for $a\in A^\dblI_{k}\cup A^\dblO_{k}$,
+such that $v(\com_1)=v(\com)\ (=\vis(a))$ for $a\in A^\dblI_{k}\cup A^\dblO_{k}$,
 let $\tst^{+ k_1}=\{i+k_1\mid i\in\tst\}\cup\{\top\mid\top\in\tst\setminus[k_1]\}, \asgn^{+ k_1}=\{i+k_1\mid i\in\asgn\}$ and $\com^{+ k_1} = \push(j+k_1)$ if $\com=\push(j)$ and $\com^{+ k_1} = \com$ otherwise, then $\delta$ consists of the rules
 \begin{align}
-((q_1, q, 1), \tau, \T^{k_1+k_2+2}_{1}\cup\{\top\}) &\to ((q_1, q, 2), \{k_1+k_2+1\}, \pop)\tag{\ref{eq: LkS5}}\\
-((q_1, q, 2), \tau, \T^{k_1+k_2+2}_{1}\cup\{\top\})&\to ((q_1, q, 3), \{k_1+k_2+2\}, \push(k_1+k_2+1))\tag{\ref{eq: LkS6}}\\
+((q_1, q, 1), \tau, \T^{k_1+k_2+2}_{1}\cup\{\top\}) &\to ((q_1, q, 2), \{k_1+k_2+1\}, \pop)\label{eq: LkS5}\\
+((q_1, q, 2), \tau, \T^{k_1+k_2+2}_{1}\cup\{\top\})&\to ((q_1, q, 3), \{k_1+k_2+2\}, \push(k_1+k_2+1))\label{eq: LkS6}\\
 ((q_1, q, 3), a,
 \tst_1\cup ((\tst^{+ k_1}\ \setminus\ &\{\top\})\cup\Top))\nonumber\\
-&\to ((q_2, q', 4), \asgn_1\cup\asgn^{+ k_1}, \com^{+ k_1})\tag{\ref{eq: LkS7}}\\
+&\to ((q_2, q', 4), \asgn_1\cup\asgn^{+ k_1}, \com^{+ k_1})\label{eq: LkS7}\\
 ((q_2, q', 4), \tau,((\tst_2\setminus\{\top\})\ \cup\ &\Top')\cup\T^{k_1+k_2+1}_{k_1+1})\nonumber\\
-&\to ((q_3, q', 5), \asgn_2, \com_1)\tag{\ref{eq: LkS8}}\\
-((q_3, q', 5), \tau, \tst_3\cup\T^{k_1+k_2+2}_{k_1+1}) &\to ((q_4, q', 1), \asgn_3, \skip)\tag{\ref{eq: LkS9}}
+&\to ((q_3, q', 5), \asgn_2, \com_1)\label{eq: LkS8}\\
+((q_3, q', 5), \tau, \tst_3\cup\T^{k_1+k_2+2}_{k_1+1}) &\to ((q_4, q', 1), \asgn_3, \skip)\label{eq: LkS9}
 \end{align}
-for all $\T^{j}_{i}\in\Tst_{j}\setminus\Tst_{i-1}$ (we assume $\Tst_0=\emptyset$) where
+for all $\T^{j}_{i}\in\Tst_{j}\setminus\Tst_{i-1}$ (we assume $\Tst_0=\emptyset$), and
 $\Top=\{k_1+k_2+2\}$ ($\Top'=\{k_1+k_2+1\}$) if $\top\in\tst$ ($\top\in\tst_2$) and $\Top=\emptyset$ ($\Top'=\emptyset$) otherwise.
 
-Fig. \ref{fig: lem_LkS} indicates an example of transitions
+Fig. \ref{fig: lem_LkS} illustrates an example of transitions of $\calA$
 from $(q_1,q,1)$ to $(q_4,q',1)$ with updating
-contents of registers and stack.
+contents of its registers and stack.
 The first to $k_1$-th registers simulate
 the registers of $\calA_1$,
-$(k_1+1)$-th to $(k_1+k_2)$-th register simulate
+$(k_1+1)$-th to $(k_1+k_2)$-th registers simulate
 the registers of $\calA_2$ and
 $(k_1+k_2+1)$-th and $(k_1+k_2+2)$-th registers
-is for keeping the first and second stack top contents, respectively.
-The stack contents of $\calA$ simulates that of $\calA_1$ and $\calA_2$ by restoring contents of stacks of $\calA_1$ and $\calA_2$ alternately.
+are for keeping the first and second stack top contents, respectively.
+The stack contents of $\calA$ simulates those of $\calA_1$ and $\calA_2$ by restoring the contents of stacks of $\calA_1$ and $\calA_2$ alternately.
 
 The transition rules (\ref{eq: LkS5}) and (\ref{eq: LkS6})
-is for restoring two stack data values from the top
+are for moving the two data values at the stack top
 to $(k_1+k_2+1)$-th and $(k_1+k_2+2)$-th registers.
 The transition rule (\ref{eq: LkS7})
 is for updating states, registers and stacks
-by simulating the rules (\ref{eq: LkS1}) and (\ref{eq: LkS4}).
-Because the first to $k_2$-th registers of $\calA_2$ is simulated by $(k_1+1)$-th to $(k_1+k_2)$-th registers of $\calA$,
+by simulating the rules (\ref{eq: Lk2}') and (\ref{eq: LkS1}).
+Because the first to $k_2$-th registers of $\calA_2$ are simulated by $(k_1+1)$-th to $(k_1+k_2)$-th registers of $\calA$,
 we use $\tst^{+k_1}$, $\asgn^{+k_1}$ and $\com^{+k_1}$
 instead of $\tst$, $\asgn$ and $\com$, and
 replace $\top$ in $\tst^{+k_1}$ to $k_1+k_2+2$.
 The transition rules (\ref{eq: LkS8}) and (\ref{eq: LkS9})
-simulates the rules (\ref{eq: LkS2}) and (\ref{eq: LkS3}), respectively.
+simulate the rules (\ref{eq: Lk3}') and (\ref{eq: Lk4}'), respectively.
 
 For two assignments $\theta_1\in\Theta_{k_1}$ and $\theta_2\in\Theta_{k_2}$,
 let $[\theta_1,\theta_2,d,d']\in\Theta_{k_1+k_2+2}$
@@ -271,13 +268,11 @@ iff
 $(q_0, \theta^{k_1+k_2+2}_\bot, \bot)
 \vdash_\calA^{(\tau,\bot)}
 ((q^1_0,q^2_0,1),[\theta^1_0,\theta^2_0,d^1_0,d^2_0],\<u^1_0,u^2_0\>)$
-\\
 $\vdash_\calA^{(\tau,u^1_0(0))(\tau,u^2_0(0))w(0)(\tau,d_0)(\tau,d'_0)}
-((q^1_1,q^2_1,1),[\theta^1_1,\theta^2_1,d^1_1,d^2_1],\<u^1_1,u^2_1\>)
-\vdash_\calA^{(\tau,u^1_1(0))(\tau,u^2_1(0))w(1)(\tau,d_1)(\tau,d'_1)}
-\cdots
-\vdash_\calA^{(\tau,u^1_{n-1}(0))(\tau,u^2_{n-1}(0))w(n-1)(\tau,d_{n-1})(\tau,d'_{n-1})}
-((q^1_n,q^2_n,1),[\theta^1_n,\theta^2_n,d^1_n,d^2_n],\<u^1_n,u^2_n\>)$
+((q^1_1,q^2_1,1),[\theta^1_1,\theta^2_1,d^1_1,d^2_1],\<u^1_1,u^2_1\>)$\\
+$\vdash_\calA^{(\tau,u^1_1(0))(\tau,u^2_1(0))w(1)(\tau,d_1)(\tau,d'_1)}
+\cdots\vdash_\calA^{(\tau,u^1_{n-1}(0))(\tau,u^2_{n-1}(0))w(n-1)(\tau,d_{n-1})(\tau,d'_{n-1})}$\\
+$((q^1_n,q^2_n,1),[\theta^1_n,\theta^2_n,d^1_n,d^2_n],\<u^1_n,u^2_n\>)$
 holds where $b\in\{1,2\}, i\in[n],$
 $\theta^b_0=\theta^{k_b}_{\bot}, u^b_0=\bot,$
 $q^b_i\in Q_b$, $\theta^b_i\in\Theta_{k_b}$, $u^b_i\in D^*$ and
@@ -316,10 +311,10 @@ for some $q',q''\in Q_1, \theta',\theta''\in\Theta_{k_1}$ and
 $d,d'\in D$,
 and let the following be the rules used in these transitions.
 \begin{align}
-(q_{n-1}, (a,v(\com_1)), \tst_1) &\to(q',\asgn_1, \skip)\in\delta_1 \tag{\ref{eq: LkS1}'}\\
-(q', \tau, \tst_2) &\to(q'',\asgn_2, \com_1)\in\delta_1 \tag{\ref{eq: LkS2}'}\\
-(q'', \tau, \tst_3) &\to(q_{n},\asgn_3, \skip)\in\delta_1 \tag{\ref{eq: LkS3}'}\\
-(q_{n-1}, (a,v(\com)), \tst) &\to(q_{n},\asgn, \com)\in\delta_2 \tag{\ref{eq: LkS4}'}
+(q_{n-1}, (a,v(\com_1)), \tst_1) &\to(q',\asgn_1, \skip)\in\delta_1 \tag{\ref{eq: Lk2}''}\\
+(q', \tau, \tst_2) &\to(q'',\asgn_2, \com_1)\in\delta_1 \tag{\ref{eq: Lk3}''}\\
+(q'', \tau, \tst_3) &\to(q_{n},\asgn_3, \skip)\in\delta_1 \tag{\ref{eq: Lk4}''}\\
+(q_{n-1}, (a,v(\com)), \tst) &\to(q_{n},\asgn, \com)\in\delta_2 \tag{\ref{eq: LkS1}'}
 \end{align}
 We can check the follows.
 \begin{align*}

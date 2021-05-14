@@ -1,104 +1,82 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.sjis) (TeX Live 2020/W32TeX) (preloaded format=platex 2020.4.13)  13 MAY 2021 12:53
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.sjis) (TeX Live 2018/W32TeX) (preloaded format=platex 2019.1.10)  14 MAY 2021 22:32
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
-pLaTeX2e <2020-04-12> (based on LaTeX2e <2020-02-02> patch level 5)
-L3 programming layer <2020-04-06> (./llncs.cls
+pLaTeX2e <2018-12-01> (based on LaTeX2e <2018-12-01>)
+(./llncs.cls
 Document Class: llncs 2017/09/04 v2.19 
  LaTeX document class for Lecture Notes in Computer Science
-(c:/texlive/2020/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(c:/texlive/2020/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+(c:/texlive/2018/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
+(c:/texlive/2018/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 )
-\c@part=\count166
-\c@section=\count167
-\c@subsection=\count168
-\c@subsubsection=\count169
-\c@paragraph=\count170
-\c@subparagraph=\count171
-\c@figure=\count172
-\c@table=\count173
-\abovecaptionskip=\skip47
-\belowcaptionskip=\skip48
-\bibindent=\dimen150
-)
-(c:/texlive/2020/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
-\c@tracingmulticols=\count174
-\mult@box=\box61
-\multicol@leftmargin=\dimen151
-\c@unbalance=\count175
-\c@collectmore=\count176
-\doublecol@number=\count177
-\multicoltolerance=\count178
-\multicolpretolerance=\count179
-\full@width=\dimen152
-\page@free=\dimen153
-\premulticols=\dimen154
-\postmulticols=\dimen155
-\multicolsep=\skip49
-\multicolbaselineskip=\skip50
-\partial@page=\box62
-\last@line=\box63
-\maxbalancingoverflow=\dimen156
-\mult@rightbox=\box64
-\mult@grightbox=\box65
-\mult@gfirstbox=\box66
-\mult@firstbox=\box67
-\@tempa=\box68
-\@tempa=\box69
-\@tempa=\box70
-\@tempa=\box71
-\@tempa=\box72
-\@tempa=\box73
-\@tempa=\box74
-\@tempa=\box75
-\@tempa=\box76
-\@tempa=\box77
-\@tempa=\box78
-\@tempa=\box79
-\@tempa=\box80
-\@tempa=\box81
-\@tempa=\box82
-\@tempa=\box83
-\@tempa=\box84
-\@tempa=\box85
-\@tempa=\box86
-\@tempa=\box87
-\@tempa=\box88
-\@tempa=\box89
-\@tempa=\box90
-\@tempa=\box91
-\@tempa=\box92
-\@tempa=\box93
-\@tempa=\box94
-\@tempa=\box95
-\@tempa=\box96
-\@tempa=\box97
-\@tempa=\box98
-\@tempa=\box99
-\@tempa=\box100
-\@tempa=\box101
-\@tempa=\box102
-\@tempa=\box103
-\@tempa=\box104
-\c@minrows=\count180
-\c@columnbadness=\count181
-\c@finalcolumnbadness=\count182
-\last@try=\dimen157
-\multicolovershoot=\dimen158
-\multicolundershoot=\dimen159
-\mult@nat@firstbox=\box105
-\colbreak@box=\box106
-\mc@col@check@num=\count183
-)
-(c:/texlive/2020/texmf-dist/tex/latex/oberdiek/aliascnt.sty
+\c@part=\count83
+\c@section=\count84
+\c@subsection=\count85
+\c@subsubsection=\count86
+\c@paragraph=\count87
+\c@subparagraph=\count88
+\c@figure=\count89
+\c@table=\count90
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen118
+) (c:/texlive/2018/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2018/12/27 v1.8v multicolumn formatting (FMi)
+\c@tracingmulticols=\count91
+\mult@box=\box43
+\multicol@leftmargin=\dimen119
+\c@unbalance=\count92
+\c@collectmore=\count93
+\doublecol@number=\count94
+\multicoltolerance=\count95
+\multicolpretolerance=\count96
+\full@width=\dimen120
+\page@free=\dimen121
+\premulticols=\dimen122
+\postmulticols=\dimen123
+\multicolsep=\skip43
+\multicolbaselineskip=\skip44
+\partial@page=\box44
+\last@line=\box45
+\maxbalancingoverflow=\dimen124
+\mult@rightbox=\box46
+\mult@grightbox=\box47
+\mult@gfirstbox=\box48
+\mult@firstbox=\box49
+\@tempa=\box50
+\@tempa=\box51
+\@tempa=\box52
+\@tempa=\box53
+\@tempa=\box54
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\c@columnbadness=\count97
+\c@finalcolumnbadness=\count98
+\last@try=\dimen125
+\multicolovershoot=\dimen126
+\multicolundershoot=\dimen127
+\mult@nat@firstbox=\box67
+\colbreak@box=\box68
+\mc@col@check@num=\count99
+) (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/aliascnt.sty
 Package: aliascnt 2018/09/07 v1.5 Alias counters (HO)
 )
-\c@chapter=\count184
+\c@chapter=\count100
 LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
 LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
 LaTeX Font Info:    Redeclaring math symbol \Theta on input line 364.
@@ -110,160 +88,127 @@ LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 369.
 LaTeX Font Info:    Redeclaring math symbol \Phi on input line 370.
 LaTeX Font Info:    Redeclaring math symbol \Psi on input line 371.
 LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
-\tocchpnum=\dimen160
-\tocsecnum=\dimen161
-\tocsectotal=\dimen162
-\tocsubsecnum=\dimen163
-\tocsubsectotal=\dimen164
-\tocsubsubsecnum=\dimen165
-\tocsubsubsectotal=\dimen166
-\tocparanum=\dimen167
-\tocparatotal=\dimen168
-\tocsubparanum=\dimen169
-\fnindent=\dimen170
-\c@@inst=\count185
-\c@@auth=\count186
-\c@auco=\count187
-\instindent=\dimen171
-\authrun=\box107
-\authorrunning=\toks16
-\tocauthor=\toks17
-\titrun=\box108
-\titlerunning=\toks18
-\toctitle=\toks19
-\c@theorem=\count188
-\headlineindent=\dimen172
-)
-(c:/texlive/2020/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+\tocchpnum=\dimen128
+\tocsecnum=\dimen129
+\tocsectotal=\dimen130
+\tocsubsecnum=\dimen131
+\tocsubsectotal=\dimen132
+\tocsubsubsecnum=\dimen133
+\tocsubsubsectotal=\dimen134
+\tocparanum=\dimen135
+\tocparatotal=\dimen136
+\tocsubparanum=\dimen137
+\fnindent=\dimen138
+\c@@inst=\count101
+\c@@auth=\count102
+\c@auco=\count103
+\instindent=\dimen139
+\authrun=\box69
+\authorrunning=\toks15
+\tocauthor=\toks16
+\titrun=\box70
+\titlerunning=\toks17
+\toctitle=\toks18
+\c@theorem=\count104
+\headlineindent=\dimen140
+) (c:/texlive/2018/texmf-dist/tex/latex/adjustbox/adjustbox.sty
 Package: adjustbox 2019/01/04 v1.2 Adjusting TeX boxes (trim, clip, ...)
-
-(c:/texlive/2020/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+ (c:/texlive/2018/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
-
-(c:/texlive/2020/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(c:/texlive/2020/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks20
-\XKV@tempa@toks=\toks21
-
-(c:/texlive/2020/texmf-dist/tex/generic/xkeyval/keyval.tex))
-\XKV@depth=\count189
+ (c:/texlive/2018/texmf-dist/tex/generic/xkeyval/xkeyval.tex (c:/texlive/2018/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks19
+\XKV@tempa@toks=\toks20
+ (c:/texlive/2018/texmf-dist/tex/generic/xkeyval/keyval.tex))
+\XKV@depth=\count105
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-))
-(c:/texlive/2020/texmf-dist/tex/latex/adjustbox/adjcalc.sty
-Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
--ends (calc, etex, pgfmath)
-)
-(c:/texlive/2020/texmf-dist/tex/latex/adjustbox/trimclip.sty
+)) (c:/texlive/2018/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
+) (c:/texlive/2018/texmf-dist/tex/latex/adjustbox/trimclip.sty
 Package: trimclip 2018/04/08 v1.1 Trim and clip general TeX material
-
-(c:/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
-
-(c:/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
-
-(c:/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
+ (c:/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-(c:/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+) (c:/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: dvipdfmx.def on input line 105.
-
-(c:/texlive/2020/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+Package graphics Info: Driver file: dvipdfmx.def on input line 99.
+ (c:/texlive/2018/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
 File: dvipdfmx.def 2017/06/24 v5.0g Graphics/color driver for dvipdfmx
 ))
-\Gin@req@height=\dimen173
-\Gin@req@width=\dimen174
-)
-(c:/texlive/2020/texmf-dist/tex/latex/collectbox/collectbox.sty
+\Gin@req@height=\dimen141
+\Gin@req@width=\dimen142
+) (c:/texlive/2018/texmf-dist/tex/latex/collectbox/collectbox.sty
 Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
-\collectedbox=\box109
+\collectedbox=\box71
 )
-\tc@llx=\dimen175
-\tc@lly=\dimen176
-\tc@urx=\dimen177
-\tc@ury=\dimen178
+\tc@llx=\dimen143
+\tc@lly=\dimen144
+\tc@urx=\dimen145
+\tc@ury=\dimen146
 
-(c:/texlive/2020/texmf-dist/tex/latex/adjustbox/tc-pgf.def
+(c:/texlive/2018/texmf-dist/tex/latex/adjustbox/tc-pgf.def
 File: tc-pgf.def 2019/01/04 v2.2 trimclip fall-back clipping driver using PGF
-
-(c:/texlive/2020/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-(c:/texlive/2020/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks22
-\pgfutil@tempdima=\dimen179
-\pgfutil@tempdimb=\dimen180
-
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)
-) (c:/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box110
-
-(c:/texlive/2020/texmf-dist/tex/latex/ms/everyshi.sty
+ (c:/texlive/2018/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (c:/texlive/2018/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks21
+\pgfutil@tempdima=\dimen147
+\pgfutil@tempdimb=\dimen148
+ (c:/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (c:/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box72
+ (c:/texlive/2018/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+)) (c:/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (c:/texlive/2018/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2019/01/05 v3.1 (3.1)
 ))
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
+Package: pgf 2019/01/05 v3.1 (3.1)
+ (c:/texlive/2018/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (c:/texlive/2018/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (c:/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2019/01/05 v3.1 (3.1)
+ (c:/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks22
+\pgfkeys@temptoks=\toks23
+ (c:/texlive/2018/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks24
 ))
-Package: pgf 2020/01/08 v3.1.5b (3.1.5b)
-
-(c:/texlive/2020/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(c:/texlive/2020/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2020/01/08 v3.1.5b (3.1.5b)
-
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks23
-\pgfkeys@temptoks=\toks24
-
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks25
-))
-\pgf@x=\dimen181
-\pgf@y=\dimen182
-\pgf@xa=\dimen183
-\pgf@ya=\dimen184
-\pgf@xb=\dimen185
-\pgf@yb=\dimen186
-\pgf@xc=\dimen187
-\pgf@yc=\dimen188
-\pgf@xd=\dimen189
-\pgf@yd=\dimen190
+\pgf@x=\dimen149
+\pgf@y=\dimen150
+\pgf@xa=\dimen151
+\pgf@ya=\dimen152
+\pgf@xb=\dimen153
+\pgf@yb=\dimen154
+\pgf@xc=\dimen155
+\pgf@yc=\dimen156
 \w@pgf@writea=\write3
-\r@pgf@reada=\read2
-\c@pgf@counta=\count190
-\c@pgf@countb=\count191
-\c@pgf@countc=\count192
-\c@pgf@countd=\count193
-\t@pgf@toka=\toks26
-\t@pgf@tokb=\toks27
-\t@pgf@tokc=\toks28
-\pgf@sys@id@count=\count194
- (c:/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2020/01/08 v3.1.5b (3.1.5b)
+\r@pgf@reada=\read1
+\c@pgf@counta=\count106
+\c@pgf@countb=\count107
+\c@pgf@countc=\count108
+\c@pgf@countd=\count109
+\t@pgf@toka=\toks25
+\t@pgf@tokb=\toks26
+\t@pgf@tokc=\toks27
+\pgf@sys@id@count=\count110
+
+(c:/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2019/01/05 v3.1 (3.1)
 )
 Driver file for pgf: pgfsys-dvipdfmx.def
-
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
-File: pgfsys-dvipdfmx.def 2020/01/08 v3.1.5b (3.1.5b)
-
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
-File: pgfsys-common-pdf.def 2020/01/08 v3.1.5b (3.1.5b)
+ (c:/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
+File: pgfsys-dvipdfmx.def 2019/01/05 v3.1 (3.1)
+ (c:/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2019/01/05 v3.1 (3.1)
 )
-\pgfsys@objnum=\count195
-))
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
-File: pgfsyssoftpath.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgfsyssoftpath@smallbuffer@items=\count196
-\pgfsyssoftpath@bigbuffer@items=\count197
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
-File: pgfsysprotocol.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-)) (c:/texlive/2020/texmf-dist/tex/latex/xcolor/xcolor.sty
+\pgfsys@objnum=\count111
+)) (c:/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2019/01/05 v3.1 (3.1)
+\pgfsyssoftpath@smallbuffer@items=\count112
+\pgfsyssoftpath@bigbuffer@items=\count113
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2019/01/05 v3.1 (3.1)
+)) (c:/texlive/2018/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
-
-(c:/texlive/2020/texmf-dist/tex/latex/graphics-cfg/color.cfg
+ (c:/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: dvipdfmx.def on input line 225.
@@ -275,376 +220,299 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2019/01/05 v3.1 (3.1)
+ (c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen157
+\pgfmath@count=\count114
+\pgfmath@box=\box73
+\pgfmath@toks=\toks28
+\pgfmath@stack@operand=\toks29
+\pgfmath@stack@operation=\toks30
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex))) (c:/texlive/2018/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count115
+)) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2019/01/05 v3.1 (3.1)
+\pgf@picminx=\dimen158
+\pgf@picmaxx=\dimen159
+\pgf@picminy=\dimen160
+\pgf@picmaxy=\dimen161
+\pgf@pathminx=\dimen162
+\pgf@pathmaxx=\dimen163
+\pgf@pathminy=\dimen164
+\pgf@pathmaxy=\dimen165
+\pgf@xx=\dimen166
+\pgf@xy=\dimen167
+\pgf@yx=\dimen168
+\pgf@yy=\dimen169
+\pgf@zx=\dimen170
+\pgf@zy=\dimen171
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2019/01/05 v3.1 (3.1)
+\pgf@path@lastx=\dimen172
+\pgf@path@lasty=\dimen173
 )
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2020/01/08 v3.1.5b (3.1.5b)
-
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen191
-\pgfmath@count=\count198
-\pgfmath@box=\box111
-\pgfmath@toks=\toks29
-\pgfmath@stack@operand=\toks30
-\pgfmath@stack@operation=\toks31
+(c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2019/01/05 v3.1 (3.1)
+\pgf@shorten@end@additional=\dimen174
+\pgf@shorten@start@additional=\dimen175
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2019/01/05 v3.1 (3.1)
+\pgfpic=\box74
+\pgf@hbox=\box75
+\pgf@layerbox@main=\box76
+\pgf@picture@serial@count=\count116
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2019/01/05 v3.1 (3.1)
+\pgflinewidth=\dimen176
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2019/01/05 v3.1 (3.1)
+\pgf@pt@x=\dimen177
+\pgf@pt@y=\dimen178
+\pgf@pt@temp=\dimen179
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2019/01/05 v3.1 (3.1)
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2019/01/05 v3.1 (3.1)
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2019/01/05 v3.1 (3.1)
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2019/01/05 v3.1 (3.1)
+\pgfarrowsep=\dimen180
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2019/01/05 v3.1 (3.1)
+\pgf@max=\dimen181
+\pgf@sys@shading@range@num=\count117
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2019/01/05 v3.1 (3.1)
+ (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2019/01/05 v3.1 (3.1)
+\pgfexternal@startupbox=\box77
+)) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2019/01/05 v3.1 (3.1)
 )
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.te
-x)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric
-.code.tex)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.t
-ex)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.co
-de.tex)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.te
-x)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithm
-etics.code.tex)))
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count199
-))
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
-File: pgfcorepoints.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgf@picminx=\dimen192
-\pgf@picmaxx=\dimen193
-\pgf@picminy=\dimen194
-\pgf@picmaxy=\dimen195
-\pgf@pathminx=\dimen196
-\pgf@pathmaxx=\dimen197
-\pgf@pathminy=\dimen198
-\pgf@pathmaxy=\dimen199
-\pgf@xx=\dimen256
-\pgf@xy=\dimen257
-\pgf@yx=\dimen258
-\pgf@yy=\dimen259
-\pgf@zx=\dimen260
-\pgf@zy=\dimen261
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.cod
-e.tex
-File: pgfcorepathconstruct.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgf@path@lastx=\dimen262
-\pgf@path@lasty=\dimen263
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.te
-x
-File: pgfcorepathusage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgf@shorten@end@additional=\dimen264
-\pgf@shorten@start@additional=\dimen265
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
-File: pgfcorescopes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgfpic=\box112
-\pgf@hbox=\box113
-\pgf@layerbox@main=\box114
-\pgf@picture@serial@count=\count266
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code
-.tex
-File: pgfcoregraphicstate.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgflinewidth=\dimen266
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.c
-ode.tex
-File: pgfcoretransformations.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgf@pt@x=\dimen267
-\pgf@pt@y=\dimen268
-\pgf@pt@temp=\dimen269
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
-File: pgfcorequick.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
-File: pgfcoreobjects.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.co
-de.tex
-File: pgfcorepathprocessing.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
-File: pgfcorearrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgfarrowsep=\dimen270
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
-File: pgfcoreshade.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgf@max=\dimen271
-\pgf@sys@shading@range@num=\count267
-\pgf@shadingcount=\count268
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-File: pgfcoreimage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
-File: pgfcoreexternal.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgfexternal@startupbox=\box115
-))
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
-File: pgfcorelayers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code
-.tex
-File: pgfcoretransparency.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
-File: pgfcorepatterns.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-) (c:/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
-File: pgfcorerdf.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-))) (c:/texlive/2020/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.te
-x
-File: pgfmoduleshapes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgfnodeparttextbox=\box116
-)
-(c:/texlive/2020/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-File: pgfmoduleplot.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-)
-(c:/texlive/2020/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.st
-y
-Package: pgfcomp-version-0-65 2020/01/08 v3.1.5b (3.1.5b)
-\pgf@nodesepstart=\dimen272
-\pgf@nodesepend=\dimen273
-)
-(c:/texlive/2020/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.st
-y
-Package: pgfcomp-version-1-18 2020/01/08 v3.1.5b (3.1.5b)
+(c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2019/01/05 v3.1 (3.1)
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2019/01/05 v3.1 (3.1)
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2019/01/05 v3.1 (3.1)
+))) (c:/texlive/2018/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2019/01/05 v3.1 (3.1)
+\pgfnodeparttextbox=\box78
+) (c:/texlive/2018/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2019/01/05 v3.1 (3.1)
+) (c:/texlive/2018/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2019/01/05 v3.1 (3.1)
+\pgf@nodesepstart=\dimen182
+\pgf@nodesepend=\dimen183
+) (c:/texlive/2018/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2019/01/05 v3.1 (3.1)
 )))
 Package trimclip Info: No clipping driver 'tc-dvipdfmx.def' available.
 (trimclip)             Using fall-back PGF driver.
 )
-\adjbox@Width=\dimen274
-\adjbox@Height=\dimen275
-\adjbox@Depth=\dimen276
-\adjbox@Totalheight=\dimen277
-\adjbox@pwidth=\dimen278
-\adjbox@pheight=\dimen279
-\adjbox@pdepth=\dimen280
-\adjbox@ptotalheight=\dimen281
- (c:/texlive/2020/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+\adjbox@Width=\dimen184
+\adjbox@Height=\dimen185
+\adjbox@Depth=\dimen186
+\adjbox@Totalheight=\dimen187
+\adjbox@pwidth=\dimen188
+\adjbox@pheight=\dimen189
+\adjbox@pdepth=\dimen190
+\adjbox@ptotalheight=\dimen191
+ (c:/texlive/2018/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count269
-)
-(c:/texlive/2020/texmf-dist/tex/latex/varwidth/varwidth.sty
+\c@checkoddpage=\count118
+) (c:/texlive/2018/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box117
-\sift@deathcycles=\count270
-\@vwid@loff=\dimen282
-\@vwid@roff=\dimen283
-))
-(c:/texlive/2020/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+\@vwid@box=\box79
+\sift@deathcycles=\count119
+\@vwid@loff=\dimen192
+\@vwid@roff=\dimen193
+)) (c:/texlive/2018/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count271
-
-(c:/texlive/2020/texmf-dist/tex/latex/base/ifthen.sty
+\c@AlgoLine=\count120
+ (c:/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\algocf@hangindent=\skip51
-
-(c:/texlive/2020/texmf-dist/tex/latex/tools/xspace.sty
+\algocf@hangindent=\skip45
+ (c:/texlive/2018/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
-)
-(c:/texlive/2020/texmf-dist/tex/latex/relsize/relsize.sty
+) (c:/texlive/2018/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
-\skiptotal=\skip52
-\skiplinenumber=\skip53
-\skiprule=\skip54
-\skiphlne=\skip55
-\skiptext=\skip56
-\skiplength=\skip57
-\algomargin=\skip58
-\skipalgocfslide=\skip59
-\algowidth=\dimen284
-\inoutsize=\dimen285
-\inoutindent=\dimen286
-\interspacetitleruled=\dimen287
-\interspacealgoruled=\dimen288
-\interspacetitleboxruled=\dimen289
-\algocf@ruledwidth=\skip60
-\algocf@inoutbox=\box118
-\algocf@inputbox=\box119
-\AlCapSkip=\skip61
-\AlCapHSkip=\skip62
-\algoskipindent=\skip63
-\algocf@nlbox=\box120
-\algocf@hangingbox=\box121
-\algocf@untilbox=\box122
-\algocf@skipuntil=\skip64
-\algocf@capbox=\box123
-\algocf@lcaptionbox=\skip65
-\algoheightruledefault=\skip66
-\algoheightrule=\skip67
-\algotitleheightruledefault=\skip68
-\algotitleheightrule=\skip69
-\c@algocfline=\count272
-\c@algocfproc=\count273
-\c@algocf=\count274
-\algocf@algoframe=\box124
-\algocf@algobox=\box125
-)
-(c:/texlive/2020/texmf-dist/tex/latex/algorithms/algorithmic.sty
+\skiptotal=\skip46
+\skiplinenumber=\skip47
+\skiprule=\skip48
+\skiphlne=\skip49
+\skiptext=\skip50
+\skiplength=\skip51
+\algomargin=\skip52
+\skipalgocfslide=\skip53
+\algowidth=\dimen194
+\inoutsize=\dimen195
+\inoutindent=\dimen196
+\interspacetitleruled=\dimen197
+\interspacealgoruled=\dimen198
+\interspacetitleboxruled=\dimen199
+\algocf@ruledwidth=\skip54
+\algocf@inoutbox=\box80
+\algocf@inputbox=\box81
+\AlCapSkip=\skip55
+\AlCapHSkip=\skip56
+\algoskipindent=\skip57
+\algocf@nlbox=\box82
+\algocf@hangingbox=\box83
+\algocf@untilbox=\box84
+\algocf@skipuntil=\skip58
+\algocf@capbox=\box85
+\algocf@lcaptionbox=\skip59
+\algoheightruledefault=\skip60
+\algoheightrule=\skip61
+\algotitleheightruledefault=\skip62
+\algotitleheightrule=\skip63
+\c@algocfline=\count121
+\c@algocfproc=\count122
+\c@algocf=\count123
+\algocf@algoframe=\box86
+\algocf@algobox=\box87
+) (c:/texlive/2018/texmf-dist/tex/latex/algorithms/algorithmic.sty
 
 LaTeX Warning: You have requested package `algorithms/algorithmic',
                but the package provides `algorithmic'.
 
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count275
-\c@ALC@line=\count276
-\c@ALC@rem=\count277
-\c@ALC@depth=\count278
-\ALC@tlm=\skip70
-\algorithmicindent=\skip71
-) (c:/texlive/2020/texmf-dist/tex/latex/booktabs/booktabs.sty
-Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen290
-\lightrulewidth=\dimen291
-\cmidrulewidth=\dimen292
-\belowrulesep=\dimen293
-\belowbottomsep=\dimen294
-\aboverulesep=\dimen295
-\abovetopsep=\dimen296
-\cmidrulesep=\dimen297
-\cmidrulekern=\dimen298
-\defaultaddspace=\dimen299
-\@cmidla=\count279
-\@cmidlb=\count280
-\@aboverulesep=\dimen300
-\@belowrulesep=\dimen301
-\@thisruleclass=\count281
-\@lastruleclass=\count282
-\@thisrulewidth=\dimen302
-)
-(c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2020/01/20 v2.17e AMS math features
-\@mathmargin=\skip72
+\c@ALC@unique=\count124
+\c@ALC@line=\count125
+\c@ALC@rem=\count126
+\c@ALC@depth=\count127
+\ALC@tlm=\skip64
+\algorithmicindent=\skip65
+) (c:/texlive/2018/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2016/04/27 v1.618033 publication quality tables
+\heavyrulewidth=\dimen256
+\lightrulewidth=\dimen257
+\cmidrulewidth=\dimen258
+\belowrulesep=\dimen259
+\belowbottomsep=\dimen260
+\aboverulesep=\dimen261
+\abovetopsep=\dimen262
+\cmidrulesep=\dimen263
+\cmidrulekern=\dimen264
+\defaultaddspace=\dimen265
+\@cmidla=\count128
+\@cmidlb=\count129
+\@aboverulesep=\dimen266
+\@belowrulesep=\dimen267
+\@thisruleclass=\count130
+\@lastruleclass=\count131
+\@thisrulewidth=\dimen268
+) (c:/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2018/12/01 v2.17b AMS math features
+\@mathmargin=\skip66
 
 For additional information on amsmath, use the `?' option.
-(c:/texlive/2020/texmf-dist/tex/latex/amsmath/amstext.sty
+(c:/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
-
-(c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsgen.sty
+ (c:/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks32
-\ex@=\dimen303
-))
-(c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsbsy.sty
+\@emptytoks=\toks31
+\ex@=\dimen269
+)) (c:/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen304
-)
-(c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsopn.sty
+\pmbraise@=\dimen270
+) (c:/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count283
-LaTeX Info: Redefining \frac on input line 227.
-\uproot@=\count284
-\leftroot@=\count285
-LaTeX Info: Redefining \overline on input line 389.
-\classnum@=\count286
-\DOTSCASE@=\count287
-LaTeX Info: Redefining \ldots on input line 486.
-LaTeX Info: Redefining \dots on input line 489.
-LaTeX Info: Redefining \cdots on input line 610.
-\Mathstrutbox@=\box126
-\strutbox@=\box127
-\big@size=\dimen305
-LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
-\macc@depth=\count288
-\c@MaxMatrixCols=\count289
-\dotsspace@=\muskip16
-\c@parentequation=\count290
-\dspbrk@lvl=\count291
-\tag@help=\toks33
-\row@=\count292
-\column@=\count293
-\maxfields@=\count294
-\andhelp@=\toks34
-\eqnshift@=\dimen306
-\alignsep@=\dimen307
-\tagshift@=\dimen308
-\tagwidth@=\dimen309
-\totwidth@=\dimen310
-\lineht@=\dimen311
-\@envbody=\toks35
-\multlinegap=\skip73
-\multlinetaggap=\skip74
-\mathdisplay@stack=\toks36
-LaTeX Info: Redefining \[ on input line 2859.
-LaTeX Info: Redefining \] on input line 2860.
-)
-(c:/texlive/2020/texmf-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
+\inf@bad=\count132
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count133
+\leftroot@=\count134
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count135
+\DOTSCASE@=\count136
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box88
+\strutbox@=\box89
+\big@size=\dimen271
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
 
-(c:/texlive/2020/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+
+Package amsmath Warning: Unable to redefine math accent \vec.
+
+\macc@depth=\count137
+\c@MaxMatrixCols=\count138
+\dotsspace@=\muskip10
+\c@parentequation=\count139
+\dspbrk@lvl=\count140
+\tag@help=\toks32
+\row@=\count141
+\column@=\count142
+\maxfields@=\count143
+\andhelp@=\toks33
+\eqnshift@=\dimen272
+\alignsep@=\dimen273
+\tagshift@=\dimen274
+\tagwidth@=\dimen275
+\totwidth@=\dimen276
+\lineht@=\dimen277
+\@envbody=\toks34
+\multlinegap=\skip67
+\multlinetaggap=\skip68
+\mathdisplay@stack=\toks35
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
+) (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
-LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-(c:/texlive/2020/texmf-dist/tex/latex/bbold/bbold.sty
+)) (c:/texlive/2018/texmf-dist/tex/latex/bbold/bbold.sty
 Package: bbold 1994/04/06 Bbold symbol package
 LaTeX Font Info:    Redeclaring math alphabet \mathbb on input line 42.
-)
-(c:/texlive/2020/texmf-dist/tex/latex/ncctools/nccmath.sty
+) (c:/texlive/2018/texmf-dist/tex/latex/ncctools/nccmath.sty
 Package: nccmath 2006/01/20 v1.3 Additional Math Commands (NCC)
-\NCC@fracrulewidth=\dimen312
-)
-(c:/texlive/2020/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2019/06/20 v3.9 Customized lists
-\enitkv@toks@=\toks37
-\labelindent=\skip75
-\enit@outerparindent=\dimen313
-\enit@toks=\toks38
-\enit@inbox=\box128
-\enit@count@id=\count295
-\enitdp@description=\count296
-)
-(c:/texlive/2020/texmf-dist/tex/latex/base/latexsym.sty
+\NCC@fracrulewidth=\dimen278
+) (c:/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2018/11/30 v3.6 Customized lists
+\enitkv@toks@=\toks36
+\labelindent=\skip69
+\enit@outerparindent=\dimen279
+\enit@toks=\toks37
+\enit@inbox=\box90
+\enitdp@description=\count144
+) (c:/texlive/2018/texmf-dist/tex/latex/base/latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
-)
-(c:/texlive/2020/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+) (c:/texlive/2018/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup7
-)
-(c:/texlive/2020/texmf-dist/tex/latex/here/here.sty)
-(c:/texlive/2020/texmf-dist/tex/latex/float/float.sty
+) (c:/texlive/2018/texmf-dist/tex/latex/here/here.sty) (c:/texlive/2018/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count297
-\float@exts=\toks39
-\float@box=\box129
-\@float@everytoks=\toks40
-\@floatcapt=\box130
-)
-(c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-dvipdfmx.def
-File: l3backend-dvipdfmx.def 2020-03-12 L3 backend support: dvipdfmx
-\g__graphics_track_int=\count298
-\l__pdf_internal_box=\box131
-\g__pdf_backend_object_int=\count299
-\g__pdf_backend_annotation_int=\count300
-)
-(./main.aux)
+\c@float@type=\count145
+\float@exts=\toks38
+\float@box=\box91
+\@float@everytoks=\toks39
+\@floatcapt=\box92
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 175.
 LaTeX Font Info:    ... okay on input line 175.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 175.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 175.
 LaTeX Font Info:    ... okay on input line 175.
 LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 175.
 LaTeX Font Info:    ... okay on input line 175.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 175.
-LaTeX Font Info:    ... okay on input line 175.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 175.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 175.
 LaTeX Font Info:    ... okay on input line 175.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 175.
 LaTeX Font Info:    ... okay on input line 175.
@@ -655,309 +523,138 @@ LaTeX Font Info:    ... okay on input line 175.
 LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 175.
 LaTeX Font Info:    ... okay on input line 175.
  ABD: EveryShipout initializing macros
-LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <14.4> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 189.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 189.
-LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <14.4> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 189.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 189.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 189
-.
-
-(c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Try loading font information for U+msa on input line 189.
+ (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 189
-.
-
-(c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
+LaTeX Font Info:    Try loading font information for U+msb on input line 189.
+ (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 18
-9.
-
-(c:/texlive/2020/texmf-dist/tex/latex/base/ulasy.fd
+LaTeX Font Info:    Try loading font information for U+lasy on input line 189.
+ (c:/texlive/2018/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 18
-9.
-
-(c:/texlive/2020/texmf-dist/tex/latex/jknapltx/ursfs.fd
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 189.
+ (c:/texlive/2018/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <9> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 191.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 191.
-LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <9> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 191.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 191.
  (./introduction.tex
-LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <12> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 1.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 1.
-LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <12> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 1.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 1.
+ [1
 
-[1
-
-]
-Underfull \vbox (badness 2326) has occurred while \output is active []
-
- [2]
-LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <10> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 97.
+] [2]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 97.
-LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <10> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 97.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 95.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 97.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 118.
-)
-(./preliminaries.tex
-LaTeX Font Info:    Trying to load font information for U+bbold on input line 2
-.
- (c:/texlive/2020/texmf-dist/tex/latex/bbold/Ubbold.fd)
-[3]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 25.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 36.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 46.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 61.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 95.
+
+
+LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
+(Font)              using `JT1/gt/m/n' instead on input line 116.
+
+
+LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
+(Font)              using `JY1/gt/m/n' instead on input line 116.
+
+) (./preliminaries.tex
+LaTeX Font Info:    Try loading font information for U+bbold on input line 2.
+ (c:/texlive/2018/texmf-dist/tex/latex/bbold/Ubbold.fd) [3]
+
+LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
+(Font)              using `JT1/mc/m/n' instead on input line 25.
+
+
+LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
+(Font)              using `JY1/mc/m/n' instead on input line 25.
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 55--63
-[]\OT1/cmr/m/n/10 Consider two TSs $\OMS/cmsy/m/n/10 S[] \OT1/cmr/m/n/10 = (\OM
-L/cmm/m/it/10 S[]; s[]; A[]; E[]; []; c[]\OT1/cmr/m/n/10 )$ and $\OMS/cmsy/m/n/
-10 S[] \OT1/cmr/m/n/10 =
+[]\OT1/cmr/m/n/10 Consider two TSs $\OMS/cmsy/m/n/10 S[] \OT1/cmr/m/n/10 = (\OML/cmm/m/it/10 S[]; s[]; A[]; E[]; []; c[]\OT1/cmr/m/n/10 )$ and $\OMS/cmsy/m/n/10 S[] \OT1/cmr/m/n/10 =
  []
 
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 80.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 90.
-) (./PDA.tex [4]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 9.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 29.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 29.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 58.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 106.
- [5]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 136.
+) (./PDA.tex [4] [5]
 File: PDA.png Graphic file (type bmp)
 <PDA.png>
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 188.
- [6]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 251.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 263.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 266.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 268.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 275.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 314.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 328.
-) (./RealPDA.tex
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 6.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 6.
- [7]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 10.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 16.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 17.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 30.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 94.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 95.
-) (./RPDA.tex
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 3.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 5.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 8.
- [8]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 32.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 61.
+ [6]) (./RealPDA.tex
 
-Underfull \hbox (badness 1072) in paragraph at lines 62--76
-\OT1/cmr/m/n/10 Let $(\OML/cmm/m/it/10 ^^Z; w\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10
- 2 [][] ^^B \OT1/cmr/m/n/10 ((\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 a\OMS/cmsy/m/n
-/10 g ^^B \OML/cmm/m/it/10 D\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n
-/10 (\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 b\OMS/cmsy/m/n/10 g ^^B \OML/cmm/m/it/1
-0 D\OT1/cmr/m/n/10 ))[]$ be a pair of se-quences
- []
+LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
+(Font)              using `JT1/mc/m/n' instead on input line 6.
 
 
-Underfull \hbox (badness 3439) in paragraph at lines 62--76
-\OT1/cmr/m/n/10 , $[\OML/cmm/m/it/10 d\OT1/cmr/m/n/10 ] \OMS/cmsy/m/n/10 2 \OML
-/cmm/m/it/10 ^^B[]$ \OT1/cmr/m/n/10 is the as-sign-ment such that $[\OML/cmm/m/
-it/10 d\OT1/cmr/m/n/10 ](1) = \OML/cmm/m/it/10 d$\OT1/cmr/m/n/10 , and $\OML/cm
-m/m/it/10 w \OT1/cmr/m/n/10 =
- []
+LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
+(Font)              using `JY1/mc/m/n' instead on input line 6.
 
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 80.
-
-Underfull \hbox (badness 7814) in paragraph at lines 80--82
-[]\OT1/cmr/m/it/10 A non-de-ter-min-is-tic $\OML/cmm/m/it/10 k$\OT1/cmr/m/it/10
- -register push-down au-toma-ton ($\OML/cmm/m/it/10 k$\OT1/cmr/m/it/10 -
+[7]) (./RPDA.tex [8]
+Underfull \hbox (badness 7814) in paragraph at lines 63--72
+[]\OT1/cmr/m/it/10 A non-de-ter-min-is-tic $\OML/cmm/m/it/10 k$\OT1/cmr/m/it/10 -register push-down au-toma-ton ($\OML/cmm/m/it/10 k$\OT1/cmr/m/it/10 -
  []
 
 [9]
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 143.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 148.
-) (./RPDAtoPDA.tex [10]
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 12.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 90.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 107.
- [11]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 213.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 218.
- [12]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 311.
-) (./RealRPDA.tex
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 18.
-LaTeX Font Info:    Kanji font shape `JY1/gt/m/it' undefined
-(Font)              No change on input line 20.
- [13]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 51.
-File: lem_Lk.png Graphic file (type bmp)
-<lem_Lk.png>
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 80.
- [14] [15]
-File: lem_LkS.png Graphic file (type bmp)
-<lem_LkS.png>
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 175.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 187.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 188.
-
-Underfull \hbox (badness 1762) in paragraph at lines 206--215
-\OT1/cmr/m/n/10 con-sider the PDT $\OMS/cmsy/m/n/10 T[]$ \OT1/cmr/m/n/10 over $
-\OML/cmm/m/it/10 A[]; A[]$ \OT1/cmr/m/n/10 and $\OML/cmm/m/it/10 ^^@$ \OT1/cmr/
-m/n/10 such that $(\OML/cmm/m/it/10 q; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 a; []\
-OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; z\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 !
+Underfull \hbox (badness 10000) in paragraph at lines 124--137
+[]\OT1/cmr/m/n/10 Let us con-sider $1$-RPDT $\OMS/cmsy/m/n/10 T \OT1/cmr/m/n/10 = (\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 p\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; p; ^^A\OT1/cmr/m/n/10 )$ over
  []
 
-[16]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 241.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 242.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 249.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 249.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 252.
-) (./conclusion.tex
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 6.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 7.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 16.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 16.
-) [17] (./references.tex [18]) [19] (./appendix.tex
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 8.
 
+Underfull \hbox (badness 10000) in paragraph at lines 124--137
+\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 a\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 b\OMS/cmsy/m/n/10 g$ \OT1/cmr/m/n/10 and $\OML/cmm/m/it/10 ^^@$ \OT1/cmr/m/n/10 ($= \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 z\OMS/cmsy/m/n/10 g$\OT1/cmr/m/n/10 ) where $\OML/cmm/m/it/10 ^^A \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; a; \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; []\OMS/cmsy/m/n/10 g\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 !
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--137
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; b; \OMS/cmsy/m/n/10 ;\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ;$ $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; a; \OMS/cmsy/m/n/10 ;\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; b; \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 1\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 (1))\OMS/cmsy/m/n/10 g$ \OT1/cmr/m/n/10 Let $\OML/cmm/m/it/10 ^^Z \OT1/cmr/m/n/10 =
+ []
+
+) (./RPDAtoPDA.tex [10] [11] [12]) (./RealRPDA.tex [13]
+File: lem_Lk.png Graphic file (type bmp)
+<lem_Lk.png>
+ [14]
+File: lem_LkS.png Graphic file (type bmp)
+<lem_LkS.png>
+ [15]
+Underfull \hbox (badness 1762) in paragraph at lines 187--196
+\OT1/cmr/m/n/10 con-sider the PDT $\OMS/cmsy/m/n/10 T[]$ \OT1/cmr/m/n/10 over $\OML/cmm/m/it/10 A[]; A[]$ \OT1/cmr/m/n/10 and $\OML/cmm/m/it/10 ^^@$ \OT1/cmr/m/n/10 such that $(\OML/cmm/m/it/10 q; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 a; []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; z\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 !
+ []
+
+[16]) (./conclusion.tex) [17] (./references.tex [18]) [19] (./appendix.tex
 Underfull \hbox (badness 5954) in paragraph at lines 36--42
-[]$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; a; z[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/1
-0 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10
- 2 \OML/cmm/m/it/10 ^^N$ \OT1/cmr/m/n/10 iff $(\OML/cmm/m/it/10 q; a; \OT1/cmr/
-m/n/10 (\OML/cmm/m/it/10 z[]; z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ! \OT1/cmr
-/m/n/10 ((\OML/cmm/m/it/10 q[]; z[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; []\OT1/c
-mr/m/n/10 )$,
+[]$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; a; z[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ^^N$ \OT1/cmr/m/n/10 iff $(\OML/cmm/m/it/10 q; a; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]; z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; z[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )$,
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 42--48
-[]$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; a; z[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/1
-0 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10
- 2 \OML/cmm/m/it/10 ^^N$ \OT1/cmr/m/n/10 iff $(\OML/cmm/m/it/10 q; a; \OT1/cmr/
-m/n/10 (\OML/cmm/m/it/10 z[]; z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ! \OT1/cmr
-/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 )$,
+[]$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; a; z[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ^^N$ \OT1/cmr/m/n/10 iff $(\OML/cmm/m/it/10 q; a; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]; z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 )$,
  []
 
 
 Underfull \hbox (badness 1881) in paragraph at lines 48--53
-[]$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; a; z[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/1
-0 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 
-z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ^^N$ \OT1/cmr/m/n/10 
-iff $(\OML/cmm/m/it/10 q; a; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]; z[]\OT1/cmr
-/m/n/10 )) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; z[]\OT1/c
-mr/m/n/10 )\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )$,
+[]$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; a; z[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ^^N$ \OT1/cmr/m/n/10 iff $(\OML/cmm/m/it/10 q; a; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z[]; z[]\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; z[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )$,
  []
 
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 88.
 [20]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 108.
-
 Underfull \hbox (badness 10000) in paragraph at lines 121--145
-[]\OT1/cmr/m/n/10 We first show left to right. By the in-duc-tion hy-poth-e-sis
-,
+[]\OT1/cmr/m/n/10 We first show left to right. By the in-duc-tion hy-poth-e-sis,
  []
 
 
 Underfull \hbox (badness 8189) in paragraph at lines 121--145
-\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/
-10 `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 )$
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 )$
  []
 
 
 Underfull \hbox (badness 1394) in paragraph at lines 121--145
-\OT1/cmr/m/n/10 and $\OML/cmm/m/it/10 ^^R[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k 
-\OT1/cmr/m/n/10 + 2) = \OML/cmm/m/it/10 d[]$\OT1/cmr/m/n/10 . $(([][]\OML/cmm/m
-/it/10 ; j[]; [][]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; ^^R[]; u[]\OT1/cmr/m/n/10
- ) \OMS/cmsy/m/n/10 `[]
+\OT1/cmr/m/n/10 and $\OML/cmm/m/it/10 ^^R[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k \OT1/cmr/m/n/10 + 2) = \OML/cmm/m/it/10 d[]$\OT1/cmr/m/n/10 . $(([][]\OML/cmm/m/it/10 ; j[]; [][]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
  []
 
 
@@ -967,79 +664,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 146--150
 
 
 Underfull \hbox (badness 2065) in paragraph at lines 146--150
-\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/
-10 `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 )$ holds.
- By check-
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p; ^^R[]; u[]\OT1/cmr/m/n/10 )$ holds. By check-
  []
 
 [21]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 168.
-
-Underfull \vbox (badness 1132) has occurred while \output is active []
+Underfull \vbox (badness 4168) has occurred while \output is active []
 
  [22]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 261.
-
-Overfull \hbox (60.11775pt too wide) in paragraph at lines 260--285
-[]$\OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m
-/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[];
- d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[];
- u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
+Overfull \hbox (8.05237pt too wide) in paragraph at lines 285--313
+[]$\OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[]; d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ;$ 
  []
 
 
-Overfull \hbox (1.19337pt too wide) in paragraph at lines 260--285
-[] \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m
-/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[];
- d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[];
- u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 )$
- []
-
-
-Overfull \hbox (8.05237pt too wide) in paragraph at lines 290--318
-[]$\OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 q[]; q[]; \OT1/cmr/m
-/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ^^R[]; ^^R[]; d[];
- d[]\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ;$ 
- []
-
-
-Underfull \hbox (badness 1097) in paragraph at lines 290--318
-[]$\OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10
- )$ holds. Also, by the as-sump-tion, $(\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cm
-r/m/n/10 ) \OMS/cmsy/m/n/10 `[]
+Underfull \hbox (badness 1097) in paragraph at lines 285--313
+[]$\OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 u[]; u[]\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 )$ holds. Also, by the as-sump-tion, $(\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
  []
 
 [23])
-Underfull \hbox (badness 2469) in paragraph at lines 341--227
-\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/
-n/10 `[] [] $ \OT1/cmr/m/n/10 and $(\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/
-n/10 ) \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; ^^R[]; u[]\O
-T1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
+Underfull \hbox (badness 2469) in paragraph at lines 336--227
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] [] $ \OT1/cmr/m/n/10 and $(\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q[]; ^^R[]; u[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
  []
 
 
-Underfull \hbox (badness 6445) in paragraph at lines 341--227
-[] $ \OT1/cmr/m/n/10 that sat-is-fies the min-i-mum num-ber ap-pear-ing in the 
-se-quence
+Underfull \hbox (badness 6445) in paragraph at lines 336--227
+[] $ \OT1/cmr/m/n/10 that sat-is-fies the min-i-mum num-ber ap-pear-ing in the se-quence
  []
 
 
-Underfull \hbox (badness 3568) in paragraph at lines 341--227
-\OML/cmm/m/it/10 q[]; q[]; [] $ \OT1/cmr/m/n/10 in-finitely is even. $\OMS/cmsy
-/m/n/10 ,$ \OT1/cmr/m/n/10 there ex-ists a run $(\OML/cmm/m/it/10 q[]; ^^R[]; \
-OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
+Underfull \hbox (badness 3568) in paragraph at lines 336--227
+\OML/cmm/m/it/10 q[]; q[]; [] $ \OT1/cmr/m/n/10 in-finitely is even. $\OMS/cmsy/m/n/10 ,$ \OT1/cmr/m/n/10 there ex-ists a run $(\OML/cmm/m/it/10 q[]; ^^R[]; \OMS/cmsy/m/n/10 ?\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 `[]
  []
 
-[24] (./main.aux) ) 
+[24] (./main.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
 Here is how much of TeX's memory you used:
- 13107 strings out of 481118
- 235604 string characters out of 5920166
- 499357 words of memory out of 5000000
- 28846 multiletter control sequences out of 15000+600000
- 550612 words of font info for 103 fonts, out of 8000000 for 9000
+ 12553 strings out of 493226
+ 226430 string characters out of 6147196
+ 310188 words of memory out of 5000000
+ 16210 multiletter control sequences out of 15000+600000
+ 21914 words of font info for 93 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 72i,14n,66p,499b,426s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 65i,14n,49p,499b,358s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (24 pages, 147392 bytes).
+Output written on main.dvi (24 pages, 143912 bytes).
