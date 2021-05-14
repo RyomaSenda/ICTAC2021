@@ -66,7 +66,7 @@ $\theta,e,\theta'\models\phi$ for
 %$\theta,\theta'\in\Theta_k$, $e\in D$, and
 $\phi\in\Phi_k^{\tst,\asgn}$
 iff
-$\theta,d,e\models\tst$ and
+$(\theta,d,e)\models\tst$ and
 $\theta'=\theta[\asgn\gets d]$ for some $d\in D$.
 Similarly,
 $\theta,e,\theta'\models\phi$ for
@@ -117,12 +117,26 @@ is the equivalence relation in $\Phi_k$ that satisfies the followings:
   &&\text{for } i\in[k]\cup\{\top\},\ j\in [k].
 \end{align*}
 %
+By definition, $\COMP$ is associative.
+We say that
+$\theta_1,d_1,\theta_2,\theta_3$ satisfy
+the \emph{freshness} property
+if for every $i,j\in [k]$,
+$\theta_1(i)\ne\theta_2(l)$ for all $l\in[k]$
+implies $\theta_1(i)\ne\theta_3(j)$
+and $d_1\ne\theta_2(l)$ for all $l\in[k]$
+implies $d_1\ne\theta_3(j)$.
 By definition,
 if $\theta_1,d_1,\theta_2\models\phi_1$ and
-$\theta_2,d_2,\theta_3\models\phi_2$,
+$\theta_2,d_2,\theta_3\models\phi_2$ and
+$\theta_1,d_1,\theta_2,\theta_3$ satisfy the freshness property,
 then
 $\theta_1\,d_1,\theta_3\models\phi_1\COMP\phi_2$.
-By definition, $\COMP$ is associative.
+We extend the freshness property to
+a sequence $\theta_0,d_0,\theta_1,d_1,\ldots,d_{n-1},\theta_n$.
+This sequence satisfies the freshness property if
+$\theta_i,d_i,\theta_l,\theta_j$ satisfy
+the property for every $i,l,j$ such that $0\le i < l < j\le n$.
 
 %%%%%%%%%%
 \smallskip
@@ -209,46 +223,72 @@ will become clear
 by considering the $\lab$-bisimulation relation
 shown in the proof of Lemma~\ref{lemma:bisim-rpda-pda} below.
 
-Let $\calS_{\calA}=(\ID_{\!\calA},(q_0,\theta_{\bot},\bot),
-\Sigma\times D,\{\tau\}\times D,{\vdash_{\!\calA}},c_{\calA})$
-and $\calS_{\calA'}=(\ID_{\!\calA'},(q'_0,\phizero),\allowbreak
-\Sigma,\{\tau\},{\vdash_{\!\calA'}},c_{\calA'})$ be the TSs
-that represent the semantics of $\calA$ and $\calA'$, respectively.
-Below we show that $\calS_{\calA}$ is $\lab$-bisimilar to
-$\calS_{\calA'}$.
-We define an intermediate TS
+Let %$\calS_{\calA}=(\ID_{\!\calA},(q_0,\theta_{\bot},\bot),
+%\Sigma\times D,\{\tau\}\times D,{\vdash_{\!\calA}},c_{\calA})$ and
+$\calS_{\calA'}=(\ID_{\!\calA'},(q'_0,\phizero),\allowbreak
+\Sigma,\{\tau\},{\vdash_{\!\calA'}},c_{\calA'})$ be the TS
+that represents the semantics of $\calA'$.
+%Below we show that $\calS_{\calA}$ is $\lab$-bisimilar to
+%$\calS_{\calA'}$.
+We define a TS
 $\calS_{\calA}^{\AUG}=
 (\ID_{\!\calA}^{\AUG},(q_0,\theta_{\bot},(\bot,\theta_{\bot})),
-\Sigma\times D,\{\tau\}\times D,{\vdash_{\!\calA^{\AUG}}},c'_{\calA})$
+\Sigma\times D,\{\tau\}\times D,{\vdash_{\!\calA^{\AUG}}},c_{\calA})$
 where
 $\ID_{\!\calA}^{\AUG}=Q\times\Theta_k\times(D\times\Theta_k)^*$,
-$c'_{\calA}((q,\theta,v))=c_{\calA}((q,\theta,\fst(v)))$ for
+$c_{\calA}((q,\theta,v))=c(q)$ for
 any $(q,\theta,v)\in\ID_{\!\calA}^{\AUG}$,
 and $\vdash_{\!\calA^{\AUG}}$ is defined as follows:
 $(q,\theta,v)\vdash_{\!\calA^{\AUG}}^{(a,d)}(q',\theta',v')$
-if and only if
+iff
 $\delta(q,a,\tst)\ni (q',\asgn,\com)$,
-$d,\fst(v(0)),\theta\models\tst$,
+$(\theta,d,\fst(v(0)))\models\tst$,
 $\theta'=\theta[\asgn\gets d]$, and
 $v'= v(1{:})$, $v$, or $(\theta'(j'),\theta')v$
 if $\com=\pop$, $\skip$, or $\push(j')$, respectively.
-$\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$ are essentially
-the same TSs but $\calS_{\calA}^{\AUG}$
-``saves'' the current register assignment in the stack.
+$\calS_{\calA}^{\AUG}$ is essentially
+the same as the TS $\calS_{\calA}$ for $\calA$,
+but $\calS_{\calA}^{\AUG}$
+``saves'' the current register assignment in the stack
+when performing $\push$.
 The saved assignments do not take part in transitions and thus
-%the behaviors of 
-%$\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$ are the same.
+the behavior of 
+$\calS_{\calA}^{\AUG}$ is the same as $\calS_{\calA}$.
+Additionally,
+we define the freshness property of $\calS_{\calA}^{\AUG}$
+as follows:
+A transition
+$(q,\theta,v)\vdash_{\!\calA^{\AUG}}^{(a,d)}(q',\theta',v')$
+of $\calS_{\calA}^{\AUG}$
+by a rule
+$\delta(q,a,\tst)\ni (q',\asgn,\com)$ with $\tst=\emptyset$ and
+$\asgn\ne\emptyset$ is allowed
+only when $d$ does not appear in $\theta$ or any saved assignment in $v$.
+Intuitively,
+this property means that when $\tst$ designates a data value not in
+the registers or the stack top,
+the RPDA chooses a \emph{fresh} data value that has never been used before.
+We assume that $\calS_{\calA}^{\AUG}$ satisfies the freshness property.
+This assumption guarantees that
+for every
+$(q,\theta_n,(d_{n-1},\theta_{n-1})\ldots(d_1,\theta_1)(d_0,\theta_0))
+\in\ID_{\!\calA}^{\AUG}$ reachable from the initial state of
+$\calS_{\calA}^{\AUG}$,
+the sequence
+$\theta_0,d_0,\theta_1,d_1,\ldots,d_{n-1},\theta_n$ satisfies
+the freshness property.
+
 %Obviously,
-$\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$ are obviously bisimilar;
-the smallest relation $R\subseteq \ID_{\!\calA}\times\ID_{\!\calA}^{\AUG}$
-satisfying
-$((q,\theta,\fst(v)),\allowbreak (q,\theta,v))\in R$
-for every $(q,\theta,v)\in\ID_{\!\calA}^{\AUG}$
-is a bisimulation relation
-between $\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$.
+%$\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$ are obviously bisimilar;
+%the smallest relation $R\subseteq \ID_{\!\calA}\times\ID_{\!\calA}^{\AUG}$
+%satisfying
+%$((q,\theta,\fst(v)),\allowbreak (q,\theta,v))\in R$
+%for every $(q,\theta,v)\in\ID_{\!\calA}^{\AUG}$
+%is a bisimulation relation
+%between $\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$.
 %
-On the other hand,
-each equivalence relation in the stack of $\calA'$ represents
+%On the other hand,
+Each equivalence relation in the stack of $\calA'$ represents
 the relation among each data value in the stack and
 two adjacent saved assignments
 of $\calS_{\calA}^{\AUG}$,
@@ -257,6 +297,7 @@ $\calS_{\calA}^{\AUG}$ to $\calS_{\calA'}$,
 as shown in the following lemma.
 %
 \begin{lemma}\label{lemma:bisim-rpda-pda}
+If $\calS_{\calA}^{\AUG}$ satisfies the freshness property, then
 $\calS_{\calA}^{\AUG}$ is $\lab$-bisimilar to
 $\calS_{\calA'}$.
 \end{lemma}
@@ -299,7 +340,8 @@ we obtain the following theorem.
 \label{the: RPDAtoPDA}
 For a given $(m,k)$-NRPDA (resp.\ test-visibly $(m,k)$-DRPDA) $\calA$,
 we can construct an $m$-NPDA (resp.\ $m$-DPDA) $\calA'$
-such that $\lab(L(\calA))=L(\calA')$.
+such that $\lab(L(\calA))=L(\calA')$,
+if we assume the freshness property on the semantics of $\calA$.
 \end{theorem}
 
 -----------------------------------------------------
@@ -336,14 +378,14 @@ $(q,\theta_n,v)\vdash_{\calA^{\AUG}}^{(a,d)}(q',\theta',v')$,
 then
 there exist $\tst$, $\asgn$, $\com$, and $d$ such that
 $\delta(q,a,\tst)\ni (q',\asgn,\com)$,
-$\theta_n,d,d_{n-1}\models\tst$,
+$(\theta_n,d,d_{n-1})\models\tst$,
 $\theta'=\theta_n[\asgn\gets d]$, and
 $v'=v(1{:})$, $v$, or
 $(\theta'(j'),\theta')v$
 if $\com=\pop$, $\skip$, or $\push(j')$, respectively.
 There exists $\phi'\in\phi_n\COMPBLT\Phi_k^{\tst,\asgn}$ because
 $\theta_{n-1},d_{n-1},\theta_n\models\phi_n$ and
-$\theta_n,d,d_{n-1}\models\tst$.
+$(\theta_n,d,d_{n-1})\models\tst$.
 Thus, by definition,
 $\delta'((q,\phi_n),a,\phi_{n-1})\allowbreak\ni ((q',\phi''),\com')$
 where $\com'=\pop$ and $\phi''=\phi_{n-1}\COMP\phi_n\COMP\phi'$
@@ -384,7 +426,7 @@ and $\phi'''=\phi_n\COMP\phi'$ if $\com'=\push(\phi''')$.
 Because $\theta_{n-1},d_{n-1},\theta_n\models\phi_n$ and
 $\phi'\in\phi_n\COMPBLT\Phi_k^{\tst,\asgn}$,
 there exists $d\in D$ satisfying
-$\theta_n,d,d_{n-1}\models\tst$ and
+$(\theta_n,d,d_{n-1})\models\tst$ and
 $\theta_n,d_{n-1},\theta'\models\phi'$
 for $\theta'=\theta_n[\asgn\gets d]$.
 Therefore,
