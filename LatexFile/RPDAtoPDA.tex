@@ -77,14 +77,14 @@ $\theta'=\theta$ and $\theta(j)=e$.
 Let $\COMPBL$ and $\COMPBLT$ be binary predicates over $\Phi_k$ defined as:
 \begin{align*}
   \phi_1\COMPBL\phi_2 \ &:\Leftrightarrow \
-      \R_i \equiv_{\phi_1} \R_j \Leftrightarrow \L_i \equiv_{\phi_2} \L_j
-      \ \text{for } i,j\in[k].
+      \bigl(\R_i \equiv_{\phi_1} \R_j \Leftrightarrow \L_i \equiv_{\phi_2} \L_j
+      \ \text{for } i,j\in[k]\bigr).
   \\
 %
   \phi_1\COMPBLT\phi_2 \ &:\Leftrightarrow \
-      \phi_1\COMPBL\phi_2 \ \text{and} \
-      \R_i \equiv_{\phi_1} \Ltop \Leftrightarrow \L_i \equiv_{\phi_2} \Ltop
-      \ \text{for } i\in[k].
+      \bigl(\phi_1\COMPBL\phi_2 \ \text{and} \
+      (\R_i \equiv_{\phi_1} \Ltop \Leftrightarrow \L_i \equiv_{\phi_2} \Ltop
+      \ \text{for } i\in[k])\bigr).
 \end{align*}
 %We say $\phi_1$ and $\phi_2$ are \emph{composable} if $\phi_1\COMPBLT\phi_2$.
 Below we will define the \emph{composition} of two equivalence relations,
@@ -122,10 +122,10 @@ We say that
 $\theta_1,d_1,\theta_2,\theta_3$ satisfy
 the \emph{freshness} property
 if for every $i,j\in [k]$,
-$\theta_1(i)\ne\theta_2(l)$ for all $l\in[k]$
-implies $\theta_1(i)\ne\theta_3(j)$
-and $d_1\ne\theta_2(l)$ for all $l\in[k]$
-implies $d_1\ne\theta_3(j)$.
+$\bigl(\theta_1(i)\ne\theta_2(l)$ for all $l\in[k]$
+implies $\theta_1(i)\ne\theta_3(j)\bigr)$
+and $\bigl(d_1\ne\theta_2(l)$ for all $l\in[k]$
+implies $d_1\ne\theta_3(j)\bigr)$.
 By definition,
 if $\theta_1,d_1,\theta_2\models\phi_1$ and
 $\theta_2,d_2,\theta_3\models\phi_2$ and
@@ -263,7 +263,7 @@ of $\calS_{\calA}^{\AUG}$
 by a rule
 $\delta(q,a,\tst)\ni (q',\asgn,\com)$ with $\tst=\emptyset$ and
 $\asgn\ne\emptyset$ is allowed
-only when $d$ does not appear in $\theta$ or any saved assignment in $v$.
+only when $d$ does not appear in any saved assignment in $v$.
 Intuitively,
 this property means that when $\tst$ designates a data value not in
 the registers or the stack top,

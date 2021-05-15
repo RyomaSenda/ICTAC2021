@@ -35,7 +35,7 @@ objects from an infinite set (called data values).
 However, when we add an ability of manipulating data values to such a classical model,
 the model easily becomes Turing-complete and basic problems become undecidable.
 Register automaton (RA) is an extension of finite automaton by adding limited ability of
-manipulating data values \cite{KF94,NSV04,Se06}.
+manipulating data values \cite{Bo02,KF94,NSV04,Se06}.
 An RA has a finite number of registers for storing data values taken from an input word and
 it can compare the contents of its registers with the current input data value
 to determine the next transition.
@@ -99,7 +99,7 @@ and graph databases \cite{LV12,LTV15}.
 LTL with the freeze quantifier (LTL$\downarrow$) \cite{DL09,DLN07} is
 an extension of LTL by adding the ability of memorizing and comparing data values.
 LTL$\downarrow$ has the strong relationship with two-way alternate extension of RA.
-Two-variable first-order logic on data words \cite{BDMSS11}(also see \cite{Bo02})
+Two-variable first-order logic on data words \cite{BDMSS11}
 is another famous logic for data values,
 whose expressive power is incomparable with LTL$\downarrow$.
 Other extensions of RA are found in \cite{BKL14,CLTW17,DFSS19,BCGK12}.
@@ -121,7 +121,7 @@ for nondeterministic RA (NRA)
 and becomes decidable in 2EXPTIME for a subclass called test-free NRA.
 
 Extensions by adding registers are also done for PDA \cite{CL15,MRT17,STS21} and
-context-free languages \cite{CK98,STS18,STS19},
+context-free grammar \cite{CK98,STS18,STS19},
 called register pushdown automaton (RPDA) and register context-free grammar (RCFG), respectively.
 The expressive powers of RPDA and RCFG are the same.
 RPDA is a natural model for recursive programs with data values while

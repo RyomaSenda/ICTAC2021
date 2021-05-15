@@ -18,12 +18,12 @@ Thus, $\calT\models\calA$ holds.
 \end{theorem}
 {\bf Proof.}\quad
 Let $\calA$ be a given DPDA.
-By definitions, $f_2(\rho)\in L(\calA)$ iff
-$\rho$ is a winning play for Player I of $\calG_\calA$.
+By definitions, $w\in L(\calA)$ iff
+$f_2(w)$ is a winning play for Player I of $\calG_\calA$.
 By Corollary \ref{col: 2},
 if Player I has a winning strategy,
 we can construct a PDT $\calT$ such that
-$\rho$ is a winning play of $\calG_\calA$ if $f_2(\rho)\in L(\calT)$.
+$f_2(w)$ is a winning play of $\calG_\calA$ if $w\in L(\calT)$.
 Hence, $\calT\models\calA$ holds.
 If Player I does not have a winning strategy, there is no $\calT$ such that $\calT \models \calA$.
 Because there is an EXPTIME algorithm for constructing $\calT$ (if exists)

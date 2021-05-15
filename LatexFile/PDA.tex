@@ -1,13 +1,12 @@
 \section{Pushdown Transducers, Automata and Games}
-We assume that disjoint sets $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma$ denote
-a (finite) input alphabet, an output alphabet and a stack alphabet, respectively,
+We assume that disjoint sets $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma$ are given as a (finite) input alphabet, an output alphabet and a stack alphabet, respectively,
 and $\Sigma = \Sigma_\dblI \cup \Sigma_\dblO$.
 Let $\Com(\Gamma) = \{\pop,\skip\}\cup\{\push(z)\mid z\in \Gamma\}$ be the set of stack commands over $\Gamma$.
 
 \subsection{Pushdown transducers}
 \begin{definition}
 A {pushdown transducer} (PDT)
-over finite alphabets $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$
+over $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$
 is $\calT=(P, p_0, z_0, \Delta)$ where
 $P$ is a finite set of states,
 $p_0\in P$ is the initial state,
@@ -62,7 +61,7 @@ over $\{0,1\},\{a,b\}$ and $\{z\}$ where
 $\Delta = \{
 (p, 0, z) \rightarrow (p, a, \skip),
 (p, 1, z) \rightarrow (p, b, \push(z))
-\}$
+\}$.
 We can see
 a pair of sequences $(\rho,w)\in \ID_\calT^\omega\times (\{0,1\}\cdot\{a,b\})^\omega$ where
 $\rho=(p,z)(p,z)(p,zz)(p,zz)(p,zzz)(p,zzz)\cdots$
@@ -103,7 +102,7 @@ Also, $L(\calT)=(\{0a\}\cup\{1b\})^\omega$.
 \subsection{Pushdown automata}
 
 \begin{definition}
-A nondeterministic {pushdown automata} (NPDA) over finite alphabets $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$ is $\calA = (Q, Q_\dblI, Q_\dblO, q_0, z_0, \delta, c)$ where
+A nondeterministic {pushdown automata} (NPDA) over $\Sigma_\dblI$, $\Sigma_\dblO$ and $\Gamma$ is $\calA = (Q, Q_\dblI, Q_\dblO, q_0, z_0, \delta, c)$ where
 $Q$, $Q_\dblI, Q_\dblO$ are finite sets of states such that $Q=Q_\dblI\cup Q_\dblO$ and $Q_\dblI \cap Q_\dblO = \emptyset$,
 $q_0\in Q_\dblI$ is the initial state,
 $z_0\in \Gamma$ is the initial stack symbol,
@@ -291,23 +290,23 @@ Let $\PL$ be the set of plays.
 A play $\rho\in \PL$ is \emph{winning} for Player I iff
 $\min\{m\in[n] \mid $ there exist an infinite
 number of $i\geq 0$ such that $c(\rho(i)) = m\}$ is even.
+Note that by definition, a play $\rho$ is winning for Player I iff $(\rho,w)$ is a run of $\calA$ for some $w$.
 
 Since $\calA$ is deterministic,
 the following lemma holds.
 \begin{lemma}
 \label{lem: cor}
 Let $f_1: \PL\to(Q\times\Com(\Gamma))^\omega$ and
-$f_2: \PL\to\Sigma^\omega$ be the functions defined as follows.
-For every play
-$\rho=(q_0,u_0)(q_1,u_1)\cdots\in \PL$ of $\calG_\calA$,
+$f_2: (\Sigma_\dblI\cdot\Sigma_\dblO)^\omega \to \PL$ be the functions defined as follows:
 \begin{itemize}
 \item $f_1(\rho)=(q_0,\com_0)(q_1,\com_1)\cdots\in (Q\times\Com)^\omega$ where
 $u_{i+1} = \upds(u_{i},\com_i)$
 for all $i\geq 0$ and
-\item $f_2(\rho)=w$ where $\rho(i)\vdash^{w(i)} \rho(i+1)$
-for all $i\geq 0$.
+\item $f_2(w)=\rho$ where $\rho=(q_0,u_0)(q_1,u_1)\cdots\in \PL$ and
+$\rho(i)\vdash^{w(i)} \rho(i+1)$ for all $i\geq 0$.
 \end{itemize}
-Then, $f_1$ and $f_2$ are well-defined and both of $f_1$ and $f_2$ are injections.
+Then, $f_1$ and $f_2$ are well-defined,
+$f_1$ is an injection and $f_2(L({\cal A}))$ is the set of all the winning plays of Player I.
 \end{lemma}
 % {\bf Proof.}\quad
 % We show both of sequences
@@ -326,14 +325,6 @@ Then, $f_1$ and $f_2$ are well-defined and both of $f_1$ and $f_2$ are injection
 % Because $\calA$ is deterministic,
 % $\rho$ is determined uniquely.
 % \par\medskip\noindent
-It is proved in \cite{Wa96} that
-we can construct a PDT $\calT$
-that gives a winning strategy of $\calG_\calA$,
-that is, $L(\calT) = \{ f_1(\rho) \mid
-\rho$ is winning for Player I $\}$.
-% [Walukiewucz, 2001] proved that
-% we can construct an PDT $\calT$ such that
-% $L(\calT)$ equals to the set of all sequences $\pi\in (Q\times\Com)^\omega$ whose corresponding play is winning.
 \begin{theorem}{\cite{Wa96}}
 \label{the: wal}
 If player I has a winning strategy of $\calG_\calA$,
@@ -343,13 +334,13 @@ That is, $\rho\in \PL$ is winning for Player I if $f_1(\rho)\in L(\calT)$.
 
 By Lemma \ref{lem: cor},
 a winning strategy can be also given as
-the set of sequences $w\in\Sigma^\omega$
-such that the play $\rho$ is winning where $f_2(\rho)=w$.
+the a subset of sequences $w\in\Sigma^\omega$
+such that the play $f_2(w)$ is winning for Player I.
 Thus, we can obtain the following lemma
 in a similar way to Theorem \ref{the: wal}.
 \begin{corollary}
 \label{col: 2}
 If player I has a winning strategy of $\calG_\calA$,
 we can construct a PDT $\calT$ over $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma'$ that gives a winning strategy of $\calG_\calA$.
-That is, $\rho\in \PL$ is winning for Player I if $f_2(\rho)\in L(\calT)$.
+That is, $f_2(w)\in \PL$ is winning for Player I if $w\in L(\calT)$.
 \end{corollary}

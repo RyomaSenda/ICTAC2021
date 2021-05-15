@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.sjis) (TeX Live 2018/W32TeX) (preloaded format=platex 2019.1.10)  15 MAY 2021 10:24
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.sjis) (TeX Live 2018/W32TeX) (preloaded format=platex 2019.1.10)  15 MAY 2021 15:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -585,7 +585,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 55--63
  []
 
 ) (./PDA.tex [4] [5]
-Underfull \hbox (badness 4608) in paragraph at lines 137--155
+Underfull \hbox (badness 4608) in paragraph at lines 136--154
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p[]; []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; z\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p[]; []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p[]; a; z\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 z\OT1/cmr/m/n/10 ))\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p[]; b; z\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 !
  []
 
@@ -711,4 +711,4 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  65i,14n,49p,499b,358s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (24 pages, 148980 bytes).
+Output written on main.dvi (24 pages, 149052 bytes).

@@ -1,14 +1,14 @@
 # Fdb version 3
-["dvipdf"] 1621042899 "main.dvi" "main.pdf" "main" 1621042900
-  "main.dvi" 1621041874 148980 02e5f74b7c1e008b7ced3a8bb8d4af16 "latex"
+["dvipdf"] 1621060304 "main.dvi" "main.pdf" "main" 1621060305
+  "main.dvi" 1621060304 149052 361b9f257571420f448c182a55d6aa0b "latex"
   (generated)
   "main.pdf"
-["latex"] 1621041872 "main.tex" "main.dvi" "main" 1621042900
-  "PDA.tex" 1621041748 16328 79b5fa1a22f70e6d5791a30068cf0f62 ""
+["latex"] 1621060302 "main.tex" "main.dvi" "main" 1621060305
+  "PDA.tex" 1621049667 16067 733c03c82841bee965587999b467ad76 ""
   "RPDA.tex" 1620999167 9444 5c7833bbc6d116b6db7423dee0abf76f ""
-  "RPDAtoPDA.tex" 1620999435 13076 685ec5a842ac782d14df05b8b325431d ""
-  "RealPDA.tex" 1620964318 7384 ad2d76b243284147820712a3a0491b32 ""
-  "RealRPDA.tex" 1621041868 18663 abd40f268e2c576ddb643db0ce1d94db ""
+  "RPDAtoPDA.tex" 1621051352 13114 44131e313f8dbe869a0232645c47bcfa ""
+  "RealPDA.tex" 1621052842 7372 13205b06c91717655edc78714de8235f ""
+  "RealRPDA.tex" 1621048960 18649 578553edc2a73aed487128e1cb9d95ab ""
   "appendix.tex" 1620999432 22100 8556c5f0f556e52e2480a0aa0a4bbed7 ""
   "c:/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1547129097 3332 103109f5612ad95229751940c61aada0 ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm" 1547130122 1196 5981e79c37b2cfd27b3612a6783cd4b6 ""
@@ -162,16 +162,16 @@
   "c:/texlive/2018/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1547130700 4962 9c1069474ff71dbc47d5006555e352d3 ""
   "c:/texlive/2018/texmf-var/web2c/eptex/platex.fmt" 1547130829 4482284 08ffe7aee74c33ede27aefc4806dc9bc ""
   "c:/texlive/2018/texmf.cnf" 1547130746 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "conclusion.tex" 1620915557 1108 b71cf2a96ad44c4b04b0466d1838ef05 ""
-  "introduction.tex" 1620913409 8055 fa23d9d2ec2b3ce376cda5a9a6cd51df ""
+  "conclusion.tex" 1621060298 1106 030d3ea8889508591f2917d06ac8f941 ""
+  "introduction.tex" 1621060267 8036 9e444bc97c89ac977db822d35ce8e6a4 ""
   "lem_Lk.png" 1620879783 30540 9df2736b1c1f593d226868decaba7757 ""
   "lem_LkS.png" 1620919178 47700 e4d6b00ae414ee8071035245663ad3bd ""
   "llncs.cls" 1542263598 42883 defb804506ddaf657c15c52aab3ea228 ""
-  "main.aux" 1621041874 5950 14777d1cf83270cc23b4bec7e2283708 ""
-  "main.tex" 1621001189 7099 8705cc3724a4831365bb71e6aa3de422 ""
+  "main.aux" 1621060304 5934 ac30dcd6acf83eae9283655aae42824e ""
+  "main.tex" 1621046861 7098 acbffdedd1463c83b14e0dd6afb0b23b ""
   "preliminaries.tex" 1620963032 5141 aae37c87b672391dec05ae8d60097b85 ""
   "references.tex" 1620713115 9510 f92160cab7d227d60978a61cc89d660b ""
   (generated)
   "main.dvi"
-  "main.aux"
   "main.log"
+  "main.aux"
