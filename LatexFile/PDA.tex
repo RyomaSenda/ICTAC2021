@@ -135,51 +135,74 @@ Let $\DPDA$ and $\NPDA$ be the classes of DPDA and NPDA, respectively.
 \begin{example}
 \label{ex: PDA}
 Let us consider DPDA
-$\calA = (\{q,q',q_a,q_b\},\{q,q'\},\{q_a,q_b\},q,z,\delta,c)$
+$\calA = (\{q,p_0,p_1\},\{q\},\{p_0,p_1\},q,z,\delta,c)$
 over $\{0,1\},\{a,b\}$ and $\{z\}$ where
-$c(q')=1$, $c(s)=2$ for $s=q,q_a,q_b$ and
-$\delta$ is defined as in Fig. \ref{fig: PDA}.
-% $\delta = \{
-% (q, 0, z) \rightarrow (q_a, \skip),
-% (q, 1, z) \rightarrow (q_b, \skip),
-% (q_a, a, z) \rightarrow (q, \push(z)),
-% (q_b, b, z) \rightarrow (q, \push(z)),
-% (q_a, b, z) \rightarrow (q', \pop),
-% (q_b, a, z) \rightarrow (q', \pop),
-% (q', 0, z) \rightarrow (q_a, \skip),
-% (q', 1, z) \rightarrow (q_b, \skip)
-% \}$.
+$c(q)=c(p_0)=c(p_1)=2$ and
+$\delta = \{
+(q, 0, z) \rightarrow (p_0, \skip),
+(q, 1, z) \rightarrow (p_1, \skip),
+(p_0, a, z) \rightarrow (q, \push(z)),
+(p_0, b, z) \rightarrow (q, \push(z)),
+(p_1, b, z) \rightarrow (q, \push(z))
+\}$.
 We can see
-a pair of sequences $(\rho,w)\in \ID_\calT^\omega\times (\{0,1\}\cdot\{a,b\})^\omega$ in Example \ref{ex: PDT},
-where $\rho=(q,z)(q,z)(q,zz)(q,zz)(q,zzz)(q,zzz)\cdots$
-and $w=(0a1b)^\omega$,
-is also a run of $\calA$.
-However, $w_1=(0a1a)^\omega$ and $w_2=0b(0a1b)^\omega$
-are not in $L(\calA)$ because
-the run $(\rho_1,w_1)$ visits $q'$ infinitely and
-the input sequence $w_2$ forces a stack of $\calA$ empty
-by reading $0b$ first.
-We call $0a$ and $1b$ push subsequences and $0b$ and $1a$ pop subsequences.
-For a sequence $w\in(\{0,1\}\cdot\{a,b\})^\infty$,
-let $\#_{push}(w)$ and $\#_{pop}(w)$ be the number of
-push and pop subsequences appearing in $w$, respectively.
-We can check
-$L(\calA)=\{w\in(\{0,1\}\cdot\{a,b\})^\omega\mid
-\#_{pop}(w)$ is finite and
-$\#_{push}(w')-\#_{pop}(w')\geq 0$
-for every subsequence $w'=w(0:m)$ of $w$ for all $m\in\Natz\}$.
-For PDT $\calT$ defined in Example \ref{ex: PDT},
-we know $L(\calT)\subseteq L(\calA)$
-because $L(\calT)=(\{0a\}\cup\{1b\})^\omega$ contains no sequence that includes a pop subsequence.
+a pair of sequences $(\rho,w)\in \ID_\calT^\omega\times (\{0,1\}\cdot\{a,b\})^\omega$ where
+$\rho=(q,z)(p_0,z)(q,zz)(p_1,zz)\cdots$ and
+$w=(0a1b)^\omega$
+is a run of $\calA$.
+Also, we can check
+$L(\calA)=(\{0a\}\cup\{0b\}\cup\{1b\})^\omega$.
 \end{example}
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=8cm]{PDA.png}
-  \caption{States and transitions of $\calA$.
-  (A label $a,b \to c$ from $q$ to $q'$ means
-  $(q,a,b)\to(q',c)\in\delta$.)}
-  \label{fig: PDA}
-\end{figure}
+
+% \begin{example}
+% \label{ex: PDA}
+% Let us consider DPDA
+% $\calA = (\{q,q',q_a,q_b\},\{q,q'\},\{q_a,q_b\},q,z,\delta,c)$
+% over $\{0,1\},\{a,b\}$ and $\{z\}$ where
+% $c(q')=1$, $c(s)=2$ for $s=q,q_a,q_b$ and
+% $\delta$ is defined as in Fig. \ref{fig: PDA}.
+% % $\delta = \{
+% % (q, 0, z) \rightarrow (q_a, \skip),
+% % (q, 1, z) \rightarrow (q_b, \skip),
+% % (q_a, a, z) \rightarrow (q, \push(z)),
+% % (q_b, b, z) \rightarrow (q, \push(z)),
+% % (q_a, b, z) \rightarrow (q', \pop),
+% % (q_b, a, z) \rightarrow (q', \pop),
+% % (q', 0, z) \rightarrow (q_a, \skip),
+% % (q', 1, z) \rightarrow (q_b, \skip)
+% % \}$.
+% We can see
+% a pair of sequences $(\rho,w)\in \ID_\calT^\omega\times (\{0,1\}\cdot\{a,b\})^\omega$ in Example \ref{ex: PDT},
+% where $\rho=(q,z)(q,z)(q,zz)(q,zz)(q,zzz)(q,zzz)\cdots$
+% and $w=(0a1b)^\omega$,
+% is also a run of $\calA$.
+% However, $w_1=(0a1a)^\omega$ and $w_2=0b(0a1b)^\omega$
+% are not in $L(\calA)$ because
+% the run $(\rho_1,w_1)$ visits $q'$ infinitely and
+% the input sequence $w_2$ forces a stack of $\calA$ empty
+% by reading $0b$ first.
+% We call $0a$ and $1b$ push subsequences and $0b$ and $1a$ pop subsequences.
+% For a sequence $w\in(\{0,1\}\cdot\{a,b\})^\infty$,
+% let $\#_{push}(w)$ and $\#_{pop}(w)$ be the number of
+% push and pop subsequences appearing in $w$, respectively.
+% We can check
+% $L(\calA)=\{w\in(\{0,1\}\cdot\{a,b\})^\omega\mid
+% \#_{pop}(w)$ is finite and
+% $\#_{push}(w')-\#_{pop}(w')\geq 0$
+% for every subsequence $w'=w(0:m)$ of $w$ for all $m\in\Natz\}$.
+% For PDT $\calT$ defined in Example \ref{ex: PDT},
+% we know $L(\calT)\subseteq L(\calA)$
+% because $L(\calT)=(\{0a\}\cup\{1b\})^\omega$ contains no sequence that includes a pop subsequence.
+% \end{example}
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=8cm]{PDA.png}
+%   \caption{States and transitions of $\calA$.
+%   (A label $a,b \to c$ from $q$ to $q'$ means
+%   $(q,a,b)\to(q',c)\in\delta$.)}
+%   \label{fig: PDA}
+% \end{figure}
+
 
 The following lemma states that
 the class of languages recognized by $m$-DPDA and $0$-DPDA are the same

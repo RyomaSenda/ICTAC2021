@@ -81,6 +81,107 @@ an ID $((q,z_1), (z_2,z_3)\cdots(z_{n-1},z_n))$ if $n$ is odd.
 We can check $L(\calA)=L(\calA')$ by the induction on
 the length of a sequence $w\in L(\calA)$.
 
+
+\subsection{A full proof of Lemma \ref{lemma:bisim-rpda-pda}}
+\setcounter{lemma}{\ref{lemma:bisim-rpda-pda}}
+\addtocounter{lemma}{-1}
+\begin{lemma}
+If $\calS_{\calA}^{\AUG}$ satisfies the freshness property, then
+$\calS_{\calA}^{\AUG}$ is $\lab$-bisimilar to
+$\calS_{\calA'}$.
+\end{lemma}
+{\bf Proof.}\quad
+Let $R\subseteq \ID_{\!\calA}^{\AUG}\times\ID_{\!\calA'}$
+be the smallest relation
+that satisfies
+for every $q\in Q$, $\theta_0,\ldots,\theta_n\in\Theta_k$,
+$d_0,\ldots,d_{n-1}\in D$, and $\phi_0,\ldots,\phi_n\in\Phi_k$,
+$((q,\theta_n,(d_{n-1},\theta_{n-1})\allowbreak\ldots\allowbreak
+(d_1,\theta_1)(d_0,\theta_0)),
+((q,\phi_n),\phi_{n-1}\ldots\phi_1\phi_0))\in R$
+if
+$\forall i\in[n]: \theta_{i-1},d_{i-1},\theta_i\models\phi_i$ and
+$\theta_{\bot},{\bot},\theta_0\models\phi_0$.
+%
+We can show that $R$ is a $\lab$-bisimulation relation from
+$\calS_{\calA}^{\AUG}$ to $\calS_{\calA'}$.
+
+Assume that
+$((q,\theta_n,v),\allowbreak ((q,\phi_n),u))\in R$
+for $v=(d_{n-1},\theta_{n-1})\ldots(d_0,\theta_0)$ and
+$u=\phi_{n-1}\ldots\phi_0$.
+Because
+$\forall i\in[n]: \theta_{i-1},d_{i-1},\theta_i\models\phi_i$ and
+$\theta_{\bot},{\bot},\theta_0\models\phi_0$,
+$\forall i\in[n]: \phi_{i-1}\COMPBL\phi_i$.
+%
+If
+$(q,\theta_n,v)\vdash_{\calA^{\AUG}}^{(a,d)}(q',\theta',v')$,
+then
+there exist $\tst$, $\asgn$, $\com$, and $d$ such that
+$\delta(q,a,\tst)\ni (q',\asgn,\com)$,
+$(\theta_n,d,d_{n-1})\models\tst$,
+$\theta'=\theta_n[\asgn\gets d]$, and
+$v'=v(1{:})$, $v$, or
+$(\theta'(j'),\theta')v$
+if $\com=\pop$, $\skip$, or $\push(j')$, respectively.
+There exists $\phi'\in\phi_n\COMPBLT\Phi_k^{\tst,\asgn}$ because
+$\theta_{n-1},d_{n-1},\theta_n\models\phi_n$ and
+$(\theta_n,d,d_{n-1})\models\tst$.
+Thus, by definition,
+$\delta'((q,\phi_n),a,\phi_{n-1})\allowbreak\ni ((q',\phi''),\com')$
+where $\com'=\pop$ and $\phi''=\phi_{n-1}\COMP\phi_n\COMP\phi'$
+if $\com=\pop$,
+$\com'=\skip$ and $\phi''=\phi_n\COMP\phi'$ if $\com=\skip$, and
+$\com'=\push(\phi_n\COMP\phi')$ and $\phi''\in\phi'\COMPBL\Phi_k^{=,j'}$
+if $\com=\push(j')$.
+Therefore,
+$((q,\phi_n),u)\vdash_{\calA'}^a ((q',\phi''),u')$
+where $u'=\upds(u,\com')$.
+Because $\theta_{n-1},d_{n-1},\theta_n\models\phi_n$ and
+$\theta_n,d_{n-1},\theta'\models\phi'$,
+$\theta_{n-1},d_{n-1},\theta'\models\phi_n\COMP\phi'$.
+In the case of $\com=\pop$,
+$\theta_{n-2},d_{n-2},\theta'\models\phi_{n-1}\COMP\phi_n\COMP\phi'$
+because $\theta_{n-2},d_{n-2},\theta_{n-1}\models\phi_{n-1}$ and
+$\theta_{n-1},d_{n-1},\theta'\models\phi_n\COMP\phi'$.
+In the case of $\com=\push(j')$,
+$\theta',\theta'(j'),\theta'\models\phi''$
+because $\phi''\in\Phi_k^{=,j'}$.
+Hence, $((q',\theta',v'),((q',\phi''),\allowbreak u'))\in R$ in any case.
+
+On the other hand,
+if $((q,\phi_n),u)\vdash_{\calA'}^a ((q',\phi''),u')$, then
+$\delta'((q,\phi_n),a,\allowbreak
+\phi_{n-1})\ni ((q',\phi''),\com')$
+where $u'=\upds(u,\com')$ holds.
+By definition,
+there exist $\tst$, $\asgn$, $\com$, and
+$\phi'\in\phi_n\COMP\Phi_k^{\tst,\asgn}$ such that
+$\delta(q,a,\tst)\ni(q',\asgn,\com)$, and
+$\com=\pop$ and $\phi''=\phi_{n-1}\COMP\phi_n\COMP\phi'$
+if $\com'=\pop$,
+$\com=\skip$ and $\phi''=\phi_n\COMP\phi'$ if $\com'=\skip$,
+or
+$\com=\push(j')$, $\phi''\in\phi'\COMPBL\Phi_j^{=,j'}$
+and $\phi'''=\phi_n\COMP\phi'$ if $\com'=\push(\phi''')$.
+Because $\theta_{n-1},d_{n-1},\theta_n\models\phi_n$ and
+$\phi'\in\phi_n\COMPBLT\Phi_k^{\tst,\asgn}$,
+there exists $d\in D$ satisfying
+$(\theta_n,d,d_{n-1})\models\tst$ and
+$\theta_n,d_{n-1},\theta'\models\phi'$
+for $\theta'=\theta_n[\asgn\gets d]$.
+Therefore,
+$(q,\theta_n,v)\vdash_{\calA^{\AUG}}^{(a,d)} (q',\theta',v')$
+where
+$v'=v(1{:})$, $v$, or
+$(\theta'(j'),\theta')v$
+if $\com=\pop$, $\skip$, or $\push(j')$, respectively.
+We can show that $((q',\theta',v'),((q',\phi''),u'))\in R$
+in the same way as the last paragraph.
+
+
+
 \subsection{A full proof of Lemma \ref{lem: Lk}}
 \setcounter{lemma}{\ref{lem: Lk}}
 \addtocounter{lemma}{-1}
