@@ -138,6 +138,38 @@ This sequence satisfies the freshness property if
 $\theta_i,d_i,\theta_l,\theta_j$ satisfy
 the property for every $i,l,j$ such that $0\le i < l < j\le n$.
 
+Similarly, we define $\phi_1\COMPT\phi_2$
+for $\phi_1,\phi_2\in\Phi_k$ with $\phi_1\COMPBLT\phi_2$
+as follows: %the equivalence relation in $\Phi_k$ that satisfies the followings:
+\begin{align*}
+  \L_i \equiv_{\phi_1} \L_j &\Leftrightarrow
+  \L_i \equiv_{\phi_1\COMPT\phi_2} \L_j &&\text{for } i,j\in [k]\cup\{\top\},\\
+  \R_i \equiv_{\phi_2} \R_j &\Leftrightarrow
+  \R_i \equiv_{\phi_1\COMPT\phi_2} \R_j &&\text{for } i,j\in [k],\\
+  \bigl(
+  (\exists l\in [k] : \L_i \equiv_{\phi_1} \R_l \mathrel{\land}
+  \L_l \equiv_{\phi_2} \R_j) \hphantom{\bigr)} \\ {}\lor
+  (\L_i\equiv_{\phi_1}\Ltop \mathrel{\land} \Ltop\equiv_{\phi_2}\R_j)\bigr)
+  &\Leftrightarrow
+  \L_i \equiv_{\phi_1\COMPT\phi_2} \R_j
+  &&\text{for } i\in[k]\cup\{\top\},\ j\in [k].
+\end{align*}
+%
+By definition, $\COMPT$ is associative.
+%We say that
+%$\theta_1,d,\theta_2,\theta_3$ satisfy
+%the \emph{weak freshness} property
+%if for every $i,j\in [k]$,
+%$\bigl(\theta_1(i)\ne\theta_2(l)$ for all $l\in[k]$
+%and $\theta_1(i)\ne d\bigr)$
+%implies $\theta_1(i)\ne\theta_3(j)$.
+%By definition,
+%if $\theta_1,d,\theta_2\models\phi_1$ and
+%$\theta_2,d,\theta_3\models\phi_2$ and
+%$\theta_1,d,\theta_2,\theta_3$ satisfy the weak freshness property,
+%then
+%$\theta_1\,d,\theta_3\models\phi_1\COMPT\phi_2$.
+
 %%%%%%%%%%
 \smallskip
 
@@ -170,7 +202,7 @@ satisfying the following inference rules:
   \phi_1\COMPBL\phi_2, \
   \phi_3\in \phi_2\COMPBLT\Phi_k^{\tst,\asgn}
   \\ \hline
-  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_2\COMP\phi_3),\skip)
+  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_2\COMPT\phi_3),\skip)
 \end{array}\label{eq: PDAtoRPDA1}
 %
 \\[\medskipamount]
@@ -180,7 +212,7 @@ satisfying the following inference rules:
   \phi_1\COMPBL\phi_2, \
   \phi_3\in \phi_2\COMPBLT\Phi_k^{\tst,\asgn}
   \\ \hline
-  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_1\COMP\phi_2\COMP\phi_3),\pop)
+  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_1\COMP(\phi_2\COMPT\phi_3)),\pop)
 \end{array}\label{eq: PDAtoRPDA2}
 %
 \\[\medskipamount]
@@ -191,7 +223,7 @@ satisfying the following inference rules:
   \phi_3\in \phi_2\COMPBLT\Phi_k^{\tst,\asgn}, \
   \phi_4\in \phi_3\COMPBL\Phi_k^{=,j}
   \\ \hline
-  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_4),\push(\phi_2\COMP\phi_3))
+  \delta'((q,\phi_2),a,\phi_1) \ni ((q',\phi_4),\push(\phi_2\COMPT\phi_3))
 \end{array}\label{eq: PDAtoRPDA3}
 %
 \end{align}
@@ -236,15 +268,15 @@ $\calS_{\calA}^{\AUG}=
 \Sigma\times D,\{\tau\}\times D,{\vdash_{\!\calA^{\AUG}}},c_{\calA})$
 where
 $\ID_{\!\calA}^{\AUG}=Q\times\Theta_k\times(D\times\Theta_k)^*$,
-$c_{\calA}((q,\theta,v))=c(q)$ for
-any $(q,\theta,v)\in\ID_{\!\calA}^{\AUG}$,
+$c_{\calA}((q,\theta,u))=c(q)$ for
+any $(q,\theta,u)\in\ID_{\!\calA}^{\AUG}$,
 and $\vdash_{\!\calA^{\AUG}}$ is defined as follows:
-$(q,\theta,v)\vdash_{\!\calA^{\AUG}}^{(a,d)}(q',\theta',v')$
+$(q,\theta,u)\vdash_{\!\calA^{\AUG}}^{(a,d)}(q',\theta',u')$
 iff
 $\delta(q,a,\tst)\ni (q',\asgn,\com)$,
-$(\theta,d,\fst(v(0)))\models\tst$,
+$(\theta,d,\fst(u(0)))\models\tst$,
 $\theta'=\theta[\asgn\gets d]$, and
-$v'= v(1{:})$, $v$, or $(\theta'(j'),\theta')v$
+$u'= u(1{:})$, $u$, or $(\theta'(j'),\theta')u$
 if $\com=\pop$, $\skip$, or $\push(j')$, respectively.
 $\calS_{\calA}^{\AUG}$ is essentially
 the same as the TS $\calS_{\calA}$ for $\calA$,
@@ -258,12 +290,12 @@ Additionally,
 we define the freshness property of $\calS_{\calA}^{\AUG}$
 as follows:
 A transition
-$(q,\theta,v)\vdash_{\!\calA^{\AUG}}^{(a,d)}(q',\theta',v')$
+$(q,\theta,u)\vdash_{\!\calA^{\AUG}}^{(a,d)}(q',\theta',u')$
 of $\calS_{\calA}^{\AUG}$
 by a rule
 $\delta(q,a,\tst)\ni (q',\asgn,\com)$ with $\tst=\emptyset$ and
 $\asgn\ne\emptyset$ is allowed
-only when $d$ does not appear in any saved assignment in $v$.
+only when $d$ does not appear in any saved assignment in $u$.
 Intuitively,
 this property means that when $\tst$ designates a data value not in
 the registers or the stack top,
@@ -274,16 +306,26 @@ for every
 $(q,\theta_n,(d_{n-1},\theta_{n-1})\ldots(d_1,\theta_1)(d_0,\theta_0))
 \in\ID_{\!\calA}^{\AUG}$ reachable from the initial state of
 $\calS_{\calA}^{\AUG}$,
-the sequence
+(i) the sequence
 $\theta_0,d_0,\theta_1,d_1,\ldots,d_{n-1},\theta_n$ satisfies
-the freshness property.
+the freshness property;
+(ii) for $\theta'=\theta_n[\asgn\gets d]$ where
+$d$ is a data value chosen by the RPDA to satisfy
+$\theta_n,d,d_{n-1}\models\tst$,
+$\theta_{n-1},d_{n-1},\theta_n\models\phi_1$ and
+$\theta_n,d_{n-1},\theta'\models\phi_2$ imply
+$\theta_{n-1},d_{n-1},\theta'\models\phi_1\COMPT\phi_2$.
+%$\theta_{n-1},d_{n-1},\theta_n,\theta_n[\asgn\gets d]$
+%satisfy the weak freshness property for a data value $d$
+%chosen by the RPDA to satisfy
+%$\theta_n,d,d_{n-1}\models\tst$.
 
 %Obviously,
 %$\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$ are obviously bisimilar;
 %the smallest relation $R\subseteq \ID_{\!\calA}\times\ID_{\!\calA}^{\AUG}$
 %satisfying
-%$((q,\theta,\fst(v)),\allowbreak (q,\theta,v))\in R$
-%for every $(q,\theta,v)\in\ID_{\!\calA}^{\AUG}$
+%$((q,\theta,\fst(u)),\allowbreak (q,\theta,u))\in R$
+%for every $(q,\theta,u)\in\ID_{\!\calA}^{\AUG}$
 %is a bisimulation relation
 %between $\calS_{\calA}$ and $\calS_{\calA}^{\AUG}$.
 %
@@ -304,30 +346,33 @@ $\calS_{\calA'}$.
 %
 {\bf Proof sketch.}\quad
 Let $R\subseteq \ID_{\!\calA}^{\AUG}\times\ID_{\!\calA'}$
-be the smallest relation
+be the relation
 that satisfies
-for every $q\in Q$, $\theta_0,\ldots,\theta_n\in\Theta_k$,
-$d_0,\ldots,d_{n-1}\in D$, and $\phi_0,\ldots,\phi_n\in\Phi_k$,
-$((q,\theta_n,(d_{n-1},\theta_{n-1})\allowbreak\ldots\allowbreak
-(d_1,\theta_1)(d_0,\theta_0)),
-((q,\phi_n),\phi_{n-1}\ldots\phi_1\phi_0))\in R$
-if
+for every $q\in Q$, %$\theta_0,\ldots,\theta_n\in\Theta_k$,
+%$d_0,\ldots,d_{n-1}\in D$, and $\phi_0,\ldots,\phi_n\in\Phi_k$,
+$u=(d_{n-1},\theta_{n-1})\ldots(d_1,\theta_1)(d_0,\theta_0)
+ \in(D\times\Theta_k)^*$, and
+$v=\phi_{n-1}\ldots\phi_1\phi_0\in\Phi_k^*$,
+$((q,\theta_n,u),((q,\phi_n),v))\in R$
+iff
+$(q,\theta_n,u)$ is reachable from the initial state of
+$\calS_{\calA}^{\AUG}$,
 $\forall i\in[n]: \theta_{i-1},d_{i-1},\theta_i\models\phi_i$ and
 $\theta_{\bot},{\bot},\theta_0\models\phi_0$.
 %
 If
-$((q,\theta_n,v), ((q,\phi_n),u))\in R$ and
-$(q,\theta_n,v)\vdash_{\calA^{\AUG}}^{(a,d)}(q',\theta',v')$,
+$((q,\theta_n,u), ((q,\phi_n),v))\in R$ and
+$(q,\theta_n,u)\vdash_{\calA^{\AUG}}^{(a,d)}(q',\theta',u')$,
 then by the definition of $\delta'$,
-$((q,\phi_n),u)\vdash_{\calA'}^a ((q',\phi''),u')$
-such that $((q',\theta',v'), ((q',\phi''),u'))\in R$.
+$((q,\phi_n),v)\vdash_{\calA'}^a ((q',\phi'),v')$
+such that $((q',\theta',u'), ((q',\phi'),v'))\in R$.
 Conversely, if
-$((q,\theta_n,v),\allowbreak ((q,\phi_n),u))\in R$ and
-$((q,\phi_n),u)\vdash_{\calA'}^a ((q',\phi''),u')$,
+$((q,\theta_n,u),\allowbreak ((q,\phi_n),v))\in R$ and
+$((q,\phi_n),v)\vdash_{\calA'}^a ((q',\phi'),v')$,
 then by the definition of $\delta'$,
 there must be a transition of $\calA$ that enables
-$(q,\theta_n,v)\vdash_{\calA^{\AUG}}^{(a,d)} (q',\theta',v')$
-such that $((q',\theta',v'), ((q',\phi''),u'))\in R$.
+$(q,\theta_n,u)\vdash_{\calA^{\AUG}}^{(a,d)} (q',\theta',u')$
+such that $((q',\theta',u'), ((q',\phi'),v'))\in R$.
 %
 Therefore, $R$ is a $\lab$-bisimulation relation from
 $\calS_{\calA}^{\AUG}$ to $\calS_{\calA'}$.
