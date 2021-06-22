@@ -6,7 +6,7 @@ We denote $A^+ = A^*\setminus\{\varepsilon\}$ and
 $A^\infty = A^* \cup A^\omega$.
 For a word $\alpha\in A^\infty$ over a set $A$,
 let $\alpha(i)\in A$ be the $i$-th element of $\alpha$ ($i\geq 0$),
-$\alpha(i:j)=\alpha(i)\alpha(i+1)\cdots\alpha(j-1)\alpha(j)$ for $i\geq j$
+$\alpha(i:j)=\alpha(i)\alpha(i+1)\cdots\alpha(j-1)\alpha(j)$ for $i\leq j$
 and $\alpha(i:)=\alpha(i)\cdots$ for $i\geq 0$.
 Let $\<u, w\> = u(0)w(0)u(1)w(1)\cdots \in A^\infty$ for words $u,w\in A^\infty$ and $\<B, C\> = \{\<u, w\>\mid u\in B, w\in C\}$ for sets $B, C\subseteq A^\infty$.
 By $|\beta|$, we mean the cardinality of $\beta$ if $\beta$ is a set
@@ -48,7 +48,7 @@ $L(\calS)=\{\ef(w)\in A^\omega\mid$
 there exists a run $(\rho,w)$ such that $\mininf(\rho)$ is even$\}$.
 For $m\in\Natz$, we call $\calS$ an $m$-TS
 if for every run $(\rho,w)$ of $\calS$,
-$w$ contains no consecutive subsequence $w'\in E^{m+1}$.
+$w$ contains no contiguous subsequence $w'\in E^*$ such that $|w'|> m$.
 
 
 

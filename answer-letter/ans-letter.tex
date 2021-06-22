@@ -1,0 +1,428 @@
+\documentclass{article}
+\usepackage{adjustbox}
+\usepackage{algorithm,algorithmic}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bmpsize} %%% senda
+%\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage[shortlabels]{enumitem}
+%\usepackage{forest}
+\usepackage{latexsym}
+%\usepackage{multirow}
+%\usepackage{pgfplots}
+%\usepackage{pgfplotstable}
+%\usepackage{thmtools}
+\usepackage{xspace}
+\usepackage{here}
+
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{property}{Property}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{condition}{Condition}
+\newtheorem{claim}{Claim}
+
+\input{macros}
+
+\makeatletter
+\newcommand{\xRightarrow}[2][]{%
+\ext@arrow 0055{\Rightarrowfill@}{#1}{#2}%
+}
+\def\Rightarrowfill@{\arrowfill@\Relbar\Relbar\Rightarrow}
+\newcommand{\xLeftarrow}[2][]{%
+\ext@arrow 0055{\Leftarrowfill@}{#1}{#2}%
+}
+\def\Leftarrowfill@{\arrowfill@\Leftarrow\Relbar\Relbar}
+\newcommand{\xLongleftrightarrow}[2][]{%
+\ext@arrow 0055{\llrafill@}{#1}{#2}%
+}
+\def\llrafill@{\arrowfill@\Leftarrow\Relbar\Rightarrow}
+\makeatother
+
+\title{Answers to the reviewers' comments on \\``LTL Model Checking for Register Pushdown Systems''}
+\date{}
+
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+The authors would like to thank the reviewers
+for their thoughtful comments on the previous version.
+All comments and suggestions have been taken into consideration
+and the authors have revised the paper according to the comments as follows.
+%\newline
+%In the marked paper,
+%the part revised according to the reviewers' comments are marked in three colors:
+%yellow for reviewer A,
+%blue for reviewer B, and green for both.
+
+\newpage
+\pagenumbering{arabic}
+
+\section*{Reviewer A}
+
+\paragraph{(A1)} Proposition 3.2. \newline
+\textit{
+It should be stated that this proposition and the property (1') , (2') in page 6 are an adaptation
+of Proposition 3.1 of [6] for pushdown systems.
+}
+\subparagraph{Answer:}
+Thank you for the comment.
+We stated the above mentioned proposition and properties are extensions of [6] as below.
+\medskip\noindent\\
+(Before Proposition 3.2, p.5, left)
+This proposition is a natural but non-trivial extension of
+[6, Proposition 3.1] to BRPDS.
+\medskip\noindent\\
+(Before properties (1') and (2'), p.6, left)
+Using $\Pre^*$, $\Pre^+$, $L_{\phi}^p$ and $L_{\phi,1}^p$,
+Proposition~3.2 can be rephrased as follows,
+which is a BRPDS version of (1') and (2') in
+[6, Proposition~3.1]:
+
+\paragraph{(A2)}
+\textit{
+It should be mentioned that LTL model checking for regular valuations in this paper takes the
+approach of Technique 2 of [16].
+}
+\subparagraph{Answer:}
+According to the comment,
+we revised the first sentence of the paragraph before Proposition 6.2.
+\medskip\noindent\\
+(Previous version) The idea behind the proof is as follows.\\
+(Revised version) The idea behind the proof is based on [16], but we need
+to extend the idea of [16] to deal with RPDS as follows.
+\medskip\noindent\\
+
+\paragraph{(A3)}
+\textit{
+It should be clarified that it can handle only deterministic
+regular valuations since register automata cannot be determinized. See the comment below.
+}
+\subparagraph{Answer:}
+Thank you for the comment.
+In Introduction of the previous version, we described that register automata cannot be determinized and the constraint ``backward-deterministic'' is essencial.
+However, we did not clarify that regular valuations for RPDS are deterministic and cannot be determinized.
+In the revised paper, the underlined sentence is added in Introduction (before Related Work, p.2, left).
+
+\begin{quote}\em
+	In the algorithm for regular valuations,
+we assume backward-deterministic RAs are available for representing the regular pattern of the stack contents.
+This constraint is essential because unlike NFAs, determinization is not possible for general RAs.
+	\underline{Thus, regular valuations for}
+      \underline{RPDS can only handle deterministic cases, not as [16].}
+\end{quote}
+
+\paragraph{(A4)} Section 3.2, Definition 3.3, Definition of $k$-RA \newline
+\textit{
+$k$-RA are used for the following two purposes.
+\medskip\noindent\\
+(1) to represent a regular set of configurations\\
+(2) to represent a regular valuation
+\medskip\noindent\\
+The automata used in [16] for (2) are different from this definition in the sense that an
+automaton in this paper reads stack from the top, but that of [16] reads stack from the
+bottom. This should be clarified.
+\medskip\noindent\\
+Related to the difference above, `backward-deterministic' in this paper and [16] are different.
+The restriction of `backward-deterministic' in this paper corresponds to deterministic in [16].
+This should be clarified.
+}
+\subparagraph{Answer:}
+Thank you for the comment.
+To clarify the difference between regular valuations of this paper and
+those of [16], we added the following sentences after the definition of regular valuations (Definition 4.2, p.6, right).
+
+\begin{quote}\em
+	The definitions of simple and regular valuations are extensions of those of [6] and [16], respectively.
+	We define a regular valuation for RPDS
+	based on backward-deterministic regular sets of $\ID_\calP$,
+	which corresponds to the regular valuation for PDS in [16]
+	based on deterministic finite automata
+	that decide the acceptance of the reverse of stack contents.
+\end{quote}
+
+
+\paragraph{(A5)} Definition 4.3 \newline
+\textit{
+It will be more precise to say that $\ID_\calP\to\Sigma$ is `backward-deterministic' or `deterministic'
+regular.
+}
+\subparagraph{Answer:}
+As the reviewer pointed out,
+the valuation $\ID_\calP\to\Sigma$ in Definition 4.3
+is better to say `backward-deterministic' or `deterministic' regular
+because the valuation is specified by a backward-deterministic regular sets.
+We revised Definition 4.3 as pointed out.
+However, we continue to use the name ``regular valuation'' as the previous version of the paper for simplicity.
+
+\paragraph{(A6)} p.6. Property (2') \newline
+\textit{
+I think that it is better to rephrase it as follows because there are infinitely many $\theta_0$ and $d$.
+\begin{align*}
+\pre^+_{\calBP}(\cdots)\cap L^p_{\phi, 1}\neq \emptyset
+\end{align*}
+This is related to the following sentence in p.10, right, -7.
+\medskip\noindent\\
+which is the membership problem of $(p, \theta_0, d_0)$ for a $k$-RA $\calA$
+\medskip\noindent\\
+I think that it is not appropriate to consider the problem for infinitely many $d_0$.
+}
+\subparagraph{Answer:}
+Just as the reviewer said,
+we intend to decide ($2'$) by testing the non-emptiness
+of $\Pre^+_{\calBP}(\ldots)\cap L_{\phi,1}^p$,
+instead of searching
+the infinite set $L_{\phi,1}^p$ for $(p,\theta_0,d_0)$.
+We mentioned $(p,\theta_0,d_0)$ in ($2'$) because
+in the next paragraph, we explained why
+we do not need to test whether
+$(p,\theta_0,d_0w')$ mentioned in ($2'$) is reachable from
+$(q_0,\theta,w)$.
+
+In the revised paper,
+we added a sentence just after ($2'$) that says
+($2'$) is equivalent to the non-emptiness of a language.
+Moreover, we revised the paragraph next to ($2'$)
+so that the main point of the paragraph becomes clearer.
+The revised paragraph next to ($2'$) is as follows:
+\begin{quote}\em
+  Obviously, ($2'$) is equivalent to
+  $\Pre_{\calBP}^+((G\times\Theta_k\times D^*)\cap
+  \Pre_{\calBP}^*(L_{\phi}^p))
+  \cap L_{\phi,1}^p \neq\emptyset$.
+  %
+  Note that although Proposition 3.2
+  requires that
+  $(p,\theta_0,d_0)$ mentioned in ($2'$) should satisfy
+  $(q_0,\theta,w)\done^* (p,\theta_0,d_0w')$
+  for some $w'\in D^*$,
+  we do not need to directly test it,
+  because by Lemma 3.1,
+  if $(p,\theta_0,d_0) \done^+ (g,\theta'_0,u_0) \done^*
+  (p,\theta_1,d_1v_1)$
+  for some %$(p,\theta_0,d_0)\in L_{\phi,1}^p$,
+  $(g,\theta'_0,u_0)\in G\times\Theta_k\times D^*$
+  and $(p,\theta_1,d_1v_1)\in L_{\phi}^p$,
+  then
+  for \emph{every}
+  $(p,\theta_2,d_2)\in L_{\phi,1}^p$,
+  there exist $(g,\theta'_2,u_2)\in G\times\Theta_k\times D^*$
+  and $(p,\theta_3,d_3v_3)\in L_{\phi}^p$
+  such that
+  $(p,\theta_2,d_2) \done^+ (g,\theta'_2,u_2) \done^*
+  (p,\theta_3,d_3v_3)$.
+\end{quote}
+
+
+\paragraph{(A7)} Proof of Proposition 6.2. \newline
+\textit{
+The construction in [16] extends the stack alphabet as $\Gamma'=\Gamma\times\States$.
+On the other hand, this paper represents one symbol in the extended stack alphabet $\Gamma'$ with a sequence of $D$. I think that this complicates the proof of this proposition. It should be clarified why you take this approach.
+}
+\subparagraph{Answer:}
+Thank you for the comment.
+If we extend stack alphabet to $D\times\States$, like $\Gamma'=\Gamma\times\States$ in [16],
+we also need an extension of the definition of RPDS
+because the definition of RPDS only allows its stack to
+store data values in $D$ from its registers.
+In order to avoid an extension of RPDS,
+we take the way to simulate every symbol in $\States$
+by using the encoding table $\theta_\bolQ$ in the proof of the proposition.
+
+As the reviewer pointed out,
+the previous version of this paper has no explanation why
+we do not use the same approach as in [16].
+Thus, we added the following sentence at the end of the paragraph before Proposition 6.2.
+
+\begin{quote}\em
+	More accurately, we introduce the encoding table $\theta_Q$ that keeps distinct data values $d_{p_1},\ldots,d_{p_{|Q|}}$ and
+	we store the constant data value $d_{p_i}$ instead of the state $p_i$ of $\calA$
+	to registers and stack of $\calP'$ because we cannot store a certain finite symbol $p_i$ without extending the definition of RPDS.
+\end{quote}
+
+
+\paragraph{(A8)}
+\textit{
+I think that it is better that the construction in the proof of Proposition 6.2 is presented in the
+main text because LTL model checking for regular valuations is one of the main contributions
+of this paper.
+}
+\subparagraph{Answer:}
+Thank you for the comment.
+According to the comment,
+we move the full proof of Proposition 6.2 to the main text.
+
+
+\paragraph{(A9)} p.3, left, l.5. ``$d_1 \ldots d_k \equiv$" \newline
+\textit{
+It is more common to use $\cdots$ instead of $\ldots$.
+}
+\subparagraph{Answer:}
+Although the authors used \verb+\ldots+ there according to the style
+presented in the \TeX{}book [Knuth86],
+we changed $d_1\ldots d_k$ to $d_1\cdots d_k$
+and every abbreviation ``$x_1\ldots x_n$'' of concatenation
+to ``$x_1\cdots x_n$'' through this paper.
+\medskip\noindent\\\noindent
+[Knuth86] D.E. Knuth, ``The \TeX{}book,'' 
+Chap.18, Sect.5: Ellipses (``three dots''), pp.171--172,
+Addison-Wesley, 1986.
+
+\paragraph{(A10)} p.3, right, l.-9. ``$(p, \theta, w)$ can transit to $(q, \theta', w')$" \newline
+\textit{
+I think that it is more common to say that $(q, \theta', w')$ is a successor of
+$(p, \theta. w)$. Please check the usage.
+}
+\subparagraph{Answer:}
+Thank you for the comment.
+We changed the sentence to ``$(q, \theta', w')$ is a successor of $(p, \theta, w)$'' as the reviewer pointed out.
+
+
+\paragraph{(A11)} p.5, Section 3.2, the definition of regular languages.
+``We call a set $C$ ... regular if there exists a $k$-RA $\calA$ ..."\newline
+\textit{
+It is not clear if $k$ is fixed or ``for some $k$".
+}
+\subparagraph{Answer:}
+Thank you for the comment. We added the underlined sentence as follows and clarified that
+$k$ is arbitrary but both $k$ which define $C\subseteq I\times\Theta_k\times D^*$ and $k$-RA $\calA$ are the same.
+
+\begin{quote}\em
+We call a set $C\subseteq I\times\Theta_k\times D^*$ \emph{regular} if there exists a $k$-RA $\calA$ that satisfies $C=L(\calA)$.
+\underline{(The number $k$ of registers of $\calA$ equals the}
+\underline{number of registers the set $C$ of IDs assumes.)}
+\end{quote}
+
+\paragraph{(A12)}  p.6, left, l.-8, ``We extend the domain of $\Lambda$ ...."\newline
+\textit{
+It is not clear what it means.
+}
+\subparagraph{Answer:}
+Thank you for the comment. We added the definition of the extension of $\Lambda$ after the sentence and clarified the meaning as below.
+\begin{quote}\em
+  We extend the domain of $\Lambda$ to $(\ID_\calP)^\infty$ pointwise;
+  that is, $\Lambda(c_1c_2\cdots)=\Lambda(c_1)\Lambda(c_2)\cdots$ for
+  $c_1,c_2,\ldots\in \ID_\calP$.
+\end{quote}
+
+
+\paragraph{(A13)} p.6, right, l.-5. ``secure information" \newline
+\textit{
+It is not clear what it means. Maybe you mean ``security sensitive information".
+}
+\subparagraph{Answer:}
+Thank you for the comment. We changed the sentence as the reviewer pointed out.
+
+\paragraph{(A14)} p.7, left, l.18. ``We construct $\calP_1$ a ..."\newline
+\textit{
+It is better if you explain what the second register is used for.
+}
+\subparagraph{Answer:}
+According to the comment, we inserted an explanation of the second register as below.
+\begin{quote}\em
+  We construct $\calP_{1a}$ and $\calP_{1b}$ as $3$-RPDS whose 1st and 2nd registers are used
+  for keeping the contents of $\mathit{eax}$ and $\mathit{ebx}$, respectively,
+  and the data value in the 3rd register stands for $0$ in the original program.
+\end{quote}
+
+\paragraph{(A15)} p.10, right, l.14. ``the abovementioned algorithm"\newline
+\textit{
+The algorithm is mentioned in page 6.
+}
+\subparagraph{Answer:}
+As commented, we corrected this phrase as ``the algorithm described in Section 3.5".
+
+\paragraph{(A16)} p.12, left, l.1.\newline
+\textit{
+It is not clear what $(p, \theta, d_n) \vdash ((\bolp_n)_A, (\boltheta_n)_A, \varepsilon)$ means.
+}
+\subparagraph{Answer:}
+Thank you for the comment.
+The symbols $(\bolp_n)_A$ and $(\boltheta_n)_A$
+are the $A$ component of the tuples $\bolp_n$ and $\boltheta_n$,
+which are the first elements of the consistent sequences
+$\bolp_n,\ldots,\bolp_1$ and $\boltheta_n,\ldots,\boltheta_1$ of $(p,\theta,d_n\cdots d_1)$.
+Thus, $(p, \theta, d_n) \vdash ((\bolp_n)_A, (\boltheta_n)_A, \varepsilon)$
+iff $A\in\Lambda(p,\theta,d_n\cdots d_1)$ holds
+by the definition of consistent sequences.
+In the revised paper, we added these explanations to the sentence as below.
+
+\begin{quote}\em
+	By the definition of $\Lambda$ and $\calA_A$ for $A\in\At$,
+	$A\in\Lambda(p,\theta,d_n\cdots d_1)$ iff
+	$(p,\theta,d_n\cdots d_1)\in L(\calA_A)$ iff
+	$(p,\theta,d_n)\vdash_{\calA_A}
+	((\bolp_n)_A,(\boltheta_n)_A,\varepsilon)$ holds
+	where
+	$\bolp_n$ and $\boltheta_n$ are the first elements of
+	the consistent sequences $\bolp_n,\ldots,\bolp_1$ and $\boltheta_n,\ldots,\boltheta_1$ of $(p,\theta,d_n\cdots d_1)$ and
+	$(\bolp_n)_A$ and $(\boltheta_n)_A$ are the components of $\bolp_n$ and $\boltheta_n$ indexed by $A$, respectively.
+\end{quote}
+
+\paragraph{(A17)} p.12, left, l.8.\newline
+\textit{
+simulate a transition of $\calP'$ $\to$ simulate a transition of $\calP$
+}
+\subparagraph{Answer:}
+As the reviewer pointed out, we modified $\calP'$ to $\calP$.
+
+\paragraph{(A18)} P. 12, left, l.-24. ``is a bijection"\newline
+\textit{
+It is not a bijection. Maybe, you mean bijection to the consistent
+configurations of $\ID_{\calP'}$.
+}
+\subparagraph{Answer:}
+As the reviewer mentioned, $\cor: \ID_\calP \to \ID_{\calP'}$ is not a bijection.
+We corrected the sentence as below.
+\begin{quote}\em
+  For a fixed encoding table $\theta_\bolQ$, $\cor: \ID_\calP \to \ID_{\calP'}$ defined above satisfies $\cor(c)=\cor(c')$ iff $c=c'$
+  for any $c,c'\in\ID_\calP$.
+\end{quote}
+
+
+\newpage
+\section*{Reviewer B}
+
+\paragraph{(B1)}
+\textit{
+ The author uses $D_k$ for representing the words over $D$ of length $k$.
+Is it standard in the theory of register automata? In formal language theory,
+it is standard to use $D^k$ for representing it.
+}
+\subparagraph{Answer:}
+Thank you for the comment.
+The representation $D_k$ is not standard.
+According to the comment, we changed $D_k$ to $D^k$.
+
+
+%\section*{Other corrections}
+
+%Additionally, we corrected the following mistakes in the previous version.
+
+%\paragraph{(C1)} p.6, Line~15 of Alg.~2:
+%\begin{tabbing}
+%  \qquad\=(Corrected) \=\kill
+%  \>(Previous)\>%
+%  \textbf{until} {no more transitions and final states can be added.} \\
+%  \>(Corrected)\>%
+%  \textbf{until} {no more transitions and accepting conditions can be added.}
+%\end{tabbing}
+
+%\paragraph{(C2)} p.8, the proof of Lemma~5.3,
+%  the last sentence of the first paragraph of the induction step:
+%\begin{tabbing}
+%  \qquad\=(Corrected) \=\kill
+%  \>(Previous)\>%
+%  The case that $h = 0$ can be easily proved. \\
+%  \>(Corrected)\>%
+%  The case that $m = 0$ can be easily proved.
+%\end{tabbing}
+
+
+\end{document}

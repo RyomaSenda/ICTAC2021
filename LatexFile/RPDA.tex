@@ -70,7 +70,7 @@ and
 $\delta: Q \times (\Sigma\cup\{\tau\})\times \Tst_k\times\Gamma \to \scrP(Q \times\Asgn_k\times \Com(\Gamma\times[k]))$ is a transition function having one of the forms:
 \begin{itemize}
 \item $(q_\dblX,a_\dblX,\tst,z)\to(q_\overX,\asgn,\com)$ (input/output rule)
-\item $(q_\dblX,\tau,\tst,z)\to(q'_\dblX,\asgn,\com)$ ($\tau$ rule)
+\item $(q_\dblX,\tau,\tst,z)\to(q'_\dblX,\asgn,\com)$ ($\tau$ rules, where $\tau\notin\Sigma$)
 \end{itemize}
 where $(\dblX, \overX)\in\{(\dblI, \dblO), (\dblO,\dblI)\}$,
 $q_\dblX, q'_\dblX\in Q_\dblX, q_\overX\in Q_\overX, a_\dblX\in \Sigma_\dblX$, $\tst\in\Tst_k$, $z\in\Gamma$, $\asgn\in\Asgn_k$ and $\com\in\Com(\Gamma\times[k])$.
@@ -157,8 +157,8 @@ every rule $(q,a,\tst)\to(q',\asgn,\com)$ of $\calA$
 satisfies $\vis_t(a)=\tst$.
 In the next subsection,
 we prove that the projection of the language recognized by
-a NRPDA $\calA$ onto the finite alphabets
-can be recognized by a NPDA $\calA'$,
+an NRPDA $\calA$ onto the finite alphabets
+can be recognized by an NPDA $\calA'$,
 and if $\calA$ is a test-visibly DRPDA,
 $\calA'$ is deterministic.
 

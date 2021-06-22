@@ -107,10 +107,10 @@ $Q$, $Q_\dblI, Q_\dblO$ are finite sets of states such that $Q=Q_\dblI\cup Q_\db
 $q_0\in Q_\dblI$ is the initial state,
 $z_0\in \Gamma$ is the initial stack symbol,
 $c: Q \to [n]$ is the coloring function where $n\in \Nat$ is the number of priorities and
-$\delta: Q \times \Sigma \times \Gamma \to \scrP(Q \times \Com(\Gamma))$ is a finite set of transition rules having one of the following forms:
+$\delta: Q \times (\Sigma\cup\{\tau\}) \times \Gamma \to \scrP(Q \times \Com(\Gamma))$ is a finite set of transition rules having one of the following forms:
 \begin{itemize}
 \item $(q_\dblX, a_\dblX, z) \rightarrow (q_\overX, \com)$ (input/output rules)
-\item $(q_\dblX, \tau, z)\to(q'_\dblX,\com)$ ($\tau$ rules)
+\item $(q_\dblX, \tau, z)\to(q'_\dblX,\com)$ ($\tau$ rules, where $\tau\notin\Sigma$)
 \end{itemize}
 where $(\dblX, \overX)\in\{(\dblI, \dblO), (\dblO,\dblI)\}$,
 $q_\dblX, q'_\dblX\in Q_\dblX, q_\overX\in Q_\overX, a_\dblX\in \Sigma_\dblX$, $z\in \Gamma$ and $\com\in \Com(\Gamma)$.
@@ -278,7 +278,7 @@ $C((q,u)) = c(q)$ for all $(q,u)\in V$.
 
 The game starts with $(q_0,z_0)\in V_\dblI$.
 When the current vertex is $v\in V_\dblI$,
-Player II chooses a successor $v'\in V_\dblO$ of $v$ as the next vertex.
+Player~II chooses a successor $v'\in V_\dblO$ of $v$ as the next vertex.
 When the current vertex is $v\in V_\dblO$,
 Player I chooses a successor $v'\in V_\dblI$ of $v$.
 Formally, a finite or infinite sequence $\rho\in V^\infty$ is
@@ -288,9 +288,9 @@ $(\rho(i-1), \rho(i))\in E$ for every $i\geq 1$.
 A \emph{play} of $\calG_\calA$ is an infinite and valid sequence $\rho\in V^\omega$.
 Let $\PL$ be the set of plays.
 A play $\rho\in \PL$ is \emph{winning} for Player I iff
-$\min\{m\in[n] \mid $ there exist an infinite
+$\min\{m\in[n] \mid $ there exists an infinite
 number of $i\geq 0$ such that $c(\rho(i)) = m\}$ is even.
-Note that by definition, a play $\rho$ is winning for Player I iff $(\rho,w)$ is a run of $\calA$ for some $w$.
+Note that by definition, a play $\rho$ is winning for Player I iff $(\rho,w)$ is an accepting run of $\calA$ for some $w$.
 
 Since $\calA$ is deterministic,
 the following lemma holds.
@@ -300,6 +300,7 @@ Let $f_1: \PL\to(Q\times\Com(\Gamma))^\omega$ and
 $f_2: (\Sigma_\dblI\cdot\Sigma_\dblO)^\omega \to \PL$ be the functions defined as follows:
 \begin{itemize}
 \item $f_1(\rho)=(q_0,\com_0)(q_1,\com_1)\cdots\in (Q\times\Com)^\omega$ where
+$\rho = (q_0,u_0)(q_1,u_1)\cdots\in \PL$ and
 $u_{i+1} = \upds(u_{i},\com_i)$
 for all $i\geq 0$ and
 \item $f_2(w)=\rho$ where $\rho=(q_0,u_0)(q_1,u_1)\cdots\in \PL$ and
@@ -334,13 +335,14 @@ That is, $\rho\in \PL$ is winning for Player I if $f_1(\rho)\in L(\calT)$.
 
 By Lemma \ref{lem: cor},
 a winning strategy can be also given as
-the a subset of sequences $w\in\Sigma^\omega$
+a subset of sequences $w\in(\Sigma_\dblI\cdot\Sigma_\dblO)^\omega$
 such that the play $f_2(w)$ is winning for Player I.
 Thus, we can obtain the following lemma
 in a similar way to Theorem \ref{the: wal}.
 \begin{corollary}
 \label{col: 2}
 If player I has a winning strategy of $\calG_\calA$,
-we can construct a PDT $\calT$ over $\Sigma_\dblI, \Sigma_\dblO$ and $\Gamma'$ that gives a winning strategy of $\calG_\calA$.
+we can construct a PDT $\calT$ over $\Sigma_\dblI, \Sigma_\dblO$ and
+a stack alphabet $\Gamma'$ that gives a winning strategy of $\calG_\calA$.
 That is, $f_2(w)\in \PL$ is winning for Player I if $w\in L(\calT)$.
 \end{corollary}

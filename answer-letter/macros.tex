@@ -1,0 +1,101 @@
+\newcommand{\stackcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\newcommand{\Pros}[1]{\mathtt{#1}}
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Natz}{\mathbb{N}_0}
+\newcommand{\done}{\Rightarrow}
+\newcommand{\dast}{\stackrel{\ast}{\smash\Rightarrow\vphantom=}}
+\newcommand{\dastr}{\stackrel{\ast}{\smash\Leftarrow\vphantom=}}
+\newcommand{\dpls}{\stackrel{+}{\smash\Rightarrow\vphantom=}}
+\newcommand{\vone}{\vdash}
+\newcommand{\vast}{\stackrel{\ast}{\vdash}}
+\newcommand{\vpls}{\stackrel{+}{\vdash}}
+\newcommand{\inv}{\mathit{inv}}
+\newcommand{\Comp}{\mathit{Comp}}
+\newcommand{\Compl}{\mathit{Comp}_\mathit{L}}
+\newcommand{\Compm}{\mathit{Comp}_\mathit{M}}
+\newcommand{\Compw}{\mathit{Comp}}
+\newcommand{\Compr}{\mathit{Comp}_\mathit{R}}
+\newcommand{\Linked}{\hookrightarrow}
+\newcommand{\Pre}{\mathit{pre}}
+\newcommand{\Post}{\mathit{post}}
+\newcommand{\PhiNew}{\Phi_{\mathit{new}}}
+\newcommand{\deltaNew}{\delta_{\mathit{new}}}
+\newcommand{\rNew}{r_{\mathit{new}}}
+\renewcommand{\L}{{\tt x}}
+\newcommand{\R}{{\tt x}'}
+\newcommand{\TOP}{{\tt top}}
+\newcommand{\INV}[1]{{#1}^{-1}}
+\newcommand{\MCOMP}[2]{{#1}\mathbin{\circ_{\tt M}}{#2}}
+\newcommand{\RCOMP}[2]{{#1}\mathbin{\circ_{\tt R}}{#2}}
+\newcommand{\ANGLE}[1]{\langle{#1}\rangle}
+\newcommand{\EXOR}{\not\Leftrightarrow}
+\newcommand{\halfquad}{\hspace{.5em}}
+\newcommand{\negqquad}{\hspace{-4em}}
+\newcommand{\lefthang}[1]{\par\indent\llap{#1\ }~\ignorespaces}
+\newcommand{\Acc}{\mathit{Acc}}
+\newcommand{\Lat}{\mathit{lat}}
+\newcommand{\ppsi}{^p_\psi}
+\newcommand{\pps}{^p_A}
+\newcommand{\TT}{\mathrm{tt}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\U}{\mathbin{\mathcal{U}}} % \U is a binary operator
+\newcommand{\Nzero}{\mathbb{N}_0}
+\def\calP{{\cal P}}
+\def\calA{{\cal A}}
+\def\calT{{\cal T}}
+\def\calTP{{\cal T}{\cal P}}
+\def\calL{{\cal L}}
+\def\calR{{\cal R}}
+\def\calB{{\cal B}}
+\def\calM{{\cal M}}
+\def\calX{{\cal X}}
+\def\calU{{\cal U}}
+\def\calF{{\cal F}}
+\def\calG{{\cal G}}
+\def\calBP{{{\cal B}{\cal P}}}
+\def\calBPR{{{\cal B}{\cal P}{\cal R}}}
+\def\bolp{{\boldsymbol p}}
+\def\bolq{{\boldsymbol q}}
+\def\boltheta{{\boldsymbol \theta}}
+\def\bolTheta{{\boldsymbol \Theta}}
+\def\bolvartheta{{\boldsymbol \vartheta}}
+\def\bolphi{{\boldsymbol \phi}}
+\def\bolPhi{{\boldsymbol \Phi}}
+\def\bolQ{{\boldsymbol Q}}
+\def\bolB{{\boldsymbol B}}
+\def\bols{{\boldsymbol s}}
+\def\bolf{{\boldsymbol f}}
+\def\States{\mathit{States}}
+\def\tildeCalA{\widetilde{\cal A}}
+\def\GOOD{\mathit{Good}}
+\def\BAD{\mathit{Bad}}
+\def\rep{\mathit{rep}}
+\def\proj{\mathit{proj}}
+\def\str{\mathit{str}}
+\def\cor{\mathit{cor}}
+\def\At{\mathit{At}}
+\def\ID{\mathit{ID}}
+\def\Check{\mathit{Check}}
+\def\yield{\Rightarrow}
+\def\tta{\mathtt{a}}
+\def\ato{\stackrel{\tta}{\to}}
+\def\eto{\stackrel{\epsilon}{\to}}
+\def\top{\mathit{top}}
+\def\pre{\mathit{pre}}
+\def\post{\mathit{post}}
+\newcommand{\Buchi}{B\"{u}chi\ }
+
+% \makeatletter
+% \newcommand{\xRightarrow}[2][]{%
+% \ext@arrow 0055{\Rightarrowfill@}{#1}{#2}%
+% }
+% \def\Rightarrowfill@{\arrowfill@\Relbar\Relbar\Rightarrow}
+% \newcommand{\xLeftarrow}[2][]{%
+% \ext@arrow 0055{\Leftarrowfill@}{#1}{#2}%
+% }
+% \def\Leftarrowfill@{\arrowfill@\Leftarrow\Relbar\Relbar}
+% \newcommand{\xLongleftrightarrow}[2][]{%
+% \ext@arrow 0055{\llrafill@}{#1}{#2}%
+% }
+% \def\llrafill@{\arrowfill@\Leftarrow\Relbar\Rightarrow}
+% \makeatother

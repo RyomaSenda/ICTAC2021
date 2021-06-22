@@ -1,0 +1,253 @@
+%\documentclass[11pt]{article}
+%\usepackage{xr}  % refer to labels in other documents
+
+%% <local definitions here>
+
+%\input{packages}
+%\input{macros}
+
+%\externaldocument{main}
+
+\def\QED{\hfill$\Box$}
+
+%\newtheorem{definition}{Definition}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}{Lemma}
+
+\newcommand{\For}{\mathit{for}}
+
+%% </local definitions here>
+
+%\begin{document}
+
+\paragraph{RA with $\epsilon$-transitions}
+%\paragraph*{(Preliminaries)}
+%We define $\Phi_k{\downarrow}_{\L,\R}$
+%as the set of equivalence relations over
+%$\{\L_1,\ldots,\L_k,\R_1\ldots,\R_k\}$.
+%For $\phi\in\Phi_k{\downarrow}_{\L,\R}$ and
+For $\phi\in\Phi_k$ and
+$\theta,\theta'\in\Theta_k$,
+we define $\theta,\theta'\models_{\L,\R}\phi$ iff
+for all $i, j\in[k]$,
+\begin{align*}
+  \L_i\equiv_{\phi} \L_j &\Leftrightarrow \theta(i)=\theta(j), \\
+  \L_i\equiv_{\phi} \R_j &\Leftrightarrow \theta(i)=\theta'(j), \\
+  \R_i\equiv_{\phi} \R_j &\Leftrightarrow \theta'(i)=\theta'(j).
+\end{align*}
+
+
+%\subsection*{($\epsilon$-transitions)}
+We allow an RA to have an \emph{$\epsilon$-transition}
+$(p,\phi)\eto q$.
+%where $\phi\in\Phi_k{\downarrow}_{\L,\R}$.
+Let $\calA=(Q,I,\Acc,\delta)$ be an RA\@.
+Then, $(p,\theta,w)\vdash_{\calA} (q,\theta',w)$
+iff there exists
+${(p,\phi)\eto q}\in\delta$
+% and $d\in D$ and $u\in D^*$
+such that
+$\theta,\theta'\models_{\L,\R}\phi$. % and $w=du$.
+
+%\begin{definition}
+The {\em former image} of an equivalence relation
+%$\phi\in\Phi_k{\downarrow}_{\L,\R}$ is
+$\phi\in\Phi_k$ is
+$\For(\phi)\in\Phi_k{\downarrow}_{\L}$
+that satisfies $\L_i \equiv_{\phi} \L_j \Leftrightarrow \L_i \equiv_{\For(\phi)} \L_j$ for all $i,j\in[k]$.
+%\end{definition}
+
+
+\setcounter{algorithm}{2}
+\begin{algorithm}[h]
+\caption{Algorithm for eliminating $\epsilon$-transitions of RA}
+\label{alg3}
+\begin{algorithmic}[1]
+  \STATE Input: $k$-RA $\calA=(Q, P, \Acc, \delta)$
+  \STATE Let $k$-RA $\calA_0=(Q, P, \Acc_0, \delta_0)$ where
+  $\Acc_0=\Acc$ and
+  $\delta_0=\delta$.
+  \STATE $h := 0$.
+  \REPEAT
+  \IF{${(p,\phi_1)\eto q_1}\in \delta_h$
+    and $(q_1,\Lat(\phi_1))\in\Acc_h$}
+  \STATE Let $\Acc_{h+1}=\Acc_h\cup\{(p,\For(\phi_1))\}$.
+  \ENDIF
+  \IF{${(p,\phi_1)\eto q_1}\in \delta_h$ and
+     ${(q_1,\phi_2)\to q_2}\in \delta_h$}
+  \STATE Let $\delta_{h+1}=\delta_h\cup\{(p,\phi_{12})\to q_2\mid 
+    \phi_{12}\in\RCOMP{\phi_1}{\phi_2}\}$.
+  \ENDIF
+  \STATE $h := h + 1$.
+  \UNTIL {no more transitions and accepting conditions can be added.}
+  \STATE Remove all $\epsilon$-transitions from $\delta_h$.
+  \STATE Output: $\tildeCalA := \calA_h$
+\end{algorithmic}
+\end{algorithm}
+
+%\paragraph*{Algorithm for $\epsilon$-transition elimination}
+%Repeat the following until no more transitions
+%and accepting conditions can be added:
+%\begin{itemize}
+%\item
+%  If ${(p,\phi_1)\eto q_1}\in \delta$
+%    and $(q_1,\Lat(\phi_1))\in\Acc$, then
+%    add $(p,\For(\phi_1))$ into $\Acc$.
+%\item
+%  If ${(p,\phi_1)\eto q_1}\in \delta$ and
+%     ${(q_1,\phi_2)\to q_2}\in \delta$, then
+%    add $(p,\phi_{12})\to q_2$ into $\delta$ for
+%    every $\phi_{12}\in\RCOMP{\phi_1}{\phi_2}$.
+%\end{itemize}
+%After that, remove all $\epsilon$-transitions from
+%$\delta$.
+
+\paragraph*{Correctness of Algorithm~\ref{alg3}}
+%Let $\calA_h$ be the RA obtained just after the $h$-th
+%iteration of the above algorithm from an input RA~$\calA$.
+%($\calA_0=\calA$.)
+
+\begin{lemma}\label{lem:eps1}
+$(p,\theta,\epsilon)$ is an accepting ID of $\calA_h$
+for some $h\ge0$
+iff
+there exists an accepting ID $(q,\theta',\epsilon)$ of $\calA$
+such that
+$(p,\theta,\epsilon)\vdash_{\calA}^* (q,\theta',\epsilon)$.
+\end{lemma}
+%
+(Proof)\quad
+($\Rightarrow$) \ Induction on $h$.
+The basis is trivial.
+For the induction step,
+assume that $(p,\theta,\epsilon)$ is an accepting ID of $\calA_h$
+and not an accepting ID of $\calA_{h-1}$.
+It implies that
+there exist ${(p,\phi_1)\eto q_1}\in\delta$ and
+$(q_1,\Lat(\phi_1))\in\Acc_{h-1}$, and
+$\theta\models\For(\phi_1)$ holds.
+This $\epsilon$-transition and $\theta\models\For(\phi_1)$ imply
+$(p,\theta,\epsilon)\vdash_{\calA} (q_1,\theta_1,\epsilon)$
+for some $\theta_1$ satisfying $\theta,\theta_1\models_{\L,\R}\phi_1$.
+Since $\theta,\theta_1\models_{\L,\R}\phi_1$ implies
+$\theta_1\models\Lat(\phi_1)$,
+$(q_1,\theta_1,\epsilon)$ is an accepting ID of $\calA_{h-1}$.
+Thus by the induction hypothesis,
+there exists an accepting ID $(q,\theta',\epsilon)$ of $\calA$
+such that
+$(p,\theta,\epsilon)\vdash_{\calA} (q_1,\theta_1,\epsilon)
+\vdash_{\calA}^* (q,\theta',\epsilon)$.
+
+($\Leftarrow$) \
+Induction on the length of the run
+$(p,\theta,\epsilon)\vdash_{\calA}^* (q,\theta',\epsilon)$.
+The basis is trivial.
+For the induction step, assume that
+$(p,\theta,\epsilon)\vdash_{\calA}(q_1,\theta_1,\epsilon)
+\vdash_{\calA}^* (q,\theta',\epsilon)$.
+By the induction hypothesis,
+$(q_1,\theta_1,\epsilon)$ is an accepting ID of
+$\calA_h$ for some~$h$.
+On the other hand,
+$(p,\theta,\epsilon)\vdash_{\calA}(q_1,\theta_1,\epsilon)$
+implies that
+${(p,\phi_1)\eto q_1}\in\delta$ for some $\phi_1$
+satisfying $\theta,\theta_1\models_{\L,\R}\phi_1$.
+It implies that $\theta_1\models\Lat(\phi_1)$,
+and thus $(q_1,\Lat(\phi_1))\in\Acc_h$.
+Therefore $(p,\For(\phi_1))\in\Acc_{h+1}$, and hence
+$(p,\theta,\epsilon)$ is an accepting ID of $\calA_{h+1}$.
+\qed
+
+% % %
+
+\begin{lemma}[A modified version of Lemma~3.3]
+\label{lem: 4eps}
+Let $\theta_1,\theta_3 \in \Theta_k$, $d\in D$ and $\phi_1,\phi_2 \in \Phi_k$.
+\lefthang{(i)}
+If there exist $\theta_2\in\Theta_k$ such that $\theta_1,\theta_2\models_{\L,\R} \phi_1$
+and $\theta_2,\theta_3,d\models \phi_2$, then
+$\phi_{12}\in \RCOMP{\phi_1}{\phi_2}$ holds for the unique $\phi_{12}\in \Phi_k$ satisfying
+$\theta_1,\theta_3,d\models \phi_{12}$.
+\lefthang{(ii)}
+If there exists $\phi_{12}\in \RCOMP{\phi_1}{\phi_2}$ satisfying
+$\theta_1,\theta_3,d\models \phi_{12}$, then
+there exist $\theta_2\in\Theta_k$ such that
+$\theta_1,\theta_2\models_{\L,\R} \phi_1$
+and $\theta_2,\theta_3,d\models \phi_2$.
+\end{lemma}
+%
+(This lemma can be proved in a similar way to
+Lemma~3.3.)
+
+% % %
+
+\begin{lemma}\label{lem:eps2}
+$(p,\theta,du)\vdash_{\calA_h} (q,\theta',u)$
+for some $h\ge0$
+iff
+$(p,\theta,du)\vdash_{\calA}^* (q_1,\theta_1,du)
+\vdash_{\calA} (q,\theta',u)$
+for some $q_1$ and $\theta_1$.
+\end{lemma}
+%
+(Proof)\quad
+($\Rightarrow$) \ Induction on $h$.
+The basis is trivial.
+For the induction step,
+let $(p,\phi)\to q$ be the transition rule
+that enables
+$(p,\theta,du)\vdash_{\calA_h} (q,\theta',u)$.
+It implies that $\theta,\theta',d\models\phi$.
+Assume that $(p,\phi)\to q$ is
+not a transition rule of $\calA_{h-1}$.
+It implies that
+there exist ${(p,\phi_1)\eto q_1}\in\delta$ and
+${(q_1,\phi_2)\to q}\in\delta_{h-1}$, and
+$\phi\in\RCOMP{\phi_1}{\phi_2}$ holds.
+By Lemma~\ref{lem: 4eps}\,(ii),
+there exist $\theta_2\in\Theta_k$ such that
+$\theta,\theta_2\models_{\L,\R} \phi_1$
+and $\theta_2,\theta',d\models \phi_2$.
+Hence,
+$(p,\theta,du)\vdash_{\calA} (q_1,\theta_2,du)
+\vdash_{\calA_{h-1}} (q,\theta',u)$.
+Thus by the induction hypothesis,
+$(p,\theta,du)\vdash_{\calA} (q_1,\theta_2,du)
+\vdash_{\calA}^* (q,\theta',u)$.
+
+($\Leftarrow$) \
+Induction on the length of the run
+$(p,\theta,du)\vdash_{\calA}^* (q_1,\theta_1,du)$.
+The basis is trivial.
+For the induction step, assume that
+$(p,\theta,du)\vdash_{\calA}(q_2,\theta_2,du)
+\vdash_{\calA}^* (q_1,\theta_1,du)
+\vdash_{\calA} (q,\theta',u)$.
+By the induction hypothesis,
+$(q_2,\theta_2,du)\vdash_{\calA_h} (q,\theta',u)$
+for some~$h$.
+It implies that
+there exists a transition rule
+${(q_2,\phi_2)\to q}\in\delta_{h}$ satisfying
+$\theta_2,\theta',d\models\phi_2$.
+On the other hand,
+$(p,\theta,du)\vdash_{\calA}(q_2,\theta_2,du)$
+implies that
+${(p,\phi_1)\eto q_2}\in\delta$ for some $\phi_1$
+satisfying $\theta,\theta_2\models_{\L,\R}\phi_1$.
+By Lemma~\ref{lem: 4eps}\,(i),
+$\phi_{12}\in\RCOMP{\phi_1}{\phi_2}$ holds for the unique
+$\phi_{12}$ that satisfies $\theta,\theta',d\models\phi_{12}$.
+Therefore,
+${(p,\phi_{12})\to q}\in\delta_{h+1}$ and
+$(p,\theta,du)\vdash_{\calA_{h+1}} (q,\theta',u)$.
+\qed
+
+\medskip
+By Lemmas \ref{lem:eps1} and \ref{lem:eps2},
+we can conclude that $L(\calA)=L(\widetilde{\calA})$.
+
+
+
+%\end{document}
